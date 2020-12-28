@@ -1,1 +1,0 @@
-# mintaewon.github.io
