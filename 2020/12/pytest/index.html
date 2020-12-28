@@ -275,10 +275,26 @@
             <div class="main-content-wrap">
               <p>dsdf</p>
 <p>sadf</p>
-<!-- raw HTML omitted -->
+
+
+<div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">train_df.info()</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(<span style="color:#ffd500">'-'</span><span style="color:#0086b3"></span><span style="color:#ff3399">*</span><span style="color:#c10aff">40</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">test_df.info()</div></div></td></tr></table></div>
+
+
 <p>sadf</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+
+
+<div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tr>    <td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">grid&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;sns.FacetGrid(train_df,&nbsp;col<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#ffd500">'Survived'</span>,&nbsp;row<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#ffd500">'Pclass'</span>,&nbsp;size<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#c10aff">2.</span><span style="color:#c10aff">2</span>,&nbsp;aspect<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#c10aff">1.</span><span style="color:#c10aff">6</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">grid.map(plt.hist,&nbsp;<span style="color:#ffd500">'Age'</span>,&nbsp;bins<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#c10aff">25</span>,&nbsp;alpha<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>.<span style="color:#c10aff">5</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">grid.add_legend()</div></div></tr></table></div>
+
+
+
+
+<div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">grid&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;sns.FacetGrid(train_df,&nbsp;row<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#ffd500">'Embarked'</span>,&nbsp;size<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#c10aff">2.</span><span style="color:#c10aff">2</span>,&nbsp;aspect<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#c10aff">1.</span><span style="color:#c10aff">6</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">grid.map(sns.pointplot,&nbsp;<span style="color:#ffd500">'Pclass'</span>,&nbsp;<span style="color:#ffd500">'Survived'</span>,&nbsp;<span style="color:#ffd500">'Sex'</span>,&nbsp;palette<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#ffd500">'deep'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">grid.add_legend()</div></div></td></tr></table></div>
+
+
+<p>asdfasdf</p>
+
+
+ <img src="\images\image-20201228141726745.png">
               
             </div>
           </div>
