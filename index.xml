@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MIN Velog</title>
+    <link>https://mintaewon.github.io/</link>
+    <description>Recent content on MIN Velog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 28 Dec 2020 10:18:32 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test1</title>
+      <link>https://mintaewon.github.io/2020/12/test1/</link>
+      <pubDate>Mon, 28 Dec 2020 10:18:32 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2020/12/test1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pytest</title>
+      <link>https://mintaewon.github.io/2020/12/pytest/</link>
+      <pubDate>Mon, 28 Dec 2020 01:27:58 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2020/12/pytest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pythontest</title>
+      <link>https://mintaewon.github.io/2020/12/pythontest/</link>
+      <pubDate>Mon, 28 Dec 2020 00:16:44 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2020/12/pythontest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Test TEST</title>
+      <link>https://mintaewon.github.io/2020/12/test-test/</link>
+      <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/2020/12/test-test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cover image showcase</title>
+      <link>https://mintaewon.github.io/2015/05/cover-image-showcase/</link>
+      <pubDate>Wed, 13 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/2015/05/cover-image-showcase/</guid>
+      <description>&lt;p&gt;Tranquilpeak integrate a unique &amp;ldquo;cover image&amp;rdquo; feature. Open this post to see how this feature sublimate your article.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
