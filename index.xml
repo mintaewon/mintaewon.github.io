@@ -6,7 +6,16 @@
     <description>Recent content on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://mintaewon.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Dec 2020 03:36:33 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test1</title>
+      <link>https://mintaewon.github.io/2020/12/test1/</link>
+      <pubDate>Wed, 30 Dec 2020 03:36:33 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2020/12/test1/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Test TEST</title>
       <link>https://mintaewon.github.io/2020/12/test-test/</link>
