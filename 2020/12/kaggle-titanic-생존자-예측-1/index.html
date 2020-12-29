@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Taewon Min">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Kaggle] Titanic 생존자 예측 (1)">
+<meta name="twitter:title" content="[Kaggle] Titanic 생존자 예측 (1)">
+<meta property="og:url" content="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1/">
+<meta property="og:site_name" content="MIN Velog">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-12-29T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2020-12-29T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Python">
+    
+      <meta property="article:section" content="Kaggle">
+    
+  
+  
+    
+      <meta property="article:tag" content="Kaggle">
+    
+      <meta property="article:tag" content="ML">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c?s=640">
+
+
+    <title>[Kaggle] Titanic 생존자 예측 (1)</title>
+
+    <link rel="icon" href="https://mintaewon.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mintaewon.github.io/">MIN Velog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mintaewon.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mintaewon.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Taewon Min</h4>
+        
+          <h5 class="sidebar-profile-bio">글을 잘 못씀</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Python</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/rstudio">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Rstudio</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://naver.com" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-fas fa-rss"></i>
+      
+      <span class="sidebar-button-desc">Page</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/taewon1230@naver.com">
+    
+      <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Mail</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Kaggle] Titanic 생존자 예측 (1)
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-12-29T00:00:00Z">
+        
+  December 29, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/python">Python</a>, 
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/kaggle">Kaggle</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <hr>
+<p>Kaggle에서 데이터 분석 입문자를 위한 튜토리얼이라고 볼 수 있는 <strong>Titanic - Machine Learning from Disaster</strong> 을 <strong>Python</strong>으로 진행하는 과정을 포스팅 할 것이다.</p>
+<hr>
+
+
+<img src="\images\Titanic\titanic.jpg" alt=titanic>
+
+
+<p>RMS 타이타닉호는 1912년 4월 10일 영국의 사우샘프턴을 떠나 미국의 뉴욕으로 향하던 첫 항해 중에 4월 15일 빙산과 충돌하여 침몰하였다. 타이타닉호의 침몰로 1,514명이 사망하였다.</p>
+<hr>
+<h2 id="1-탐색적-데이터-분석eda">1. 탐색적 데이터 분석(EDA)</h2>
+<h3 id="11-데이터-확보">1.1. 데이터 확보</h3>
+<ul>
+<li>본 포스팅에서 사용한 데이터는 <a href="https://www.kaggle.com/c/titanic/data">Kaggle</a>에서 다운받을 수 있습니다.</li>
+<li>각 탑승객의 신상정보와 생존유무가 담긴 <code>Train</code> 데이터와 예측할 탑승객 정보가 담긴 <code>Test</code> 데이터를 csv파일로 제공합니다.</li>
+</ul>
+<p></p>
+<hr>
+<h3 id="12-data-dictionary">1.2. Data Dictionary</h3>
+<ul>
+<li>
+<p><strong>Survived</strong> - 생존유무, target 값. (0 = 사망, 1 = 생존)</p>
+</li>
+<li>
+<p><strong>Pclass</strong> - 티켓 클래스. (1 = 1st, 2 = 2nd, 3 = 3rd)</p>
+</li>
+<li>
+<p><strong>Sex</strong> - 성별</p>
+</li>
+<li>
+<p><strong>Age</strong> - 나이(세)</p>
+</li>
+<li>
+<p><strong>SibSp</strong> - 함께 탑승한 형제자매, 배우자 수 총합</p>
+</li>
+<li>
+<p><strong>Parch</strong> - 함께 탑승한 부모, 자녀 수 총합</p>
+</li>
+<li>
+<p><strong>Embarked</strong> - 탑승 항구</p>
+</li>
+<li>
+<p><strong>Fare</strong> - 탑승 요금</p>
+</li>
+<li>
+<p><strong>Name</strong> - 탑승객 성명</p>
+</li>
+<li>
+<p><strong>Ticket</strong> - 티켓 넘버</p>
+</li>
+<li>
+<p><strong>Cabin</strong> - 객실 넘버</p>
+</li>
+</ul>
+<p></p>
+<hr>
+<h3 id="13-데이터-확인">1.3. 데이터 확인</h3>
+<ul>
+<li><code>train.csv</code> 를 불러옵니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">import</span>&nbsp;pandas&nbsp;<span style="color:#93C763">as</span>&nbsp;pd</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.read_csv(<span style="color:#EC7600">'train.csv'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic1.PNG"
+    alt="code1"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>데이터가 모두 존재하는지 확인합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.info()</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic2.PNG"
+    alt="code2"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li><code>Age</code>, <code>Cabin</code>, <code>Embarked</code> 에 결측치가 있는 것을 확인할 수 있습니다.
+<ul>
+<li>특히 <code>Cabin</code>의 결측치가 상당히 많이 존재합니다. Feature로 사용하기에는 불가능 할 것 같습니다.</li>
+</ul>
+</li>
+<li><code>PassengerId</code>는 승객의 번호이므로 생존유무와 연광성이 없어보입니다.</li>
+</ul>
+<p></p>
+<hr>
+<h3 id="14-feature-exploration">1.4. Feature Exploration</h3>
+<ul>
+<li>각 Feature 별로 분석을 진행해 봅니다.</li>
+<li>분석에 사용 할 시각화 라이브러리를 불러옵니다.</li>
+<li>개인적으로 <code>seaborn</code>을 좋아하기 때문에 스타일도 맞춰줍니다.</li>
+<li>한글도 사용하기 위해 설정 해줍니다.</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">%matplotlib&nbsp;inline</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">import</span>&nbsp;matplotlib.pyplot&nbsp;<span style="color:#93C763">as</span>&nbsp;plt</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">import</span>&nbsp;seaborn&nbsp;<span style="color:#93C763">as</span>&nbsp;sns</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#시각화&nbsp;준비</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.style.use(<span style="color:#EC7600">'seaborn'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.set(font_scale<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">2</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;한글&nbsp;사용&nbsp;준비</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.rcParams[<span style="color:#EC7600">'font.family'</span>]<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'NanumGothic'</span></div></div></td></tr></table></div>
+
+
+<p></p>
+<hr>
+<h4 id="141-survived">1.4.1. Survived</h4>
+<ul>
+<li>생존유무를 나타내는 Feature 입니다.</li>
+<li>전체 데이터의 생존유무를 수치화 해봅니다.</li>
+<li>0은 사망, 1은 생존을 나타냅니다.</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'Survived'</span>].value_counts()</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic3.PNG"
+    alt="code3"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>수치상으로 사망자의 수가 더 많은 것을 알 수 있습니다.</li>
+<li>좀 더 한눈에 볼 수 있게 pie 와 bar plot을 사용해 시각화를 합니다.</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(<span style="color:#FFCD22">1</span>,&nbsp;<span style="color:#FFCD22">2</span>,&nbsp;figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">14</span>,<span style="color:#FFCD22">5</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">labels&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'사망'</span>,&nbsp;<span style="color:#EC7600">'생존'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Pie&nbsp;Plot</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'Survived'</span>].value_counts().plot.pie(ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">0</span>],&nbsp;explode<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#FFCD22">0</span>,<span style="color:#FFCD22">0.</span><span style="color:#FFCD22">1</span>],&nbsp;shadow<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;autopct<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'%1.1f%%'</span>,&nbsp;labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">0</span>].set(ylabel<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">''</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Count&nbsp;Plot</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Survived'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">1</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">1</span>].set(xlabel<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">''</span>,&nbsp;xticklabels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic4.PNG"
+    alt="code4"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>사망자의 비율이 엄청 높습니다.</li>
+<li>탑승객의 다른 정보와 생존유무가 어떠한 상관관계가 있는지 알아봅시다.</li>
+</ul>
+<p></p>
+<hr>
+<h4 id="142-pclass">1.4.2. Pclass</h4>
+<ul>
+<li>티켓의 클래스(등급)를 나타내는 Feature 입니다.(<em>1, 2, 3 등석 개념</em>)</li>
+<li>1, 2, 3 클래스로 나누어져있습니다. (<em>1등석이 가장 비싼 자리겠죠?</em>)</li>
+<li>클래스별로 인원의 비율을 살펴봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'Pclass'</span>].value_counts()</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic5.PNG"
+    alt="code5"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>숫자로 보면 크게 와닿지 않습니다.</li>
+<li>시각화를 해봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">7</span>,<span style="color:#FFCD22">5</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Pclass'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic6.PNG"
+    alt="code6"
+    decoding="async"
+  />
+</div>
+<ul>
+<li>1, 2 클래스에 비해 3 클래스가 많은 것을 볼 수 있습니다.</li>
+<li>이제 <code>Pclass</code>와 <code>Survived</code>가 어떤 관계가 있는지 알아봅시다.</li>
+<li>클래스 별로 생존률을 구합니다.(<code>Survived</code><em>가 0과 1로 주어지므로 간단하게 구할 수 있음</em>)</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#Groupby를&nbsp;이용한&nbsp;Pclass에&nbsp;따른&nbsp;Survived의&nbsp;평균</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[[<span style="color:#EC7600">'Pclass'</span>,&nbsp;<span style="color:#EC7600">'Survived'</span>]].groupby([<span style="color:#EC7600">'Pclass'</span>],&nbsp;as_index<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>).mean().sort_values(by<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Survived'</span>,&nbsp;ascending<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>)</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic7.PNG"
+    alt="code7"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>1, 2, 3 클래스 순으로 생존률이 높은 것을 알 수 있습니다.</li>
+<li>그래프로도 알아봅시다.</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">6</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Pclass'</span>,&nbsp;hue<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Survived'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#범례&nbsp;한글로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'사망'</span>,&nbsp;<span style="color:#EC7600">'생존'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic8.PNG"
+    alt="code8"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>가장 눈에 띄에 들어오는 부분은 3 클래스 입니다.</li>
+<li>3 클래스 탑승객들의 사망인원이 상당한 것을 볼 수 있습니다.</li>
+<li>좀 더 상세하게 알아보기 위해 Pie Plot도 그려봅시다.</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(<span style="color:#FFCD22">1</span>,<span style="color:#FFCD22">2</span>,figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">10</span>,<span style="color:#FFCD22">4</span>),&nbsp;constrained_layout<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#Survived&nbsp;가&nbsp;0인&nbsp;데이터를&nbsp;이용한&nbsp;Pie&nbsp;Plot</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[train_dt[<span style="color:#EC7600">'Survived'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">0</span>][<span style="color:#EC7600">'Pclass'</span>].value_counts().sort_index().plot.pie(ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">0</span>],&nbsp;shadow<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;autopct<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'%1.1f%%'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">0</span>].set(ylabel<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">''</span>,&nbsp;title<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'사망&nbsp;-&nbsp;Pclass'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#Survived&nbsp;가&nbsp;1인&nbsp;데이터를&nbsp;이용한&nbsp;Pie&nbsp;Plot</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[train_dt[<span style="color:#EC7600">'Survived'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">1</span>][<span style="color:#EC7600">'Pclass'</span>].value_counts().sort_index().plot.pie(ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">1</span>],&nbsp;shadow<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;autopct<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'%1.1f%%'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">1</span>].set(ylabel<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">''</span>,&nbsp;title<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'생존&nbsp;-&nbsp;Pclass'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic9.PNG"
+    alt="code9"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>사망한 탑승객 그래프에서 3 클래스의 비율이 67.8%나 된다는 것을 볼 수 있습니다.</li>
+<li>번외로 클래스별로 탑승가격을 비교해 봅시다.</li>
+</ul>
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic10.PNG"
+    alt="code10"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>생존인원이 가장 많은 1 클래스의 가격이 어마무시 합니다.<del>역시 돈이 많아야..</del></li>
+</ul>
+<p></p>
+<hr>
+<h4 id="142-sex">1.4.2. Sex</h4>
+<ul>
+<li>성별을 나타내는 Feature 입니다.</li>
+<li>male(남성), female(여성)으로 나누어져있습니다.</li>
+<li>그래프를 그려 비율을 살펴봅니다.</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(<span style="color:#FFCD22">1</span>,<span style="color:#FFCD22">2</span>,figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">14</span>,<span style="color:#FFCD22">5</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">labels&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'남성'</span>,&nbsp;<span style="color:#EC7600">'여성'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Pie&nbsp;Plot</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'Sex'</span>].value_counts().plot.pie(ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">0</span>],&nbsp;shadow<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;autopct<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'%1.1f%%'</span>,&nbsp;labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">0</span>].set(ylabel<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">''</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Count&nbsp;Plot</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Sex'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">1</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">1</span>].set(xticklabels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels,&nbsp;xlabel<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">''</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic11.PNG"
+    alt="code11"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>여성 탑승객보다 남성 탑승객이 더 많습니다.</li>
+<li><code>Sex </code>와 <code>Survived</code>가 관련이 있는지 살펴봅니다.</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#Groupby를&nbsp;이용한&nbsp;Sex에&nbsp;따른&nbsp;Survived의&nbsp;평균</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[[<span style="color:#EC7600">'Sex'</span>,&nbsp;<span style="color:#EC7600">'Survived'</span>]].groupby([<span style="color:#EC7600">'Sex'</span>],&nbsp;as_index<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>).mean().sort_values(by<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Survived'</span>,&nbsp;ascending<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>)</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic13.PNG"
+    alt="code13"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>음? 생존률의 차이가 심합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">6</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Sex'</span>,&nbsp;hue<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Survived'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set(xticklabels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'남성'</span>,&nbsp;<span style="color:#EC7600">'여성'</span>],&nbsp;xlabel<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">''</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#범례&nbsp;한글로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'사망'</span>,&nbsp;<span style="color:#EC7600">'생존'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic14.PNG"
+    alt="code14"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>남성의 생존률이 굉장히 낮은 것을 볼 수 있습니다.</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(<span style="color:#FFCD22">1</span>,<span style="color:#FFCD22">2</span>,figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">10</span>,<span style="color:#FFCD22">6</span>),&nbsp;constrained_layout<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">labels&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'여성'</span>,&nbsp;<span style="color:#EC7600">'남성'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#Survived&nbsp;가&nbsp;0인&nbsp;데이터를&nbsp;이용한&nbsp;Pie&nbsp;Plot</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[train_dt[<span style="color:#EC7600">'Survived'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">0</span>]['Sex'].value_counts().sort_index().plot.pie(ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">0</span>],&nbsp;shadow<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;autopct<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'%1.1f%%'</span>,&nbsp;labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">0</span>].set(ylabel<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">''</span>,&nbsp;title<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'사망&nbsp;-&nbsp;Sex'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#Survived&nbsp;가&nbsp;1인&nbsp;데이터를&nbsp;이용한&nbsp;Pie&nbsp;Plot</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[train_dt[<span style="color:#EC7600">'Survived'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">1</span>]['Sex'].value_counts().sort_index().plot.pie(ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">1</span>],&nbsp;shadow<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;autopct<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'%1.1f%%'</span>,&nbsp;labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">1</span>].set(ylabel<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">''</span>,&nbsp;title<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'생존&nbsp;-&nbsp;Sex'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic12.PNG"
+    alt="code12"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>생존-사망을 나누어 보니 확연한 차이가 보입니다.</li>
+<li>남자 탑승객이 더 많기는 했지만 엄청난 사망률을 보입니다.</li>
+<li>여성은 상대적으로 많은 인원이 생존한 것을 볼 수 있습니다.</li>
+<li>위급 상황에서 여성을 우선으로 대피시켰을 것으로 추측해봅니다. <del>Lady First?</del></li>
+</ul>
+<p></p>
+<hr>
+<h4 id="143-age">1.4.3. Age</h4>
+<ul>
+<li>나이를 나타내는 Feature 입니다.</li>
+<li>앞서 살펴 보았듯이 <code>Age</code> 는 결측값을 가지고 있습니다.</li>
+<li>나이는 수치형으로 주어졌기 때문에 분포를 볼 수 있는 그래프를 이용합니다.</li>
+<li><code>Seaborn</code> 에 <code>Dist Plot</code> 이라고 하는 분포를 한눈에 알아 볼 수 있는 그래프를 사용합니다.</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">10</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.distplot(train_dt[<span style="color:#EC7600">'Age'</span>],&nbsp;bins<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">25</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic15.PNG"
+    alt="code15"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>
+<p>탑승객 나이 분포를 보니 20~40대가 가장 많은 것을 볼 수 있습니다.</p>
+</li>
+<li>
+<p>Age 와 Survived 의 관계를 찾기 위해 조금 복잡하지만 생존률 그래프를 그려봅시다.</p>
+</li>
+<li>
+<p>N살의 생존 인원수를 N살의 전체 인원수로 나누면 됩니다. <del>쉽죠?</del></p>
+</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;생존률을&nbsp;입력받을&nbsp;List&nbsp;생성</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">age_range_survival_ratio&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;1살&nbsp;부터&nbsp;생존률&nbsp;구하기</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;i&nbsp;<span style="color:#93C763">in</span>&nbsp;<span style="color:#93C763">range</span>(<span style="color:#FFCD22">1</span>,<span style="color:#FFCD22">80</span>):</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;age_range_survival_ratio.append(train_dt[train_dt[<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&lt;</span>&nbsp;i]['Survived'].sum()&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">/</span>&nbsp;<span style="color:#93C763">len</span>(train_dt[train_dt[<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&lt;</span>&nbsp;i]['Survived']))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.figure(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">7</span>,<span style="color:#FFCD22">7</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.plot(age_range_survival_ratio)</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.title(<span style="color:#EC7600">'나이별&nbsp;생존률'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.ylabel(<span style="color:#EC7600">'생존률'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.xlabel(<span style="color:#EC7600">'나이'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic16.PNG"
+    alt="code16"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>20세 이하의 생존률이 높습니다.</li>
+<li>위에서 20~40대가 많았었습니다. 하지만 생존률은 매우 낮습니다.</li>
+<li>50세 이상은 인원수가 적기 때문에 생존률이 큰 의미를 가질지는 모르겠습니다.</li>
+</ul>
+<p></p>
+<hr>
+<h4 id="144-sibsp">1.4.4. SibSp</h4>
+<ul>
+<li>함께 탑승한 형제자매, 배우자의 총합을 나타내는 Feature 입니다.</li>
+<li>본인을 포함하고 있지 않습니다.</li>
+<li>그래프 확인부터 합시다.</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">5</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'SibSp'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic17.PNG"
+    alt="code17"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>**0(혼자 탄 사람)**이 많은게 한눈에 보입니다.</li>
+<li>생존유무와 관련이 있나 살펴봅니다.</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#Groupby를&nbsp;이용한&nbsp;SibSp에&nbsp;따른&nbsp;Survived의&nbsp;평균</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[[<span style="color:#EC7600">'SibSp'</span>,&nbsp;<span style="color:#EC7600">'Survived'</span>]].groupby([<span style="color:#EC7600">'SibSp'</span>],&nbsp;as_index<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>).mean().sort_values(by<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Survived'</span>,&nbsp;ascending<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>)</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic19.PNG"
+    alt="code19"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>동승자가 1명 있는 탑승자가 생존률이 가장 높습니다.</li>
+<li>그래프로 확인해 봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">10</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'SibSp'</span>,&nbsp;hue<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Survived'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#범례&nbsp;한글로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'사망'</span>,&nbsp;<span style="color:#EC7600">'생존'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic18.PNG"
+    alt="code18"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li><strong>0(혼자 탄 사람)</strong> 이 인원이 많아서 그런지 사망과 생존수가 많습니다.</li>
+<li><strong>0(혼자 탄 사람)</strong> 의 생존수 보다는</li>
+<li>동승자가 있는 탑승객은 표본이 많지 않아서 유의미한 관계를 찾기는 어려워 보입니다.</li>
+</ul>
+<p></p>
+<hr>
+<h4 id="145-parch">1.4.5. <strong>Parch</strong></h4>
+<ul>
+<li>합께 탑승한 부모, 자녀 수 총합을 나타내는 Feature 입니다.</li>
+<li>앞서 살펴본 <code>SibSp</code> 와 유사한 데이터 같습니다.</li>
+<li>그래프를 그려봅시다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">5</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Parch'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic20.PNG"
+    alt="code20"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>
+<p>오우.. 방금 전에 본 그래프와 비슷해 보입니다.</p>
+</li>
+<li>
+<p>혼자 탄 사람이 많습니다.</p>
+</li>
+<li>
+<p>생존률을 확인해 봅시다.</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic21.PNG"
+    alt="code21"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>역시나 <strong>0(혼자 탄 사람)</strong> 은 생존률이 높지 않은 것을 볼 수 있습니다.</li>
+<li>어느정도 예상은 되지만 그래프로 확인해 봅시다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">10</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Parch'</span>,&nbsp;hue<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Survived'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#범례&nbsp;한글로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'사망'</span>,&nbsp;<span style="color:#EC7600">'생존'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic22.PNG"
+    alt="code22"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li><del>그만 확인해 보도록 합시다</del></li>
+<li>앞서 살펴본 <code>SibSp</code> 와 아주 흡사한 그래프를 나타내고 있습니다.</li>
+<li><code>SibSp</code> 와 <code>Parch</code> 는 하나의 데이터로 합쳐서 사용할 수 있을 것 같습니다.</li>
+</ul>
+<p></p>
+<hr>
+<h4 id="146-embarked">1.4.6. <strong>Embarked</strong></h4>
+<ul>
+<li>탑승한 항구를 나타내는 Feature 입니다.</li>
+<li>S항구, C항구, Q항구 3종류의 항구가 있으며 결측값이 존재합니다.</li>
+<li>그래프로 살펴봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(<span style="color:#FFCD22">1</span>,<span style="color:#FFCD22">2</span>,figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">14</span>,<span style="color:#FFCD22">5</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'Embarked'</span>].value_counts().plot.pie(ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">0</span>],&nbsp;shadow<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;autopct<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'%1.1f%%'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">0</span>].set(title<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Embarked'</span>,&nbsp;ylabel<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">''</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Embarked'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">1</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic23.PNG"
+    alt="code23"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>
+<p>S항구의 탑승객이 제일 많은 것을 확인 할 수 있습니다.</p>
+</li>
+<li>
+<p>항구와 생존유무가 관계가 있나 살펴봅니다.</p>
+</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#Groupby를&nbsp;이용한&nbsp;Embarked에&nbsp;따른&nbsp;Survived의&nbsp;평균</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[[<span style="color:#EC7600">'Embarked'</span>,&nbsp;<span style="color:#EC7600">'Survived'</span>]].groupby([<span style="color:#EC7600">'Embarked'</span>],&nbsp;as_index<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>).mean().sort_values(by<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Survived'</span>,&nbsp;ascending<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>)</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic24.PNG"
+    alt="code24"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>음&hellip;그래프를 한번 봅시다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">10</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Embarked'</span>,&nbsp;hue<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Survived'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#범례&nbsp;한글로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'사망'</span>,&nbsp;<span style="color:#EC7600">'생존'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic25.PNG"
+    alt="code25"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>상식적으로 탑승 항구와 생존유무는 관련이 없을 거 같았지만, 이상하게 S항구 탑승객들의 사망률이 높습니다.</li>
+<li><del>저주받은 S항구?</del></li>
+<li>혹시 항구마다 탑승객의 클래스가 다른지 확인해 봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Pclass&nbsp;별로&nbsp;데이터를&nbsp;나눠줍니다</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">Pclass1&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_dt[train_dt[<span style="color:#EC7600">'Pclass'</span>]<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1</span>]['Embarked'].value_counts()</div><div style="padding:0 6px; white-space:pre; line-height:130%">Pclass2&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_dt[train_dt[<span style="color:#EC7600">'Pclass'</span>]<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">2</span>]['Embarked'].value_counts()</div><div style="padding:0 6px; white-space:pre; line-height:130%">Pclass3&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_dt[train_dt[<span style="color:#EC7600">'Pclass'</span>]<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">3</span>]['Embarked'].value_counts()</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;DataFrame으로&nbsp;만들어서&nbsp;그래프</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">10</span>,<span style="color:#FFCD22">7</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">df&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.DataFrame([Pclass1,&nbsp;Pclass2,&nbsp;Pclass3])</div><div style="padding:0 6px; white-space:pre; line-height:130%">df.index&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'1st&nbsp;class'</span>,<span style="color:#EC7600">'2nd&nbsp;class'</span>,<span style="color:#EC7600">'3rd&nbsp;class'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">df.plot(kind<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'bar'</span>,&nbsp;stacked<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;xlabel&nbsp;회전</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.xticks(rotation<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">45</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic26.PNG"
+    alt="code26"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>이런.. S항구에서 탄 탑승객 중 3 클래스가 많은 것을 알 수 있습니다.</li>
+<li>S항구의 사망률이 높은 이유와 연관지을 수 있을 것 같습니다.</li>
+<li>혹시나 하는 마음에 동승자의 유무와도 연관이 있나 살펴봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(<span style="color:#FFCD22">1</span>,<span style="color:#FFCD22">2</span>,figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">13</span>,<span style="color:#FFCD22">6</span>),&nbsp;constrained_layout<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'SibSp'</span>,&nbsp;hue<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Embarked'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">0</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Parch'</span>,&nbsp;hue<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Embarked'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">1</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;범례&nbsp;위치조정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">0</span>].legend(loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'upper&nbsp;right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">1</span>].legend(loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'upper&nbsp;right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic27.PNG"
+    alt="code27"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>앗.. S항구에 혼자 탄 사람이 많습니다.</li>
+<li>정말 혹시나 하는 마음에 혼자 탄 사람이 3 클래스에 많은지도 확인해 봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(<span style="color:#FFCD22">1</span>,<span style="color:#FFCD22">2</span>,figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">13</span>,<span style="color:#FFCD22">6</span>),&nbsp;constrained_layout<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'SibSp'</span>,&nbsp;hue<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Pclass'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">0</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.countplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_dt,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Parch'</span>,&nbsp;hue<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Pclass'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">1</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;범례&nbsp;위치조정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">0</span>].legend(loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'upper&nbsp;right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">1</span>].legend(loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'upper&nbsp;right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic28.PNG"
+    alt="code28"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>정말 슬픈 사실을 알게 됐습니다.</li>
+<li>S항구에서 나홀로 3 클래스에 탄 탑승객의 사망률이 높다는 것 입니다.</li>
+</ul>
+<p></p>
+<hr>
+<h4 id="146-fare">1.4.6. Fare</h4>
+<ul>
+<li>탑승 요금을 나타내는 Feature 입니다.</li>
+<li>요금은 <code>Pclass</code> 와 연관이 있을 것으로 추측해봅니다.</li>
+<li>탑승 요금의 분포를 살펴봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">10</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;분포확인</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.distplot(train_dt[<span style="color:#EC7600">'Fare'</span>],&nbsp;bins<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">25</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic29.PNG"
+    alt="code29"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>3 클래스 탑승객이 많아서 그런지 낮은 가격대에 분포돼 있는 것을 볼 수 있습니다.</li>
+<li>앞서 <code>Fare</code> 와 <code>Pclass</code> 의 관계는 그래프로 확인했습니다.</li>
+<li>그래도 요금이 생존유무와 관련 있는지 확인해 봅시다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">10</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;분포&nbsp;확인</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.kdeplot(train_dt[train_dt[<span style="color:#EC7600">'Survived'</span>]<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1</span>]['Fare'],&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.kdeplot(train_dt[train_dt[<span style="color:#EC7600">'Survived'</span>]<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">0</span>]['Fare'],&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;가장&nbsp;높은&nbsp;가격까지&nbsp;범위&nbsp;확대</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set(xlim<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">0</span>,&nbsp;train_dt[<span style="color:#EC7600">'Fare'</span>].max()))</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend([<span style="color:#EC7600">'생존'</span>,&nbsp;<span style="color:#EC7600">'사망'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic30.PNG"
+    alt="code30"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>어느정도 패턴이 보이는 것 같습니다.</li>
+<li><del>S항구에서 탄 나홀로 3등석 탑승객의 비극</del></li>
+</ul>
+<p></p>
+<hr>
+<h4 id="147-name">1.4.7. Name</h4>
+<ul>
+<li>탑승객의 이름을 나타내는 Feature 입니다.</li>
+<li>설마 이름 때문에 생존유무가 갈리지는 않겠지만 데이터를 살펴봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'Name'</span>].unique()</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic31.PNG"
+    alt="code31"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>어&hellip;음&hellip;네.. 이건 그래프로 안(못) 그립니다.</li>
+<li>데이터를 잘 보니 호칭(Mr, Mrs, Miss &hellip;) 이 보입니다.</li>
+<li>성별을 구분지을 수 있는 요소이므로 잘 정재한다면 사용할 수 있을 것 같습니다.</li>
+</ul>
+<p></p>
+<hr>
+<h4 id="148-ticket">1.4.8. Ticket</h4>
+<ul>
+<li>티켓 번호를 나타내는 Feature 입니다.</li>
+<li>티켓 번호로 클래스나 가격과 같은 정보를 얻을 수 있는지 확인해 봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'Ticket'</span>].unique()</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic32.PNG"
+    alt="code32"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>&hellip;..?? 네 이건 아무리 봐도 잘 모르겠습니다.</li>
+</ul>
+<p></p>
+<hr>
+<h4 id="149-cabin">1.4.9. Cabin</h4>
+<ul>
+<li>객실 번호를 나타내는 Feature 입니다.</li>
+<li>총 891개의 데이터중 204개의 데이터만 보유하고 있습니다.</li>
+<li>결측치가 너무 많고 느낌이 좋지 않습니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'Cabin'</span>].unique()</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic33.PNG"
+    alt="code33"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>ㅎ</li>
+</ul>
+<hr>
+<p></p>
+<ul>
+<li>이렇게 모든 Feature를 살펴봤습니다.</li>
+<li>데이터에서 시각화를 통해 패턴을 찾아 상관관계를 파악했습니다.</li>
+<li>정보를 얻을 수 있는 데이터와 아닌 데이터를 구별 지었습니다.</li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/kaggle/">Kaggle</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/ml/">ML</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/test1/" data-tooltip="Test1">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/test-test/" data-tooltip="Test TEST">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Taewon Min. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/test1/" data-tooltip="Test1">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/test-test/" data-tooltip="Test TEST">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2020%2F12%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-1%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2020%2F12%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-1%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2020%2F12%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-1%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Taewon Min</h4>
+    
+      <div id="about-card-bio">글을 잘 못씀</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        취준생
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        South, Korea
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://mintaewon.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mintaewon.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/mintaewon.github.io\/2020\/12\/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1\/';
+          
+            this.page.identifier = '\/2020\/12\/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
