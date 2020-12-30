@@ -6,22 +6,22 @@
     <description>Recent content in Tags on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 30 Dec 2020 03:36:33 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>tag1</title>
-      <link>https://mintaewon.github.io/tags/tag1/</link>
-      <pubDate>Wed, 30 Dec 2020 03:36:33 +0900</pubDate>
+      <title>Data</title>
+      <link>https://mintaewon.github.io/tags/data/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://mintaewon.github.io/tags/tag1/</guid>
+      <guid>https://mintaewon.github.io/tags/data/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>tag2</title>
-      <link>https://mintaewon.github.io/tags/tag2/</link>
-      <pubDate>Wed, 30 Dec 2020 03:36:33 +0900</pubDate>
+      <title>EDA</title>
+      <link>https://mintaewon.github.io/tags/eda/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://mintaewon.github.io/tags/tag2/</guid>
+      <guid>https://mintaewon.github.io/tags/eda/</guid>
       <description></description>
     </item>
     
@@ -35,20 +35,20 @@
     </item>
     
     <item>
+      <title>MachineLearning</title>
+      <link>https://mintaewon.github.io/tags/machinelearning/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/machinelearning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ML</title>
       <link>https://mintaewon.github.io/tags/ml/</link>
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://mintaewon.github.io/tags/ml/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kakao</title>
-      <link>https://mintaewon.github.io/tags/kakao/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/kakao/</guid>
       <description></description>
     </item>
     

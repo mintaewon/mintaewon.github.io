@@ -3,47 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1-eda/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mintaewon.github.io/categories/</loc>
-    <lastmod>2020-12-30T03:36:33+09:00</lastmod>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/</loc>
-    <lastmod>2020-12-30T03:36:33+09:00</lastmod>
+    <loc>https://mintaewon.github.io/tags/data/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/post/</loc>
-    <lastmod>2020-12-30T03:36:33+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/categories/python/</loc>
-    <lastmod>2020-12-30T03:36:33+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/tag1/</loc>
-    <lastmod>2020-12-30T03:36:33+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/tag2/</loc>
-    <lastmod>2020-12-30T03:36:33+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/</loc>
-    <lastmod>2020-12-30T03:36:33+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/2020/12/test1/</loc>
-    <lastmod>2020-12-30T03:36:33+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1/</loc>
+    <loc>https://mintaewon.github.io/tags/eda/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
   </url>
   
@@ -58,26 +33,37 @@
   </url>
   
   <url>
+    <loc>https://mintaewon.github.io/tags/machinelearning/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mintaewon.github.io/tags/ml/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/tags/kakao/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+    <loc>https://mintaewon.github.io/post/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/2020/12/test-test/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+    <loc>https://mintaewon.github.io/categories/python/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/archives/</loc>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/home/</loc>
   </url>
   
   <url>

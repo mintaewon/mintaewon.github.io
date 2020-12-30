@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kaggle on MIN Velog</title>
-    <link>https://mintaewon.github.io/tags/kaggle/</link>
-    <description>Recent content in Kaggle on MIN Velog</description>
+    <title>Data on MIN Velog</title>
+    <link>https://mintaewon.github.io/tags/data/</link>
+    <description>Recent content in Data on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/kaggle/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/data/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Kaggle] Titanic 생존자 예측 (1) EDA</title>
       <link>https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1-eda/</link>
