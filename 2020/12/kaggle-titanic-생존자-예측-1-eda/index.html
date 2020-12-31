@@ -320,14 +320,14 @@ if (!doNotTrack) {
         <li><a href="#14-feature-exploration">1.4. Feature Exploration</a>
           <ul>
             <li><a href="#141-survived">1.4.1. Survived</a></li>
-            <li><a href="#142-pclass">1.4.2. Pclass</a></li>
-            <li><a href="#143-sex">1.4.3. Sex</a></li>
-            <li><a href="#144-age">1.4.4. Age</a></li>
-            <li><a href="#145-sibsp">1.4.5. SibSp</a></li>
-            <li><a href="#146-parch">1.4.6. Parch</a></li>
-            <li><a href="#147-embarked">1.4.7. Embarked</a></li>
-            <li><a href="#148-fare">1.4.8. Fare</a></li>
-            <li><a href="#149-name">1.4.9. Name</a></li>
+            <li><a href="#142-name">1.4.2. Name</a></li>
+            <li><a href="#143-pclass">1.4.3. Pclass</a></li>
+            <li><a href="#144-sex">1.4.4. Sex</a></li>
+            <li><a href="#145-age">1.4.5. Age</a></li>
+            <li><a href="#146-sibsp">1.4.6. SibSp</a></li>
+            <li><a href="#147-parch">1.4.7. Parch</a></li>
+            <li><a href="#148-embarked">1.4.8. Embarked</a></li>
+            <li><a href="#149-fare">1.4.9. Fare</a></li>
             <li><a href="#1410-ticket">1.4.10. Ticket</a></li>
             <li><a href="#1411-cabin">1.4.11. Cabin</a></li>
           </ul>
@@ -358,39 +358,17 @@ if (!doNotTrack) {
 <hr>
 <h3 id="12-data-dictionary">1.2. Data Dictionary</h3>
 <ul>
-<li>
-<p><strong>Survived</strong> - 생존유무, target 값. (0 = 사망, 1 = 생존)</p>
-</li>
-<li>
-<p><strong>Pclass</strong> - 티켓 클래스. (1 = 1st, 2 = 2nd, 3 = 3rd)</p>
-</li>
-<li>
-<p><strong>Sex</strong> - 성별</p>
-</li>
-<li>
-<p><strong>Age</strong> - 나이(세)</p>
-</li>
-<li>
-<p><strong>SibSp</strong> - 함께 탑승한 형제자매, 배우자 수 총합</p>
-</li>
-<li>
-<p><strong>Parch</strong> - 함께 탑승한 부모, 자녀 수 총합</p>
-</li>
-<li>
-<p><strong>Embarked</strong> - 탑승 항구</p>
-</li>
-<li>
-<p><strong>Fare</strong> - 탑승 요금</p>
-</li>
-<li>
-<p><strong>Name</strong> - 탑승객 성명</p>
-</li>
-<li>
-<p><strong>Ticket</strong> - 티켓 넘버</p>
-</li>
-<li>
-<p><strong>Cabin</strong> - 객실 넘버</p>
-</li>
+<li><strong>Survived</strong> - 생존유무, target 값. (0 = 사망, 1 = 생존)</li>
+<li><strong>Name</strong> - 탑승객 성명</li>
+<li><strong>Pclass</strong> - 티켓 클래스. (1 = 1st, 2 = 2nd, 3 = 3rd)</li>
+<li><strong>Sex</strong> - 성별</li>
+<li><strong>Age</strong> - 나이(세)</li>
+<li><strong>SibSp</strong> - 함께 탑승한 형제자매, 배우자 수 총합</li>
+<li><strong>Parch</strong> - 함께 탑승한 부모, 자녀 수 총합</li>
+<li><strong>Embarked</strong> - 탑승 항구</li>
+<li><strong>Fare</strong> - 탑승 요금</li>
+<li><strong>Ticket</strong> - 티켓 넘버</li>
+<li><strong>Cabin</strong> - 객실 넘버</li>
 </ul>
 <p></p>
 <hr>
@@ -512,7 +490,36 @@ if (!doNotTrack) {
 </ul>
 <p></p>
 <hr>
-<h4 id="142-pclass">1.4.2. Pclass</h4>
+<h4 id="142-name">1.4.2. Name</h4>
+<ul>
+<li>탑승객의 이름을 나타내는 Feature 입니다.</li>
+<li>설마 이름 때문에 생존유무가 갈리지는 않겠지만 데이터를 살펴봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'Name'</span>].unique()</div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+
+<div class="imgcenter">
+  <img
+    src="https://mintaewon.github.io/images/Titanic/titanic31.PNG"
+    alt="code31"
+    decoding="async"
+  />
+</div>
+<p></p>
+<ul>
+<li>어&hellip;음&hellip;네.. 이건 그래프로 안(못) 그립니다.</li>
+<li>데이터를 잘 보니 호칭(Mr, Mrs, Miss &hellip;) 이 보입니다.</li>
+<li>성별을 구분지을 수 있는 요소이므로 잘 정제한다면 사용할 수 있을 것 같습니다.</li>
+</ul>
+<p></p>
+<hr>
+<h4 id="143-pclass">1.4.3. Pclass</h4>
 <ul>
 <li>티켓의 클래스(등급)를 나타내는 Feature 입니다.(<em>1, 2, 3 등석 개념</em>)</li>
 <li>1, 2, 3 클래스로 나누어져있습니다. (<em>1등석이 가장 비싼 자리겠죠?</em>)</li>
@@ -644,7 +651,7 @@ if (!doNotTrack) {
 </ul>
 <p></p>
 <hr>
-<h4 id="143-sex">1.4.3. Sex</h4>
+<h4 id="144-sex">1.4.4. Sex</h4>
 <ul>
 <li>성별을 나타내는 Feature 입니다.</li>
 <li>male(남성), female(여성)으로 나누어져있습니다.</li>
@@ -739,7 +746,7 @@ if (!doNotTrack) {
 </ul>
 <p></p>
 <hr>
-<h4 id="144-age">1.4.4. Age</h4>
+<h4 id="145-age">1.4.5. Age</h4>
 <ul>
 <li>나이를 나타내는 Feature 입니다.</li>
 <li>앞서 살펴 보았듯이 <code>Age</code> 는 결측값을 가지고 있습니다.</li>
@@ -800,7 +807,7 @@ if (!doNotTrack) {
 </ul>
 <p></p>
 <hr>
-<h4 id="145-sibsp">1.4.5. SibSp</h4>
+<h4 id="146-sibsp">1.4.6. SibSp</h4>
 <ul>
 <li>함께 탑승한 형제자매, 배우자의 총합을 나타내는 Feature 입니다.</li>
 <li>본인을 포함하고 있지 않습니다.</li>
@@ -874,7 +881,7 @@ if (!doNotTrack) {
 </ul>
 <p></p>
 <hr>
-<h4 id="146-parch">1.4.6. Parch</h4>
+<h4 id="147-parch">1.4.7. Parch</h4>
 <ul>
 <li>합께 탑승한 부모, 자녀 수 총합을 나타내는 Feature 입니다.</li>
 <li>앞서 살펴본 <code>SibSp</code> 와 유사한 데이터 같습니다.</li>
@@ -949,7 +956,7 @@ if (!doNotTrack) {
 </ul>
 <p></p>
 <hr>
-<h4 id="147-embarked">1.4.7. Embarked</h4>
+<h4 id="148-embarked">1.4.8. Embarked</h4>
 <ul>
 <li>탑승한 항구를 나타내는 Feature 입니다.</li>
 <li>S항구, C항구, Q항구 3종류의 항구가 있으며 결측값이 존재합니다.</li>
@@ -1088,7 +1095,7 @@ if (!doNotTrack) {
 </ul>
 <p></p>
 <hr>
-<h4 id="148-fare">1.4.8. Fare</h4>
+<h4 id="149-fare">1.4.9. Fare</h4>
 <ul>
 <li>탑승 요금을 나타내는 Feature 입니다.</li>
 <li>요금은 <code>Pclass</code> 와 연관이 있을 것으로 추측해봅니다.</li>
@@ -1139,35 +1146,6 @@ if (!doNotTrack) {
 </ul>
 <p></p>
 <hr>
-<h4 id="149-name">1.4.9. Name</h4>
-<ul>
-<li>탑승객의 이름을 나타내는 Feature 입니다.</li>
-<li>설마 이름 때문에 생존유무가 갈리지는 않겠지만 데이터를 살펴봅니다.</li>
-</ul>
-
-
-<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'Name'</span>].unique()</div></div></td></tr></table></div>
-
-
-<p></p>
-
-
-
-<div class="imgcenter">
-  <img
-    src="https://mintaewon.github.io/images/Titanic/titanic31.PNG"
-    alt="code31"
-    decoding="async"
-  />
-</div>
-<p></p>
-<ul>
-<li>어&hellip;음&hellip;네.. 이건 그래프로 안(못) 그립니다.</li>
-<li>데이터를 잘 보니 호칭(Mr, Mrs, Miss &hellip;) 이 보입니다.</li>
-<li>성별을 구분지을 수 있는 요소이므로 잘 정재한다면 사용할 수 있을 것 같습니다.</li>
-</ul>
-<p></p>
-<hr>
 <h4 id="1410-ticket">1.4.10. Ticket</h4>
 <ul>
 <li>티켓 번호를 나타내는 Feature 입니다.</li>
@@ -1192,6 +1170,7 @@ if (!doNotTrack) {
 <p></p>
 <ul>
 <li>&hellip;..?? 네 이건 아무리 봐도 잘 모르겠습니다.</li>
+<li>티켓 번호에 대한 패턴을 찾기 어려워 보입니다.</li>
 </ul>
 <p></p>
 <hr>
@@ -1219,7 +1198,9 @@ if (!doNotTrack) {
 </div>
 <p></p>
 <ul>
-<li>ㅎ</li>
+<li>음&hellip; 알파벳으로 시작하고 숫자가 붙어있는 구조입니다.</li>
+<li>하지만 결측값이 너무 많아 사용하기는 어려워 보입니다.</li>
+<li><p></p></li>
 </ul>
 <hr>
 <p></p>
@@ -1227,6 +1208,7 @@ if (!doNotTrack) {
 <li>이렇게 모든 Feature를 살펴봤습니다.</li>
 <li>데이터에서 시각화를 통해 패턴을 찾아 상관관계를 파악했습니다.</li>
 <li>정보를 얻을 수 있는 데이터와 아닌 데이터를 구별 지었습니다.</li>
+<li>다음 포스팅에서는 학습을 위한 데이터로 만드는 과정인 Feature Enginnering 을 다루겠습니다.</li>
 </ul>
               
             </div>
