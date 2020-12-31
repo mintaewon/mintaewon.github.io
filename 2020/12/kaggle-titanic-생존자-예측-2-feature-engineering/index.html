@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Taewon Min">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Kaggle] Titanic 생존자 예측 (2) Feature Engineering">
+<meta name="twitter:title" content="[Kaggle] Titanic 생존자 예측 (2) Feature Engineering">
+<meta property="og:url" content="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/">
+<meta property="og:site_name" content="MIN Velog">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-12-30T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2020-12-30T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Python">
+    
+      <meta property="article:section" content="Kaggle">
+    
+  
+  
+    
+      <meta property="article:tag" content="Kaggle">
+    
+      <meta property="article:tag" content="ML">
+    
+      <meta property="article:tag" content="FeatureEngineering">
+    
+      <meta property="article:tag" content="MachineLearning">
+    
+      <meta property="article:tag" content="Data">
+    
+      <meta property="article:tag" content="One-Hot Encoding">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298283/blog/thumb76_76_pw7win.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298283/blog/thumb76_76_pw7win.jpg">
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+
+
+    <title>[Kaggle] Titanic 생존자 예측 (2) Feature Engineering</title>
+
+    <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-186281032-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mintaewon.github.io/">MIN Velog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mintaewon.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mintaewon.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Taewon Min</h4>
+        
+          <h5 class="sidebar-profile-bio">My study room</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Python</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/rstudio">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Rstudio</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.tistory.com/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-fas fa-rss"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Mail</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Kaggle] Titanic 생존자 예측 (2) Feature Engineering
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-12-30T00:00:00Z">
+        
+  December 30, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/python">Python</a>, 
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/kaggle">Kaggle</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>이전 포스팅에서 데이터를 다양한 각도에서 관찰하고 이해하는 탐색적 데이터 분석(EDA)를 진행했습니다. 이번 포스팅에서는 기계학습을 위해 적절한 Feature들을 선택 및 정제하는 과정을 진행하겠습니다.</p>
+<p></p>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#2-feature-engineering"><strong>2. Feature Engineering</strong></a>
+      <ul>
+        <li><a href="#21-name">2.1. Name</a></li>
+        <li><a href="#22-pclass">2.2. Pclass</a></li>
+        <li><a href="#23-sex">2.3. Sex</a></li>
+        <li><a href="#24-age">2.4. Age</a></li>
+        <li><a href="#24-sibsp--parch">2.4. SibSp + Parch</a></li>
+        <li><a href="#25-embarked">2.5. Embarked</a></li>
+        <li><a href="#26-fare">2.6. Fare</a></li>
+        <li><a href="#27-ticket--cabin--passengerid">2.7. Ticket + Cabin + PassengerId</a></li>
+        <li><a href="#28-one-hot-encoding">2.8. One-Hot Encoding</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<hr>
+<h2 id="2-feature-engineering"><strong>2. Feature Engineering</strong></h2>
+<ul>
+<li>Feature 의 특징을 떠올리며 차근차근 살펴봅시다.</li>
+<li>Model은 숫자로 표현된 Feature를 입력으로 사용한다.</li>
+<li>문자열 값을 숫자로 변환하는 작업을 합니다.</li>
+<li>Train 데이터와 Test 데이터를 불러옵니다.</li>
+<li>Train 과 Test 를 한번에 변환하기 위해 List에 담아줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">import</span>&nbsp;pandas&nbsp;<span style="color:#93C763">as</span>&nbsp;pd</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Train&nbsp;과&nbsp;Test&nbsp;데이터를&nbsp;준비</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.read_csv(<span style="color:#EC7600">'train.csv'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">test_dt&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.&nbsp;read_csv(<span style="color:#EC7600">'test.csv'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;한번에&nbsp;처리하기&nbsp;위한&nbsp;작업</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">data_train_test&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[train_dt,&nbsp;test_dt]</div></div></td></tr></table></div>
+
+
+<p></p>
+<hr>
+<h3 id="21-name">2.1. Name</h3>
+<ul>
+<li>탑승객의 이름입니다.</li>
+</ul>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic31.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>영어 이름에는 Mr, Mrs, Miss, Ms.. 등과 같은 호칭이 붙습니다.</li>
+<li>호칭 뒤에는 .(마침표)가 붙으니 정규식을 이용해 <code>Title</code> 에 추출합니다</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;정규식을&nbsp;이용해&nbsp;Title로&nbsp;호칭&nbsp;추출</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Title'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;data['Name'].<span style="color:#93C763">str</span>.extract(<span style="color:#EC7600">'([A-Za-z]+)\.'</span>,&nbsp;expand<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic39.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>추출이 잘됐습니다.</li>
+<li>Pandas 의 crosstab 을 사용해  <code>Title</code> 별 <code>Sex</code> 의 분포를 살펴봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Train&nbsp;데이터&nbsp;Title의&nbsp;성별&nbsp;분포</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">pd.crosstab(train_dt[<span style="color:#EC7600">'Title'</span>],&nbsp;train_dt[<span style="color:#EC7600">'Sex'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Test&nbsp;데이터&nbsp;Title의&nbsp;성별&nbsp;분포</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">pd.crosstab(test_dt[<span style="color:#EC7600">'Title'</span>],&nbsp;test_dt[<span style="color:#EC7600">'Sex'</span>])</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic40.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>호칭을 검색해보면서 어떤 용도로 쓰이는지 찾아봅니다.</li>
+<li>Mlle, Ms 는 Miss로 Mme, Lady, Dona는 Mrs로 Don은 Mr로 변경합니다.</li>
+<li>가장 많이 쓰이는 Mr, Mrs, Miss, Master와 나머지를 포함한 Others 로 그룹화합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Title&nbsp;매핑작업</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Title'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;data[<span style="color:#EC7600">'Title'</span>].replace([<span style="color:#EC7600">'Capt'</span>,&nbsp;<span style="color:#EC7600">'Col'</span>,&nbsp;<span style="color:#EC7600">'Countess'</span>,&nbsp;<span style="color:#EC7600">'Dr'</span>,&nbsp;<span style="color:#EC7600">'Jonkheer'</span>,&nbsp;<span style="color:#EC7600">'Major'</span>,&nbsp;<span style="color:#EC7600">'Rev'</span>,&nbsp;<span style="color:#EC7600">'Sir'</span>],&nbsp;<span style="color:#EC7600">'Others'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Title'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;data[<span style="color:#EC7600">'Title'</span>].replace([<span style="color:#EC7600">'Mlle'</span>,&nbsp;<span style="color:#EC7600">'Ms'</span>],&nbsp;<span style="color:#EC7600">'Miss'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Title'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;data[<span style="color:#EC7600">'Title'</span>].replace(<span style="color:#EC7600">'Don'</span>,&nbsp;<span style="color:#EC7600">'Mr'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Title'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;data[<span style="color:#EC7600">'Title'</span>].replace([<span style="color:#EC7600">'Mme'</span>,&nbsp;<span style="color:#EC7600">'Lady'</span>,&nbsp;<span style="color:#EC7600">'Dona'</span>],&nbsp;<span style="color:#EC7600">'Mrs'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Title&nbsp;별&nbsp;생존율</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[[<span style="color:#EC7600">'Title'</span>,&nbsp;<span style="color:#EC7600">'Survived'</span>]].groupby([<span style="color:#EC7600">'Title'</span>],&nbsp;as_index<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>).mean().sort_values(by<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Survived'</span>,&nbsp;ascending<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>)</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic41.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li><code>Title</code>별로 생존율을 보니 확연한 차이가 보입니다.</li>
+<li><code>Name</code> 을 <code>Title</code> 로 대체 했으니 필요없는 <code>Name</code> 은 지워줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Name&nbsp;삭제</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.drop(<span style="color:#EC7600">'Name'</span>,&nbsp;inplace<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic42.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>마지막으로 <code>Title</code>  도 숫자로 변경해 줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;변경할&nbsp;값을&nbsp;dir로&nbsp;저장</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">Title_mapping&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;{<span style="color:#EC7600">'Mr'</span>:<span style="color:#FFCD22">0</span>,&nbsp;<span style="color:#EC7600">'Mrs'</span>:<span style="color:#FFCD22">1</span>,&nbsp;<span style="color:#EC7600">'Miss'</span>:<span style="color:#FFCD22">2</span>,&nbsp;<span style="color:#EC7600">'Master'</span>:<span style="color:#FFCD22">3</span>,&nbsp;<span style="color:#EC7600">'Others'</span>:<span style="color:#FFCD22">4</span>}</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Title'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;data[<span style="color:#EC7600">'Title'</span>].map(Title_mapping).astype(<span style="color:#93C763">int</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic43.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<h3 id="22-pclass">2.2. Pclass</h3>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic7.PNG"/> 
+</figure>
+
+<ul>
+<li><code>Pclass</code> 는 1, 2, 3 클래스로 나누어져 있습니다.</li>
+<li>1 클래스의 생존율이 높고 3클래스는 생존율이 낮습니다.</li>
+<li>생존유무를 파악하는데 유의미한 지표입니다.</li>
+<li>기존 데이터가 1, 2, 3 으로 제공되니 그대로 사용하도록 합니다.</li>
+</ul>
+<p></p>
+<hr>
+<h3 id="23-sex">2.3. Sex</h3>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic13.PNG"/> 
+</figure>
+
+<ul>
+<li><code>Sex</code> 는 male(남성), female(여성)으로 나누어져 있습니다.</li>
+<li>남성의 사망률이 높고 여성의 생존율이 높습니다.</li>
+<li>생존유무를 파악하는데 유의미한 지표입니다.</li>
+<li>데이터가 male 와 female 로 제공되므로 0과 1로 변경하도록 합시다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;int&nbsp;type&nbsp;의&nbsp;숫자&nbsp;0과&nbsp;1로&nbsp;매핑</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Sex'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;data[<span style="color:#EC7600">'Sex'</span>].map({<span style="color:#EC7600">'male'</span>:<span style="color:#FFCD22">0</span>,&nbsp;<span style="color:#EC7600">'female'</span>:<span style="color:#FFCD22">1</span>}).astype(<span style="color:#93C763">int</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic34.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<h3 id="24-age">2.4. Age</h3>
+<ul>
+<li>
+<p><code>Age</code> 에는 결측값이 있기 때문에 이 부분을 먼저 해결해줘야 합니다.</p>
+</li>
+<li>
+<p>결측값에 <code>Title</code> 별 <code>Age</code> 의 평균을 넣습니다.</p>
+</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Age&nbsp;결측값에&nbsp;Title별&nbsp;나이의&nbsp;평균값으로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Age'</span>].fillna(data.groupby(<span style="color:#EC7600">'Title'</span>)[<span style="color:#EC7600">'Age'</span>].transform(<span style="color:#EC7600">'mean'</span>),&nbsp;inplace<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;결측값&nbsp;확인</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.info()</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">print</span>(<span style="color:#EC7600">'-'</span><span style="color:#A082BD"></span><span style="color:#93C763">*</span><span style="color:#FFCD22">6</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">test_dt.info()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic44.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>
+<p>나이는 연속형 자료이므로 구간을 정하면 될 것 같습니다.(ex 10대, 20대&hellip;)</p>
+</li>
+<li>
+<p>그냥 단순하게 구간을 나눠도 되지만 <del>좀 있어 보이게</del> <strong>Pandas</strong> 의 <strong>cut</strong> 을 사용해 나눠봅시다.</p>
+</li>
+<li>
+<p>나누어진 구간의 생존율도 같이 보면 좋을 것 같습니다.</p>
+</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;AgeRange에&nbsp;N등분&nbsp;한&nbsp;범위를&nbsp;넣어줍니다.</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'AgeRange'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.cut(train_dt[<span style="color:#EC7600">'Age'</span>],&nbsp;<span style="color:#FFCD22">5</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;AgeRange&nbsp;의&nbsp;값마다&nbsp;생존율을&nbsp;구합니다.</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[[<span style="color:#EC7600">'AgeRange'</span>,&nbsp;<span style="color:#EC7600">'Survived'</span>]].groupby([<span style="color:#EC7600">'AgeRange'</span>],&nbsp;as_index<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>).mean().sort_values(by<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'AgeRange'</span>,&nbsp;ascending<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>)</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic35.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>5구간으로 나누는게 제일 깜끔한 것 같아서 선택했습니다.</li>
+<li>(0~16) 은 0, (16~32) 는 1,&hellip;이렇게 매핑해주도록 합시다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;AgeRange&nbsp;범위&nbsp;대로&nbsp;값&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.loc[&nbsp;data[<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&lt;</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">16</span>,&nbsp;<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">0</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.loc[(data[<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&gt;</span>&nbsp;<span style="color:#FFCD22">16</span>)&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&amp;</span>&nbsp;(data[<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&lt;</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">32</span>),&nbsp;<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">1</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.loc[(data[<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&gt;</span>&nbsp;<span style="color:#FFCD22">32</span>)&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&amp;</span>&nbsp;(data[<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&lt;</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">48</span>),&nbsp;<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">2</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.loc[(data[<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&gt;</span>&nbsp;<span style="color:#FFCD22">48</span>)&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&amp;</span>&nbsp;(data[<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&lt;</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">64</span>),&nbsp;<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">3</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.loc[&nbsp;data[<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&gt;</span>&nbsp;<span style="color:#FFCD22">64</span>,&nbsp;<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">4</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#919191">#&nbsp;int&nbsp;로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Age'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;data[<span style="color:#EC7600">'Age'</span>].astype(<span style="color:#93C763">int</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic36.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li><code>Age</code> 도 변환이 잘 됐습니다.</li>
+<li>과정에서 생성된 <code>AgeRange</code> 는 삭제해주도록 합시다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;AgeRange&nbsp;삭제</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.drop(<span style="color:#EC7600">'AgeRange'</span>,&nbsp;inplace<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic37.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<h3 id="24-sibsp--parch">2.4. SibSp + Parch</h3>
+<ul>
+<li><code>SibSp</code> 는 함께 탑승한 형제자매, 배우자의 총합이고 <code>Parch</code> 는 함게 탑승한 부모, 자녀의 총합입니다.</li>
+<li>두 Feature를 묶는 이유는 0(혼자인 탑승객) 과 1이상(혼자가 아닌 탑승객) 의 사망률 차이가 의미있기 때문입니다.</li>
+<li><code>SibSp</code> 와 <code>Parch</code> 를 더해주면서 +1을 해주면 한 그룹(가족)의 인원수를 나타낼 수 있습니다.</li>
+<li><code>Familysize</code> 로 새로운 Feature를 만들어 봅시다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;SibSp&nbsp;+&nbsp;Parch&nbsp;+&nbsp;1&nbsp;로&nbsp;Familysize&nbsp;생성</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Familysize'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;data[<span style="color:#EC7600">'SibSp'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">+</span>&nbsp;data[<span style="color:#EC7600">'Parch'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">+</span>&nbsp;<span style="color:#FFCD22">1</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic38.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>만들어진 <code>Familysize</code> 로 그래프를 그려서 확인을 해봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">%matplotlib&nbsp;inline</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">import</span>&nbsp;matplotlib.pyplot&nbsp;<span style="color:#93C763">as</span>&nbsp;plt</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">import</span>&nbsp;seaborn&nbsp;<span style="color:#93C763">as</span>&nbsp;sns</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#시각화&nbsp;준비</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.style.use(<span style="color:#EC7600">'seaborn'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.set(font_scale<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">2</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;한글&nbsp;사용&nbsp;준비</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.rcParams[<span style="color:#EC7600">'font.family'</span>]<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'NanumGothic'</span></div></div></td></tr></table></div>
+
+
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">10</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Survived&nbsp;의&nbsp;0,1&nbsp;경우&nbsp;각각&nbsp;Faamilysize&nbsp;의&nbsp;분포&nbsp;확인</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.kdeplot(train_dt[train_dt[<span style="color:#EC7600">'Survived'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">0</span>]['Familysize'],&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.kdeplot(train_dt[train_dt[<span style="color:#EC7600">'Survived'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">1</span>]['Familysize'],&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x축의&nbsp;범위는&nbsp;0부터&nbsp;Familysize의&nbsp;최댓값</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set(xlim<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">0</span>,&nbsp;train_dt[<span style="color:#EC7600">'Familysize'</span>].max()))</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.legend([<span style="color:#EC7600">'사망'</span>,&nbsp;<span style="color:#EC7600">'생존'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic45.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li><code>SibSp</code> 와 <code>Parch</code> 는 삭제해 줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;삭제할&nbsp;Feature</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">drop_feature&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'SibSp'</span>,&nbsp;<span style="color:#EC7600">'Parch'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.drop(drop_feature,&nbsp;inplace<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic46.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<h3 id="25-embarked">2.5. Embarked</h3>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic24.PNG"/> 
+</figure>
+
+<ul>
+<li><code>Embarked</code> 의 S항구는 Train 데이터의 전체 탑승객 중 72.4% 가 이용한 항구입니다.</li>
+<li>결측값이 Train 데이터에 2개 뿐이므로 S항구로 넣어도 문제없어 보입니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Embarked&nbsp;결측값에&nbsp;S&nbsp;삽입</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'Embarked'</span>].fillna(<span style="color:#EC7600">'S'</span>,&nbsp;inplace<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Embarked&nbsp;결측값&nbsp;개수</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">print</span>(<span style="color:#EC7600">'결측값의&nbsp;개수&nbsp;:'</span>,train_dt[<span style="color:#EC7600">'Embarked'</span>].isnull().sum())</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic47.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>S, C, Q 의 값도 숫자로 변경합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;변경할&nbsp;값을&nbsp;dir에&nbsp;저장</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">embarked_mapping&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;{<span style="color:#EC7600">'S'</span>:<span style="color:#FFCD22">0</span>,&nbsp;<span style="color:#EC7600">'C'</span>:<span style="color:#FFCD22">1</span>,&nbsp;<span style="color:#EC7600">'Q'</span>:<span style="color:#FFCD22">2</span>}</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Embarked'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;data[<span style="color:#EC7600">'Embarked'</span>].map(embarked_mapping).astype(<span style="color:#93C763">int</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()&nbsp;&nbsp;&nbsp;&nbsp;</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic48.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<h3 id="26-fare">2.6. Fare</h3>
+<ul>
+<li><code>Fare</code> 도 결측값을 처리해야 합니다.</li>
+<li>가장 연관이 높은 <code>Pclass</code> 의 평균으로 결측값을 처리해줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Fare&nbsp;결측값에&nbsp;Pclass별&nbsp;가격의&nbsp;평균값으로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Fare'</span>].fillna(data.groupby(<span style="color:#EC7600">'Pclass'</span>)[<span style="color:#EC7600">'Fare'</span>].transform(<span style="color:#EC7600">'mean'</span>),&nbsp;inplace<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;결측값&nbsp;확인</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.info()</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">print</span>(<span style="color:#EC7600">'-'</span><span style="color:#A082BD"></span><span style="color:#93C763">*</span><span style="color:#FFCD22">40</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">test_dt.info()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic49.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>결측값을 다 채워줬습니다.</li>
+<li>Pandas 의 cut을 이용해 다시 나눠봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;FareRange에&nbsp;N등분&nbsp;한&nbsp;범위를&nbsp;넣어줍니다.</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[<span style="color:#EC7600">'FareRange'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.cut(train_dt[<span style="color:#EC7600">'Fare'</span>],&nbsp;<span style="color:#FFCD22">4</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;FareRange&nbsp;의&nbsp;값마다&nbsp;생존율을&nbsp;구합니다.</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt[[<span style="color:#EC7600">'FareRange'</span>,&nbsp;<span style="color:#EC7600">'Survived'</span>]].groupby([<span style="color:#EC7600">'FareRange'</span>],&nbsp;as_index<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>).mean().sort_values(by<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'FareRange'</span>,&nbsp;ascending<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>)</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic50.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>다음 범위로 숫자를 다시 지정해 줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;FareRange&nbsp;범위&nbsp;대로&nbsp;값&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.loc[&nbsp;data[<span style="color:#EC7600">'Fare'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&lt;</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">128</span>,&nbsp;<span style="color:#EC7600">'Fare'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">0</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.loc[(data[<span style="color:#EC7600">'Fare'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&gt;</span>&nbsp;<span style="color:#FFCD22">128</span>)&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&amp;</span>&nbsp;(data[<span style="color:#EC7600">'Fare'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&lt;</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">256</span>),&nbsp;<span style="color:#EC7600">'Fare'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">1</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.loc[(data[<span style="color:#EC7600">'Fare'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&gt;</span>&nbsp;<span style="color:#FFCD22">256</span>)&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&amp;</span>&nbsp;(data[<span style="color:#EC7600">'Fare'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&lt;</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">384</span>),&nbsp;<span style="color:#EC7600">'Fare'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">2</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.loc[data[<span style="color:#EC7600">'Fare'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">&gt;</span>&nbsp;<span style="color:#FFCD22">384</span>,&nbsp;<span style="color:#EC7600">'Fare'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">3</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#919191">#&nbsp;int&nbsp;로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data[<span style="color:#EC7600">'Fare'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;data[<span style="color:#EC7600">'Fare'</span>].astype(<span style="color:#93C763">int</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic51.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li><code>FareRange</code> 는 지워줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;FareRange&nbsp;제거</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.drop(<span style="color:#EC7600">'FareRange'</span>,&nbsp;inplace<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic52.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<h3 id="27-ticket--cabin--passengerid">2.7. Ticket + Cabin + PassengerId</h3>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic52.PNG"/> 
+</figure>
+
+<ul>
+<li><code>Ticket</code> 은 결측값이 존재하지 않지만 데이터에서 의미를 찾기가 힘듭니다.</li>
+<li><code>Cabin</code> 은 결측값이 너무 많아 데이터로 사용하기가 애매합니다.</li>
+<li>이와 같은 이유로 Feature 에서 제외하겠습니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;삭제할&nbsp;Feature를&nbsp;List에&nbsp;저장</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">data_drop&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'Ticket'</span>,&nbsp;<span style="color:#EC7600">'Cabin'</span>,&nbsp;<span style="color:#EC7600">'PassengerId'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;data&nbsp;<span style="color:#93C763">in</span>&nbsp;data_train_test:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;data.drop(data_drop,&nbsp;inplace<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt.head()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic54.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<h3 id="28-one-hot-encoding">2.8. One-Hot Encoding</h3>
+<ul>
+<li>One-Hot Encoding 이란 단 하나의 값만 True 이고 나머지는 False 로 만드는 인코딩입니다.</li>
+<li>기계가 좀 더 알아보기 쉽게 해줘 Model의 성능을 향상시키는데 사용됩니다.</li>
+<li>그림을 보면 조금더 쉽게 이해할 수 있습니다.</li>
+</ul>
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic55.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li><code>Title</code> 에 One-Hot Encoding 을 적용합니다.</li>
+<li>Pandas 의 get_dummies 를 이용하면 간단하게 적용할 수 있습니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Title&nbsp;에&nbsp;One-Hot&nbsp;Encoding&nbsp;진행</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_dt&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.get_dummies(train_dt,&nbsp;columns<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'Title'</span>],&nbsp;prefix<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Title'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">test_dt&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.get_dummies(test_dt,&nbsp;columns<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'Title'</span>],&nbsp;prefix<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'Title'</span>)</div></div></td></tr></table></div>
+
+
+<p></p>
+<hr>
+<ul>
+<li>최종적으로 만들어진 데이터를 살펴봅시다.</li>
+</ul>
+<p></p>
+<ul>
+<li>Train 데이터</li>
+</ul>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic56.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>Test 데이터</li>
+</ul>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic57.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<p></p>
+<ul>
+<li>이번 포스팅은 기계학습을 위한 중요한 작업인 Feature Engineering 을 진행했습니다.</li>
+<li>다음 포스팅에서는 만든 데이터를 모델에 적용시키고 Kaggle 에 제출하는 과정을 진행합니다.</li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/kaggle/">Kaggle</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/ml/">ML</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/featureengineering/">FeatureEngineering</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/machinelearning/">MachineLearning</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/data/">Data</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/one-hot-encoding/">One-Hot Encoding</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/rtest/" data-tooltip="Rtest">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1-eda/" data-tooltip="[Kaggle] Titanic 생존자 예측 (1) EDA">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Taewon Min. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/rtest/" data-tooltip="Rtest">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1-eda/" data-tooltip="[Kaggle] Titanic 생존자 예측 (1) EDA">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2020%2F12%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-2-feature-engineering%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2020%2F12%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-2-feature-engineering%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2020%2F12%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-2-feature-engineering%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Taewon Min</h4>
+    
+      <div id="about-card-bio">My study room</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        None
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        South, Korea
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://mintaewon.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mintaewon.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+<footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Taewon Min. All Rights Reserved
+  </span>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</footer>
