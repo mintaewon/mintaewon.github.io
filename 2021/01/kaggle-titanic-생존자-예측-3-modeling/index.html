@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Taewon Min">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Kaggle] Titanic 생존자 예측 (3) Modeling">
+<meta name="twitter:title" content="[Kaggle] Titanic 생존자 예측 (3) Modeling">
+<meta property="og:url" content="https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
+<meta property="og:site_name" content="MIN Velog">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2021-01-01T21:08:05">
+  
+  
+    <meta property="article:modified_time" content="2021-01-01T21:08:05">
+  
+  
+  
+    
+      <meta property="article:section" content="Python">
+    
+      <meta property="article:section" content="Kaggle">
+    
+  
+  
+    
+      <meta property="article:tag" content="Kaggle">
+    
+      <meta property="article:tag" content="ML">
+    
+      <meta property="article:tag" content="EDA">
+    
+      <meta property="article:tag" content="MachineLearning">
+    
+      <meta property="article:tag" content="Data">
+    
+      <meta property="article:tag" content="Modeling">
+    
+      <meta property="article:tag" content="모델링">
+    
+      <meta property="article:tag" content="머신러닝">
+    
+      <meta property="article:tag" content="기계학습">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298283/blog/thumb76_76_pw7win.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298283/blog/thumb76_76_pw7win.jpg">
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+
+
+    <title>[Kaggle] Titanic 생존자 예측 (3) Modeling</title>
+
+    <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-186281032-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mintaewon.github.io/">MIN Velog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mintaewon.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mintaewon.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Taewon Min</h4>
+        
+          <h5 class="sidebar-profile-bio">데이터 공부노트</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Python</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/rstudio">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Rstudio</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.tistory.com/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-fas fa-rss"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Mail</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Kaggle] Titanic 생존자 예측 (3) Modeling
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-01-01T21:08:05&#43;09:00">
+        
+  January 1, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/python">Python</a>, 
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/kaggle">Kaggle</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>이전 포스팅에서 기계학습을 위한 Feature Engineering을 진행해 학습에 사용할 Train 데이터와 테스트에 사용할 Test 데이터를 만들고 One-Hot Encoding을 진행했습니다. 이번 포스팅에서는 Model에 학습시키고 예측하는 과정을 진행하겠습니다.</p>
+<p></p>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#3-modeling"><strong>3. Modeling</strong></a>
+      <ul>
+        <li><a href="#31-train-validation-test">3.1. Train-Validation-Test</a></li>
+        <li><a href="#32-model">3.2. Model</a>
+          <ul>
+            <li><a href="#321-logistic-regression">3.2.1. Logistic Regression</a></li>
+            <li><a href="#322-k-nearest-neighborsk-nn">3.2.2. K-Nearest Neighbors(K-NN)</a></li>
+            <li><a href="#323-decision-tree">3.2.3. Decision Tree</a></li>
+            <li><a href="#324-random-forest">3.2.4. Random Forest</a></li>
+            <li><a href="#325-naive-bayes">3.2.5. Naive Bayes</a></li>
+            <li><a href="#326-support-vector-machinesvm">3.2.6. Support Vector Machine(SVM)</a></li>
+          </ul>
+        </li>
+        <li><a href="#33-cross-validation">3.3. Cross Validation</a>
+          <ul>
+            <li><a href="#331-k-fold-cross-validation">3.3.1. K-fold Cross Validation</a></li>
+          </ul>
+        </li>
+        <li><a href="#34-submission">3.4. Submission</a></li>
+        <li><a href="#35-thinking">3.5. Thinking</a></li>
+        <li><a href="#36-마치며">3.6. 마치며</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<hr>
+<h2 id="3-modeling"><strong>3. Modeling</strong></h2>
+<ul>
+<li>우선 이 프로젝트는 Train 데이터로 정답을 알려주며 학습시키는 <strong>지도학습</strong>입니다.</li>
+<li>지도학습은 크게 <strong>분류(Classification)</strong> 과 <strong>회귀(Regression)</strong> 가 있습니다.</li>
+<li>Titanic 생존 예측은 <strong>0(사망)/1(생존)</strong> 두 가지 중 하나로 분류하는 <strong>이진 분류(Binary Classification)</strong> 에 속합니다.</li>
+<li>머신러닝에 사용되는 알고리즘을 제공하는 Python 라이브러리 <strong>Scikit-Learn</strong>을 사용합니다.</li>
+</ul>
+<p></p>
+<h3 id="31-train-validation-test">3.1. Train-Validation-Test</h3>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic58.PNG"/> 
+</figure>
+
+<ul>
+<li>가지고 있는 Train 데이터를 Train set과 Validation set으로 나눠야 합니다.</li>
+<li>Test 데이터는 모델의 최종 성능을 평가하기 위해 사용되므로 Train set 으로 학습한 후 Validation  set 을 이용해 모델의 성능을 평가하기 위해서 입니다.</li>
+<li>데이터를 분리하기 위한 사전작업을 해줍니다.</li>
+<li>Sklearn의 train_test_split을 불러옵니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;데이터&nbsp;분리&nbsp;준비</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.model_selection&nbsp;<span style="color:#93C763">import</span>&nbsp;train_test_split</div></div></td></tr></table></div>
+
+
+<p></p>
+<ul>
+<li>7:3의 비율로 Train set 과 Validation set 을 생성합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Train,&nbsp;Test,&nbsp;Target을&nbsp;분리</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">X_train&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_dt.drop(<span style="color:#EC7600">'Survived'</span>,&nbsp;axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1</span>).values</div><div style="padding:0 6px; white-space:pre; line-height:130%">target_label&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_dt[<span style="color:#EC7600">'Survived'</span>].values</div><div style="padding:0 6px; white-space:pre; line-height:130%">X_test&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;test_dt.values</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;train_test_split&nbsp;을&nbsp;사용해&nbsp;7:3의&nbsp;비율로&nbsp;train&nbsp;set과&nbsp;validation&nbsp;set을&nbsp;생성</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">X_tr,&nbsp;X_vid,&nbsp;y_tr,&nbsp;y_vid&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_test_split(X_train,&nbsp;target_label,&nbsp;test_size<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">0.</span><span style="color:#FFCD22">3</span>,&nbsp;random_state<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1230</span>,&nbsp;shuffle<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>)</div></div></td></tr></table></div>
+
+
+<p></p>
+<hr>
+<h3 id="32-model">3.2. Model</h3>
+<ul>
+<li>사용할 모델
+<ol>
+<li>Logistic Regression</li>
+<li>K-Nearest Neighbors(K-NN)</li>
+<li>Decision Tree</li>
+<li>Random Forest</li>
+<li>Naive Bayes</li>
+<li>Support Vector Machine(SVM)</li>
+</ol>
+</li>
+<li>Model 을 하나하나 분석하기 보다는 사용위주의 측면에서 진행합니다.</li>
+<li>이번 분석에서는 Parameter 은 대부분 Default 값을 사용합니다.</li>
+<li>사용할 Model 을 가져옵니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;분석&nbsp;모델&nbsp;가져오기</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.linear_model&nbsp;<span style="color:#93C763">import</span>&nbsp;LogisticRegression</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.neighbors&nbsp;<span style="color:#93C763">import</span>&nbsp;KNeighborsClassifier</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.tree&nbsp;<span style="color:#93C763">import</span>&nbsp;DecisionTreeClassifier</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.ensemble&nbsp;<span style="color:#93C763">import</span>&nbsp;RandomForestClassifier</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.naive_bayes&nbsp;<span style="color:#93C763">import</span>&nbsp;GaussianNB</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.svm&nbsp;<span style="color:#93C763">import</span>&nbsp;SVC</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;분석&nbsp;성능을&nbsp;측정할&nbsp;도구</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn&nbsp;<span style="color:#93C763">import</span>&nbsp;metrics</div></div></td></tr></table></div>
+
+
+<p></p>
+<hr>
+<h4 id="321-logistic-regression">3.2.1. Logistic Regression</h4>
+<ul>
+<li>
+<p>Logistic Regression(로지스틱 회귀) 는 데이터가 어떤 범주에 속할 확률을 0에서 1사이의 값으로 예측하고 분류하는 알고리즘입니다.</p>
+</li>
+<li>
+<p>Model을 사용하는 방법은 간단합니다.</p>
+</li>
+<li>
+<p>X_tr 과 y_tr 을 학습한 후 X_vid를 이용해 예측합니다.</p>
+</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Model&nbsp;적용</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">model&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;LogisticRegression()</div><div style="padding:0 6px; white-space:pre; line-height:130%">model.fit(X_tr,&nbsp;y_tr)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#예측</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">prediction&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;model.predict(X_vid)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">prediction</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic59.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>다음과 같이 사망과 생존을 예측했습니다.</li>
+<li>예측한 결과의 정확도(Accuracy)를 측정합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#예측값으로&nbsp;accuracy&nbsp;측정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">print</span>(<span style="color:#EC7600">'Logistic&nbsp;Regression&nbsp;-&nbsp;{:.2f}%&nbsp;확률로&nbsp;생존&nbsp;맞춤'</span>.<span style="color:#93C763">format</span>(metrics.accuracy_score(prediction,&nbsp;y_vid)&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">*</span>&nbsp;<span style="color:#FFCD22">100</span>))</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic60.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>78.36%의 정확도로 생존율을 맞췄습니다.</li>
+<li>같은 방법으로 다른 Model 도 측정해 봅니다.</li>
+</ul>
+<p></p>
+<hr>
+<h4 id="322-k-nearest-neighborsk-nn">3.2.2. K-Nearest Neighbors(K-NN)</h4>
+<ul>
+<li>K-NN(최근접 이웃)은 가장 가까운 거리에 있는 K개의 이웃과 비교하여 예측하는 방법입니다.</li>
+<li>K의 값는 Default 값으로 5를 가집니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Model&nbsp;적용</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">model&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;KNeighborsClassifier()</div><div style="padding:0 6px; white-space:pre; line-height:130%">model.fit(X_tr,&nbsp;y_tr)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#예측</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">prediction1&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;model.predict(X_vid)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#예측값으로&nbsp;accuracy&nbsp;측정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">print</span>(<span style="color:#EC7600">'K-Nearest&nbsp;Neighbors&nbsp;-&nbsp;{:.2f}%&nbsp;확률로&nbsp;생존&nbsp;맞춤'</span>.<span style="color:#93C763">format</span>(metrics.accuracy_score(prediction1,&nbsp;y_vid)&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">*</span>&nbsp;<span style="color:#FFCD22">100</span>))</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic61.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<h4 id="323-decision-tree">3.2.3. Decision Tree</h4>
+<ul>
+<li>Decision Tree(의사결정 나무) 는 규칙들을 나무구조로 도표화해 분류와 예측을 수행하는 방법입니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Model&nbsp;적용</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">model&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;DecisionTreeClassifier()</div><div style="padding:0 6px; white-space:pre; line-height:130%">model.fit(X_tr,&nbsp;y_tr)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#예측</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">prediction2&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;model.predict(X_vid)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#예측값으로&nbsp;accuracy&nbsp;측정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">print</span>(<span style="color:#EC7600">'Decision&nbsp;Tree&nbsp;-&nbsp;{:.2f}%&nbsp;확률로&nbsp;생존&nbsp;맞춤'</span>.<span style="color:#93C763">format</span>(metrics.accuracy_score(prediction2,&nbsp;y_vid)&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">*</span>&nbsp;<span style="color:#FFCD22">100</span>))</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic62.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<h4 id="324-random-forest">3.2.4. Random Forest</h4>
+<ul>
+<li>Random Forest(랜덤 포레스트) 는 Ensemble(앙상블) 기법 중 하나로 무작위로 약한 학습기를 생성한 후 이를 선형결합하여 최종 학습기를 만드는 방법입니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Model&nbsp;적용</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">model&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;RandomForestClassifier()</div><div style="padding:0 6px; white-space:pre; line-height:130%">model.fit(X_tr,&nbsp;y_tr)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#예측</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">prediction3&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;model.predict(X_vid)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#예측값으로&nbsp;accuracy&nbsp;측정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">print</span>(<span style="color:#EC7600">'Random&nbsp;Forest&nbsp;-&nbsp;{:.2f}%&nbsp;확률로&nbsp;생존&nbsp;맞춤'</span>.<span style="color:#93C763">format</span>(metrics.accuracy_score(prediction3,&nbsp;y_vid)&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">*</span>&nbsp;<span style="color:#FFCD22">100</span>))</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic63.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<h4 id="325-naive-bayes">3.2.5. Naive Bayes</h4>
+<ul>
+<li>Naive Bayes(나이브 베이즈)는 조건부확률을 계산하는 방법 중 하나인 베이즈 정리에 기반한 분류 방법입니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Model&nbsp;적용</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">model&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;GaussianNB()</div><div style="padding:0 6px; white-space:pre; line-height:130%">model.fit(X_tr,&nbsp;y_tr)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#예측</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">prediction4&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;model.predict(X_vid)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#예측값으로&nbsp;accuracy&nbsp;측정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">print</span>(<span style="color:#EC7600">'Naive&nbsp;Bayes&nbsp;-&nbsp;{:.2f}%&nbsp;확률로&nbsp;생존&nbsp;맞춤'</span>.<span style="color:#93C763">format</span>(metrics.accuracy_score(prediction4,&nbsp;y_vid)&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">*</span>&nbsp;<span style="color:#FFCD22">100</span>))</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic64.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<h4 id="326-support-vector-machinesvm">3.2.6. Support Vector Machine(SVM)</h4>
+<ul>
+<li>SVM은 분류를 위한 기준 선을 정의해 경계의 어느 쪽에 속하는지 확인해 분류하는 방법입니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Model&nbsp;적용</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">model&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;SVC()</div><div style="padding:0 6px; white-space:pre; line-height:130%">model.fit(X_tr,&nbsp;y_tr)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#예측</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">prediction5&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;model.predict(X_vid)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#예측값으로&nbsp;accuracy&nbsp;측정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">print</span>(<span style="color:#EC7600">'Support&nbsp;Vector&nbsp;Machine&nbsp;-&nbsp;{:.2f}%&nbsp;확률로&nbsp;생존&nbsp;맞춤'</span>.<span style="color:#93C763">format</span>(metrics.accuracy_score(prediction5,&nbsp;y_vid)&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">*</span>&nbsp;<span style="color:#FFCD22">100</span>))</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic65.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<ul>
+<li>
+<p>6가지의 알고리즘을 사용해 예측을 돌려본 결과</p>
+<ol>
+<li>Logistic Regression-78.36%</li>
+<li>K-Nearest Neighbors(K-NN)	-	77.61%</li>
+<li>Decision Tree 	-	76.87%</li>
+<li>Random Forest	-	78.73%</li>
+<li>Naive Bayes	-	76.12%</li>
+<li>Support Vector Machine(SVM)	-	79.10%</li>
+</ol>
+</li>
+<li>
+<p>Support Vector Machine 이 예측 정확도가 가장 높게 나왔습니다.</p>
+</li>
+<li>
+<p>이대로 Parameter 값을 변화하면서 최적의 Model을 찾는다면 만들어진 Model은 테스트로 사용한 validation set 에만 잘 동작하게 됩니다.</p>
+</li>
+<li>
+<p>또한, 이 결과는 학습한 Train set 에 따라 계속해서 달라지는 문제가 있습니다.</p>
+</li>
+<li>
+<p>이 문제를 해결하기 위해 Cross Validation을 사용할 수 있습니다.</p>
+</li>
+</ul>
+<p></p>
+<hr>
+<h3 id="33-cross-validation">3.3. Cross Validation</h3>
+<ul>
+<li>Cross Validation(교차 검증) 은 Train 데이터의 모든 부분을 사용하여 모델을 검증하는 방법입니다.</li>
+<li>교차 검증 방법 중 가장 일반적으로 사용되는 K-fold를 사용합니다.</li>
+</ul>
+<p></p>
+<hr>
+<h4 id="331-k-fold-cross-validation">3.3.1. K-fold Cross Validation</h4>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic66.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>
+<p>위의 사진은 K=5의 Fold로 나눴을때 모습입니다.</p>
+</li>
+<li>
+<p>K-fold 는 Train 데이터를 K등분하고 나누어진 데이터를 K개로 다시 나누어 그 안에서 학습과 검증을 반복하는 검증 방법입니다.</p>
+</li>
+<li>
+<p>Sklearn에서 K-Fold를 가져옵니다.</p>
+</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;K-Fold를&nbsp;위한&nbsp;준비</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.model_selection&nbsp;<span style="color:#93C763">import</span>&nbsp;KFold</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.model_selection&nbsp;<span style="color:#93C763">import</span>&nbsp;cross_val_score</div></div></td></tr></table></div>
+
+
+<p></p>
+<ul>
+<li>K-Fold와 Model을 사용할 데이터를 준비합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;K&nbsp;=&nbsp;10&nbsp;의&nbsp;K-Fold&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">kfold&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;KFold(n_splits<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">10</span>,&nbsp;random_state<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1230</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Model&nbsp;의&nbsp;결과를&nbsp;담을&nbsp;List&nbsp;생성</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">mean&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[]</div><div style="padding:0 6px; white-space:pre; line-height:130%">accuracy&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[]</div><div style="padding:0 6px; white-space:pre; line-height:130%">std&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;사용할&nbsp;Model&nbsp;명</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">classifiers&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'Logistic&nbsp;Regression'</span>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#EC7600">'K-Nearest&nbsp;Neighbors(K-NN)'</span>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#EC7600">'Decision&nbsp;Tree'</span>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#EC7600">'Random&nbsp;Forest'</span>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#EC7600">'Naive&nbsp;Bayes'</span>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#EC7600">'Support&nbsp;Vector&nbsp;Machine(SVM)'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;사용할&nbsp;Model&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">models&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[LogisticRegression(),&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KNeighborsClassifier(),&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DecisionTreeClassifier(),&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomForestClassifier(),&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GaussianNB(),&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SVC()]</div></div></td></tr></table></div>
+
+
+<p></p>
+<ul>
+<li>모델을 한번에 적용해 모델별 acuuracy 평균과 표준편차를 확인해 봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Model&nbsp;적용</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;i&nbsp;<span style="color:#93C763">in</span>&nbsp;models:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;model&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;i</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;cv_result&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;cross_val_score(model,&nbsp;X_train,&nbsp;target_label,&nbsp;cv&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;kfold,&nbsp;scoring<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'accuracy'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;cv_result&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;cv_result</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;mean.append(cv_result.mean())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;std.append(cv_result.std())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Model&nbsp;별&nbsp;accuracy&nbsp;평균과&nbsp;표준편차</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">kfold_models_dataframe&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.DataFrame({<span style="color:#EC7600">'CV&nbsp;mean'</span>:mean,&nbsp;<span style="color:#EC7600">'Std'</span>:std},&nbsp;index<span style="color:#A082BD"></span><span style="color:#93C763">=</span>classifiers)</div><div style="padding:0 6px; white-space:pre; line-height:130%">kfold_models_dataframe</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic67.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>위의 표를 보면 평균 정확도는 높지만 표준편차가 큰 모델들이 있습니다.</li>
+<li>평균 정확도는 높고 표준편차는 작은 모델을 선별해보면 약 83% 정확도를 가진 Logistic Regression 을 선택할 수 있습니다.</li>
+</ul>
+<hr>
+<h3 id="34-submission">3.4. Submission</h3>
+<ul>
+<li>Logistic Regression을 채택해 test 데이터를 예측합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Logistic&nbsp;Regression&nbsp;으로&nbsp;학습&nbsp;후&nbsp;예측</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">clf&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;LogisticRegression()</div><div style="padding:0 6px; white-space:pre; line-height:130%">clf.fit(X_train,&nbsp;target_label)</div><div style="padding:0 6px; white-space:pre; line-height:130%">prediction_LG&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;clf.predict(test_dt)</div></div></td></tr></table></div>
+
+
+<p></p>
+<ul>
+<li>예측한 결과로 Submission 파일을 만들어 줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;제출에&nbsp;Submission&nbsp;파일&nbsp;불러오기</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">submission&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.read_csv(<span style="color:#EC7600">'gender_submission.csv'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;예측값&nbsp;업데이트</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">submission[<span style="color:#EC7600">'Survived'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;prediction_LG</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;CSV&nbsp;파일로&nbsp;제작</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">submission.to_csv(<span style="color:#EC7600">'titanic_submission.csv'</span>,&nbsp;index<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>)</div></div></td></tr></table></div>
+
+
+<ul>
+<li>생성한 submission 파일을 Kaggle에 제출해봅니다.</li>
+</ul>
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Titanic/titanic68.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>위에서 확인한 정확도 보다 떨어진 Score 0.75837 을 받았습니다.</li>
+</ul>
+<p></p>
+<hr>
+<h3 id="35-thinking">3.5. Thinking</h3>
+<ul>
+<li>예측 Model의 성능을 올리기 위해 개선해야 할 점을 생각해봅니다.
+<ol>
+<li>EDA를 더 자세하게 해보기</li>
+<li>NaN(결측값)을 다른 방법으로 처리하기</li>
+<li>Feature Enginnering을 다양한 방법으로 적용시키기</li>
+<li>Ticket, Cabin 과 같은 사용하지 않은 Feature 활용해보기</li>
+<li>Model 설계 과정에서 parameter 값을 tuning 해보며 최적화 값 찾기</li>
+</ol>
+</li>
+</ul>
+<p></p>
+<hr>
+<h3 id="36-마치며">3.6. 마치며</h3>
+<p>머신러닝을 접하고 Kaggle을 알게되어 처음으로 진행한 주제였습니다. 머신러닝을 처음 접하고 시작해보고 싶을때 좋은 주제라고 생각합니다. 튜토리얼로 많이 사용되지만 여러 사람들의 Notebook을 보며 공부하는 것이 정말 도움이 많이 됐습니다. 조금씩 수정을 해가며 Model의 성능을 올리는 방법도 공부해야겠다고 느꼈습니다.</p>
+<p>이번 포스팅에서 사용한 Model 들은 좀 더 공부와 이해를 하고 각각 포스팅을 해볼 생각입니다. (언제일지는 잘모름)</p>
+<p></p>
+<p><strong>공부를 하면서 도움을 받은 곳</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/c/titanic/notebooks">Kaggle</a> 에 있는 수많은 인기 Notebook</li>
+<li>이유한님 Youtube</li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/kaggle/">Kaggle</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/ml/">ML</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/eda/">EDA</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/machinelearning/">MachineLearning</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/data/">Data</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/modeling/">Modeling</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%AA%A8%EB%8D%B8%EB%A7%81/">모델링</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/">기계학습</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/rtest/" data-tooltip="Rtest">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/rtest/" data-tooltip="Rtest">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-3-modeling%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-3-modeling%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-3-modeling%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Taewon Min</h4>
+    
+      <div id="about-card-bio">데이터 공부노트</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        None
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        South, Korea
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://mintaewon.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mintaewon.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+<footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</footer>

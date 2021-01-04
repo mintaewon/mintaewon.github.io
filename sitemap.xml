@@ -3,18 +3,83 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mintaewon.github.io/categories/</loc>
-    <lastmod>2020-12-30T19:33:40+09:00</lastmod>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/data/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/eda/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/kaggle/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/kaggle/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/machinelearning/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/</loc>
-    <lastmod>2020-12-30T19:33:40+09:00</lastmod>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/ml/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/modeling/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/post/</loc>
-    <lastmod>2020-12-30T19:33:40+09:00</lastmod>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/python/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EB%AA%A8%EB%8D%B8%EB%A7%81/</loc>
+    <lastmod>2021-01-01T21:08:05+09:00</lastmod>
   </url>
   
   <url>
@@ -33,32 +98,7 @@
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/tags/data/</loc>
-    <lastmod>2020-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/tags/featureengineering/</loc>
-    <lastmod>2020-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/kaggle/</loc>
-    <lastmod>2020-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/categories/kaggle/</loc>
-    <lastmod>2020-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/machinelearning/</loc>
-    <lastmod>2020-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/ml/</loc>
     <lastmod>2020-12-30T00:00:00+00:00</lastmod>
   </url>
   
@@ -73,32 +113,7 @@
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/categories/python/</loc>
-    <lastmod>2020-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/</loc>
-    <lastmod>2020-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/</loc>
-    <lastmod>2020-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</loc>
-    <lastmod>2020-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-1-eda/</loc>
-    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/eda/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
   </url>
   
