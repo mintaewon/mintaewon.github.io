@@ -345,6 +345,7 @@ if (!doNotTrack) {
 <li>머신러닝에 사용되는 알고리즘을 제공하는 Python 라이브러리 <strong>Scikit-Learn</strong>을 사용합니다.</li>
 </ul>
 <p></p>
+<hr>
 <h3 id="31-train-validation-test">3.1. Train-Validation-Test</h3>
 <figure>
     <img src="https://mintaewon.github.io/images/Titanic/titanic58.PNG"/> 
@@ -352,7 +353,8 @@ if (!doNotTrack) {
 
 <ul>
 <li>가지고 있는 Train 데이터를 Train set과 Validation set으로 나눠야 합니다.</li>
-<li>Test 데이터는 모델의 최종 성능을 평가하기 위해 사용되므로 Train set 으로 학습한 후 Validation  set 을 이용해 모델의 성능을 평가하기 위해서 입니다.</li>
+<li>Train set 으로 학습한 후 Validation  set 을 이용해 모델의 성능을 평가해야 합니다.</li>
+<li>Test 데이터는 모델의 최종 성능을 평가하기 위해 사용되기 때문입니다.</li>
 <li>데이터를 분리하기 위한 사전작업을 해줍니다.</li>
 <li>Sklearn의 train_test_split을 불러옵니다.</li>
 </ul>
@@ -521,8 +523,7 @@ if (!doNotTrack) {
 <p></p>
 <hr>
 <ul>
-<li>
-<p>6가지의 알고리즘을 사용해 예측을 돌려본 결과</p>
+<li>6가지의 알고리즘을 사용해 예측을 돌려본 결과
 <ol>
 <li>Logistic Regression-78.36%</li>
 <li>K-Nearest Neighbors(K-NN)	-	77.61%</li>
@@ -532,18 +533,10 @@ if (!doNotTrack) {
 <li>Support Vector Machine(SVM)	-	79.10%</li>
 </ol>
 </li>
-<li>
-<p>Support Vector Machine 이 예측 정확도가 가장 높게 나왔습니다.</p>
-</li>
-<li>
-<p>이대로 Parameter 값을 변화하면서 최적의 Model을 찾는다면 만들어진 Model은 테스트로 사용한 validation set 에만 잘 동작하게 됩니다.</p>
-</li>
-<li>
-<p>또한, 이 결과는 학습한 Train set 에 따라 계속해서 달라지는 문제가 있습니다.</p>
-</li>
-<li>
-<p>이 문제를 해결하기 위해 Cross Validation을 사용할 수 있습니다.</p>
-</li>
+<li>Support Vector Machine 이 예측 정확도가 가장 높게 나왔습니다.</li>
+<li><strong>하지만</strong> 만들어진 Model은 테스트로 사용한 Validation set 에만 잘 동작하게 됩니다.</li>
+<li>train_test_split으로 다시 Train set과 Validation set을 만든다면 모델의 성능은 계속 달라질 것입니다.</li>
+<li>이 문제를 해결하기 위해 Cross Validation(교차 검증)을 사용할 수 있습니다.</li>
 </ul>
 <p></p>
 <hr>
@@ -565,7 +558,7 @@ if (!doNotTrack) {
 <p>위의 사진은 K=5의 Fold로 나눴을때 모습입니다.</p>
 </li>
 <li>
-<p>K-fold 는 Train 데이터를 K등분하고 나누어진 데이터를 K개로 다시 나누어 그 안에서 학습과 검증을 반복하는 검증 방법입니다.</p>
+<p>K-fold 는 Train 데이터를 K등분하고 나누어진 데이터를 K개로 다시 나누어 그 안에서 학습과 검증을 K번 반복해 평균을 구하는 검증 방법입니다.</p>
 </li>
 <li>
 <p>Sklearn에서 K-Fold를 가져옵니다.</p>
@@ -601,8 +594,8 @@ if (!doNotTrack) {
 
 <p></p>
 <ul>
-<li>위의 표를 보면 평균 정확도는 높지만 표준편차가 큰 모델들이 있습니다.</li>
-<li>평균 정확도는 높고 표준편차는 작은 모델을 선별해보면 약 83% 정확도를 가진 Logistic Regression 을 선택할 수 있습니다.</li>
+<li>위의 표를 보면 평균 정확도(CV mean)는 높지만 표준편차(Std)가 큰 모델들이 있습니다.</li>
+<li>평균 정확도(CV mean)는 높고 표준편차(Std)는 작은 모델을 선별해보면 약 83% 정확도를 가진 Logistic Regression 을 선택할 수 있습니다.</li>
 </ul>
 <hr>
 <h3 id="34-submission">3.4. Submission</h3>
