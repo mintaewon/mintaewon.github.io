@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>캐글 on MIN Velog</title>
+    <link>https://mintaewon.github.io/tags/%EC%BA%90%EA%B8%80/</link>
+    <description>Recent content in 캐글 on MIN Velog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/%EC%BA%90%EA%B8%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (1)EDA</title>
+      <link>https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

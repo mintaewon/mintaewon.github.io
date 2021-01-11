@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Taewon Min">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (1)EDA">
+<meta name="twitter:title" content="[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (1)EDA">
+<meta property="og:url" content="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/">
+<meta property="og:site_name" content="MIN Velog">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2021-01-11T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2021-01-11T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Python">
+    
+      <meta property="article:section" content="Kaggle">
+    
+  
+  
+    
+      <meta property="article:tag" content="Kaggle">
+    
+      <meta property="article:tag" content="ML">
+    
+      <meta property="article:tag" content="MachineLearning">
+    
+      <meta property="article:tag" content="EDA">
+    
+      <meta property="article:tag" content="Data">
+    
+      <meta property="article:tag" content="파이썬">
+    
+      <meta property="article:tag" content="머신러닝">
+    
+      <meta property="article:tag" content="기계학습">
+    
+      <meta property="article:tag" content="캐글">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609853209/blog/thumb76_76_foht8t.png">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609853209/blog/thumb76_76_foht8t.png">
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+
+
+    <title>[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (1)EDA</title>
+
+    <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-186281032-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mintaewon.github.io/">MIN Velog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mintaewon.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mintaewon.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Taewon Min</h4>
+        
+          <h5 class="sidebar-profile-bio">데이터 공부노트</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Python</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/rstudio">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Rstudio</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.tistory.com/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-fas fa-rss"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Mail</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Kaggle] 자전거 수요 예측(Bike Sharing Demand) (1)EDA
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-01-11T00:00:00Z">
+        
+  January 11, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/python">Python</a>, 
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/kaggle">Kaggle</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>이번에 다뤄볼 주제는 Kaggle 에 있는 Bike Sharing Demand(자전거 수요 예측) 입니다. <a href="https://www.kaggle.com/c/bike-sharing-demand/overview">여기</a>에 가면 자세한 내용을 볼 수 있습니다.</p>
+<hr>
+<p>목표</p>
+<p>2년 기간의 시간별 자전거 대여량이 주어집니다. 매월 1일 ~19일의 자전거 대여량과 다른 정보를 바탕으로 매월 20일부터 말일까지의 자전거 대여량을 예측합니다.</p>
+<hr>
+<h2 id="1-탐색적-데이터-분석eda"><strong>1. 탐색적 데이터 분석</strong>(EDA)</h2>
+<h3 id="11-데이터-확보">1.1. 데이터 확보</h3>
+<ul>
+<li>본 포스팅에서 사용한 데이터는 <a href="https://www.kaggle.com/c/bike-sharing-demand/data">Kagge</a> 에서 받을 수 있습니다.</li>
+<li>매월 1일 ~19일의 자전거 대여량, 날짜, 기상정보를 가지고 있는 Train 데이터와 매월 20일 ~ 말일까지의 정보를 가지고 있는 Test 데이터가 주어집니다.</li>
+</ul>
+<hr>
+<h3 id="12-data-dictionary">1.2. Data Dictionary</h3>
+<ul>
+<li>
+<p><strong>datetime</strong> - hourly date + timestamp (날짜와 시간)</p>
+</li>
+<li>
+<p><strong>season</strong> -  1 = spring, 2 = summer, 3 = fall, 4 = winter (계절)</p>
+</li>
+<li>
+<p><strong>holiday</strong> - whether the day is considered a holiday (휴일)</p>
+</li>
+<li>
+<p><strong>workingday</strong> - whether the day is neither a weekend nor holiday (평일)</p>
+</li>
+<li>
+<p><strong>weather</strong> - 1: Clear, Few clouds, Partly cloudy, Partly cloudy (맑은 날씨)</p>
+<p>​					2: Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist (안개)</p>
+<p>​					3: Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds (가벼운 눈, 비)</p>
+<p>​					4: Heavy Rain + Ice Pallets + Thunderstorm + Mist, Snow + Fog (폭설, 폭우)</p>
+</li>
+<li>
+<p><strong>temp</strong> - temperature in Celsius (온도)</p>
+</li>
+<li>
+<p><strong>atemp</strong> - &ldquo;feels like&rdquo; temperature in Celsius (체감 온도)</p>
+</li>
+<li>
+<p><strong>humidity</strong> - relative humidity (상대 습도)</p>
+</li>
+<li>
+<p><strong>windspeed</strong> - wind speed (풍속)</p>
+</li>
+<li>
+<p><strong>casual</strong> - number of non-registered user rentals initiated (비회원 대여량)</p>
+</li>
+<li>
+<p><strong>registered</strong> - number of registered user rentals initiated (회원 대여량)</p>
+</li>
+<li>
+<p><strong>count</strong> - number of total rentals (총 대여량)</p>
+</li>
+</ul>
+<hr>
+<h3 id="13-데이터-확인">1.3. 데이터 확인</h3>
+<ul>
+<li>분석에 사용할 라이브러리를 불러옵니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">%matplotlib&nbsp;inline</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">import</span>&nbsp;pandas&nbsp;<span style="color:#93C763">as</span>&nbsp;pd</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">import</span>&nbsp;numpy&nbsp;<span style="color:#93C763">as</span>&nbsp;np</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">import</span>&nbsp;matplotlib.pyplot&nbsp;<span style="color:#93C763">as</span>&nbsp;plt</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">import</span>&nbsp;seaborn&nbsp;<span style="color:#93C763">as</span>&nbsp;sns</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.style.use(<span style="color:#EC7600">'seaborn'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.set(font_scale<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">2.</span><span style="color:#FFCD22">5</span>)</div></div></td></tr></table></div>
+
+
+<p></p>
+<ul>
+<li>데이터를 불러옵니다.</li>
+</ul>
+<p></p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">train_data&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.read_csv(<span style="color:#EC7600">'train.csv'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_data.head()</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike1.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>데이터가 온전한지 확인합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">train_data.info()</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike2.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>결측값은 없어보입니다.</li>
+<li>Test 데이터도 확인해 봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">test_data&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.read_csv(<span style="color:#EC7600">'test.csv'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">test_data.head()</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike8.PNG"/> 
+</figure>
+
+<ul>
+<li>Test 데이터에는 <code>casual</code> 과 <code>registered</code> 가 없는 것을 확인했습니다.</li>
+<li>Train 데이터에만 존재하기 때문에 사용하지 못합니다.</li>
+</ul>
+<p></p>
+<hr>
+<h4 id="131-시각화를-위한-데이터-준비">1.3.1. 시각화를 위한 데이터 준비</h4>
+<ul>
+<li><code>datetime</code> 은 날짜와 시간을 나타내는 정보이므로 Dtype을 datetime 으로 변경합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;datetime&nbsp;열을&nbsp;datetime&nbsp;속성으로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_data[<span style="color:#EC7600">'datetime'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.to_datetime(train_data[<span style="color:#EC7600">'datetime'</span>])</div></div></td></tr></table></div>
+
+
+<p></p>
+<ul>
+<li>세부 날짜별 정보를 보기 위해 날짜 데이터를 년도, 월, 일, 시간으로 나눠줍니다.</li>
+<li>분(minute)과 초(second) 는 모든 값이 0이므로 추가하지 않습니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;datetime&nbsp;에서&nbsp;year,&nbsp;month,&nbsp;day,&nbsp;hour&nbsp;추출해서&nbsp;새로운&nbsp;Feature만들기</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_data[<span style="color:#EC7600">'year'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_data[<span style="color:#EC7600">'datetime'</span>].dt.year</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_data[<span style="color:#EC7600">'month'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_data[<span style="color:#EC7600">'datetime'</span>].dt.month</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_data[<span style="color:#EC7600">'day'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_data[<span style="color:#EC7600">'datetime'</span>].dt.day</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_data[<span style="color:#EC7600">'hour'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_data[<span style="color:#EC7600">'datetime'</span>].dt.hour</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_data.head()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike3.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>그래프를 그리기 좋게 (년-월) 의 형식으로 Feature을 만들어줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;year-month&nbsp;데이터를&nbsp;만들어&nbsp;줍니다.</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">def</span>&nbsp;combine_year_month(x):</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C763">return</span>&nbsp;f<span style="color:#EC7600">'{x.year}-{x.month}'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_data[<span style="color:#EC7600">'year_month'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_data[<span style="color:#EC7600">'datetime'</span>].apply(combine_year_month)</div></div></td></tr></table></div>
+
+
+<p></p>
+<ul>
+<li>날짜와 시간 데이터는 이정도면 준비된거 같습니다.</li>
+<li>계절을 나타내는 <code>season</code> 과 날씨를 나타내는 <code>weather</code> 는 그대로 사용합니다.</li>
+</ul>
+<p></p>
+<hr>
+<h4 id="132-시각화visualization">1.3.2. 시각화(Visualization)</h4>
+<p>기상 정보인 <code>temp</code>, <code>atemp</code>, <code>humidity</code>, <code>windspeed</code> 의 분포를 히스토그램으로 확인해 봅니다.</p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">16</span>,<span style="color:#FFCD22">12</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;temp,&nbsp;atemp,&nbsp;humidity,&nbsp;windspeed&nbsp;의&nbsp;히스토그램</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_data[[<span style="color:#EC7600">'temp'</span>,&nbsp;<span style="color:#EC7600">'atemp'</span>,&nbsp;<span style="color:#EC7600">'humidity'</span>,&nbsp;<span style="color:#EC7600">'windspeed'</span>]].hist(bins<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">50</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike4.PNG"/> 
+</figure>
+
+<ul>
+<li>분포를 보니 특이한 점으로는 <code>windspeed</code> (풍속)이 0인 데이터가 많이 들어가 있는 게 보입니다.</li>
+</ul>
+<p></p>
+<p>각 기상정보에 대한 대여량의 산점도를 한번 확인해 봅니다.</p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(<span style="color:#FFCD22">2</span>,&nbsp;<span style="color:#FFCD22">2</span>,&nbsp;figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">16</span>,<span style="color:#FFCD22">14</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;scatter&nbsp;plot</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">0</span>][0].scatter(train_data[<span style="color:#EC7600">'atemp'</span>],&nbsp;train_data[<span style="color:#EC7600">'count'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">0</span>][1].scatter(train_data[<span style="color:#EC7600">'humidity'</span>],&nbsp;train_data[<span style="color:#EC7600">'count'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">1</span>][0].scatter(train_data[<span style="color:#EC7600">'temp'</span>],&nbsp;train_data[<span style="color:#EC7600">'count'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">1</span>][1].scatter(train_data[<span style="color:#EC7600">'windspeed'</span>],&nbsp;train_data[<span style="color:#EC7600">'count'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;title&nbsp;지정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">0</span>][0].set(title<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'atemp'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">0</span>][1].set(title<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'humidity'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">1</span>][0].set(title<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'temp'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">1</span>][1].set(title<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'windspeed'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike5.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li><code>humidity</code> 도 많지는 않지만 0과 100에 데이터가 있는게 보입니다.</li>
+<li><code>windspeed</code> 에는 이상하게 0에 많은 데이터가 몰려 있는 것을 볼 수 있습니다.</li>
+<li>물론 풍속이 0일수도 있겠지만 결측값 대신 0을 넣었다고 가정하고 Feature Engineering에서 처리하도록 합니다.</li>
+<li>온도를 나타내는 <code>temp</code>  와 체감 온도를 나타내는 <code>atemp</code>는 count 과의 관계가 유사해 보입니다.</li>
+</ul>
+<p></p>
+<p>다음으론 휴일과 출근을 구분하는 Feature 인 <code>holiday</code> 와 <code>workingday</code> 의 boxplot을 그려봅니다.</p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(<span style="color:#FFCD22">1</span>,&nbsp;<span style="color:#FFCD22">2</span>,&nbsp;figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">15</span>,<span style="color:#FFCD22">7</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;holiday&nbsp;와&nbsp;workingday&nbsp;의&nbsp;boxplot</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.boxplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_data,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'holiday'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'count'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">0</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.boxplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_data,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'workingday'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'count'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">1</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike6.PNG"/> 
+</figure>
+
+<ul>
+<li>boxplot을 보면 휴일과 출근에 대한 자전거 대여량은 큰 차이가 없는 것으로 보입니다.</li>
+</ul>
+<p></p>
+<p>계절과 날씨를 나타내는 <code>season</code> 과 <code>weather</code> 도 boxplot을 확인해 봅니다.</p>
+<p>날씨명은 간단하게 1:Sunny / 2:Cloud / 3:Light / 4:Heavy 로 변경해서 확인합니다.</p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(<span style="color:#FFCD22">1</span>,&nbsp;<span style="color:#FFCD22">2</span>,&nbsp;figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">15</span>,<span style="color:#FFCD22">7</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;season&nbsp;와&nbsp;weather&nbsp;의&nbsp;boxplot</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.boxplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_data,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'season'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'count'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">0</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.boxplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_data,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'weather'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'count'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax[<span style="color:#FFCD22">1</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#x축&nbsp;이름&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">0</span>].set(xticklabels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'Spring'</span>,&nbsp;<span style="color:#EC7600">'Summer'</span>,&nbsp;<span style="color:#EC7600">'Fall'</span>,&nbsp;<span style="color:#EC7600">'Winter'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax[<span style="color:#FFCD22">1</span>].set(xticklabels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'Sunny'</span>,&nbsp;<span style="color:#EC7600">'Cloud'</span>,&nbsp;<span style="color:#EC7600">'Light'</span>,&nbsp;<span style="color:#EC7600">'Heavy'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike7.PNG"/> 
+</figure>
+
+<ul>
+<li><code>season</code> 과 <code>weather</code> 모두 자전거 대여량에 유의미한 영향을 주는 것 같습니다.</li>
+<li>특히, 심한 눈비가 오는 날씨에는 대여량이 거의 없는 것을 확인할 수 있습니다.</li>
+</ul>
+<p></p>
+<ul>
+<li>boxplot을 살펴본 결과 위쪽으로 크게 벗어난 값이 다수 존재하기 때문에 너무 벗어난 값은 처리해줘야 할 것 같습니다.</li>
+</ul>
+<p></p>
+<p>이제 날짜와 시간을 사용한 시각화를 진행해봅니다.</p>
+<ul>
+<li>월별 대여량 그래프를 확인합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">15</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;월별&nbsp;대여량</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.barplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_data,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'month'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'count'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax,&nbsp;ci<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">None</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x축&nbsp;값이름&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'Jan'</span>,&nbsp;<span style="color:#EC7600">'Feb'</span>,&nbsp;<span style="color:#EC7600">'Mar'</span>,&nbsp;<span style="color:#EC7600">'Apr'</span>,&nbsp;<span style="color:#EC7600">'May'</span>,&nbsp;<span style="color:#EC7600">'Jun'</span>,&nbsp;<span style="color:#EC7600">'Jul'</span>,&nbsp;<span style="color:#EC7600">'Aug'</span>,&nbsp;<span style="color:#EC7600">'Sep'</span>,&nbsp;<span style="color:#EC7600">'Oct'</span>,<span style="color:#EC7600">'Nov'</span>,&nbsp;<span style="color:#EC7600">'Dec'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set(xticklabels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike9.PNG"/> 
+</figure>
+
+<p>다른 월에 비해 1, 2, 3월이 대여량이 적은 편입니다.</p>
+<p></p>
+<ul>
+<li>계절에 따른 시간별 대여량을 확인해 봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">15</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;계절에 따른&nbsp;시간별&nbsp;대여량</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.pointplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_data,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'hour'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'count'</span>,hue<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'season'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax,&nbsp;ci<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">None</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x축&nbsp;값이름&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'Spring'</span>,&nbsp;<span style="color:#EC7600">'Summer'</span>,&nbsp;<span style="color:#EC7600">'Fall'</span>,&nbsp;<span style="color:#EC7600">'Winter'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike10.PNG"/> 
+</figure>
+
+<ul>
+<li>출퇴근 시간으로 예상되는 8시, 17시, 18시에 대여량이 가장 높습니다.</li>
+<li>봄(Spring)의 대여량이 다른 계절에 비해 상대적으로 낮게 나옵니다.</li>
+</ul>
+<p>봄보다 겨울 대여량이 많은 것이 신기해 계절을 어떻게 나눴는지 확인해 봅니다.</p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;계절과&nbsp;월의&nbsp;교차표</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">pd.crosstab(train_data[<span style="color:#EC7600">'season'</span>],&nbsp;train_data[<span style="color:#EC7600">'month'</span>])</div></div></td></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike11.PNG"/> 
+</figure>
+
+<ul>
+<li>1, 2, 3월 봄</li>
+<li>4, 5, 6월 여름</li>
+<li>7, 8, 9월 가을</li>
+<li>10, 11, 12월 겨울</li>
+</ul>
+<p>로 나뉘어 있는 것을 볼 수 있습니다.</p>
+<p>데이터를 다시 살펴보니 워싱턴DC 지역이라고 나와있어서 원별 온도를 찾아봤습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike12.PNG"/> 
+</figure>
+
+<h6 id="출처--httpskoweathersparkcomy20957ebafb8eab5ad-ecbbaceb9fbcebb984ec9584-ed8ab9ebb384eab5ac-ec9b8cec8bb1ed84b4-dcec9d98-eb8584eca491-ed8f89eab7a0-eb82a0ec94a8">출처 : <a href="https://ko.weatherspark.com/y/20957/%EB%AF%B8%EA%B5%AD-%EC%BB%AC%EB%9F%BC%EB%B9%84%EC%95%84-%ED%8A%B9%EB%B3%84%EA%B5%AC-%EC%9B%8C%EC%8B%B1%ED%84%B4-D.C.%EC%9D%98-%EB%85%84%EC%A4%91-%ED%8F%89%EA%B7%A0-%EB%82%A0%EC%94%A8">https://ko.weatherspark.com/y/20957/%EB%AF%B8%EA%B5%AD-%EC%BB%AC%EB%9F%BC%EB%B9%84%EC%95%84-%ED%8A%B9%EB%B3%84%EA%B5%AC-%EC%9B%8C%EC%8B%B1%ED%84%B4-D.C.%EC%9D%98-%EB%85%84%EC%A4%91-%ED%8F%89%EA%B7%A0-%EB%82%A0%EC%94%A8</a></h6>
+<p></p>
+<ul>
+<li>그래프를 보니 1, 2, 3월을 나타내는 봄이 왜 대여량이 낮은지 알 것 같습니다.</li>
+</ul>
+<p>날씨에 따른 시간별 대여량을 알아봅니다.</p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">15</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;날씨에 따른&nbsp;시간별&nbsp;대여량</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.pointplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_data,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'hour'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'count'</span>,hue<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'weather'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax,&nbsp;ci<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">None</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x축&nbsp;값이름&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'Sunny'</span>,&nbsp;<span style="color:#EC7600">'Cloud'</span>,&nbsp;<span style="color:#EC7600">'Light'</span>,&nbsp;<span style="color:#EC7600">'heavy'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(labels<span style="color:#A082BD"></span><span style="color:#93C763">=</span>labels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike13.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>어느정도 예측 가능한 그래프가 나왔습니다.</li>
+<li>출퇴근 시간이라고 예상되는 8시, 17시, 18시가 가장 대여량이 많습니다.</li>
+<li>폭우와 폭설이 내리는 날씨(heavy)는 대여량이 거의 없는 것을 볼 수 있습니다.</li>
+</ul>
+<p></p>
+<p>요일에 따른 시간별 대여량에도 차이가 있는지 확인해 봅니다.</p>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;요일이름&nbsp;Feature&nbsp;만들기</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_data[<span style="color:#EC7600">'day_name'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_data[<span style="color:#EC7600">'datetime'</span>].dt.day_name()</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">20</span>,<span style="color:#FFCD22">8</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;요일에 따른&nbsp;시간별&nbsp;대여량</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.pointplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_data,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'hour'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'count'</span>,hue<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'day_name'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax,&nbsp;ci<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">None</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike14.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>앞서 살펴본 boxplot 에서는 주말과 평일의 총 대여량 차이를 알 수 없었지만 시간별 대여량을 보니 주말과 평일의 차이가 확연하게 보입니다.</li>
+</ul>
+<p></p>
+<hr>
+<p></p>
+<p>EDA를 진행하면서 데이터의 분포를 확인했고 Feature 들을 이용해 시각화를 하며 데이터 간 특징을 찾아내는 과정을 진행했습니다. 다음 포스팅에서는 찾아낸 특징들을 바탕으로 Feature Engineering을 하며 전처리 과정을 진행하겠습니다.</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/kaggle/">Kaggle</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/ml/">ML</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/machinelearning/">MachineLearning</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/eda/">EDA</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/data/">Data</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/">기계학습</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%BA%90%EA%B8%80/">캐글</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/" data-tooltip="[Kaggle] Titanic 생존자 예측 (3) Modeling">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/" data-tooltip="[Kaggle] Titanic 생존자 예측 (3) Modeling">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-%25EC%259E%2590%25EC%25A0%2584%25EA%25B1%25B0-%25EC%2588%2598%25EC%259A%2594-%25EC%2598%2588%25EC%25B8%25A1bike-sharing-demand-1eda%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-%25EC%259E%2590%25EC%25A0%2584%25EA%25B1%25B0-%25EC%2588%2598%25EC%259A%2594-%25EC%2598%2588%25EC%25B8%25A1bike-sharing-demand-1eda%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-%25EC%259E%2590%25EC%25A0%2584%25EA%25B1%25B0-%25EC%2588%2598%25EC%259A%2594-%25EC%2598%2588%25EC%25B8%25A1bike-sharing-demand-1eda%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Taewon Min</h4>
+    
+      <div id="about-card-bio">데이터 공부노트</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        None
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        South, Korea
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://mintaewon.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mintaewon.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+<footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</footer>
