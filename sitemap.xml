@@ -3,52 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mintaewon.github.io/categories/</loc>
-    <lastmod>2021-01-12T22:20:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/categories/category/</loc>
-    <lastmod>2021-01-12T22:20:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/2021/01/courseraml3/</loc>
-    <lastmod>2021-01-12T22:20:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/</loc>
-    <lastmod>2021-01-12T22:20:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/post/</loc>
-    <lastmod>2021-01-12T22:20:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/categories/subcategory/</loc>
-    <lastmod>2021-01-12T22:20:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/tag1/</loc>
-    <lastmod>2021-01-12T22:20:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/tag2/</loc>
-    <lastmod>2021-01-12T22:20:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/</loc>
-    <lastmod>2021-01-12T22:20:09+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -78,12 +38,27 @@
   </url>
   
   <url>
+    <loc>https://mintaewon.github.io/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mintaewon.github.io/tags/ml/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+    <loc>https://mintaewon.github.io/post/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mintaewon.github.io/categories/python/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
   </url>
   
