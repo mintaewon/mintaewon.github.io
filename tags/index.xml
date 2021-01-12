@@ -6,7 +6,25 @@
     <description>Recent content in Tags on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jan 2021 22:20:09 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tag1</title>
+      <link>https://mintaewon.github.io/tags/tag1/</link>
+      <pubDate>Tue, 12 Jan 2021 22:20:09 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/tag1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tag2</title>
+      <link>https://mintaewon.github.io/tags/tag2/</link>
+      <pubDate>Tue, 12 Jan 2021 22:20:09 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/tag2/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Data</title>
       <link>https://mintaewon.github.io/tags/data/</link>
@@ -91,7 +109,7 @@
     <item>
       <title>AndrewNg</title>
       <link>https://mintaewon.github.io/tags/andrewng/</link>
-      <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 Jan 2021 15:20:09 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/andrewng/</guid>
       <description></description>
@@ -100,7 +118,7 @@
     <item>
       <title>coursera</title>
       <link>https://mintaewon.github.io/tags/coursera/</link>
-      <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 Jan 2021 15:20:09 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/coursera/</guid>
       <description></description>
@@ -109,7 +127,7 @@
     <item>
       <title>supervisedlearining</title>
       <link>https://mintaewon.github.io/tags/supervisedlearining/</link>
-      <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 Jan 2021 15:20:09 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/supervisedlearining/</guid>
       <description></description>
@@ -118,7 +136,7 @@
     <item>
       <title>unsupervisedlearning</title>
       <link>https://mintaewon.github.io/tags/unsupervisedlearning/</link>
-      <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 Jan 2021 15:20:09 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/unsupervisedlearning/</guid>
       <description></description>
@@ -127,7 +145,7 @@
     <item>
       <title>비지도학습</title>
       <link>https://mintaewon.github.io/tags/%EB%B9%84%EC%A7%80%EB%8F%84%ED%95%99%EC%8A%B5/</link>
-      <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 Jan 2021 15:20:09 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EB%B9%84%EC%A7%80%EB%8F%84%ED%95%99%EC%8A%B5/</guid>
       <description></description>
@@ -136,7 +154,7 @@
     <item>
       <title>지도학습</title>
       <link>https://mintaewon.github.io/tags/%EC%A7%80%EB%8F%84%ED%95%99%EC%8A%B5/</link>
-      <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 Jan 2021 15:20:09 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EC%A7%80%EB%8F%84%ED%95%99%EC%8A%B5/</guid>
       <description></description>
@@ -145,7 +163,7 @@
     <item>
       <title>코세라</title>
       <link>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</link>
-      <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 Jan 2021 15:20:09 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</guid>
       <description></description>
