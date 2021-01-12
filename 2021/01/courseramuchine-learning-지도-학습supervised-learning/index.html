@@ -13,10 +13,10 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Coursera][Machine Learning] 머신러닝이란?">
-<meta name="twitter:title" content="[Coursera][Machine Learning] 머신러닝이란?">
-<meta property="og:url" content="https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/">
+<meta property="og:title" content="[Coursera][Muchine Learning] 지도 학습(Supervised Learning)">
+<meta name="twitter:title" content="[Coursera][Muchine Learning] 지도 학습(Supervised Learning)">
+<meta property="og:url" content="https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/">
 <meta property="og:site_name" content="MIN Velog">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
@@ -48,6 +48,14 @@
     
       <meta property="article:tag" content="AndrewNg">
     
+      <meta property="article:tag" content="지도학습">
+    
+      <meta property="article:tag" content="비지도학습">
+    
+      <meta property="article:tag" content="supervisedlearining">
+    
+      <meta property="article:tag" content="unsupervisedlearning">
+    
   
 
 
@@ -67,14 +75,14 @@
   <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
 
 
-    <title>[Coursera][Machine Learning] 머신러닝이란?</title>
+    <title>[Coursera][Muchine Learning] 지도 학습(Supervised Learning)</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/">
+    <link rel="canonical" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -277,7 +285,7 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      [Coursera][Machine Learning] 머신러닝이란?
+      [Coursera][Muchine Learning] 지도 학습(Supervised Learning)
     </h1>
   
   
@@ -306,41 +314,60 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>머신러닝에 흥미를 가지고 학습을 하던 중 이론적으로 좀 더 튼튼한(?) 기초를 다지기 위해 <a href="https://www.coursera.org/">Coursera</a> 의 유명한 강좌 중 하나인 Andrew Ng 교수님의 Machine Learning 강의를 듣기로 마음먹었습니다.</p>
-<p>비록 <del>영어강의라 거부감이 심하고</del> 온전히 여기에 시간투자를 얼마나 많이 할 수 있을지는 모르겠지만 (강의가 무려 11주차까지&hellip;) 꾸준히 학습하며 정리해 보겠습니다.</p>
-<hr>
-<ul>
+              <ul>
 <li><strong>이 포스팅은 Andrew Ng 교수님의 Machine Learning 강의를 정리했습니다.</strong></li>
 </ul>
 <hr>
-<h3 id="머신러닝-기계학습">머신러닝? 기계학습?</h3>
-<p>우리는 머신러닝, 기계학습이라는 말을 많이 들어봤습니다. 어쩌면 아주 어렵게 느껴지고 생소하다고 생각 할 수 있습니다. 하지만 우리는 하루에도 수십번씩 기계학습을 사용하고 있습니다.</p>
-<p>예를들어 구글에 검색을 할 때, 웹 검색 엔진들을 사용하게 되는데 검색엔진들이 검색을 잘 하기 위해서 학습 알고리즘이 사용됩니다. 이 외에도 페이스북이나 애플의 사진 어플리케이션을 사용할 때, 얼굴을 인식하는 것도  머신러닝을 통해 가능하게 합니다. 이메일이 스팸메일을 구분하는 것 또한 기계학습입니다.</p>
-<p>이러한 머신러닝이 오늘날에 왜 사용될까요? 머신러닝은 인공지능분야에서 발전해 파생되어 나갔습니다. 우리는 기계가 지능을 가지길 원했고 몇몇 간단한 일들을 스스로 해내길 원했습니다. 위 예시에서 든 것 말고도 우리가 모르는 더 많은 부분들이 있습니다. 여기서 알 수 있는 한가지는 <strong>기계가 스스로 학습한다</strong>는 사실입니다.</p>
-<p>학습 알고리즘의 강력한 이점을 이용하기 위해 다양한 산업군에서 머신러닝을 적용하고 싶어하고 필요한 분야는 점차 확산되고 있습니다.</p>
+<h3 id="지도-학습supervised-learning">지도 학습(Supervised Learning)</h3>
+<p><strong>지도 학습(Supervised Learning)</strong> 이란, &lsquo;출력(정답)&rsquo; 이 포함된 데이터의 집합을 알고리즘에게 주어 입력과 출력 사이에 관계를 유추하고 기존의 정보를 이용해 새로운 &lsquo;입력&rsquo;에 대한 &lsquo;출력&rsquo;을 <strong>예측</strong>하는 것입니다.</p>
+<p>지도 학습은 회귀(Regression) 와 분류(Classification) 로 나눌수 있습니다.</p>
 <hr>
-<h3 id="머신러닝의-정의">머신러닝의 정의</h3>
 <ul>
-<li>Arthur Samuel (1959) 의 머신러닝 정의</li>
+<li>
+<h4 id="회귀regression">회귀(Regression)</h4>
+</li>
 </ul>
-<blockquote>
-<p>Machine Learning :</p>
-<p>Field of study that gives computers the ability to learn without being explicitly programmed.</p>
-</blockquote>
-<p>머신러닝이란, 컴퓨터가 명시적 프로그램이 없어도 스스로 학습할 수 있는 능력을 연구하는 학문 분야.</p>
-<p>Arthur Samuel 의 정의는 조금 오래된 느낌이 있습니다.</p>
-<p>더 최근에 나온 Tom Mitchell (1998) 의 머신러닝 정의</p>
-<blockquote>
-<p>Well-posed Learning Problem :</p>
-<p>A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E</p>
-</blockquote>
-<p>Tom Mitchell 은 머신러닝을 Well-posed Learning Problem(학습 과제) 중심으로 정의하고 있습니다. 프로그램이 일정 수준의 작업 성능(P)을 가지고 작업(T)을 수행한다고 했을 때, 경험(E)이 증가함에 따라 작업(T)를 수행하는 성능(P)이 향상될 수 있음.</p>
+<p>회귀란 연속적인 특징을 가진 값을 예측하는 것입니다.</p>
+<p>예를들어 주택의 크기와 가격이 주어진 데이터를 이용해 어떤 주택의 크기가 주어졌을때 가격을 예측하는 것입니다.</p>
+<p>다음 그래프로 예시를 확인해 봅시다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml1.PNG"/> 
+</figure>
+
+<p>x축 : 주택의 크기(제곱피트)</p>
+<p>y축 : 주택의 가격(천 달러)</p>
+<p>로 주어졌습니다.</p>
+<p>이 상황에서 750 제곱피트짜리 주택을 판매하려면 얼마에 팔 수 있을지 예측하는 것입니다. 지도 학습 알고리즘은 이와 같은 문제를 다양한 방법(직선, 곡선..등)을 사용해 예측에 활용합니다.</p>
 <hr>
-<h3 id="학습-알고리즘">학습 알고리즘</h3>
-<p>학습 알고리즘은 여러개가 있습니다. 그 중 주로 배울 학습 알고리즘은 <strong>지도 학습(Surpervised Learning)</strong> 과 <strong>비지도 학습(Unsupervised Learning, 자율학습)</strong> 입니다.</p>
-<p>지도 학습(Surpervised Learning) 은 작업을 수행할 수 있는 방법을 컴퓨터에게 가르치는 것.</p>
-<p>비지도 학습(Unsupervised Learning) 은 컴퓨터가 스스로 학습하도록 유도하는 것.</p>
-<p>이 외에도 강화학습(Reinforcement Learning), 추천 시스템(Recommender Systems) 과 같은 알고리즘이 있습니다.</p>
+<ul>
+<li>
+<h4 id="분류classification">분류(Classification)</h4>
+</li>
+</ul>
+<p>분류란, 0 또는 1, 악성 또는 양성과 같이 불연속적인 결과값을 예측하는 것입니다.</p>
+<p>다음 그래프로 예시를 확인해 봅시다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml2.PNG"/> 
+</figure>
+
+<p>x축 : 종양의 크기</p>
+<p>y축 : 해로운지 아닌지 ( yes or no)</p>
+<p>즉, 종양이 악성이면 1, 양성이면 0 입니다. 이러한 정보를 가지고 어떤 사람의 종양의 크기로 악성일 가능성을 머신러닝을 통해 예상하는 것 입니다.</p>
+<p>다른 특성이 주어질 수도 있습니다.</p>
+<p>다음 그래프는 종양의 크기와 환자의 나이가 주어졌을 경우 입니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml3.PNG"/> 
+</figure>
+
+<p>x축 : 종양의 크기</p>
+<p>y축 : 환자의 나이</p>
+<p>o(양성), x(악성)</p>
+<p>다음과 같이 종양의 크기와 나이가 주어졌을 때, 종양이 양성쪽에 있기 때문에 학습 알고리즘은 양성일 가능성이 높다고 판단 할 것입니다.</p>
+<hr>
+<p>이 외에도 분류 문제는 결과가 이산적이라면 두개보다 많을 수 있습니다. (ex) 1type, 2type, 3type &hellip;</p>
+<p>특성도 한개 이상에서 무한한 개수로 주어지기도 합니다.</p>
+<p>하지만 무한한 특성을 이용하게 되면 너무 많은 컴퓨터의 메모리 용량을 차지하게 될 수 있습니다.</p>
+<p>추후에 학습할 서포트 벡터 머신(Support Vector Machine) 알고리즘에서 무한한 개수의 특성을 다루는 방법을 배울 수 있습니다.</p>
               
             </div>
           </div>
@@ -362,6 +389,14 @@ if (!doNotTrack) {
 
   <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/andrewng/">AndrewNg</a>
 
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%A7%80%EB%8F%84%ED%95%99%EC%8A%B5/">지도학습</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%B9%84%EC%A7%80%EB%8F%84%ED%95%99%EC%8A%B5/">비지도학습</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/supervisedlearining/">supervisedlearining</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/unsupervisedlearning/">unsupervisedlearning</a>
+
                   </div>
                 
               
@@ -373,7 +408,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/" data-tooltip="[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (1)EDA">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/" data-tooltip="[Coursera][Machine Learning] 머신러닝이란?">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -381,7 +416,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/" data-tooltip="[Coursera][Muchine Learning] 지도 학습(Supervised Learning)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/" data-tooltip="[Kaggle] Titanic 생존자 예측 (3) Modeling">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -399,19 +434,19 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -449,7 +484,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/" data-tooltip="[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (1)EDA">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/" data-tooltip="[Coursera][Machine Learning] 머신러닝이란?">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -457,7 +492,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/" data-tooltip="[Coursera][Muchine Learning] 지도 학습(Supervised Learning)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/" data-tooltip="[Kaggle] Titanic 생존자 예측 (3) Modeling">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -475,19 +510,19 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -511,19 +546,19 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramachine-learning-%25EB%25A8%25B8%25EC%258B%25A0%25EB%259F%25AC%25EB%258B%259D%25EC%259D%25B4%25EB%259E%2580%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-%25EC%25A7%2580%25EB%258F%2584-%25ED%2595%2599%25EC%258A%25B5supervised-learning%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramachine-learning-%25EB%25A8%25B8%25EC%258B%25A0%25EB%259F%25AC%25EB%258B%259D%25EC%259D%25B4%25EB%259E%2580%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-%25EC%25A7%2580%25EB%258F%2584-%25ED%2595%2599%25EC%258A%25B5supervised-learning%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramachine-learning-%25EB%25A8%25B8%25EC%258B%25A0%25EB%259F%25AC%25EB%258B%259D%25EC%259D%25B4%25EB%259E%2580%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-%25EC%25A7%2580%25EB%258F%2584-%25ED%2595%2599%25EC%258A%25B5supervised-learning%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
