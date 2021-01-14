@@ -13,20 +13,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Coursera][Muchine Learning] 비지도 학습(Unsupervised Learning)">
-<meta name="twitter:title" content="[Coursera][Muchine Learning] 비지도 학습(Unsupervised Learning)">
-<meta property="og:url" content="https://mintaewon.github.io/2021/01/courseramuchine-learning-%EB%B9%84%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5unsupervised-learning/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2021/01/courseramuchine-learning-%EB%B9%84%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5unsupervised-learning/">
+<meta property="og:title" content="[Coursera][Muchine Learning] Model Representation">
+<meta name="twitter:title" content="[Coursera][Muchine Learning] Model Representation">
+<meta property="og:url" content="https://mintaewon.github.io/2021/01/courseramuchine-learning-model-representation/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2021/01/courseramuchine-learning-model-representation/">
 <meta property="og:site_name" content="MIN Velog">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2021-01-09T17:20:09">
+    <meta property="article:published_time" content="2021-01-10T00:00:00">
   
   
-    <meta property="article:modified_time" content="2021-01-09T17:20:09">
+    <meta property="article:modified_time" content="2021-01-10T00:00:00">
   
   
   
@@ -48,15 +48,11 @@
     
       <meta property="article:tag" content="AndrewNg">
     
-      <meta property="article:tag" content="지도학습">
+      <meta property="article:tag" content="Model">
     
-      <meta property="article:tag" content="비지도학습">
+      <meta property="article:tag" content="모델">
     
-      <meta property="article:tag" content="자율학습">
-    
-      <meta property="article:tag" content="supervisedlearining">
-    
-      <meta property="article:tag" content="unsupervisedlearning">
+      <meta property="article:tag" content="선형회귀">
     
   
 
@@ -77,14 +73,14 @@
   <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
 
 
-    <title>[Coursera][Muchine Learning] 비지도 학습(Unsupervised Learning)</title>
+    <title>[Coursera][Muchine Learning] Model Representation</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-%EB%B9%84%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5unsupervised-learning/">
+    <link rel="canonical" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-model-representation/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -287,15 +283,15 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      [Coursera][Muchine Learning] 비지도 학습(Unsupervised Learning)
+      [Coursera][Muchine Learning] Model Representation
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2021-01-09T17:20:09&#43;09:00">
+      <time itemprop="datePublished" datetime="2021-01-10T00:00:00Z">
         
-  January 9, 2021
+  January 10, 2021
 
       </time>
     
@@ -320,44 +316,54 @@ if (!doNotTrack) {
 <li><strong>이 포스팅은 Andrew Ng 교수님의 Machine Learning 강의를 정리했습니다.</strong></li>
 </ul>
 <hr>
-<h3 id="비지도-학습unsupervised-learning-자율학습">비지도 학습(Unsupervised Learning, 자율학습)</h3>
-<p><strong>비지도 학습(Unsupervised Learning)</strong> 이란, 출력 값(label)이 주어지지 않거나 아예 없는 데이터를 주고 변수 간의 관계를 기반으로 데이터의 구조(Structure)를 도출 하는 것입니다.</p>
-<p><strong>&lsquo;정답&rsquo;이 주어지지 않기 때문에 예측 결과를 기반으로 한 피드백이 없습니다.</strong></p>
-<hr>
-<h4 id="군집화-알고리즘clustering-algorithm">군집화 알고리즘(Clustering Algorithm)</h4>
+<h2 id="모델-표현model-representation">모델 표현(Model Representation)</h2>
+<p>Oregon과 Portland 도시의 주택 가격 데이터를 이용합니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml9.PNG"/> 
+</figure>
+
+<p>x축은 집 크기를 나타내고 y축은 가격을 나타냅니다.</p>
+<p>1250 제곱피트 크기의 집 가격을 추측해봅니다. 위 자료에 직선을 그려볼 수 있습니다. 그리고 이 직선에 근거해 220,000 달러라고 말할 수 있습니다.</p>
+<p>이것이 &lsquo;지도 학습&rsquo; 이라고 불리는 이유는 주어진 데이터에 대해 &lsquo;적당한 답&rsquo;을 주기 때문입니다. 위와 같은 예시는 가격을 예측하는 회귀 문제입니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml10.PNG"/> 
+</figure>
+
+<p>우리는 위와같은 Training set (학습 데이터) 을 가지고 이 데이터로부터 어떻게 주택 가격을 예측할 지 학습시킵니다. 이제 기호를 정의합니다.</p>
+<ul>
+<li>
+<p>m = 학습 데이터의 수</p>
+</li>
+<li>
+<p>x&rsquo;s = 입력 변수 / feature(특성)</p>
+</li>
+<li>
+<p>y&rsquo;s = 출력 값 / target</p>
+</li>
+<li>
+<p>(x, y) = 하나의 학습 데이터</p>
+</li>
+<li>
+<p>(x(i), y(i)) = i 번째 학습 데이터</p>
+</li>
+</ul>
 <p></p>
+<p>이제 지도 학습 알고리즘이 어떻게 작동하는지 배웁니다.</p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml4.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml11.PNG"/> 
 </figure>
 
-<p>군집화 알고리즘은 다음과 같이 Label 이 주어지지 않은 데이터를 서로 다른 cluster 로 구분지을 수 있습니다.</p>
-<p>이 알고리즘은 많은 곳에서 사용되고 있습니다. 예를들면 구글 뉴스가 있습니다.</p>
-<figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml5.PNG"/> 
-</figure>
-
-<p>구글 뉴스는 웹에서 매일 수만, 수천 가지의 새로운 기사들을 조사해 연관성이 있는 것 끼리 묶습니다. 그래서 같은 토픽의 모든 기사들을 함께 묶어 표시하는 것입니다.</p>
+<p>지도 학습 알고리즘은 결과 값으로 가설을 의미하는 h 로 나타냅니다. h는 새로운 집의 사이즈 x를 입력 값으로 받고 결과 값으로 그 집의 적당한 가격 y를 줍니다.</p>
+<p>h 는 x에서부터 y까지의 지도다(h maps from x&rsquo;s to y&rsquo;s)</p>
+<p>우리는 가설 h를 다음과 같이 표현할 것입니다.</p>
 <p></p>
-<figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml6.PNG"/> 
-</figure>
 
-<p>군집화 알고리즘은 유전학적 자료를 이해하는데도 사용됩니다. DNA 로 특정 유전자의 발현 정도를 측정해 사람들을 분류할 수 있습니다. 이외에도 같은 일을 하는 기기들을 분류하는 방법이나 자주 연락하는 친구, 페이스북 친구 분류 등에 사용되는 <strong>소셜 네트워크 분석</strong>, 고객 정보를 통한 시장의 세분화, 천문학 데이터 문석 등 다양한 곳에서 사용되고 있습니다.</p>
-<hr>
-<h4 id="비군집화-알고리즘non-clurstering-algorithm">비군집화 알고리즘(Non-Clurstering Algorithm)</h4>
-<p><a href="https://ko.wikipedia.org/wiki/%EC%B9%B5%ED%85%8C%EC%9D%BC_%ED%8C%8C%ED%8B%B0_%ED%9A%A8%EA%B3%BC">칵테일 파티 문제(Cocktail party prolem)</a> 가 있습니다.</p>
-<figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml7.PNG"/> 
-</figure>
 
-<p>칵테일 파티에서 두 사람이 동시에 이야기를 하고 있을 수 있습니다. 그리고 마이크 2개를 사람으로 부터 서로 다른 거리에 배치합니다. 그렇게 되면 각 마이크는 두 사람의 목소리를 서로 다른 조합으로 녹음하게 됩니다. 가령 1번 화자는 1번마이크에서 좀 더 소리가 클 수도 있고 2번 화자는 2번 마이크에서 좀 더 소리가 클 수 있습니다.</p>
-<p>비군집화 알고리즘은 음성이 합쳐진 녹음 결과를 각각의 화자 목소리의 음성 소스로 분리할 수 있습니다. 여기서는 칵테일 파티 알고리즘(Cocktail praty problem algorithm)  이 있습니다.</p>
-<p>이 칵테일 파티 알고리즘은 굉장히 복잡할 것이라고 생각할 수 있습니다. 하지만 이는 단 한줄의 코드로 나타낼 수 있습니다.</p>
-<figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml8.PNG"/> 
-</figure>
+<img src="http://www.sciweavers.org/tex2img.php?eq=h%20_%5Ctheta%28x%29%20%3D%20%5Ctheta_%7B0%7D%20%2B%20%5Ctheta_%7B1%7Dx&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="h _\theta(x) = \theta_{0} + \theta_{1}x" width="142" height="18" />
 
-<p>이는 무료로 공개된 소프트웨어인 Octave 에 내장되어 있는 SVD(Singular value decomposition, 특이값 분해) 함수를 사용했습니다.</p>
+
+<p>이 식은 h(x) 로 표현하기도 합니다.</p>
+<p>이 함수의 의미는 x의 선형함수는 y를 예측하는 것입니다. 이 모형을 <strong>선형 회귀</strong> 라고 부릅니다. 여기에서는 하나의 x 값으로 모든 가격을 예측하므로 다른 말로 &lsquo;단일변량 선형 회귀&rsquo; 라고 부릅니다.</p>
               
             </div>
           </div>
@@ -379,15 +385,11 @@ if (!doNotTrack) {
 
   <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/andrewng/">AndrewNg</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%A7%80%EB%8F%84%ED%95%99%EC%8A%B5/">지도학습</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/model/">Model</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%B9%84%EC%A7%80%EB%8F%84%ED%95%99%EC%8A%B5/">비지도학습</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%AA%A8%EB%8D%B8/">모델</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%9E%90%EC%9C%A8%ED%95%99%EC%8A%B5/">자율학습</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/supervisedlearining/">supervisedlearining</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/unsupervisedlearning/">unsupervisedlearning</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80/">선형회귀</a>
 
                   </div>
                 
@@ -400,7 +402,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-model-representation/" data-tooltip="[Coursera][Muchine Learning] Model Representation">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/" data-tooltip="[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (1)EDA">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -408,7 +410,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/" data-tooltip="[Coursera][Muchine Learning] 지도 학습(Supervised Learning)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-%EB%B9%84%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5unsupervised-learning/" data-tooltip="[Coursera][Muchine Learning] 비지도 학습(Unsupervised Learning)">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -426,19 +428,19 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/courseramuchine-learning-%EB%B9%84%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5unsupervised-learning/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/courseramuchine-learning-model-representation/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/courseramuchine-learning-%EB%B9%84%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5unsupervised-learning/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/courseramuchine-learning-model-representation/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/courseramuchine-learning-%EB%B9%84%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5unsupervised-learning/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/courseramuchine-learning-model-representation/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -476,7 +478,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-model-representation/" data-tooltip="[Coursera][Muchine Learning] Model Representation">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-1eda/" data-tooltip="[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (1)EDA">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -484,7 +486,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5supervised-learning/" data-tooltip="[Coursera][Muchine Learning] 지도 학습(Supervised Learning)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-%EB%B9%84%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5unsupervised-learning/" data-tooltip="[Coursera][Muchine Learning] 비지도 학습(Unsupervised Learning)">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -502,19 +504,19 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/courseramuchine-learning-%EB%B9%84%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5unsupervised-learning/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/courseramuchine-learning-model-representation/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/courseramuchine-learning-%EB%B9%84%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5unsupervised-learning/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/courseramuchine-learning-model-representation/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/courseramuchine-learning-%EB%B9%84%EC%A7%80%EB%8F%84-%ED%95%99%EC%8A%B5unsupervised-learning/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/courseramuchine-learning-model-representation/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -538,19 +540,19 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-%25EB%25B9%2584%25EC%25A7%2580%25EB%258F%2584-%25ED%2595%2599%25EC%258A%25B5unsupervised-learning%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-model-representation%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-%25EB%25B9%2584%25EC%25A7%2580%25EB%258F%2584-%25ED%2595%2599%25EC%258A%25B5unsupervised-learning%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-model-representation%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-%25EB%25B9%2584%25EC%25A7%2580%25EB%258F%2584-%25ED%2595%2599%25EC%258A%25B5unsupervised-learning%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-model-representation%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
