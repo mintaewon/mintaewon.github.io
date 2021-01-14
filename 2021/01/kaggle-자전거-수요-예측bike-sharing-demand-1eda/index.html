@@ -478,15 +478,6 @@ if (!doNotTrack) {
 
 <p></p>
 <ul>
-<li>그래프를 그리기 좋게 (년-월) 의 형식으로 Feature을 만들어줍니다.</li>
-</ul>
-
-
-<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;year-month&nbsp;데이터를&nbsp;만들어&nbsp;줍니다.</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">def</span>&nbsp;combine_year_month(x):</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C763">return</span>&nbsp;f<span style="color:#EC7600">'{x.year}-{x.month}'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_data[<span style="color:#EC7600">'year_month'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_data[<span style="color:#EC7600">'datetime'</span>].apply(combine_year_month)</div></div></td></tr></table></div>
-
-
-<p></p>
-<ul>
 <li>날짜와 시간 데이터는 이정도면 준비된거 같습니다.</li>
 <li>계절을 나타내는 <code>season</code> 과 날씨를 나타내는 <code>weather</code> 는 그대로 사용합니다.</li>
 </ul>
@@ -565,7 +556,26 @@ if (!doNotTrack) {
 <p></p>
 <p>이제 날짜와 시간을 사용한 시각화를 진행해봅니다.</p>
 <ul>
-<li>월별 대여량 그래프를 확인합니다.</li>
+<li>일별 대여량 그래프를 확인합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">15</span>,<span style="color:#FFCD22">6</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;일별&nbsp;대여량</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sns.barplot(data<span style="color:#A082BD"></span><span style="color:#93C763">=</span>train_data,&nbsp;x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'day'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'count'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax,&nbsp;ci<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">None</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike18.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>
+<p>일별 그래프에서는 특별한 점을 찾지 못했습니다.</p>
+</li>
+<li>
+<p>월별 대여량 그래프를 확인합니다.</p>
+</li>
 </ul>
 
 
