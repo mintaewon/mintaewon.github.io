@@ -514,7 +514,7 @@ if (!doNotTrack) {
 <ul>
 <li><code>humidity</code> 도 많지는 않지만 0과 100에 데이터가 있는게 보입니다.</li>
 <li><code>windspeed</code> 에는 이상하게 0에 많은 데이터가 몰려 있는 것을 볼 수 있습니다.</li>
-<li>물론 풍속이 0일수도 있겠지만 결측값 대신 0을 넣었다고 가정하고 Feature Engineering에서 처리하도록 합니다.</li>
+<li>풍속이 0이라는 것은 &lsquo;바람이 불지않고 잔잔하다&rsquo; 또는 &lsquo;데이터가 비어있다&rsquo; 라고 해석할 수 있을 것 같습니다.</li>
 <li>온도를 나타내는 <code>temp</code>  와 체감 온도를 나타내는 <code>atemp</code>는 count 과의 관계가 유사해 보입니다.</li>
 </ul>
 <p></p>
