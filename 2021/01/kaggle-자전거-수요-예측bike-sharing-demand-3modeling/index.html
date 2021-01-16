@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Taewon Min">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (3)Modeling">
+<meta name="twitter:title" content="[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (3)Modeling">
+<meta property="og:url" content="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-3modeling/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-3modeling/">
+<meta property="og:site_name" content="MIN Velog">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2021-01-16T03:52:22">
+  
+  
+    <meta property="article:modified_time" content="2021-01-16T03:52:22">
+  
+  
+  
+    
+      <meta property="article:section" content="Python">
+    
+      <meta property="article:section" content="Kaggle">
+    
+  
+  
+    
+      <meta property="article:tag" content="Kaggle">
+    
+      <meta property="article:tag" content="ML">
+    
+      <meta property="article:tag" content="MachineLearning">
+    
+      <meta property="article:tag" content="EDA">
+    
+      <meta property="article:tag" content="Data">
+    
+      <meta property="article:tag" content="파이썬">
+    
+      <meta property="article:tag" content="머신러닝">
+    
+      <meta property="article:tag" content="기계학습">
+    
+      <meta property="article:tag" content="캐글">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609853209/blog/thumb76_76_foht8t.png">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609853209/blog/thumb76_76_foht8t.png">
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+
+
+    <title>[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (3)Modeling</title>
+
+    <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-3modeling/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-186281032-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mintaewon.github.io/">MIN Velog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mintaewon.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mintaewon.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Taewon Min</h4>
+        
+          <h5 class="sidebar-profile-bio">데이터 공부노트</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Python</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/rstudio">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Rstudio</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/study">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Study</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.tistory.com/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-fas fa-rss"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Mail</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Kaggle] 자전거 수요 예측(Bike Sharing Demand) (3)Modeling
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-01-16T03:52:22&#43;09:00">
+        
+  January 16, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/python">Python</a>, 
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/kaggle">Kaggle</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <nav id="TableOfContents">
+  <ul>
+    <li><a href="#3-modeling">3. Modeling</a>
+      <ul>
+        <li><a href="#31-rmsle">3.1. RMSLE</a></li>
+        <li><a href="#32-model-선택">3.2. Model 선택</a></li>
+        <li><a href="#33-k-fold-cross-validation-교차검증">3.3. K-Fold Cross Validation (교차검증)</a></li>
+        <li><a href="#34-windspeed-feature-engineering">3.4. &lsquo;windspeed&rsquo; Feature Engineering</a></li>
+        <li><a href="#35-parameter-tunning">3.5. Parameter Tunning</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<hr>
+<h2 id="3-modeling">3. Modeling</h2>
+<ul>
+<li>자전거의 일별 대여량을 예측하는 문제이므로 회귀(Regression) 모델을 사용합니다.</li>
+<li>이 대회는 회귀 평가 지표중 하나인 RMSLE(Root Mean Squared Logarithmic Error) Score 로 평가합니다.</li>
+</ul>
+<hr>
+<h3 id="31-rmsle">3.1. RMSLE</h3>
+
+
+<img src="http://www.sciweavers.org/tex2img.php?eq=%20%5Csqrt%7B%20%5Cfrac%7B1%7D%7Bn%7D%20%5Csum_%7Bi%3D1%7D%5En%20%28log%28%20p_%7Bi%7D%2B%7B1%7D%20%29-log%28a_%7Bi%7D%2B%7B1%7D%29%29%5E2%20%20%7D%20&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt=" \sqrt{ \frac{1}{n} \sum_{i=1}^n (log( p_{i}+{1} )-log(a_{i}+{1}))^2  } " width="276" height="67" />
+
+
+<ul>
+<li>
+<p>RMSLE 를 구하는 공식입니다.</p>
+</li>
+<li>
+<p>Python 에서 RMSLE를 구해주는 라이브러리가 없으니 직접 함수로 만듭니다.</p>
+</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div><div style="line-height:130%">24</div><div style="line-height:130%">25</div><div style="line-height:130%">26</div><div style="line-height:130%">27</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;score&nbsp;제작&nbsp;준비</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.metrics&nbsp;<span style="color:#93C763">import</span>&nbsp;make_scorer</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;RMSLE&nbsp;함수&nbsp;정의</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">def</span>&nbsp;RMSLE(predicted_values,&nbsp;actual_values):</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#919191">#&nbsp;예측값과&nbsp;실제&nbsp;값을&nbsp;numpy&nbsp;배열&nbsp;형태로&nbsp;변환</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;predicted_values&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;np.array(predicted_values)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;actual_values&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;np.array(actual_values)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#919191">#&nbsp;예측값과&nbsp;실제&nbsp;값에&nbsp;1을&nbsp;더하고&nbsp;로그&nbsp;변환&nbsp;</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;log_predict&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;np.log(predicted_values&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">+</span>&nbsp;<span style="color:#FFCD22">1</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;log_actual&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;np.log(actual_values&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">+</span>&nbsp;<span style="color:#FFCD22">1</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#919191">#&nbsp;로그&nbsp;변환한&nbsp;예측값에서&nbsp;로그&nbsp;변환한&nbsp;실제&nbsp;값을&nbsp;빼고&nbsp;제곱</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;difference&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;log_predict&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">-</span>&nbsp;log_actual</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;difference&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;np.square(difference)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#919191">#&nbsp;위에서&nbsp;계산한&nbsp;값의&nbsp;평균</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;mean_difference&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;difference.mean()</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#919191">#&nbsp;위에서&nbsp;계산한&nbsp;값에&nbsp;루트</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;score&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;np.sqrt(mean_difference)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C763">return</span>&nbsp;score</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">rmsle_score&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;make_scorer(RMSLE)</div></div></td></tr></table></div>
+
+
+<p></p>
+<hr>
+<h3 id="32-model-선택">3.2. Model 선택</h3>
+<ul>
+<li>
+<p>앙상블(Ensemble) 회귀 모델로 예측을 진행합니다.</p>
+<ol>
+<li>Random Foreset</li>
+<li>Adaboost</li>
+<li>Bagging</li>
+</ol>
+</li>
+<li>
+<p>사용할 모델을 불러옵니다.</p>
+</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.ensemble&nbsp;<span style="color:#93C763">import</span>&nbsp;RandomForestRegressor&nbsp;<span style="color:#919191">#&nbsp;Random&nbsp;Forest</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.ensemble&nbsp;<span style="color:#93C763">import</span>&nbsp;AdaBoostRegressor&nbsp;<span style="color:#919191">#&nbsp;AdaBoost</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.ensemble&nbsp;<span style="color:#93C763">import</span>&nbsp;BaggingRegressor&nbsp;<span style="color:#919191">#&nbsp;Bagging</span></div></div></td></tr></table></div>
+
+
+<p></p>
+<hr>
+<h3 id="33-k-fold-cross-validation-교차검증">3.3. K-Fold Cross Validation (교차검증)</h3>
+<ul>
+<li>Train set 의 불균형을 방지하기 위해 K-Fold 교차검증을 이용해 모델의 성능을 테스트 합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;kfold&nbsp;준비</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.model_selection&nbsp;<span style="color:#93C763">import</span>&nbsp;KFold,&nbsp;cross_val_score</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;kfold&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">kfold&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;KFold(n_splits<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">10</span>,&nbsp;random_state<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1230</span>,&nbsp;shuffle<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>)</div></div></td></tr></table></div>
+
+
+<p></p>
+<ul>
+<li>3가지 모델 성능을 Kfold 교차검증을 사용해 테스트 해봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;사용할&nbsp;모델&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">models&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[RandomForestRegressor(),&nbsp;AdaBoostRegressor(),&nbsp;BaggingRegressor()]</div><div style="padding:0 6px; white-space:pre; line-height:130%">regressors&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'RandomForest'</span>,&nbsp;<span style="color:#EC7600">'AdaBoost'</span>,&nbsp;<span style="color:#EC7600">'Bagging'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">score_result&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Kfold&nbsp;교차&nbsp;검증</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;x&nbsp;<span style="color:#93C763">in</span>&nbsp;models:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;Rgr&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;x</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;score&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;cross_val_score(Rgr,&nbsp;X_train,&nbsp;target,&nbsp;cv<span style="color:#A082BD"></span><span style="color:#93C763">=</span>kfold,&nbsp;scoring<span style="color:#A082BD"></span><span style="color:#93C763">=</span>rmsle_score)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;score_result.append(score.mean())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;결과를&nbsp;dataframe&nbsp;으로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">Kfold_score_result&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.DataFrame({<span style="color:#EC7600">'Score'</span>&nbsp;:&nbsp;score_result},&nbsp;index<span style="color:#A082BD"></span><span style="color:#93C763">=</span>regressors)</div><div style="padding:0 6px; white-space:pre; line-height:130%">Kfold_score_result</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike25.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>
+<p>Score는 낮을 수록 성능이 좋다는 지표입니다.</p>
+</li>
+<li>
+<p>RandomForest 을 선택하는 것이 좋아보입니다.</p>
+</li>
+<li>
+<p>음&hellip; 그런데 이대로 끝내버리기에는 뭔가 아쉬운거 같습니다.</p>
+</li>
+<li>
+<p><code>windspeed</code> 의 값이 0인 부분을 결측값이라고 생각하고 처리 후 비교해 봅시다.</p>
+</li>
+</ul>
+<p></p>
+<hr>
+<h3 id="34-windspeed-feature-engineering">3.4. &lsquo;windspeed&rsquo; Feature Engineering</h3>
+<ul>
+<li>
+<p><code>windspeed</code> 의 0 값을 0이 아닌 값으로 예측하여 넣어보도록 하겠습니다.</p>
+</li>
+<li>
+<p>모델은 Random Forest 로 진행합니다.</p>
+</li>
+<li>
+<p>풍속과 관계가 있을 것 같은 Feature 로는 <code>season</code>, <code>weather</code>, <code>humidity</code>,  <code>temp</code>,  <code>month</code>, <code>hour</code> 정도로 추릴 수 있을 것 같습니다.</p>
+</li>
+<li>
+<p><code>windspeed</code> 의 0의 값을 처리하는 파이프라인을 만듭니다.</p>
+</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div><div style="line-height:130%">24</div><div style="line-height:130%">25</div><div style="line-height:130%">26</div><div style="line-height:130%">27</div><div style="line-height:130%">28</div><div style="line-height:130%">29</div><div style="line-height:130%">30</div><div style="line-height:130%">31</div><div style="line-height:130%">32</div><div style="line-height:130%">33</div><div style="line-height:130%">34</div><div style="line-height:130%">35</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">train&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.read_csv(<span style="color:#EC7600">'train.csv'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;month&nbsp;와&nbsp;hour&nbsp;feature</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train[<span style="color:#EC7600">'datetime'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.to_datetime(train[<span style="color:#EC7600">'datetime'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">train[<span style="color:#EC7600">'month'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train[<span style="color:#EC7600">'datetime'</span>].dt.month</div><div style="padding:0 6px; white-space:pre; line-height:130%">train[<span style="color:#EC7600">'hour'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train[<span style="color:#EC7600">'datetime'</span>].dt.hour</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;범주형&nbsp;변수들&nbsp;category&nbsp;타입으로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train[<span style="color:#EC7600">'season'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train[<span style="color:#EC7600">'season'</span>].astype(<span style="color:#EC7600">'category'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">train[<span style="color:#EC7600">'weather'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train[<span style="color:#EC7600">'weather'</span>].astype(<span style="color:#EC7600">'category'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">train[<span style="color:#EC7600">'month'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train[<span style="color:#EC7600">'month'</span>].astype(<span style="color:#EC7600">'category'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">train[<span style="color:#EC7600">'hour'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train[<span style="color:#EC7600">'hour'</span>].astype(<span style="color:#EC7600">'category'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;사용하지&nbsp;않는&nbsp;feature&nbsp;제거</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">drop_feature&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'datetime'</span>,&nbsp;<span style="color:#EC7600">'casual'</span>,&nbsp;<span style="color:#EC7600">'registered'</span>,&nbsp;<span style="color:#EC7600">'atemp'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">train.drop(drop_feature,&nbsp;inplace<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;windspeed&nbsp;0과&nbsp;0이&nbsp;아닌&nbsp;데이터&nbsp;분리</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">train_wind0&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train[train[<span style="color:#EC7600">'windspeed'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">0</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_notwind0&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train[train[<span style="color:#EC7600">'windspeed'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">!</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#FFCD22">0</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;modeling</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">wind_col&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'season'</span>,&nbsp;<span style="color:#EC7600">'weather'</span>,&nbsp;<span style="color:#EC7600">'temp'</span>,&nbsp;<span style="color:#EC7600">'humidity'</span>,&nbsp;<span style="color:#EC7600">'month'</span>,&nbsp;<span style="color:#EC7600">'hour'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">model_wind&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;RandomForestRegressor()</div><div style="padding:0 6px; white-space:pre; line-height:130%">model_wind.fit(train_notwind0[wind_col],&nbsp;train_notwind0[<span style="color:#EC7600">'windspeed'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;예측&nbsp;결과&nbsp;추가</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">wind0_values&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;model_wind.predict(train_wind0[wind_col])</div><div style="padding:0 6px; white-space:pre; line-height:130%">train_wind0[<span style="color:#EC7600">'windspeed'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;wind0_values</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;데이터&nbsp;병합</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">new_train_data&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;train_notwind0.append(train_wind0).reset_index()</div><div style="padding:0 6px; white-space:pre; line-height:130%">new_train_data.drop(<span style="color:#EC7600">'index'</span>,&nbsp;inplace<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">True</span>,&nbsp;axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">new_train_data</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike26.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>새로운 train set 을 만들었으니 <code>windspeed</code> 가 얼마나 얼마나 영향을 줄지 테스트 해봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;One-Hot&nbsp;encoding</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">new_train_data&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.get_dummies(new_train_data,&nbsp;columns<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'season'</span>,<span style="color:#EC7600">'weather'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;train&nbsp;set&nbsp;과&nbsp;target&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">X_new_train_data&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;new_train_data.drop(<span style="color:#EC7600">'count'</span>,&nbsp;axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">1</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">new_target&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;new_train_data[<span style="color:#EC7600">'count'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;사용할&nbsp;모델&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">models&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[RandomForestRegressor(),&nbsp;AdaBoostRegressor(),&nbsp;BaggingRegressor()]</div><div style="padding:0 6px; white-space:pre; line-height:130%">regressors&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'RandomForest'</span>,&nbsp;<span style="color:#EC7600">'AdaBoost'</span>,&nbsp;<span style="color:#EC7600">'Bagging'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">new_score_result&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Kfold&nbsp;교차&nbsp;검증</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;x&nbsp;<span style="color:#93C763">in</span>&nbsp;models:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;new_Rgr&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;x</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;new_score&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;cross_val_score(new_Rgr,&nbsp;X_new_train_data,&nbsp;new_target,&nbsp;cv<span style="color:#A082BD"></span><span style="color:#93C763">=</span>kfold,&nbsp;scoring<span style="color:#A082BD"></span><span style="color:#93C763">=</span>rmsle_score)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;new_score_result.append(new_score.mean())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;결과를&nbsp;dataframe&nbsp;으로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">new_Kfold_score_result&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.DataFrame({<span style="color:#EC7600">'new&nbsp;Score'</span>&nbsp;:&nbsp;new_score_result},&nbsp;index<span style="color:#A082BD"></span><span style="color:#93C763">=</span>regressors)</div><div style="padding:0 6px; white-space:pre; line-height:130%">new_Kfold_score_result</div></div></tr></table></div>
+
+
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike27.PNG"/> 
+</figure>
+
+<p></p>
+<ul>
+<li>
+<p>유의미한 변화를 기대했지만&hellip; 거의 변화가 없는 것을 볼 수 있습니다.(<del>뻘짓</del>)</p>
+</li>
+<li>
+<p><code>windspeed</code> 는 자전거 대여량을 예측하는데 큰 영향을 주지 않는 것 같습니다.</p>
+</li>
+<li>
+<p>그냥 <code>windspeed</code> 가 0인 것을 사용합니다.</p>
+</li>
+<li>
+<p>이번엔 Random Forest의 Parameter 를 수정해 봅니다.</p>
+</li>
+</ul>
+<p></p>
+<hr>
+<h3 id="35-parameter-tunning">3.5. Parameter Tunning</h3>
+<ul>
+<li>RandomForestRegressor 에는 많은 Parameter 들이 존재합니다.</li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html">공식문서</a> 에서 더 많은 내용을 찾을 수 있습니다.</li>
+<li>이 중에서 나무의 수를 결정하는 n_estimators 를 수정해 봅니다. (default=100)</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;랜덤포레스트&nbsp;모델&nbsp;사용준비</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">from</span>&nbsp;sklearn.ensemble&nbsp;<span style="color:#93C763">import</span>&nbsp;RandomForestRegressor</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">val&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#FFCD22">10</span>,&nbsp;<span style="color:#FFCD22">20</span>,&nbsp;<span style="color:#FFCD22">30</span>,&nbsp;<span style="color:#FFCD22">40</span>,&nbsp;<span style="color:#FFCD22">50</span>,&nbsp;<span style="color:#FFCD22">70</span>,&nbsp;<span style="color:#FFCD22">100</span>,&nbsp;<span style="color:#FFCD22">150</span>,&nbsp;<span style="color:#FFCD22">200</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">result&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;i&nbsp;<span style="color:#93C763">in</span>&nbsp;val:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#919191">#&nbsp;랜덤포레스트&nbsp;모델</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;model&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;RandomForestRegressor(n_estimators<span style="color:#A082BD"></span><span style="color:#93C763">=</span>i)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#919191">#&nbsp;kfold&nbsp;교차&nbsp;검증</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;score&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;cross_val_score(model,&nbsp;X_train,&nbsp;target,&nbsp;cv<span style="color:#A082BD"></span><span style="color:#93C763">=</span>kfold,&nbsp;scoring<span style="color:#A082BD"></span><span style="color:#93C763">=</span>rmsle_score)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#919191">#&nbsp;score&nbsp;평균</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;mean&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;score.mean()</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;result.append(mean)</div></div></tr></table></div>
+
+
+<p></p>
+<ul>
+<li>10부터 200까지의 숫자를 적절히 넣어주고 결과를 그래프화 합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">12</span>,<span style="color:#FFCD22">5</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x축은&nbsp;n_estimators&nbsp;값,&nbsp;y축은&nbsp;score&nbsp;의&nbsp;평균</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.plot(val,result)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></td></tr></table></div>
+
+
+
+<p></p>
+
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike28.PNG"/> 
+</figure>
+
+
+<p></p>
+
+- 값의 그래프를 보니 n_estimators 의 default 값인 100보다 150에서 아주 미세하게 더 성능이 좋은 것을 확인할 수 있습니다.
+
+<p></p>
+
+----
+
+### 3.6. Submission
+
+- Random Forest Regressor 를 사용하고 n_estimators 의 값은 150으로 사용합니다.
+- 이제 submission 파일을 만들어 봅니다.
+
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;학습&nbsp;및&nbsp;예측</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">final_model&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;RandomForestRegressor(n_estimators<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">150</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">final_model.fit(X_train,&nbsp;target)</div><div style="padding:0 6px; white-space:pre; line-height:130%">prediction&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;final_model.predict(test_data)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;예측&nbsp;결과를&nbsp;submission에&nbsp;입력</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">submission[<span style="color:#EC7600">'count'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;prediction</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;제출&nbsp;파일</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">submission.to_csv(<span style="color:#EC7600">'bike&nbsp;submission2.csv'</span>,&nbsp;index<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#93C763">False</span>)</div></div></td></tr></table></div>
+
+
+
+<p></p>
+
+- submission 파일을 Kaggle에 제출 하고 score를 확인합니다.
+
+<p></p>
+
+<figure>
+    <img src="https://mintaewon.github.io/images/Bike/bike29.PNG"/> 
+</figure>
+
+
+<p></p>
+
+- Score는 0.51131 로 테스트했던 성능보다 낮게 나왔습니다.(오버피팅의 문제가 있을지도...)
+
+<p></p>
+
+----
+
+### 3.7. 마무리
+
+- 회귀 문제를 연습해 보기에 괜찮은 문제인것 같습니다.
+
+- 성능이 만족할 만큼 높게 나오지 않았기 때문에 개선이 많이 필요 할 것 같습니다.
+- 분류 문제에서도 느꼈지만 데이터의 전처리가 매우매우매우 중요한 것 같습니다.
+- Category type 과 One-Hot encoding 에 대해서 좀 더 공부를 해봐야겠습니다. (이 부분은 나중에 실험 해볼 예정)
+
+<p></p>
+
+----
+
+[Kaggle](https://www.kaggle.com/c/bike-sharing-demand/notebooks?competitionId=3948&sortBy=voteCount) 에 있는 수 많은 notebook 을 참고하며 공부했습니다.
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/kaggle/">Kaggle</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/ml/">ML</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/machinelearning/">MachineLearning</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/eda/">EDA</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/data/">Data</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/">기계학습</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%BA%90%EA%B8%80/">캐글</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-2feature-engineering/" data-tooltip="[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (2)Feature Engineering">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-3modeling/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-3modeling/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-3modeling/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-2feature-engineering/" data-tooltip="[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (2)Feature Engineering">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-3modeling/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-3modeling/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-3modeling/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-%25EC%259E%2590%25EC%25A0%2584%25EA%25B1%25B0-%25EC%2588%2598%25EC%259A%2594-%25EC%2598%2588%25EC%25B8%25A1bike-sharing-demand-3modeling%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-%25EC%259E%2590%25EC%25A0%2584%25EA%25B1%25B0-%25EC%2588%2598%25EC%259A%2594-%25EC%2598%2588%25EC%25B8%25A1bike-sharing-demand-3modeling%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-%25EC%259E%2590%25EC%25A0%2584%25EA%25B1%25B0-%25EC%2588%2598%25EC%259A%2594-%25EC%2598%2588%25EC%25B8%25A1bike-sharing-demand-3modeling%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Taewon Min</h4>
+    
+      <div id="about-card-bio">데이터 공부노트</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        None
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        South, Korea
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://mintaewon.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mintaewon.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+<footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</footer>
