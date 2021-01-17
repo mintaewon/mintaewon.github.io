@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Taewon Min">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Study]Category, One-Hot encoding이 모델에 미치는 영향 테스트">
+<meta name="twitter:title" content="[Study]Category, One-Hot encoding이 모델에 미치는 영향 테스트">
+<meta property="og:url" content="https://mintaewon.github.io/2021/01/studycategory-one-hot-encoding%EC%9D%B4-%EB%AA%A8%EB%8D%B8%EC%97%90-%EB%AF%B8%EC%B9%98%EB%8A%94-%EC%98%81%ED%96%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2021/01/studycategory-one-hot-encoding%EC%9D%B4-%EB%AA%A8%EB%8D%B8%EC%97%90-%EB%AF%B8%EC%B9%98%EB%8A%94-%EC%98%81%ED%96%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8/">
+<meta property="og:site_name" content="MIN Velog">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2021-01-17T14:56:04">
+  
+  
+    <meta property="article:modified_time" content="2021-01-17T14:56:04">
+  
+  
+  
+    
+      <meta property="article:section" content="Study">
+    
+      <meta property="article:section" content="Python">
+    
+  
+  
+    
+      <meta property="article:tag" content="Python">
+    
+      <meta property="article:tag" content="파이썬">
+    
+      <meta property="article:tag" content="원핫인코딩">
+    
+      <meta property="article:tag" content="Onehotencoding">
+    
+      <meta property="article:tag" content="범주형변수">
+    
+      <meta property="article:tag" content="category">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+
+
+    <title>[Study]Category, One-Hot encoding이 모델에 미치는 영향 테스트</title>
+
+    <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://mintaewon.github.io/2021/01/studycategory-one-hot-encoding%EC%9D%B4-%EB%AA%A8%EB%8D%B8%EC%97%90-%EB%AF%B8%EC%B9%98%EB%8A%94-%EC%98%81%ED%96%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-186281032-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mintaewon.github.io/">MIN Velog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mintaewon.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mintaewon.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Taewon Min</h4>
+        
+          <h5 class="sidebar-profile-bio">데이터 공부노트</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Python</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/rstudio">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Rstudio</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/study">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Study</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.tistory.com/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-fas fa-rss"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Mail</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Study]Category, One-Hot encoding이 모델에 미치는 영향 테스트
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-01-17T14:56:04&#43;09:00">
+        
+  January 17, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/study">Study</a>, 
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/python">Python</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <hr>
+<p>Kaggle 에서 notebook들을 보다보면 학습 데이터를 만들때 범주형 데이터를 사용하는 방법이 다 다릅니다.</p>
+<p>One-Hot encoding을 주로 사용했는데 이번에 시계열 데이터를 다루면서 날짜별로 One-Hot encoding을 진행하면 Feature 의 수가 너무너무 많아져 이 부분에 대해 관심가지게 됐습니다.</p>
+<p>그래서</p>
+<ul>
+<li>변주형 변수를 아무 처리 하지않고 그냥 사용</li>
+<li>변주형 변수를 category 타입으로 변경해 사용</li>
+<li>변주형 변수를 One-Hot encoding 한 후 사용</li>
+</ul>
+<p>이 3가지 방법이 모델에 미치는 영향을 테스트 해봅시다.</p>
+<p></p>
+<hr>
+<h2 id="데이터-준비">데이터 준비</h2>
+<ul>
+<li>
+<p>테스트에 사용할 데이터는 Kaggle 에 있는 <a href="https://www.kaggle.com/c/titanic/data">Titanic</a>을 사용합니다.</p>
+</li>
+<li>
+<p><a href="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/">이전 포스팅</a> 에서 Titanic 전처리를 다뤘기 때문에 전처리 과정은 생략합니다.</p>
+</li>
+<li>
+<p>범주형 변수는 <code>Pclass</code>, <code>Sex</code>, <code>Embarked</code>, <code>Title</code> 을 사용합니다.</p>
+</li>
+</ul>
+<h4 id="1-아무-처리를-하지-않은-데이터-셋-normal_train">1. 아무 처리를 하지 않은 데이터 셋 (normal_train)</h4>
+<pre><code> normal_train.info()
+ -------------------------------------
+ 0   Pclass      891 non-null    int64
+ 1   Sex         891 non-null    int32
+ 2   Age         891 non-null    int32
+ 3   SibSp       891 non-null    int64
+ 4   Parch       891 non-null    int64
+ 5   Fare        891 non-null    int32
+ 6   Embarked    891 non-null    int32
+ 7   Title       891 non-null    int32
+ 8   Familysize  891 non-null    int64
+</code></pre><h4 id="2-category-탑으로-변경-cg_train">2. category 탑으로 변경 (cg_train)</h4>
+<pre><code> cg_train.info()
+ -------------------------------------
+ 0   Pclass      891 non-null    category
+ 1   Sex         891 non-null    category
+ 2   Age         891 non-null    int32   
+ 3   SibSp       891 non-null    int64   
+ 4   Parch       891 non-null    int64   
+ 5   Fare        891 non-null    int32   
+ 6   Embarked    891 non-null    category
+ 7   Title       891 non-null    category
+ 8   Familysize  891 non-null    int64 
+</code></pre><h4 id="3-one-hot-encoding-oh_train">3. One-Hot encoding (oh_train)</h4>
+<pre><code> oh_train.info()
+ -------------------------------------
+ 0   Age         891 non-null    int32
+ 1   SibSp       891 non-null    int64
+ 2   Parch       891 non-null    int64
+ 3   Fare        891 non-null    int32
+ 4   Familysize  891 non-null    int64
+ 5   Pclass_1    891 non-null    uint8
+ 6   Pclass_2    891 non-null    uint8
+ 7   Pclass_3    891 non-null    uint8
+ 8   Sex_0       891 non-null    uint8
+ 9   Sex_1       891 non-null    uint8
+ 10  Embarked_0  891 non-null    uint8
+ 11  Embarked_1  891 non-null    uint8
+ 12  Embarked_2  891 non-null    uint8
+ 13  Title_0     891 non-null    uint8
+ 14  Title_1     891 non-null    uint8
+ 15  Title_2     891 non-null    uint8
+ 16  Title_3     891 non-null    uint8
+ 17  Title_4     891 non-null    uint8
+</code></pre><p></p>
+<hr>
+<h2 id="k-fold-교차검증random-forest">K-Fold 교차검증(Random Forest)</h2>
+<ul>
+<li>모델은 Random Forest의 default 값을 사용합니다.</li>
+<li>K-Fold 교차 검증을 통해 정확도를 측정해 비교합니다.</li>
+</ul>
+<h4 id="1-아무-처리를-하지-않은-데이터-셋-normal_train-1">1. 아무 처리를 하지 않은 데이터 셋 (normal_train)</h4>
+<p>In</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> RandomForestClassifier()
+score1 <span style="color:#f92672">=</span> cross_val_score(model, normal_train, target, cv<span style="color:#f92672">=</span>kfold, scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;accuracy&#39;</span>)
+mean1 <span style="color:#f92672">=</span> score1<span style="color:#f92672">.</span>mean()
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;normal train 의 정확도는 {mean1 * 100 :.2f}% 입니다.&#39;</span>)
+</code></pre></div><p>Out</p>
+<pre><code>normal train 의 정확도는 80.26% 입니다.
+</code></pre><h4 id="2-category-탑으로-변경-cg_train-1">2. category 탑으로 변경 (cg_train)</h4>
+<p>In</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> RandomForestClassifier()
+score2 <span style="color:#f92672">=</span> cross_val_score(model, cg_train, target, cv<span style="color:#f92672">=</span>kfold, scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;accuracy&#39;</span>)
+mean2 <span style="color:#f92672">=</span> score2<span style="color:#f92672">.</span>mean()
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;category train 의 정확도는 {mean2 * 100 :.2f}% 입니다.&#39;</span>)
+</code></pre></div><p>Out</p>
+<pre><code>category train 의 정확도는 80.71% 입니다.
+</code></pre><h4 id="3-one-hot-encoding-oh_train-1">3. One-Hot encoding (oh_train)</h4>
+<p>In</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> RandomForestClassifier()
+score3 <span style="color:#f92672">=</span> cross_val_score(model,oh_train, target, cv<span style="color:#f92672">=</span>kfold, scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;accuracy&#39;</span>)
+mean3 <span style="color:#f92672">=</span> score3<span style="color:#f92672">.</span>mean()
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;one-hot encoding train 의 정확도는 {mean3 * 100 :.2f}% 입니다.&#39;</span>)
+</code></pre></div><p>Out</p>
+<pre><code>one-hot encoding train 의 정확도는 80.37% 입니다.
+</code></pre><p></p>
+<ul>
+<li>정확도가 차이나 보이지만 판단을 하기가 애매합니다.</li>
+<li><del>실행할 때 마다 값이 달라지기 때문..</del></li>
+<li>혹시 모르니까 모델을 바꿔서 진행해봅니다.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="k-fold-교차검증support-vectorclassification">K-Fold 교차검증(Support VectorClassification)</h2>
+<ul>
+<li>SVC (Support Vector Calssification) 을 이용해 테스트 해봅니다.</li>
+</ul>
+<h4 id="1-아무-처리를-하지-않은-데이터-셋-normal_train-2">1. 아무 처리를 하지 않은 데이터 셋 (normal_train)</h4>
+<p>In</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> SVC()
+score1 <span style="color:#f92672">=</span> cross_val_score(model, normal_train, target, cv<span style="color:#f92672">=</span>kfold, scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;accuracy&#39;</span>)
+mean1 <span style="color:#f92672">=</span> score1<span style="color:#f92672">.</span>mean()
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;normal train 의 정확도는 {mean1 * 100 :.2f}% 입니다.&#39;</span>)
+</code></pre></div><p>Out</p>
+<pre><code>normal train 의 정확도는 82.50% 입니다.
+</code></pre><h4 id="2-category-탑으로-변경-cg_train-2">2. category 탑으로 변경 (cg_train)</h4>
+<p>In</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> SVC()
+score2 <span style="color:#f92672">=</span> cross_val_score(model, cg_train, target, cv<span style="color:#f92672">=</span>kfold, scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;accuracy&#39;</span>)
+mean2 <span style="color:#f92672">=</span> score2<span style="color:#f92672">.</span>mean()
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;category train 의 정확도는 {mean2 * 100 :.2f}% 입니다.&#39;</span>)
+</code></pre></div><p>Out</p>
+<pre><code>category train 의 정확도는 82.50% 입니다.
+</code></pre><h4 id="3-one-hot-encoding-oh_train-2">3. One-Hot encoding (oh_train)</h4>
+<p>In</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> SVC()
+score3 <span style="color:#f92672">=</span> cross_val_score(model,oh_train, target, cv<span style="color:#f92672">=</span>kfold, scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;accuracy&#39;</span>)
+mean3 <span style="color:#f92672">=</span> score3<span style="color:#f92672">.</span>mean()
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;one-hot encoding train 의 정확도는 {mean3 * 100 :.2f}% 입니다.&#39;</span>)
+</code></pre></div><p>Out</p>
+<pre><code>one-hot encoding train 의 정확도는 83.40% 입니다.
+</code></pre><p></p>
+<ul>
+<li>SVC 에서는 One-Hot encoding 을 진행한 데이터셋이 약간더 높은 정확도를 보였습니다.</li>
+<li>category 타입은 효과를 보지 못했습니다.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="결과">결과</h2>
+<ul>
+<li>
+<p>범주형 변수를 int 로 사용하나 category 로 사용하나 One-Hot encoding을 사용하나 Score에는 큰 영향을 주지 못했습니다.</p>
+</li>
+<li>
+<p>그래도 SVC 모델에서는 근소한 차이를 보였습니다.</p>
+</li>
+<li>
+<p>괜히 있는 기능이 아닐텐데 뭔가 이상합니다.</p>
+</li>
+<li>
+<p>생각해 볼 수 있는 점은</p>
+<ol>
+<li>데이터의 양이 적다.</li>
+<li>Feature 의 영향이 크지 않다.</li>
+<li>Feature 의 개수가 변화를 줄 정도로 크지않다.</li>
+<li>모델마다 영향을 받는 정도는 다르다.</li>
+</ol>
+</li>
+<li>
+<h5 id="결론--one-hot-encoding-은-아주-약간의-성능-향상을-기대-해-볼-수-있는-것-같습니다-category-타입은-의미-없는것-같습니다-전체적으로-큰-성능향상은-모르겠습니다">결론 : One-Hot encoding 은 아주 약간의 성능 향상을 기대 해 볼 수 있는 것 같습니다. category 타입은 의미 없는것 같습니다. 전체적으로 큰 성능향상은 모르겠습니다.</h5>
+</li>
+</ul>
+<p></p>
+<hr>
+<p></p>
+<p>뭔가 뻘짓을 한 것 같지만 궁금증은 어느정도 해소됐습니다. 이 부분은 추가로 알게된 사실이 있다면 내용추가를 할 예정입니다.</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/python/">Python</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%9B%90%ED%95%AB%EC%9D%B8%EC%BD%94%EB%94%A9/">원핫인코딩</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/onehotencoding/">Onehotencoding</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%B2%94%EC%A3%BC%ED%98%95%EB%B3%80%EC%88%98/">범주형변수</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/category/">category</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-3modeling/" data-tooltip="[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (3)Modeling">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/studycategory-one-hot-encoding%EC%9D%B4-%EB%AA%A8%EB%8D%B8%EC%97%90-%EB%AF%B8%EC%B9%98%EB%8A%94-%EC%98%81%ED%96%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/studycategory-one-hot-encoding%EC%9D%B4-%EB%AA%A8%EB%8D%B8%EC%97%90-%EB%AF%B8%EC%B9%98%EB%8A%94-%EC%98%81%ED%96%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/studycategory-one-hot-encoding%EC%9D%B4-%EB%AA%A8%EB%8D%B8%EC%97%90-%EB%AF%B8%EC%B9%98%EB%8A%94-%EC%98%81%ED%96%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/kaggle-%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%88%98%EC%9A%94-%EC%98%88%EC%B8%A1bike-sharing-demand-3modeling/" data-tooltip="[Kaggle] 자전거 수요 예측(Bike Sharing Demand) (3)Modeling">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/studycategory-one-hot-encoding%EC%9D%B4-%EB%AA%A8%EB%8D%B8%EC%97%90-%EB%AF%B8%EC%B9%98%EB%8A%94-%EC%98%81%ED%96%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/studycategory-one-hot-encoding%EC%9D%B4-%EB%AA%A8%EB%8D%B8%EC%97%90-%EB%AF%B8%EC%B9%98%EB%8A%94-%EC%98%81%ED%96%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/studycategory-one-hot-encoding%EC%9D%B4-%EB%AA%A8%EB%8D%B8%EC%97%90-%EB%AF%B8%EC%B9%98%EB%8A%94-%EC%98%81%ED%96%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fstudycategory-one-hot-encoding%25EC%259D%25B4-%25EB%25AA%25A8%25EB%258D%25B8%25EC%2597%2590-%25EB%25AF%25B8%25EC%25B9%2598%25EB%258A%2594-%25EC%2598%2581%25ED%2596%25A5-%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fstudycategory-one-hot-encoding%25EC%259D%25B4-%25EB%25AA%25A8%25EB%258D%25B8%25EC%2597%2590-%25EB%25AF%25B8%25EC%25B9%2598%25EB%258A%2594-%25EC%2598%2581%25ED%2596%25A5-%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fstudycategory-one-hot-encoding%25EC%259D%25B4-%25EB%25AA%25A8%25EB%258D%25B8%25EC%2597%2590-%25EB%25AF%25B8%25EC%25B9%2598%25EB%258A%2594-%25EC%2598%2581%25ED%2596%25A5-%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Taewon Min</h4>
+    
+      <div id="about-card-bio">데이터 공부노트</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        None
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        South, Korea
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://mintaewon.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mintaewon.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+<footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</footer>
