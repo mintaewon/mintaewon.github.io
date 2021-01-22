@@ -6,7 +6,16 @@
     <description>Recent content in Coursera on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mintaewon.github.io/categories/coursera/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Jan 2021 21:34:01 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/categories/coursera/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Coursera][Muchine Learning] Cost Function</title>
+      <link>https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function/</link>
+      <pubDate>Fri, 22 Jan 2021 21:34:01 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>[Coursera][Muchine Learning] Model Representation</title>
       <link>https://mintaewon.github.io/2021/01/courseramuchine-learning-model-representation/</link>
