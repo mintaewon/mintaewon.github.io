@@ -35,6 +35,15 @@
     </item>
     
     <item>
+      <title>GradientDescent</title>
+      <link>https://mintaewon.github.io/tags/gradientdescent/</link>
+      <pubDate>Tue, 26 Jan 2021 18:25:11 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/gradientdescent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>MachineLearning</title>
       <link>https://mintaewon.github.io/tags/machinelearning/</link>
       <pubDate>Tue, 26 Jan 2021 18:25:11 +0900</pubDate>
@@ -44,11 +53,11 @@
     </item>
     
     <item>
-      <title>Model</title>
-      <link>https://mintaewon.github.io/tags/model/</link>
+      <title>경사 하강법</title>
+      <link>https://mintaewon.github.io/tags/%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/</link>
       <pubDate>Tue, 26 Jan 2021 18:25:11 +0900</pubDate>
       
-      <guid>https://mintaewon.github.io/tags/model/</guid>
+      <guid>https://mintaewon.github.io/tags/%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/</guid>
       <description></description>
     </item>
     
@@ -76,6 +85,15 @@
       <pubDate>Tue, 26 Jan 2021 18:25:11 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Model</title>
+      <link>https://mintaewon.github.io/tags/model/</link>
+      <pubDate>Fri, 22 Jan 2021 21:34:01 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/model/</guid>
       <description></description>
     </item>
     
