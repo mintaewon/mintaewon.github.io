@@ -13,20 +13,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Coursera][Muchine Learning] Cost Function 비용함수">
-<meta name="twitter:title" content="[Coursera][Muchine Learning] Cost Function 비용함수">
-<meta property="og:url" content="https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/">
+<meta property="og:title" content="[Coursera][Muchine Learning] Gradient Descent 경사 하강법">
+<meta name="twitter:title" content="[Coursera][Muchine Learning] Gradient Descent 경사 하강법">
+<meta property="og:url" content="https://mintaewon.github.io/2021/01/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2021/01/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/">
 <meta property="og:site_name" content="MIN Velog">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2021-01-22T21:34:01">
+    <meta property="article:published_time" content="2021-01-26T18:25:11">
   
   
-    <meta property="article:modified_time" content="2021-01-22T21:34:01">
+    <meta property="article:modified_time" content="2021-01-26T18:25:11">
   
   
   
@@ -73,14 +73,14 @@
   <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
 
 
-    <title>[Coursera][Muchine Learning] Cost Function 비용함수</title>
+    <title>[Coursera][Muchine Learning] Gradient Descent 경사 하강법</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/">
+    <link rel="canonical" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -283,15 +283,15 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      [Coursera][Muchine Learning] Cost Function 비용함수
+      [Coursera][Muchine Learning] Gradient Descent 경사 하강법
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2021-01-22T21:34:01&#43;09:00">
+      <time itemprop="datePublished" datetime="2021-01-26T18:25:11&#43;09:00">
         
-  January 22, 2021
+  January 26, 2021
 
       </time>
     
@@ -316,109 +316,121 @@ if (!doNotTrack) {
 <li><strong>이 포스팅은 Andrew Ng 교수님의 Machine Learning 강의를 정리했습니다.</strong></li>
 </ul>
 <hr>
-<h2 id="비용-함수cost-function">비용 함수(Cost Function)</h2>
+<h2 id="경사-하강법gradient-descent">경사 하강법(Gradient Descent)</h2>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml13.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml27.PNG"/> 
 </figure>
 
-<p>가설함수 h를 구성하는 $\theta _{0}$ 와 $\theta _{1}$은 모형의 파라메터를 나타냅니다. 비용 함수를 사용하면 주어진 데이터에 가장 가까운 일차함수 그래프를 알아 낼 수 있습니다.</p>
+<p>경사 하강법은 비용 함수 J의 최소값을 구하는 알고리즘입니다. 이 알고리즘은 기계 학습의 모든 곳에서 실제로 사용되고 있습니다.</p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml14.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml28.PNG"/> 
 </figure>
 
-<p>선형회귀에서는 $\theta _{0}$과 $\theta _{1}$의 값들을 이용해 다음과 같은 일차함수를 구해, 자료와 얼마나 잘 일치하는지를 봅니다. 이때 비용함수를 사용하면 주어진 데이터에 가장 가까운 일차함수 그래프를 알아낼 수 있습니다.</p>
-<p></p>
-<p>그러면 어떻게 $\theta _{0}$ 와 $\theta _{1}$가 데이터와 얼마나 잘 일치하는지 알 수 있을까요?</p>
-<p></p>
-<p>훈련집합의 예시에서 실제로 집이 어떤 가격에 팔리는지 알 수 있습니다. 우리는 θ0 와 θ1의 값을 선택해서 x값이 주어진다면 y값을 예측할 수 있습니다. 주어진 데이터에서 h(x)와 y간의 차이 즉, <strong>h(x) - y</strong> 를 최소화가 되게 해줄 것입니다. 이 뺀 값을 제곱을 해주고(음수 일 수 있기 때문에) 훈련집합의 크기인 m 까지의 합계를 구합니다. 그리고 이것의 평균값을 구합니다. 식으로 나타내면 이렇습니다.</p>
+<p>$\theta _{0}$과 $\theta _{1}$ 2가지 파라메터를 사용한 그래프를 사용합니다. 우리는 가장 먼저 θ0과 θ1의 초기값을 추측해야 됩니다.</p>
+<p>일반적으로는 초기값을</p>
+<ul>
+<li>$ \theta _{0} = {0}$</li>
+<li>$ \theta _{1} = {0}$</li>
+</ul>
+<p>으로 설정합니다. 이제 경사 하강법에서 값을 조금씩 바꾸며 최소의 <strong>비용 함수</strong>를 찾아냅니다.</p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml15.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml29.PNG"/> 
 </figure>
 
-<p>이 J 함수가 비용함수(Cost Function) 입니다. 이 함수는 제곱 오차 함수(Squared error function) 또는 평균 제곱 오차(Mean squared error;MSE) 라고 합니다.</p>
-<p>이 함수는 합리적인 선택이며 대부분의 회귀 문제에서 잘 작동합니다.</p>
+<p>$\theta _{0}$과 $\theta _{1}$을 다른 값으로 초기화 한다면 다른 최적의 결과가 도출 될 수 있습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml30.PNG"/> 
+</figure>
+
+<p>수학적으로 알아봅니다.</p>
+<ul>
+<li>
+<p><strong>:=</strong> 는 할당받는 것을 의미합니다. (a := b 라면 b의 값을 a에 씌운다 라는 뜻)</p>
+</li>
+<li>
+<p><strong>$ \alpha $(Learning Rate)</strong> 는 훈련 비율이라고 합니다.  $ \alpha $값이 클수록 움직이는 거리가 증가합니다.</p>
+</li>
+<li>
+<p>$ \frac{\partial }{\partial \theta _{j}}J(\theta _{0}, \theta _{1} ) $ 는 미분계수입니다.</p>
+</li>
+</ul>
+<p>비용 함수는 $\theta _{0}$과 $\theta _{1}$ 2가지 변수에 의해 영향을 받는데 오른쪽 식과 같이 대입을 하게 되면 $\theta _{1}$ 에 값을 대입할 때 이미 변화된 $\theta _{0}$ 의 영향을 받으므로 왼쪽 식처럼 대입해줘야 합니다.</p>
 <p></p>
 <hr>
-<h3 id="cost-function---intuition-i">Cost Function - Intuition I</h3>
+<h2 id="gradient-descent-intuition">Gradient Descent Intuition</h2>
+<p></p>
+<p>하나의 파라미터 $ \theta _{1} $  를 가지고 함수를 최소화한 $ J(\theta _{1}) $ 을 사용합니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml31.PNG"/> 
+</figure>
+
+<p>$ \theta _{1} $ 에서의 기울기는 그 점의 탄젠트(Tangent) 값으로 구할 수 있고 그것이 바로 미분계수입니다. 여기서 기울기는 양수이므로 $ \alpha $ 의 값이 양수라는 것 또한 알 수 있습니다. $ \theta _{1} $ 은 이제 $ \alpha $ 에 기울기(양수값)을 곱한 값이 됩니다. 이런식으로 $ \theta _{1} $ 은 최소값으로 이동하게 됩니다.</p>
 <p></p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml16.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml32.PNG"/> 
 </figure>
 
-<p>$\theta _{0}$ 의 값을 0으로 하여 가설 함수 h를 간소화 합니다.</p>
-<figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml17.PNG"/> 
-</figure>
-
-<p>다음과 같은 (0, 0)을 지나는 일차함수를 만들 수 있습니다. 이 간소환 된 가설 함수 h는 비용 함수 개념을 이해하는데 도움을 줍니다.</p>
-<figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml18.PNG"/> 
-</figure>
-
-<p>(1, 1), (2, 2), (3, 3) 세가지 점으로 이루어진 훈련집합이 있다고 가정합니다. 비용 함수를 계산해 봅니다.</p>
-<figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml15.PNG"/> 
-</figure>
-
-<p>오차의 제곱, 즉 h(x) - y 의 값을 구하면 세가지 점 모두 0이 나오게 됩니다. 그러므로 <strong>J($\theta _{1}$) = 0</strong> 이라는 비용 함수를 얻을 수 있습니다. 여기서 θ1 = 1 이므로 <strong>J(1) = 0</strong> 이 됩니다.</p>
-<p>이 비용 함수를 그래프에 나타내면 오른쪽 그래프와 같습니다.</p>
 <p></p>
-<p>다음으로는 θ1 = 0.5 일 경우 입니다.</p>
+<p>이번엔 $ \theta _{1} $ 를 그래프의 왼쪽으로 초기화 해봅니다. 이때의 기울기는 음수값을 가지게 됩니다. $ \theta _{1} $ 은 $ \alpha $ 값에 음수값(기울기) 를 곱한 값이 되므로 오른쪽으로 이동합니다. 이렇게 계속해서 최소값과 가까운 쪽으로 이동하게 됩니다. 이것이 경사 하강법입니다.</p>
+<p></p>
+<p>이제 $ \alpha $ 에 대해 알아봅니다.</p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml19.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml33.PNG"/> 
 </figure>
 
-<p>위와 같은 방법으로 오차의 제곱을 계산하게 되면 <strong>J(0.5) ≒ 0.58</strong> 가 나옵니다. 이 값을 오른쪽 그래프에 추가해줍니다.</p>
-<p>이러한 방식으로 θ1에 여러 값에 대한 오차 함수의 값을 이용해 그래프를 그리면 아래 보이는 그래프와 같이 포물선을 그리게 됩니다.</p>
+<p>$ \alpha $ 의 값이 너무 작다면 최소값으로 도달하는데에 많은 이동이 필요하게 되고 그만큼 많은 시간이 걸리게 됩니다. 반대로 $ \alpha $ 의 값이 너무 크다면 최소값에 수렴하지 못하거나 발산하게 됩니다.</p>
+<p></p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml20.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml34.PNG"/> 
 </figure>
 
-<p>우리의 목표는 J($\theta _{0}$) 값이 최소값이 되는 것입니다. 위 포물선을 보면 J(1) 일때 가장 최소값을 가지게 됩니다. 즉, $\theta _{1}$ 이 1인 직선입니다. 이 직선이 자료와 잘 맞는 다는 것도 확인 할 수 있습니다. 그렇기 때문에 J($\theta _{1}$) 을 최소화한 값이 자료에 잘 맞는 다는 결론을 내릴 수 있습니다.</p>
+<p>$ \theta _{1} $ 이 최소값(기울기  0)이라면 $ \theta _{1} =  \theta _{1} $ 로  아무런 영향을 끼치지 않고 유지됩니다.</p>
+<p></p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml35.PNG"/> 
+</figure>
+
+<p>만약 $ \alpha $ 가 고정되어 있어도 문제없습니다. 최소값에 가까워질수록 미분계수는 0에 가까워지기 때문입니다.</p>
 <p></p>
 <hr>
-<h3 id="cost-function---intuition-ii">Cost Function - Intuition II</h3>
-<figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml21.PNG"/> 
-</figure>
-
-<p></p>
-<p>$\theta _{0}$와 $\theta _{1}$이 모두 있는 가설함수를 살펴봅니다.</p>
+<h2 id="gradient-descent-for-linear-regression">Gradient Descent For Linear Regression</h2>
+<p>경사 하강법을 선현 회귀에 적용합니다.</p>
 <p></p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml22.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml36.PNG"/> 
 </figure>
 
-<p></p>
-<p>Intuition I 에서는 $\theta _{1}$ 만 사용해 계산했었습니다. 이제 우리는 $\theta _{0}$ 도 사용할 것입니다. 비용 함수를 그려보면 오목한 형태의 그래프를 얻을 수 있습니다.</p>
+<p>경사 하강업을 사용해 비용 함수(Cost Function)를 최소화 시킬 것입니다. 경사 하강법을 적용하기 위해 미분 계수를 사용해야합니다.</p>
 <p></p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml23.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml37.PNG"/> 
 </figure>
 
-<p></p>
-<p>이 그래프는 $\theta _{0}$, $\theta _{1}$, J(θ0, θ1) 를 나타내는 3차원 그래프 입니다. 이 3차원 그래프 대신에 등고선 그래프를 사용하겠습니다.</p>
+<p>$ \theta _{0} $과 $ \theta _{1} $ 두 가지 경우가 있기 때문에 각각 함수가 나옵니다.</p>
 <p></p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml24.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml38.PNG"/> 
 </figure>
 
-<p></p>
-<p>위 그림의 오른쪽 그래프를 보면 $\theta _{0}$ 의 값은 약 -0.15이고 $\theta _{1}$의 값은 800인 점을 확인해봅니다. 이를 이용해 그린 가설 함수 h(x) 는 데이터와 잘 맞지 않는 그래프인 것을 확인 할 수 있습니다.</p>
+<p>경사 하강법 알고리즘에 적용합니다. 여기서 중요한 점은 $ \theta _{0} $와 $ \theta _{1} $ 를 동시에 구하는 것입니다.</p>
 <p></p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml25.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml39.PNG"/> 
 </figure>
 
-<p></p>
-<p>위의 그래프는 $\theta _{0}$의 값이 360, $\theta _{1}$의 값은 0을 나타내고 좋은 그래프는 아니라는 것을 확인 할 수 있습니다.</p>
+<p>선형 회귀의 비용함수는 항상 볼록 함수 모양이 됩니다. 이는 지역적 최소값이 없고 전역적 최소값만 가지고 있습니다.</p>
 <p></p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml25.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml40.PNG"/> 
 </figure>
 
+<p>이전에 했던 주택 가격 데이터입니다. 전역적 최소값만 존재하기 때문에 경사 하강 알고리즘을 적용하면 결국 최소값에 도달하게 됩니다.</p>
 <p></p>
-<p>위의 예시는 완벽한 최소값은 아니지만 최소값에  가깝고 데이터와 비슷한 형태를 나타내고 있습니다.   그래서 결론적으로 비용 함수의 최소값과 비슷할 수록 더 좋은 가설이라는 것을 알 수 있습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml41.PNG"/> 
+</figure>
+
+<p>이 알고리즘은 다른 이름은 집단 기울기 하강(Batch Gradient Descent) 라고도 부릅니다. 집단 기울기 하강은 모든 훈련 데이터를 나타내는 의미입니다.</p>
               
             </div>
           </div>
@@ -457,7 +469,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/" data-tooltip="[Coursera][Muchine Learning] Gradient Descent 경사 하강법">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -465,7 +477,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/studycategory-one-hot-encoding%EC%9D%B4-%EB%AA%A8%EB%8D%B8%EC%97%90-%EB%AF%B8%EC%B9%98%EB%8A%94-%EC%98%81%ED%96%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8/" data-tooltip="[Study]Category, One-Hot encoding이 모델에 미치는 영향 테스트">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/" data-tooltip="[Coursera][Muchine Learning] Cost Function 비용함수">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -483,19 +495,19 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -554,7 +566,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/" data-tooltip="[Coursera][Muchine Learning] Gradient Descent 경사 하강법">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -562,7 +574,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/studycategory-one-hot-encoding%EC%9D%B4-%EB%AA%A8%EB%8D%B8%EC%97%90-%EB%AF%B8%EC%B9%98%EB%8A%94-%EC%98%81%ED%96%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8/" data-tooltip="[Study]Category, One-Hot encoding이 모델에 미치는 영향 테스트">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/" data-tooltip="[Coursera][Muchine Learning] Cost Function 비용함수">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -580,19 +592,19 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -622,19 +634,19 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-cost-function-%25EB%25B9%2584%25EC%259A%25A9%25ED%2595%25A8%25EC%2588%2598%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-gradient-descent-%25EA%25B2%25BD%25EC%2582%25AC-%25ED%2595%2598%25EA%25B0%2595%25EB%25B2%2595%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-cost-function-%25EB%25B9%2584%25EC%259A%25A9%25ED%2595%25A8%25EC%2588%2598%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-gradient-descent-%25EA%25B2%25BD%25EC%2582%25AC-%25ED%2595%2598%25EA%25B0%2595%25EB%25B2%2595%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-cost-function-%25EB%25B9%2584%25EC%259A%25A9%25ED%2595%25A8%25EC%2588%2598%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fcourseramuchine-learning-gradient-descent-%25EA%25B2%25BD%25EC%2582%25AC-%25ED%2595%2598%25EA%25B0%2595%25EB%25B2%2595%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -726,9 +738,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/mintaewon.github.io\/2021\/01\/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98\/';
+          this.page.url = 'https:\/\/mintaewon.github.io\/2021\/01\/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95\/';
           
-            this.page.identifier = '\/2021\/01\/courseramuchine-learning-cost-function-%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98\/'
+            this.page.identifier = '\/2021\/01\/courseramuchine-learning-gradient-descent-%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95\/'
           
         };
         (function() {
