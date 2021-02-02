@@ -6,7 +6,16 @@
     <description>Recent content in GradientDescent on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 30 Jan 2021 08:13:12 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/gradientdescent/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Feb 2021 00:24:24 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/gradientdescent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Coursera][Muchine Learning] Computing Parameters Analytically</title>
+      <link>https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/</link>
+      <pubDate>Tue, 02 Feb 2021 00:24:24 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>[Coursera][Muchine Learning] Multivariate Linear Regression 다변량 선형 회귀</title>
       <link>https://mintaewon.github.io/2021/01/courseramuchine-learning-multivariate-linear-regression-%EB%8B%A4%EB%B3%80%EB%9F%89-%EC%84%A0%ED%98%95-%ED%9A%8C%EA%B7%80/</link>
