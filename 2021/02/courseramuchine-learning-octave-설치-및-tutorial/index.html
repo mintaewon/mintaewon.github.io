@@ -13,20 +13,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Coursera][Muchine Learning] Computing Parameters Analytically">
-<meta name="twitter:title" content="[Coursera][Muchine Learning] Computing Parameters Analytically">
-<meta property="og:url" content="https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/">
+<meta property="og:title" content="[Coursera][Muchine Learning] Octave 설치 및 Tutorial">
+<meta name="twitter:title" content="[Coursera][Muchine Learning] Octave 설치 및 Tutorial">
+<meta property="og:url" content="https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/">
 <meta property="og:site_name" content="MIN Velog">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2021-02-02T00:24:24">
+    <meta property="article:published_time" content="2021-02-03T21:34:19">
   
   
-    <meta property="article:modified_time" content="2021-02-02T00:24:24">
+    <meta property="article:modified_time" content="2021-02-03T21:34:19">
   
   
   
@@ -48,17 +48,11 @@
     
       <meta property="article:tag" content="AndrewNg">
     
-      <meta property="article:tag" content="NormalEquation">
+      <meta property="article:tag" content="Octave">
     
-      <meta property="article:tag" content="NormalEquationNonivertibility">
+      <meta property="article:tag" content="Programming">
     
-      <meta property="article:tag" content="기울기하강법">
-    
-      <meta property="article:tag" content="경사하강법">
-    
-      <meta property="article:tag" content="gradientdescent">
-    
-      <meta property="article:tag" content="featurescaling">
+      <meta property="article:tag" content="Vectorization">
     
   
 
@@ -79,14 +73,14 @@
   <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
 
 
-    <title>[Coursera][Muchine Learning] Computing Parameters Analytically</title>
+    <title>[Coursera][Muchine Learning] Octave 설치 및 Tutorial</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/">
+    <link rel="canonical" href="https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -289,15 +283,15 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      [Coursera][Muchine Learning] Computing Parameters Analytically
+      [Coursera][Muchine Learning] Octave 설치 및 Tutorial
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2021-02-02T00:24:24&#43;09:00">
+      <time itemprop="datePublished" datetime="2021-02-03T21:34:19&#43;09:00">
         
-  February 2, 2021
+  February 3, 2021
 
       </time>
     
@@ -322,56 +316,59 @@ if (!doNotTrack) {
 <li><strong>이 포스팅은 Andrew Ng 교수님의 Machine Learning 강의를 정리했습니다.</strong></li>
 </ul>
 <hr>
-<h2 id="normal-equation">Normal Equation</h2>
-<p>normal equation 은 특정 선형 회귀 문제에서 최적의 파라미터 $ \theta $ 값을 구하는데 효과적인 방법입니다. 지금까지 선형 회귀에서 $ J(\theta) $ 를 최소화 하기 위해 gradient descent 알고리즘을 여러번 반복해 최소값으로 수렴하는 방법을 사용했습니다. 이와는 반대로 normal equation 는 $ \theta $ 의 최적값을 분석적으로 한번에 구합니다.</p>
+<h2 id="octave-설치">Octave 설치</h2>
+<p>이 강의에서는 Octave 라는 수치해석용 오픈소스 프로그램을 사용합니다.</p>
+<p>Octave 는 <a href="https://www.gnu.org/software/octave/download.html">여기</a>에서 받을 수 있습니다.</p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml69.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml75.PNG"/> 
 </figure>
 
-<p>$ \theta $ 가 스칼라 값만 가지고 있다고 가정합니다. 비용 함수 J는 $ \theta $에 대한 2차 함수입니다. 여기서 2차 함수를 최소화 하는 방법은 미분을 하고 미분값이 0이 되는 지점을 찾으면 됩니다. 그러면 이제 $ \theta $ 가 실수가 아닌 (n+1)차원 파라미터 벡터일 경우를 살펴봅니다. 비용 함수 J도 벡터 값($ \theta _{0} $부터 $ \theta _{n} $)에 대한 함수입니다. 이 비용 함수 J 를 최소화 하는 방법은 J를 편미분하는 방법이 있습니다.</p>
-<p>m=4 인 training example 을 봅니다.</p>
-<figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml70.PNG"/> 
-</figure>
-
-<p>우리가 가장 먼저 해야할 것은 모두 1의 값을 가지는 feature $ x _{0} $ 열을 추가하는 것입니다. 그 다음으로 training data의 모든 feature를 가지는 행렬 X를 만듭니다. 똑같이 예측하려는 값을 가진 벡터 y를 만듭니다. X는 (m x n+1) 차원 행렬이 되었고 y는 m차원 벡터가 됐습니다. 이제 우리가 원하는 값 $ \theta = (X^{T}X)^{-1}X^{T}y $ 를 계산하면 됩니다.</p>
-<p>일반적인 경우를 보면 다음과 같습니다.</p>
-<figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml71.PNG"/> 
-</figure>
-
-<p>normal equation 을 사용한다면 feature scaling 이 필요하지 않습니다. 하지만 gradient descent를 사용한다면 feature scaling은 필요합니다.</p>
-<p></p>
-<p>gradient descent와 normal equation을 비교하면 다음과 같습니다.</p>
-<figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml72.PNG"/> 
-</figure>
-
-<p>gradient descent의 단점은 $ \alpha $(learning rate) 를 정해야 한다는 것입니다. 또 다른 단점은 반복이 많다는 것입니다. 이와 반대로 normal equation은 $ \alpha $(learning rate) 를 정할 필요가 없고 반복도 없습니다.</p>
-<p>gradient descent 의 장점은 feature 가 많을 때 효과적 입니다. 반대로 normal equation은 $ \theta $ 를 구하기 위해 $ (X^{T}X)^{-1} $ 를 계산해야 합니다. 이 과정에서 시간이 많이 걸리게 됩니다. 특히 n이 엄청 커지면 normal equation은 훨씬 더 느려집니다. 만약 n=10000이상이라면 gradient descent를 사용하는게 낫습니다.</p>
-<p>예를들어 분류(classification) 알고리즘 중에서도 logistic regression 알고리즘 같은 정교한 학습 알고리즘에는 normal equation은 적합하지 않지만 gradient descent는 적합합니다.</p>
-<p></p>
+<p>설치 후 실행한 모습 (강의에 사용한 버전과는 많이 달라진 모습)</p>
 <hr>
-<h2 id="normal-equation-noninvertibility">Normal Equation Noninvertibility</h2>
+<h2 id="octave-tutorial">Octave Tutorial</h2>
+<p>기본적인 연산과 행렬을 다루는 부분은 제외했습니다.</p>
+<h2 id="vectorization">Vectorization</h2>
+<p>벡터화의 예시를 살펴봅니다.</p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml73.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml76.PNG"/> 
 </figure>
 
-<p>$ \theta = (X^{T}X)^{-1}X^{T}y $ 를 계산할 때 행렬 $ X^{T}X $의 역행렬을 구할 수 없는 경우가 있습니다. 그 행렬은 비가역행렬(non-invertible matrix), 특이 행렬(singular matrix) 혹은 degenerate matrix 라고 부릅니다. 사실 $ X^{T}X $ 의 역행렬이 없는 경우는 거의 없습니다. Octave 에서는 Pinv()와 Inv() 함수를 사용해 역행렬이 없더라도 $ \theta $ 값을 정확히 계산할 수 있습니다.</p>
+<p>h(x) 를 계산하는데에 비 벡터화(Unvectorized) 방법과 벡터화(vectorized) 방법이 있습니다. 이를 Octave 코드로 구현하면 다음과 같습니다. 위 코드를 보면 비 벡터화 방법은 4줄의 코드로 표현되지만 벡터화는 한줄로 표현할 수 있습니다.</p>
+<p></p>
+<p>벡터화 문제는 Octave 뿐만 아니라 다른 프로그래밍 언어에도 적용됩니다. 다음은 C++ 언어 입니다.</p>
 <figure>
-    <img src="https://mintaewon.github.io/images/coursera/ml74.PNG"/> 
+    <img src="https://mintaewon.github.io/images/coursera/ml77.PNG"/> 
 </figure>
 
-<p>$ X^{T}X $가 역행렬이 없는 경우는 대체로 두 가지입니다.</p>
-<ul>
-<li>
-<p>첫번째, 불필요한 feature 를 가지고 있는 경우 입니다. 예를 들어 집 값을 예측하는데 $ x _{1} $ 은 피트 단위의 집의 크기이고 $ x _{2} $는 제곱미터 단위의 집의 크기입니다. 1미터는 약 3.28 피트이므로 $ x _{1} = (3.28)^{2} x _{1} $ 의 선형 관계를 가지게 되고 $ X^{T}X $ 의역행렬이 없다는게 증명이 됩니다. feature 가 서로 관련이 있다면 불필요한 feature 를 제거해야 합니다.</p>
-</li>
-<li>
-<p>두번째, 많은 feature 를 가지고 학습 알고리즘을 사용 할 때 입니다. training data (m) 보다 feature(n) 이 더 큰경우 (m=10, n=100)라면 벡터 $ \theta $ 는 101차원 (n+1 차원) 이 되고 10개의 training data 로 101개의 파라미터를 표현하려한다면 data가 충분하지 않습니다. 이 때는 feature 를 몇개 제거하거나 regularization을 사용합니다.</p>
-</li>
-</ul>
-<p>하지만 역행렬이 존재하지 않는 경우는 거의 존재하지 않으며 그렇다 하더라고 Octave의 pinv()함수를 사용하면 올바르게 계산할 수 있습니다.</p>
+<p>C++ 에서 선형 대수 라이브러리를 사용하면 다음과 같이 간단하고 효육적인 코드를 작성할 수 있습니다.</p>
+<p></p>
+<p>이번에는 선형 회귀의 Gradient descent 예시로 알아보겠습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml78.PNG"/> 
+</figure>
+
+<p>우리는 J = 0, 1 ,2 등 모든 값에 대해 $ \theta _{j} $ 를 업데이트 해야합니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml79.PNG"/> 
+</figure>
+
+<p>위의 식을 벡터화로 구현해내는 방법을 살펴보겠습니다.</p>
+<p>시그마 부분을 $ \delta $를 사용해 간결하게 표현합니다.</p>
+<p>$$ \theta := \theta - \alpha \delta $$</p>
+<p>$ \theta $ 와 $ \delta $ 는 n+1 차원 벡터이고  $ \alpha $ 는 실수입니다.</p>
+<p>$ \delta $를 벡터로 표현하면 다음과 같습니다.</p>
+<p>$$ \delta = \begin{bmatrix} \delta _{0} \\ \delta _{1} \\ \delta _{2} \end{bmatrix}$$</p>
+<p>여기서 $ \delta $ 의 시그마 부분 $  \sum _{i=1}^m  (h _{\theta}(x^{(i)}) - y^{(i)})x^{(i)} $ 는</p>
+<p>$$ (h _{\theta}(x^{(1)}) - y^{(1)})x^{(1)} \\ (h _{\theta}(x^{(2)}) - y^{(2)})x^{(2)} \\ (h _{\theta}(x^{(3)}) - y^{(3)})x^{(3)} $$</p>
+<p>로 표현됩니다.</p>
+<p>여기에 $ x^{(i)} $ 도</p>
+<p>$$ x^{(i)} =  \begin{bmatrix} x _0^{(i)} \\ x _1^{(i)} \\ x _2^{(i)} \end{bmatrix}$$</p>
+<p>의 벡터입니다.</p>
+<p>$ \delta $ 를 표현해보면 다음과 같이 나타 낼 수 있고</p>
+<p>$$ \delta = \frac{1}{m}(x^{T}x - x^{T}y) $$</p>
+<p>최종적으로 $ \theta $ 는</p>
+<p>$$ \theta := \theta -  \frac{\alpha}{m}(x^{T}x - x^{T}y) $$</p>
+<p>로 나타낼 수 있습니다.</p>
               
             </div>
           </div>
@@ -393,17 +390,11 @@ if (!doNotTrack) {
 
   <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/andrewng/">AndrewNg</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/normalequation/">NormalEquation</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/octave/">Octave</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/normalequationnonivertibility/">NormalEquationNonivertibility</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/programming/">Programming</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EA%B8%B0%EC%9A%B8%EA%B8%B0%ED%95%98%EA%B0%95%EB%B2%95/">기울기하강법</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EA%B2%BD%EC%82%AC%ED%95%98%EA%B0%95%EB%B2%95/">경사하강법</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/gradientdescent/">gradientdescent</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/featurescaling/">featurescaling</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/vectorization/">Vectorization</a>
 
                   </div>
                 
@@ -416,7 +407,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/" data-tooltip="[Coursera][Muchine Learning] Octave 설치 및 Tutorial">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -424,7 +415,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-multivariate-linear-regression-%EB%8B%A4%EB%B3%80%EB%9F%89-%EC%84%A0%ED%98%95-%ED%9A%8C%EA%B7%80/" data-tooltip="[Coursera][Muchine Learning] Multivariate Linear Regression 다변량 선형 회귀">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/" data-tooltip="[Coursera][Muchine Learning] Computing Parameters Analytically">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -442,19 +433,19 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -513,7 +504,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/" data-tooltip="[Coursera][Muchine Learning] Octave 설치 및 Tutorial">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -521,7 +512,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramuchine-learning-multivariate-linear-regression-%EB%8B%A4%EB%B3%80%EB%9F%89-%EC%84%A0%ED%98%95-%ED%9A%8C%EA%B7%80/" data-tooltip="[Coursera][Muchine Learning] Multivariate Linear Regression 다변량 선형 회귀">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/" data-tooltip="[Coursera][Muchine Learning] Computing Parameters Analytically">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -539,19 +530,19 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/02/courseramuchine-learning-computing-parameters-analytically/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -581,19 +572,19 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F02%2Fcourseramuchine-learning-computing-parameters-analytically%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F02%2Fcourseramuchine-learning-octave-%25EC%2584%25A4%25EC%25B9%2598-%25EB%25B0%258F-tutorial%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F02%2Fcourseramuchine-learning-computing-parameters-analytically%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F02%2Fcourseramuchine-learning-octave-%25EC%2584%25A4%25EC%25B9%2598-%25EB%25B0%258F-tutorial%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F02%2Fcourseramuchine-learning-computing-parameters-analytically%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F02%2Fcourseramuchine-learning-octave-%25EC%2584%25A4%25EC%25B9%2598-%25EB%25B0%258F-tutorial%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -685,9 +676,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/mintaewon.github.io\/2021\/02\/courseramuchine-learning-computing-parameters-analytically\/';
+          this.page.url = 'https:\/\/mintaewon.github.io\/2021\/02\/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial\/';
           
-            this.page.identifier = '\/2021\/02\/courseramuchine-learning-computing-parameters-analytically\/'
+            this.page.identifier = '\/2021\/02\/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial\/'
           
         };
         (function() {
