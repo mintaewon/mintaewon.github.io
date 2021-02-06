@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Taewon Min">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Coursera][Muchine Learning] Classification and Representation">
+<meta name="twitter:title" content="[Coursera][Muchine Learning] Classification and Representation">
+<meta property="og:url" content="https://mintaewon.github.io/2021/02/courseramuchine-learning-classification-and-representation/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2021/02/courseramuchine-learning-classification-and-representation/">
+<meta property="og:site_name" content="MIN Velog">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2021-02-06T17:57:17">
+  
+  
+    <meta property="article:modified_time" content="2021-02-06T17:57:17">
+  
+  
+  
+    
+      <meta property="article:section" content="Study">
+    
+      <meta property="article:section" content="Coursera">
+    
+  
+  
+    
+      <meta property="article:tag" content="코세라">
+    
+      <meta property="article:tag" content="coursera">
+    
+      <meta property="article:tag" content="머신러닝">
+    
+      <meta property="article:tag" content="machinelearning">
+    
+      <meta property="article:tag" content="AndrewNg">
+    
+      <meta property="article:tag" content="Classification">
+    
+      <meta property="article:tag" content="Representation">
+    
+      <meta property="article:tag" content="DecisionBoundary">
+    
+      <meta property="article:tag" content="HypothesisRepresentation">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+
+
+    <title>[Coursera][Muchine Learning] Classification and Representation</title>
+
+    <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://mintaewon.github.io/2021/02/courseramuchine-learning-classification-and-representation/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-186281032-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mintaewon.github.io/">MIN Velog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mintaewon.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mintaewon.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Taewon Min</h4>
+        
+          <h5 class="sidebar-profile-bio">데이터 공부노트</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Python</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/rstudio">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Rstudio</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/study">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Study</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.tistory.com/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-fas fa-rss"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Mail</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Coursera][Muchine Learning] Classification and Representation
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-02-06T17:57:17&#43;09:00">
+        
+  February 6, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/study">Study</a>, 
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/coursera">Coursera</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <ul>
+<li><strong>이 포스팅은 Andrew Ng 교수님의 Machine Learning 강의를 정리했습니다.</strong></li>
+</ul>
+<hr>
+<h2 id="분류classification">분류(Classification)</h2>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml80.PNG"/> 
+</figure>
+
+<p>스팸 이메일 검출, 특정 거래가 사기인지 아닌지, 악성 종양과 영성 종양을 구분하는 문제 등 0 또는 1로 예측하는 것을 분류라고 합니다. 보통 0을 음성 분류라고 하고 1을 양성 분류라고 합니다. 2진분류(binary class) 문제를 먼저 다뤄봅니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml81.PNG"/> 
+</figure>
+
+<p>이전에 알아보았던 종양크기 분류에 대한 문제를 살펴봅니다. 주어진 데이터에서 가설 함수 $ h _{\theta}(x) = \theta^{T}x $ 를 구할 수 있습니다. 여기에 임계값 y=0.5 를 설정하여 가설이 0.5보다 크거나 같으면 1, 0.5보다 작을 경우 0으로 예측할 수 있습니다. 이 예시에서는 선형 회귀 모델이 합리적으로 작동하는 것 처럼 보일 수 있습니다. 이번에는 다른 상황을 살펴 봅니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml82.PNG"/> 
+</figure>
+
+<p>기존 데이터에 수평축을 확장한 후 끝쪽에 학습 데이터를 추가한 경우 입니다. 이 상태로 선형 회귀를 진행해 봅니다. 그리고 임계값을 0.5로 지정 합니다. 학습 데이터를 추가한(파란색) 상태에서는 좋은 결과를 얻지 못하는 것을 볼 수 있습니다.</p>
+<p></p>
+<p>이러처럼 선형 회귀를 적용하면 운이 좋을 경우 좋은 결과를 얻을 수 있지만 대부분은 잘못된 결과를 얻을 것입니다. 그렇기 때문에 분류 문제에서 대해서는 선형 회귀를 사용하지 않을 것입니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml83.PNG"/> 
+</figure>
+
+<p>또다른 예시로 분류 문제에서 선형 회귀를 사용할 경우 훈련용 데이터 y값이 전부 0이나 1로 설정되어 있어도 가설의 결과값이 1보다 크거나 0보다 작을 수 있습니다.</p>
+<p>앞으로의 강의에서 로지스틱 회귀라고 불리는 <strong>분류 알고리즘</strong>을 공부할 것입니다. 로지스틱 회귀의 결과는 항상 0에서 1사이이며 1보다 크거나 0보다 작은 값을 가질 수 없습니다.</p>
+<p></p>
+<hr>
+<h2 id="hypothesis-representation">Hypothesis Representation</h2>
+<p>로지스틱 회귀(Logistic Regression) 모델의 $ h _{\theta}(x) $는 0과 1사이의 범위를 만족해야 합니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml84.PNG"/> 
+</figure>
+
+<p>기존의 선형 회귀 분석을 사용 할 때에 가설 함수 $ h _{\theta}(x) = \theta^{T}x $는 위에서 살펴본 예시와 같이 잘못된 결과를 가져올 수 있기 때문에 적합하지 않습니다. 따라서 로지스틱 회귀는 가설 함수를 $ h _{\theta}(x) = g(\theta^{T}x) $ 로 표현합니다.</p>
+<p>여기서 $ g(z) = \frac{1}{1+e^{-z}} $ 이고 이를 적용하면 다음과 같은 식과 그래프를 얻을 수 있습니다.</p>
+<p>$$ h _{\theta}(x) = \frac{1}{1+e^{-\theta^{T}x}} $$</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml85.PNG"/> 
+</figure>
+
+<p>이 그래프는 0과 1의 값만 나타내며 <strong>시그모이드 함수</strong> 혹은 <strong>로지스틱 함수</strong>로 불립니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml86.PNG"/> 
+</figure>
+
+<p>주어진 x에 대한 $ h _{\theta}(x) $의 결과값은 y=1 일 확률을 나타냅니다.</p>
+<p>종양 분류의 문제라고 생각하고 특정 크기의 종야을 가진 환자가 추가 됐다고 가정해봅니다. 환자들의 특징인 벡터 x를 추가하고 그 결과로 0.7의 값을 얻었습니다.</p>
+<p>여기서 이 가설이 말해주는 것은 특징 x를 가진 환자는 악성 종양(y=1)일 확률이 0.7 즉, 70%라는 것이고 양성 종양(y=0)일 확률은 30%라는 것을 알 수 있고 다음과 같이 표현 할 수 있습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml87.PNG"/> 
+</figure>
+
+<p></p>
+<hr>
+<h2 id="decision-boundary">Decision Boundary</h2>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml88.PNG"/> 
+</figure>
+
+<p>가설 함수 $ h _{\theta}(x) = \frac{1}{1+e^{-\theta^{T}x}} $ 에서 우리는 결과값이 0.5 이상일때 1, 0.5 미만이면 0의 값을 얻을 수 있습니다.</p>
+<p>다음 training set 을 확인해 봅니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml89.PNG"/> 
+</figure>
+
+<p>다음 가설 함수에서 $ \theta _{0} = {-3} $, $ \theta _{1} = {1} $, $ \theta _{2} = {1} $ 이라면</p>
+<p>$$ {-3} + x _{1} + x _{2} \geq {0} $$</p>
+<p>를 얻을 수 있습니다. 이는 $ x _{1} + x _{2} \geq {3} $ 이면 1, 그렇지 않으면 0으로 분류합니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml90.PNG"/> 
+</figure>
+
+<p>이때의 $ x _{1} + x _{2} = {3} $ 의 방정식이 Decision Boundary 입니다. Decision Boundary는 학습 데이터에 의해 결정되지 않고 $ \theta $ 에 의해 결정됩니다.</p>
+<p></p>
+<p>조금 더 복잡한 예제로 확인해 봅니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml91.PNG"/> 
+</figure>
+
+<p>우리는 로지스틱 회귀 분석에서 더 높은 차수의 다항식을 사용할 수 있습니다.</p>
+<p>다음 함수에서 $ \theta _{0} = {-1} $, $ \theta _{1} = {0} $, $ \theta _{2} = {0} $, $ \theta _{3} = {1} $, $ \theta _{4} = {1} $ 이라면 다음과 같은 식을 얻을 수 있습니다.</p>
+<p>$$ {-1} + x _{1}^{2} + x _{2}^{2} \geq {0} $$</p>
+<p>여기에서 우리는 다음과 같은 원 모양의 Decision boundary를 얻을 수 있습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml92.PNG"/> 
+</figure>
+
+<p>$$  x _{1}^{2} + x _{2}^{2} = {1} $$</p>
+<p></p>
+<p>이 외에도 더 복잡한 Decision boundary 를 얻을 수 있는 경우도 높은 차수의 다항식으로 얻을 수 있습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml93.PNG"/> 
+</figure>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/">코세라</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/coursera/">coursera</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/machinelearning/">machinelearning</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/andrewng/">AndrewNg</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/classification/">Classification</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/representation/">Representation</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/decisionboundary/">DecisionBoundary</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/hypothesisrepresentation/">HypothesisRepresentation</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/" data-tooltip="[Coursera][Muchine Learning] Octave 설치 및 Tutorial">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/02/courseramuchine-learning-classification-and-representation/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/02/courseramuchine-learning-classification-and-representation/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/02/courseramuchine-learning-classification-and-representation/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread"></div>
+<script>
+    
+
+    
+
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://min-velog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/" data-tooltip="[Coursera][Muchine Learning] Octave 설치 및 Tutorial">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/02/courseramuchine-learning-classification-and-representation/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/02/courseramuchine-learning-classification-and-representation/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/02/courseramuchine-learning-classification-and-representation/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F02%2Fcourseramuchine-learning-classification-and-representation%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F02%2Fcourseramuchine-learning-classification-and-representation%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F02%2Fcourseramuchine-learning-classification-and-representation%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Taewon Min</h4>
+    
+      <div id="about-card-bio">데이터 공부노트</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        None
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        South, Korea
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://mintaewon.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mintaewon.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/mintaewon.github.io\/2021\/02\/courseramuchine-learning-classification-and-representation\/';
+          
+            this.page.identifier = '\/2021\/02\/courseramuchine-learning-classification-and-representation\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'min-velog';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+  });
+  MathJax.Hub.Queue(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' &&
+          code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+    });
+</script>
+    
+  </body>
+</html>
+<footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</footer>

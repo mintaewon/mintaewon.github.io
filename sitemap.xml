@@ -3,37 +3,87 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/</loc>
-    <lastmod>2021-02-03T21:34:19+09:00</lastmod>
+    <loc>https://mintaewon.github.io/2021/02/courseramuchine-learning-classification-and-representation/</loc>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/andrewng/</loc>
-    <lastmod>2021-02-03T21:34:19+09:00</lastmod>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/categories/</loc>
-    <lastmod>2021-02-03T21:34:19+09:00</lastmod>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/classification/</loc>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/categories/coursera/</loc>
-    <lastmod>2021-02-03T21:34:19+09:00</lastmod>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/coursera/</loc>
-    <lastmod>2021-02-03T21:34:19+09:00</lastmod>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/decisionboundary/</loc>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/hypothesisrepresentation/</loc>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/machinelearning/</loc>
-    <lastmod>2021-02-03T21:34:19+09:00</lastmod>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/</loc>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/post/</loc>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/representation/</loc>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/study/</loc>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/</loc>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</loc>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</loc>
+    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/2021/02/courseramuchine-learning-octave-%EC%84%A4%EC%B9%98-%EB%B0%8F-tutorial/</loc>
     <lastmod>2021-02-03T21:34:19+09:00</lastmod>
   </url>
   
@@ -43,37 +93,12 @@
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/post/</loc>
-    <lastmod>2021-02-03T21:34:19+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/tags/programming/</loc>
     <lastmod>2021-02-03T21:34:19+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/categories/study/</loc>
-    <lastmod>2021-02-03T21:34:19+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/</loc>
-    <lastmod>2021-02-03T21:34:19+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/tags/vectorization/</loc>
-    <lastmod>2021-02-03T21:34:19+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</loc>
-    <lastmod>2021-02-03T21:34:19+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</loc>
     <lastmod>2021-02-03T21:34:19+09:00</lastmod>
   </url>
   
