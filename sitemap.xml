@@ -3,32 +3,107 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mintaewon.github.io/2021/02/courseramuchine-learning-logistic-regression-model-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/andrewng/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/costfunction/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/coursera/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/coursera/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/gradientdescent/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/logisticregression/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/machinelearning/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/multiclassclassification/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/post/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/study/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EA%B2%BD%EC%82%AC%ED%95%98%EA%B0%95%EB%B2%95/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1%ED%9A%8C%EA%B7%80/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</loc>
+    <lastmod>2021-02-08T09:42:05+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mintaewon.github.io/2021/02/courseramuchine-learning-classification-and-representation/</loc>
     <lastmod>2021-02-06T17:57:17+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/tags/andrewng/</loc>
-    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/categories/</loc>
-    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/tags/classification/</loc>
-    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/categories/coursera/</loc>
-    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/coursera/</loc>
     <lastmod>2021-02-06T17:57:17+09:00</lastmod>
   </url>
   
@@ -43,42 +118,7 @@
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/tags/machinelearning/</loc>
-    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/</loc>
-    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/post/</loc>
-    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/tags/representation/</loc>
-    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/categories/study/</loc>
-    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/</loc>
-    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</loc>
-    <lastmod>2021-02-06T17:57:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</loc>
     <lastmod>2021-02-06T17:57:17+09:00</lastmod>
   </url>
   
@@ -113,22 +153,12 @@
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/tags/gradientdescent/</loc>
-    <lastmod>2021-02-02T00:24:24+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/tags/normalequation/</loc>
     <lastmod>2021-02-02T00:24:24+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/normalequationnonivertibility/</loc>
-    <lastmod>2021-02-02T00:24:24+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/%EA%B2%BD%EC%82%AC%ED%95%98%EA%B0%95%EB%B2%95/</loc>
     <lastmod>2021-02-02T00:24:24+09:00</lastmod>
   </url>
   
@@ -213,17 +243,7 @@
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/tags/costfunction/</loc>
-    <lastmod>2021-01-26T18:25:11+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/tags/%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95/</loc>
-    <lastmod>2021-01-26T18:25:11+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/</loc>
     <lastmod>2021-01-26T18:25:11+09:00</lastmod>
   </url>
   
