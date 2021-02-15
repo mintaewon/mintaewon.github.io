@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Taewon Min">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Coursera][Muchine Learning] Solving the Problem of Overfitting">
+<meta name="twitter:title" content="[Coursera][Muchine Learning] Solving the Problem of Overfitting">
+<meta property="og:url" content="https://mintaewon.github.io/2021/02/courseramuchine-learning-solving-the-problem-of-overfitting/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2021/02/courseramuchine-learning-solving-the-problem-of-overfitting/">
+<meta property="og:site_name" content="MIN Velog">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2021-02-15T12:35:00">
+  
+  
+    <meta property="article:modified_time" content="2021-02-15T12:35:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Study">
+    
+      <meta property="article:section" content="Coursera">
+    
+  
+  
+    
+      <meta property="article:tag" content="코세라">
+    
+      <meta property="article:tag" content="coursera">
+    
+      <meta property="article:tag" content="머신러닝">
+    
+      <meta property="article:tag" content="machinelearning">
+    
+      <meta property="article:tag" content="AndrewNg">
+    
+      <meta property="article:tag" content="LogisticRegression">
+    
+      <meta property="article:tag" content="로지스틱회귀">
+    
+      <meta property="article:tag" content="Regularization">
+    
+      <meta property="article:tag" content="정규화">
+    
+      <meta property="article:tag" content="CostFunction">
+    
+      <meta property="article:tag" content="비용함수">
+    
+      <meta property="article:tag" content="GradientDescent">
+    
+      <meta property="article:tag" content="경사하강법">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+
+
+    <title>[Coursera][Muchine Learning] Solving the Problem of Overfitting</title>
+
+    <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://mintaewon.github.io/2021/02/courseramuchine-learning-solving-the-problem-of-overfitting/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-186281032-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mintaewon.github.io/">MIN Velog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mintaewon.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mintaewon.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Taewon Min</h4>
+        
+          <h5 class="sidebar-profile-bio">데이터 공부노트</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Python</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/rstudio">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Rstudio</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/study">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Study</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.tistory.com/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-fas fa-rss"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Mail</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Coursera][Muchine Learning] Solving the Problem of Overfitting
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-02-15T12:35:00&#43;09:00">
+        
+  February 15, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/study">Study</a>, 
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/coursera">Coursera</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <ul>
+<li><strong>이 포스팅은 Andrew Ng 교수님의 Machine Learning 강의를 정리했습니다.</strong></li>
+</ul>
+<hr>
+<h2 id="regularization--the-problem-of-overfitting">Regularization : The Problem of Overfitting</h2>
+<p>로지스틱 회귀(Logistic Regression)과 선형 회귀(Linear Regression) 알고리즘을 머신러닝 문제들에 적용시킬때, <strong>과적합(overfitting)</strong> 문제에 빠져 성능이 안나올 수 있습니다.</p>
+<p>계속 사용하던 집값 예측 문제를 통해 <strong>과적합(overfitting)</strong> 에 대해 알아봅니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml108.PNG"/> 
+</figure>
+
+<p>가장 왼쪽 그래프를 보면 데이터를 가로지르는 1차 함수를 그릴 수 있습니다. 하지만 집이 커질수록 집값이 완만하게 증가하는데에 비해 직선은 집이 커질수록 집값이 동일하게 커지는 것을 볼 수 있습니다. 그렇기 때문에 이 모델은 적합하지 않습니다. 이러한 문제를 과소적합(Underfitting) 또는 높은 편향(High bias)을 가지고 있다고 합니다.</p>
+<p></p>
+<p>가운데 있는 그래프는 2차 함수를 넣었습니다. 커브 모양으로 꽤 잘 맞는것을 볼 수 있습니다.</p>
+<p></p>
+<p>오른쪽 그래프는 좀 극단적인 예시인 4차 함수 그래프를 넣었습니다. 이 선은 데이터에는 잘 맞아 보이기 때문에 훈련용 데이터에 한해서는 좋은 성능을 낸다고 볼 수 있습니다. 하지만 새로운 데이터에 대한 일반화(Generalized)된 예측은 제대로 하지 못하는 문제가 발생합니다. 이러한 문제를 과적합(Overfitting) 또는 높은 분산(High variance)을 가지고 있다고 합니다.</p>
+<p></p>
+<p>여기까지는 선형 회귀에 대한 과적합 케이스였습니다. 과적합 문제는 로지스틱 회귀에서도 마찬가지 입니다. 로지스틱 회귀 예시를 확인해 보겠습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml109.PNG"/> 
+</figure>
+
+<p>로지스틱 회귀도 선형 회귀와 마찬가지로 왼쪽부터 과소적합, 적합, 과적합입니다. 차원이 높아질수록 과적합의 우려가 있기 때문에 적당한 차원의 다항식을 선택해야합니다.</p>
+<p></p>
+<p>과적합 문제를 해결하기 위해서는 크게 두 가지 방법이 있습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml110.PNG"/> 
+</figure>
+
+<ol>
+<li>특성의 갯수를 줄인다.</li>
+</ol>
+<p>특성들 중에 쓸만한 특성을 선별해 쓸만하지 않은 특성을 제거해 특성의 수를 줄이는 것이 과적합 문제를 해결할 방법으로 이용될 수 있습니다. 하지만 이 방법의 단점으로는 몇 가지 특성을 버리면서 문제에 포함된 정보를 같이 버리게 된다는 것입니다.</p>
+<ol start="2">
+<li>정규화(Regularization)</li>
+</ol>
+<p>모든 특성을 남기되 각각의 특성이 가지는 영향 규모를 줄이는 것입니다. ($ \theta$ 값이 미치는 영향 감소)</p>
+<p></p>
+<hr>
+<h2 id="regularization--cost-function">Regularization : Cost Function</h2>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml111.PNG"/> 
+</figure>
+
+<p>위의 내용에서 왼쪽 그래프(2차 함수)는 적합하고 오른쪽 그래프(높은 차수의 다항식)는 과적합이라고 설명했습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml112.PNG"/> 
+</figure>
+
+<p>위와 같은 높은 차수의 다항식에서 $ x^{3} $와 $ x^{4} $ 가 1000으로 큰 수를 가지고 있다고 하면 우리는 $ \theta _{3} $, $ \theta _{4} $ 를 0에 가깝게 만들어 4차함수를 2차 함수와 거의 같아지게 만들 수 있습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml113.PNG"/> 
+</figure>
+
+<p>$ \theta _{3} $, $ \theta _{4} $를 0에 가깝게 만들어 제거하는 것처럼 만들게 된다면 훨씬 더 나은 가설을 얻을 수 있습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml114.PNG"/> 
+</figure>
+
+<p>이러한 방법으로 모든 매개 변수에 적용하면 가설 함수를 더 단순화해 과적합 문제가 발생할 가능성을 줄일 수 있습니다. 왜 모든 $ \theta $ 값에 대해 최소화를 해야하는지 이해가 잘 되지 않겠지만 직접 구현해보기 전까지는 설명으로 이해하기 어렵습니다.</p>
+<p></p>
+<p>다음 주택 가격 예측 예시를 보겠습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml115.PNG"/> 
+</figure>
+
+<p>주택 가격 예측 feature 로 $ x _{1} $은 크기, $ x _{2} $는 침실의 수, $ x _{3} $은 층의 수 등등 100가지의 특징이 있을 수 있습니다. 우리는 이 특징 중 어떤 값을 선택해 줄여야 하는지 미리 알지 못합니다. 그렇기 때문에 정규화를 사용할 것입니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml116.PNG"/> 
+</figure>
+
+<p>i=1 부터 시작하기 때문에 $ \theta _{0} $은 포함하지 않습니다. $ \theta _{0} $ 을 포함하지 않아도 지장이 별로 없습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml117.PNG"/> 
+</figure>
+
+<p>비용 함수에 붙은 $  \lambda  \sum_ {j=1}^n \theta _{j}^2 $ 는정규화를 위한 수식이고 $ \lambda $는 정규화 매개 변수입니다. 정규화를 통해 기존의 굴곡이 많은 그래프를 좀더 원만하게 바꾸어 과적합을 방지할 수 있습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml118.PNG"/> 
+</figure>
+
+<p>만약 정규화 매개 변수 $ \lambda $ 가 매우 큰 값을 가지게 되면 $ \theta _{0} $을 제외하고 모두 0에 가까워 질 것입니다. 그렇게 된다면 $ h _{\theta}(x) = \theta _{0} $ 인 수평 직선을 얻을 수 있고 훈련 세트에 잘 맞지 않게됩니다.</p>
+<p></p>
+<hr>
+<h2 id="regularized-linear-regression">Regularized Linear Regression</h2>
+<ul>
+<li>
+<h3 id="gradient-descent">Gradient descent</h3>
+</li>
+</ul>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml119.PNG"/> 
+</figure>
+
+<p>우리는 이 정규화 된 비용 함수 $ J(\theta) $를 최소화하는 $ \theta $를 찾을 것입니다. 이전에는 정규화 식이 없는 비용 함수에 gradient descent 를 사용했습니다. 이를 유사하게 사용하면 됩니다.</p>
+<p>$ \theta _{0} $ 는 처벌하지 않기 때문에 따로 처리해줘야 합니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml120.PNG"/> 
+</figure>
+
+<p>여기서 $ {1} - \alpha \frac {\lambda}{m} &lt; {1} $ 이기 때문에 gradient descent 가 진행될 수록 $ \theta _{j} $ 는 감소하는 효과를 가지게됩니다.</p>
+<p></p>
+<ul>
+<li>
+<h3 id="normal-equation">Normal equation</h3>
+</li>
+</ul>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml121.PNG"/> 
+</figure>
+
+<p>X는 (n+1) 차원 행렬, y는 m 차원 벡터입니다. 정규화 된 Normal equation을 보면 다음과 같습니다.</p>
+<p>$$ \theta = (X^{T}X + \lambda \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; &hellip; &amp;0 \\ 0 &amp; 1 &amp; 0 &amp; &hellip; &amp;0 \\ 0 &amp; 0 &amp; 1 &amp; &hellip; &amp;0 \\ &hellip; &amp; &hellip; &amp; &hellip; &amp; &hellip; &amp;0 \\ 0 &amp; 0 &amp; 0 &amp; &hellip; &amp; 1 \end{bmatrix})^{-1}X^{T}y $$</p>
+<p>여기서 $ \lambda $ 에 곱해진 행렬은 (n+1) X (n+1) 차원 행렬입니다.</p>
+<p></p>
+<p>비 가역성(Non-invertibility) 문제를 살펴봅니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml122.PNG"/> 
+</figure>
+
+<p>$ m \leq n $ 일 때, $ X^{T}X $ 는 역행렬이 존재하지 않을 수 있습니다. 하지만 정규화를 사용하면 이러한 비 가역성 문제를 처리할 수 있습니다.</p>
+<p></p>
+<hr>
+<h2 id="regularized-logistic-regression">Regularized Logistic Regression</h2>
+<p>로지스틱 회귀 분석의 경우 gradient descent 와 Advanced Optimization 를 사용해 비용함수 $ J(\theta) $ 를 최적화하는 방법에 대해 배웠습니다.</p>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml123.PNG"/> 
+</figure>
+
+<p>로지스틱 회귀에서 위의 비용 함수는 과적합을 보였습니다. 여기에 정규화를 사용하기 위해서 $ \frac {\lambda}{2m} \sum _{j=1}^{n} \theta _{j}^{2} $ 를 기존 비용함수에 더해줍니다.</p>
+<p>최종적으로 비용함수는 다음과 같습니다.</p>
+<p>$$ J(\theta) = -[\frac {1}{m} \sum _{i=1}^{m}y^{(i)}log h _{\theta}(x^{(i)}) + (1 - y^{(i)}) log(1 - h _{\theta}(x^{(i)}))] $$</p>
+<p></p>
+<ul>
+<li>
+<h3 id="gradient-descent-1">Gradient descent</h3>
+</li>
+</ul>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml124.PNG"/> 
+</figure>
+
+<p>로지스틱 회귀의 정규화 된 gradient descent를 보면 정규화 된 선형 회귀와 동일해 보입니다. 하지만 여기에서 가설 함수는 $ h _{\theta}(x) = \frac {1}{1 + e^{-{\theta}^{T}x}} $ 이기 때문에 다르게 동작합니다.</p>
+<ul>
+<li>
+<h3 id="advanced-optimization">Advanced Optimization</h3>
+</li>
+</ul>
+<figure>
+    <img src="https://mintaewon.github.io/images/coursera/ml125.PNG"/> 
+</figure>
+
+<p>비용 함수 $ J(\theta) $ 를 계산하는 코드를 작성할 때, 끝에 $ \frac {\lambda}{2m} \sum _{j=1}^{n} \theta _{j}^{2} $ 를 포함시켜야 합니다. 위와 같은 과정을 거친 매개 변수는 정규화를 사용한 로지스틱 회귀 분석에 해당하는 매개 변수가 될 것입니다.</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/">코세라</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/coursera/">coursera</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/machinelearning/">machinelearning</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/andrewng/">AndrewNg</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/logisticregression/">LogisticRegression</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1%ED%9A%8C%EA%B7%80/">로지스틱회귀</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/regularization/">Regularization</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%A0%95%EA%B7%9C%ED%99%94/">정규화</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/costfunction/">CostFunction</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/">비용함수</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/gradientdescent/">GradientDescent</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EA%B2%BD%EC%82%AC%ED%95%98%EA%B0%95%EB%B2%95/">경사하강법</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/02/courseramuchine-learning-logistic-regression-model-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80/" data-tooltip="[Coursera][Muchine Learning] Logistic Regression Model 로지스틱 회귀">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/02/courseramuchine-learning-solving-the-problem-of-overfitting/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/02/courseramuchine-learning-solving-the-problem-of-overfitting/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/02/courseramuchine-learning-solving-the-problem-of-overfitting/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread"></div>
+<script>
+    
+
+    
+
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://min-velog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/02/courseramuchine-learning-logistic-regression-model-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80/" data-tooltip="[Coursera][Muchine Learning] Logistic Regression Model 로지스틱 회귀">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/02/courseramuchine-learning-solving-the-problem-of-overfitting/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/02/courseramuchine-learning-solving-the-problem-of-overfitting/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/02/courseramuchine-learning-solving-the-problem-of-overfitting/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F02%2Fcourseramuchine-learning-solving-the-problem-of-overfitting%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F02%2Fcourseramuchine-learning-solving-the-problem-of-overfitting%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F02%2Fcourseramuchine-learning-solving-the-problem-of-overfitting%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Taewon Min</h4>
+    
+      <div id="about-card-bio">데이터 공부노트</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        None
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        South, Korea
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://mintaewon.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mintaewon.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/mintaewon.github.io\/2021\/02\/courseramuchine-learning-solving-the-problem-of-overfitting\/';
+          
+            this.page.identifier = '\/2021\/02\/courseramuchine-learning-solving-the-problem-of-overfitting\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'min-velog';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+  });
+  MathJax.Hub.Queue(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' &&
+          code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+    });
+</script>
+    
+  </body>
+</html>
+<footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</footer>

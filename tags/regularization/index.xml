@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Regularization on MIN Velog</title>
+    <link>https://mintaewon.github.io/tags/regularization/</link>
+    <description>Recent content in Regularization on MIN Velog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 15 Feb 2021 12:35:00 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/regularization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Coursera][Muchine Learning] Solving the Problem of Overfitting</title>
+      <link>https://mintaewon.github.io/2021/02/courseramuchine-learning-solving-the-problem-of-overfitting/</link>
+      <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2021/02/courseramuchine-learning-solving-the-problem-of-overfitting/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
