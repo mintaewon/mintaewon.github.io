@@ -6,13 +6,67 @@
     <description>Recent content in Tags on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 15 Feb 2021 12:35:00 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Feb 2021 20:03:18 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AndrewNg</title>
       <link>https://mintaewon.github.io/tags/andrewng/</link>
-      <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
+      <pubDate>Thu, 25 Feb 2021 20:03:18 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/andrewng/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>coursera</title>
+      <link>https://mintaewon.github.io/tags/coursera/</link>
+      <pubDate>Thu, 25 Feb 2021 20:03:18 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/coursera/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MachineLearning</title>
+      <link>https://mintaewon.github.io/tags/machinelearning/</link>
+      <pubDate>Thu, 25 Feb 2021 20:03:18 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/machinelearning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NeuralNetworks</title>
+      <link>https://mintaewon.github.io/tags/neuralnetworks/</link>
+      <pubDate>Thu, 25 Feb 2021 20:03:18 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/neuralnetworks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>머신러닝</title>
+      <link>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</link>
+      <pubDate>Thu, 25 Feb 2021 20:03:18 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>인공신경망</title>
+      <link>https://mintaewon.github.io/tags/%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D/</link>
+      <pubDate>Thu, 25 Feb 2021 20:03:18 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>코세라</title>
+      <link>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</link>
+      <pubDate>Thu, 25 Feb 2021 20:03:18 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</guid>
       <description></description>
     </item>
     
@@ -22,15 +76,6 @@
       <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/costfunction/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>coursera</title>
-      <link>https://mintaewon.github.io/tags/coursera/</link>
-      <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/coursera/</guid>
       <description></description>
     </item>
     
@@ -49,15 +94,6 @@
       <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/logisticregression/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MachineLearning</title>
-      <link>https://mintaewon.github.io/tags/machinelearning/</link>
-      <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/machinelearning/</guid>
       <description></description>
     </item>
     
@@ -89,15 +125,6 @@
     </item>
     
     <item>
-      <title>머신러닝</title>
-      <link>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</link>
-      <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>비용함수</title>
       <link>https://mintaewon.github.io/tags/%EB%B9%84%EC%9A%A9%ED%95%A8%EC%88%98/</link>
       <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
@@ -112,15 +139,6 @@
       <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EC%A0%95%EA%B7%9C%ED%99%94/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>코세라</title>
-      <link>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</link>
-      <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</guid>
       <description></description>
     </item>
     
