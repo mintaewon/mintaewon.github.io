@@ -6,11 +6,11 @@
     <description>Recent content in Tags on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 27 Feb 2021 10:21:08 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Mar 2021 13:26:53 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AndrewNg</title>
       <link>https://mintaewon.github.io/tags/andrewng/</link>
-      <pubDate>Sat, 27 Feb 2021 10:21:08 +0900</pubDate>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/andrewng/</guid>
       <description></description>
@@ -19,7 +19,7 @@
     <item>
       <title>BackPropagation</title>
       <link>https://mintaewon.github.io/tags/backpropagation/</link>
-      <pubDate>Sat, 27 Feb 2021 10:21:08 +0900</pubDate>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/backpropagation/</guid>
       <description></description>
@@ -28,7 +28,7 @@
     <item>
       <title>coursera</title>
       <link>https://mintaewon.github.io/tags/coursera/</link>
-      <pubDate>Sat, 27 Feb 2021 10:21:08 +0900</pubDate>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/coursera/</guid>
       <description></description>
@@ -37,16 +37,25 @@
     <item>
       <title>ForwardPropagation</title>
       <link>https://mintaewon.github.io/tags/forwardpropagation/</link>
-      <pubDate>Sat, 27 Feb 2021 10:21:08 +0900</pubDate>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/forwardpropagation/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>GradientDescent</title>
+      <link>https://mintaewon.github.io/tags/gradientdescent/</link>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/gradientdescent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>MachineLearning</title>
       <link>https://mintaewon.github.io/tags/machinelearning/</link>
-      <pubDate>Sat, 27 Feb 2021 10:21:08 +0900</pubDate>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/machinelearning/</guid>
       <description></description>
@@ -55,16 +64,25 @@
     <item>
       <title>NeuralNetworks</title>
       <link>https://mintaewon.github.io/tags/neuralnetworks/</link>
-      <pubDate>Sat, 27 Feb 2021 10:21:08 +0900</pubDate>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/neuralnetworks/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>경사하강법</title>
+      <link>https://mintaewon.github.io/tags/%EA%B2%BD%EC%82%AC%ED%95%98%EA%B0%95%EB%B2%95/</link>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%EA%B2%BD%EC%82%AC%ED%95%98%EA%B0%95%EB%B2%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>머신러닝</title>
       <link>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</link>
-      <pubDate>Sat, 27 Feb 2021 10:21:08 +0900</pubDate>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</guid>
       <description></description>
@@ -73,7 +91,7 @@
     <item>
       <title>순전파</title>
       <link>https://mintaewon.github.io/tags/%EC%88%9C%EC%A0%84%ED%8C%8C/</link>
-      <pubDate>Sat, 27 Feb 2021 10:21:08 +0900</pubDate>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EC%88%9C%EC%A0%84%ED%8C%8C/</guid>
       <description></description>
@@ -82,7 +100,7 @@
     <item>
       <title>역전파</title>
       <link>https://mintaewon.github.io/tags/%EC%97%AD%EC%A0%84%ED%8C%8C/</link>
-      <pubDate>Sat, 27 Feb 2021 10:21:08 +0900</pubDate>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EC%97%AD%EC%A0%84%ED%8C%8C/</guid>
       <description></description>
@@ -91,7 +109,7 @@
     <item>
       <title>인공신경망</title>
       <link>https://mintaewon.github.io/tags/%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D/</link>
-      <pubDate>Sat, 27 Feb 2021 10:21:08 +0900</pubDate>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D/</guid>
       <description></description>
@@ -100,7 +118,7 @@
     <item>
       <title>코세라</title>
       <link>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</link>
-      <pubDate>Sat, 27 Feb 2021 10:21:08 +0900</pubDate>
+      <pubDate>Tue, 02 Mar 2021 13:26:53 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</guid>
       <description></description>
@@ -112,15 +130,6 @@
       <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/costfunction/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>GradientDescent</title>
-      <link>https://mintaewon.github.io/tags/gradientdescent/</link>
-      <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/gradientdescent/</guid>
       <description></description>
     </item>
     
@@ -139,15 +148,6 @@
       <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/regularization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>경사하강법</title>
-      <link>https://mintaewon.github.io/tags/%EA%B2%BD%EC%82%AC%ED%95%98%EA%B0%95%EB%B2%95/</link>
-      <pubDate>Mon, 15 Feb 2021 12:35:00 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/%EA%B2%BD%EC%82%AC%ED%95%98%EA%B0%95%EB%B2%95/</guid>
       <description></description>
     </item>
     
