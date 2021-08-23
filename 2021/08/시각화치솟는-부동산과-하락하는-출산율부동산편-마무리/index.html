@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Taewon Min">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[시각화]치솟는 부동산과 하락하는 출산율(부동산편)&#43;마무리">
+<meta name="twitter:title" content="[시각화]치솟는 부동산과 하락하는 출산율(부동산편)&#43;마무리">
+<meta property="og:url" content="https://mintaewon.github.io/2021/08/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EB%B6%80%EB%8F%99%EC%82%B0%ED%8E%B8-%EB%A7%88%EB%AC%B4%EB%A6%AC/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2021/08/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EB%B6%80%EB%8F%99%EC%82%B0%ED%8E%B8-%EB%A7%88%EB%AC%B4%EB%A6%AC/">
+<meta property="og:site_name" content="MIN Velog">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2021-08-22T17:23:33">
+  
+  
+    <meta property="article:modified_time" content="2021-08-22T17:23:33">
+  
+  
+  
+    
+      <meta property="article:section" content="Python">
+    
+  
+  
+    
+      <meta property="article:tag" content="저출산">
+    
+      <meta property="article:tag" content="출산률">
+    
+      <meta property="article:tag" content="경제">
+    
+      <meta property="article:tag" content="부동산">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+
+
+    <title>[시각화]치솟는 부동산과 하락하는 출산율(부동산편)&#43;마무리</title>
+
+    <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://mintaewon.github.io/2021/08/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EB%B6%80%EB%8F%99%EC%82%B0%ED%8E%B8-%EB%A7%88%EB%AC%B4%EB%A6%AC/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-186281032-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mintaewon.github.io/">MIN Velog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mintaewon.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mintaewon.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Taewon Min</h4>
+        
+          <h5 class="sidebar-profile-bio">데이터 공부노트</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Python</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/rstudio">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Rstudio</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/study">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Study</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.tistory.com/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-fas fa-rss"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Mail</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [시각화]치솟는 부동산과 하락하는 출산율(부동산편)&#43;마무리
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-08-22T17:23:33&#43;09:00">
+        
+  August 22, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/python">Python</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>이전 포스팅에서는 인구에 대한 데이터를 시각화 해봤습니다. 이번 포스팅에서는 부동산과 관련된 데이터를 시각화 하면서 상관관계가 있는지 알아보겠습니다.</p>
+<h1 id="2-부동산">2. 부동산</h1>
+<p>부동산 가격의 지표 변화를 확인해봅니다.</p>
+<br>
+<hr>
+<h3 id="21-데이터-확보">2.1. 데이터 확보</h3>
+<ul>
+<li>부동산 가격과 관련이 있는 전세, 매매등의 가격 지수 데이터를 확보합니다.</li>
+<li><a href="https://ecos.bok.or.kr/">한국은행 경제통계시스템</a> 에서 관련 데이터를 원하는 형태로 받을 수 있습니다.</li>
+</ul>
+<br>
+<hr>
+<h3 id="22-데이터-확인-및-시각화">2.2. 데이터 확인 및 시각화</h3>
+<h4 id="221-주택매매가격지수">2.2.1. 주택매매가격지수</h4>
+<ul>
+<li>유형별 주택매매 가격지수를 확인해봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">df4&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.read_csv(<span style="color:#EC7600">'주택매매가격지수(2019.01=100).csv'</span>,&nbsp;encoding<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'cp949'</span>,&nbsp;skipfooter<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">9</span>,&nbsp;skiprows<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">3</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">df4.head()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f21.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>데이터의 기간은 1986년 1월부터 2021녀 6월 까지있습니다.</li>
+<li>지수의 기준은 2019년 1월입니다.</li>
+<li>컬럼명과 날짜를 변경해줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Column&nbsp;명&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">re_columns<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'시점'</span>,&nbsp;<span style="color:#EC7600">'총지수'</span>,&nbsp;<span style="color:#EC7600">'총지수(서울)'</span>,&nbsp;<span style="color:#EC7600">'단독주택'</span>,&nbsp;<span style="color:#EC7600">'연립주택'</span>,&nbsp;<span style="color:#EC7600">'아파트'</span>,&nbsp;<span style="color:#EC7600">'아파트(서울)'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">df4.columns<span style="color:#A082BD"></span><span style="color:#93C763">=</span>re_columns</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;시점을&nbsp;datetime&nbsp;으로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">df4[<span style="color:#EC7600">'시점'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.to_datetime(df4[<span style="color:#EC7600">'시점'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df4.head()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f22.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>시각화를 진행해봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">15</span>,<span style="color:#FFCD22">8</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df4.plot(x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'시점'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;축&nbsp;제거</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'left'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'right'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'top'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x,&nbsp;y축&nbsp;label&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xlabel(<span style="color:#EC7600">'시점(단위&nbsp;:&nbsp;년)'</span>,loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_ylabel(<span style="color:#EC7600">'가격&nbsp;지수&nbsp;(2019.01=100)'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;grid&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.grid(axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'y'</span>,&nbsp;ls<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">':'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;범례&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(ncol<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">2</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">12</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></td></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f23.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>가격 지수의 기준점을 그래프에 text로 표기해 줍니다.</li>
+<li>text를 삽입에는 다양한 방법이 존재하지만 annotate를 사용하겠습니다.</li>
+<li>matplotlib의 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html">공식문서</a>에서 parameter들을 자세하게 확인할 수 있습니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div><div style="line-height:130%">24</div><div style="line-height:130%">25</div><div style="line-height:130%">26</div><div style="line-height:130%">27</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">15</span>,<span style="color:#FFCD22">8</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df4.plot(x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'시점'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;축&nbsp;제거</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'left'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'right'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'top'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;기준점&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.annotate(<span style="color:#EC7600">'2019.01=100'</span>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xy<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#EC7600">'2019-01-01'</span>,&nbsp;<span style="color:#FFCD22">100.</span><span style="color:#FFCD22">5</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xytext<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#EC7600">'2017-01-01'</span>,&nbsp;<span style="color:#FFCD22">110</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrowprops<span style="color:#A082BD"></span><span style="color:#93C763">=</span>{<span style="color:#EC7600">'facecolor'</span>:<span style="color:#EC7600">'gray'</span>,&nbsp;<span style="color:#EC7600">'arrowstyle'</span>:<span style="color:#EC7600">'-|&gt;'</span>},</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horizontalalignment<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'center'</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">15</span>,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'black'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x,&nbsp;y축&nbsp;label&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xlabel(<span style="color:#EC7600">'시점(단위&nbsp;:&nbsp;년)'</span>,loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_ylabel(<span style="color:#EC7600">'가격&nbsp;지수&nbsp;(2019.01=100)'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;grid&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.grid(axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'y'</span>,&nbsp;ls<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">':'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;범례&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(ncol<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">2</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">12</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f24.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>전체적으로 가격 지수가 상승중인 것을 파악할 수 있습니다.</li>
+<li>가장 눈에 띄는 <strong>서울 아파트</strong>는 가격 지수의 변동폭이 상당히 크고 최근 급격하게 상승중인 것을 알 수 있습니다.</li>
+<li>모든 가격 지수의 모양이 비슷한 패턴을 보이고 있기 때문에 이 부분은 특정 년도의 정보를 찾아봐야 할 것 같습니다.</li>
+</ul>
+<br>
+<br>
+<hr>
+<h4 id="222-주택전세가격지수">2.2.2. 주택전세가격지수</h4>
+<ul>
+<li>주택전세가격지수는 다른 양상을 보이는지 확인해봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">df5&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.read_csv(<span style="color:#EC7600">'주택전세가격지수(2019.01=100).csv'</span>,&nbsp;encoding<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'cp949'</span>,&nbsp;skipfooter<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">9</span>,&nbsp;skiprows<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">3</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">df5.head()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f25.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>지수의 기준은 2019년 1월입니다.</li>
+<li>컬럼명과 날짜를 변경해줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Column&nbsp;명&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">re_columns<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'시점'</span>,&nbsp;<span style="color:#EC7600">'총지수'</span>,&nbsp;<span style="color:#EC7600">'총지수(서울)'</span>,&nbsp;<span style="color:#EC7600">'단독주택'</span>,&nbsp;<span style="color:#EC7600">'연립주택'</span>,&nbsp;<span style="color:#EC7600">'아파트'</span>,&nbsp;<span style="color:#EC7600">'아파트(서울)'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">df5.columns&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;re_columns</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;시점을&nbsp;datetime&nbsp;으로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">df5[<span style="color:#EC7600">'시점'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.to_datetime(df5[<span style="color:#EC7600">'시점'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df5.head()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f26.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>마찬가지로 시각화를 진행해 변화를 확인해봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div><div style="line-height:130%">24</div><div style="line-height:130%">25</div><div style="line-height:130%">26</div><div style="line-height:130%">27</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">15</span>,<span style="color:#FFCD22">8</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df5.plot(x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'시점'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;축&nbsp;제거</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'left'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'right'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'top'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;기준점&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.annotate(<span style="color:#EC7600">'2019.01=100'</span>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xy<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#EC7600">'2019-01-01'</span>,&nbsp;<span style="color:#FFCD22">100.</span><span style="color:#FFCD22">5</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xytext<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#EC7600">'2017-01-01'</span>,&nbsp;<span style="color:#FFCD22">110</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrowprops<span style="color:#A082BD"></span><span style="color:#93C763">=</span>{<span style="color:#EC7600">'facecolor'</span>:<span style="color:#EC7600">'gray'</span>,&nbsp;<span style="color:#EC7600">'arrowstyle'</span>:<span style="color:#EC7600">'-|&gt;'</span>},</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horizontalalignment<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'center'</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">15</span>,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'black'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x,&nbsp;y축&nbsp;label&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xlabel(<span style="color:#EC7600">'시점(단위&nbsp;:&nbsp;년)'</span>,loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_ylabel(<span style="color:#EC7600">'가격&nbsp;지수&nbsp;(2019.01=100)'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;grid&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.grid(axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'y'</span>,&nbsp;ls<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">':'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;범례&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(ncol<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">2</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">12</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f27.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>전세가격도 전체적으로 꾸준히 상승중인 것을 확인 할 수 있습니다.</li>
+<li>전세가격 또한 서울과 서울 아파트의 가격 지수가 가파르게 증가하는 것을 볼 수 있습니다.</li>
+</ul>
+<br>
+<hr>
+<h4 id="223-지역별-아파트-실거래-가격지수">2.2.3. 지역별 아파트 실거래 가격지수</h4>
+<ul>
+<li>주택매매와 전세 가격지수를 보면 특히나 아파트가 가파르게 증가하고 있는것을 확인했습니다.</li>
+<li>지역별로 아파트 실거래 가격지수를 확인해 봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">df6&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.read_csv(<span style="color:#EC7600">'아파트실거래가격지수(2017.11=100).csv'</span>,&nbsp;encoding<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'CP949'</span>,&nbsp;skiprows<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">3</span>,&nbsp;skipfooter<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">11</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">df6.head()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f28.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>마찬가지로 컬럼명과 날짜를 변경해줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;Column&nbsp;명&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">column_name&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'시점'</span>,&nbsp;<span style="color:#EC7600">'전국'</span>,&nbsp;<span style="color:#EC7600">'서울'</span>,&nbsp;<span style="color:#EC7600">'수도권'</span>,&nbsp;<span style="color:#EC7600">'지방'</span>,&nbsp;<span style="color:#EC7600">'부산'</span>,&nbsp;<span style="color:#EC7600">'대구'</span>,&nbsp;<span style="color:#EC7600">'인천'</span>,&nbsp;<span style="color:#EC7600">'광주'</span>,&nbsp;<span style="color:#EC7600">'대전'</span>,&nbsp;<span style="color:#EC7600">'울산'</span>,&nbsp;<span style="color:#EC7600">'세종'</span>,&nbsp;<span style="color:#EC7600">'경기'</span>,&nbsp;<span style="color:#EC7600">'강원'</span>,&nbsp;<span style="color:#EC7600">'충북'</span>,&nbsp;<span style="color:#EC7600">'충남'</span>,&nbsp;<span style="color:#EC7600">'전북'</span>,&nbsp;<span style="color:#EC7600">'전남'</span>,&nbsp;<span style="color:#EC7600">'경북'</span>,&nbsp;<span style="color:#EC7600">'경남'</span>,&nbsp;<span style="color:#EC7600">'제주'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">df6.columns<span style="color:#A082BD"></span><span style="color:#93C763">=</span>column_name</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;시점을&nbsp;datetime&nbsp;으로&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">df6[<span style="color:#EC7600">'시점'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.to_datetime(df6[<span style="color:#EC7600">'시점'</span>])</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df6.head()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f29.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>시각화를 진행합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div><div style="line-height:130%">24</div><div style="line-height:130%">25</div><div style="line-height:130%">26</div><div style="line-height:130%">27</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">15</span>,<span style="color:#FFCD22">8</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df6.plot(x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'시점'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;축&nbsp;제거</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'left'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'right'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'top'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;기준점&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.annotate(<span style="color:#EC7600">'2017.11=100'</span>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xy<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#EC7600">'2017-11-01'</span>,&nbsp;<span style="color:#FFCD22">100.</span><span style="color:#FFCD22">5</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xytext<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#EC7600">'2017-01-01'</span>,&nbsp;<span style="color:#FFCD22">120</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrowprops<span style="color:#A082BD"></span><span style="color:#93C763">=</span>{<span style="color:#EC7600">'facecolor'</span>:<span style="color:#EC7600">'gray'</span>,&nbsp;<span style="color:#EC7600">'arrowstyle'</span>:<span style="color:#EC7600">'-|&gt;'</span>},</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horizontalalignment<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'center'</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">15</span>,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'black'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x,&nbsp;y&nbsp;축&nbsp;label&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xlabel(<span style="color:#EC7600">'시점(단위&nbsp;:&nbsp;년)'</span>,loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_ylabel(<span style="color:#EC7600">'가격&nbsp;지수&nbsp;(2017.11=100)'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;grid&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.grid(axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'y'</span>,&nbsp;ls<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">':'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;범례&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(ncol<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">3</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">12</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f30.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>지역별로 나눠서 보니 남다른 상승폭을 가지고 있는 지역들이 몇개 보입니다.</li>
+<li>지역을 크게 나눠서 확인해봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div><div style="line-height:130%">24</div><div style="line-height:130%">25</div><div style="line-height:130%">26</div><div style="line-height:130%">27</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">15</span>,<span style="color:#FFCD22">8</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df6.plot(x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'시점'</span>,y<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'전국'</span>,&nbsp;<span style="color:#EC7600">'서울'</span>,&nbsp;<span style="color:#EC7600">'수도권'</span>,&nbsp;<span style="color:#EC7600">'지방'</span>],&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;축&nbsp;제거</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'left'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'right'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'top'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;기준점&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.annotate(<span style="color:#EC7600">'2017.11=100'</span>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xy<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#EC7600">'2017-11-01'</span>,&nbsp;<span style="color:#FFCD22">100.</span><span style="color:#FFCD22">5</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xytext<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#EC7600">'2017-01-01'</span>,&nbsp;<span style="color:#FFCD22">120</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrowprops<span style="color:#A082BD"></span><span style="color:#93C763">=</span>{<span style="color:#EC7600">'facecolor'</span>:<span style="color:#EC7600">'gray'</span>,&nbsp;<span style="color:#EC7600">'arrowstyle'</span>:<span style="color:#EC7600">'-|&gt;'</span>},</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horizontalalignment<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'center'</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">15</span>,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'black'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x,&nbsp;y&nbsp;축&nbsp;label&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xlabel(<span style="color:#EC7600">'시점(단위&nbsp;:&nbsp;년)'</span>,loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_ylabel(<span style="color:#EC7600">'가격&nbsp;지수&nbsp;(2017.11=100)'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;grid&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.grid(axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'y'</span>,&nbsp;ls<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">':'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;범례&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(ncol<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">4</span>,&nbsp;loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'upper&nbsp;center'</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">12</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f31.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>
+<p>전국으로 봤을 때에도 상승세이지만, 지방에 비해 수도권의 상승세가 가파른 것을 확인할 수 있습니다.</p>
+</li>
+<li>
+<p>특별시와 광역시로도 확인해봅니다.</p>
+</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div><div style="line-height:130%">24</div><div style="line-height:130%">25</div><div style="line-height:130%">26</div><div style="line-height:130%">27</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">15</span>,<span style="color:#FFCD22">8</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df6.plot(x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'시점'</span>,y<span style="color:#A082BD"></span><span style="color:#93C763">=</span>[<span style="color:#EC7600">'서울'</span>,&nbsp;<span style="color:#EC7600">'인천'</span>,&nbsp;<span style="color:#EC7600">'대전'</span>,&nbsp;<span style="color:#EC7600">'대구'</span>,&nbsp;<span style="color:#EC7600">'광주'</span>,&nbsp;<span style="color:#EC7600">'부산'</span>,&nbsp;<span style="color:#EC7600">'울산'</span>],&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;축&nbsp;제거</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'left'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'right'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'top'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;기준점&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.annotate(<span style="color:#EC7600">'2017.11=100'</span>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xy<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#EC7600">'2017-11-01'</span>,&nbsp;<span style="color:#FFCD22">100.</span><span style="color:#FFCD22">5</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xytext<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#EC7600">'2017-01-01'</span>,&nbsp;<span style="color:#FFCD22">120</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrowprops<span style="color:#A082BD"></span><span style="color:#93C763">=</span>{<span style="color:#EC7600">'facecolor'</span>:<span style="color:#EC7600">'gray'</span>,&nbsp;<span style="color:#EC7600">'arrowstyle'</span>:<span style="color:#EC7600">'-|&gt;'</span>},</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horizontalalignment<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'center'</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">15</span>,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'black'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x,&nbsp;y&nbsp;축&nbsp;label&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xlabel(<span style="color:#EC7600">'시점(단위&nbsp;:&nbsp;년)'</span>,loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_ylabel(<span style="color:#EC7600">'가격&nbsp;지수&nbsp;(2017.11=100)'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;grid&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.grid(axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'y'</span>,&nbsp;ls<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">':'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;범례&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(ncol<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">4</span>,&nbsp;loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'upper&nbsp;center'</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">12</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f32.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>다른 광역시에 비해 서울의 아파트 가격이 급격하게 상승하고 있는 것을 볼 수 있습니다.</li>
+</ul>
+<br>
+<hr>
+<h4 id="224-가계대출-현황">2.2.4. 가계대출 현황</h4>
+<ul>
+<li>부동산을 구매할 때, 일반적인 경우에는 대출이 필수적입니다.</li>
+<li>부동산의 가격은 계속해서 상승하고 있으므로 대출의 현황도 살펴보도록 하겠습니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">df7&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;pd.read_csv(<span style="color:#EC7600">'가계대출현황.csv'</span>,&nbsp;encoding<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'CP949'</span>,&nbsp;skiprows<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">3</span>,&nbsp;skipfooter<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">7</span>,&nbsp;thousands<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">','</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">df7.head()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f33.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>컬럼명을 변경해줍니다.</li>
+<li>가계대출 데이터는 분기별로 나누어져 있습니다.</li>
+<li>가계대출에 주택담보대출이 포함되어있습니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;column&nbsp;명&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">re_columns&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[<span style="color:#EC7600">'시점'</span>,&nbsp;<span style="color:#EC7600">'가계대출(십억원)'</span>,&nbsp;<span style="color:#EC7600">'주택담보대출(십억원)'</span>,&nbsp;<span style="color:#EC7600">'기타대출(십억원)'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">df7.columns&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;re_columns</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df7.head()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f34.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>가계 대출에서 주택담보대출이 차지하는 비중을 보기위해 시각화를 진행합니다.</li>
+<li>y축 ticklabel의 값을 조 단위로 변경해줍니다.</li>
+<li>x축 ticklabel의 값은 년도 뒷 2자리를 표현해주고 아래에 분기 Q를 붙여서 표기해줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div><div style="line-height:130%">24</div><div style="line-height:130%">25</div><div style="line-height:130%">26</div><div style="line-height:130%">27</div><div style="line-height:130%">28</div><div style="line-height:130%">29</div><div style="line-height:130%">30</div><div style="line-height:130%">31</div><div style="line-height:130%">32</div><div style="line-height:130%">33</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">17</span>,<span style="color:#FFCD22">10</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;축&nbsp;제거</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'left'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'right'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'top'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df7[[<span style="color:#EC7600">'시점'</span>,&nbsp;<span style="color:#EC7600">'가계대출(십억원)'</span>]].plot.bar(x&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#EC7600">'시점'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'가계대출(십억원)'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'cornflowerblue'</span>,&nbsp;label<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'가계대출'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">df7[[<span style="color:#EC7600">'시점'</span>,&nbsp;<span style="color:#EC7600">'주택담보대출(십억원)'</span>]].plot.bar(x&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#EC7600">'시점'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'주택담보대출(십억원)'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'darkorange'</span>,&nbsp;label<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'주택담보대출'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;y축&nbsp;ticklabel&nbsp;표시&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">yticks&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;ax.get_yticks()</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_yticks(yticks)</div><div style="padding:0 6px; white-space:pre; line-height:130%">yticklabels&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[f<span style="color:#EC7600">'{x//1000:.0f}조&nbsp;원'</span>&nbsp;<span style="color:#93C763">for</span>&nbsp;x&nbsp;<span style="color:#93C763">in</span>&nbsp;yticks]</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_yticklabels(yticklabels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;y축&nbsp;ticklabel&nbsp;표시&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">xticks&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;ax.get_xticks()</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xticks(xticks)</div><div style="padding:0 6px; white-space:pre; line-height:130%">xticklabels&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[(f<span style="color:#EC7600">'{i[2:4]}'</span><span style="color:#A082BD"></span><span style="color:#93C763">+</span><span style="color:#EC7600">'\n'</span><span style="color:#A082BD"></span><span style="color:#93C763">+</span>&nbsp;f<span style="color:#EC7600">'{i[5:6]}Q'</span>)&nbsp;<span style="color:#93C763">for</span>&nbsp;i&nbsp;<span style="color:#93C763">in</span>&nbsp;df7[<span style="color:#EC7600">'시점'</span>]]</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xticklabels(xticklabels,&nbsp;rotation<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">0</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;grid&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.grid(axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'y'</span>,&nbsp;linestyle<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">':'</span>,&nbsp;which<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'major'</span>)&nbsp;<span style="color:#919191">#&nbsp;y축&nbsp;grid&nbsp;추가</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x축&nbsp;label&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xlabel(<span style="color:#EC7600">'시점(단위&nbsp;:&nbsp;년)'</span>,loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;범례&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(ncol<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">2</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">12</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f35.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>가계 대출과 주택담보대출은 지속적으로 늘어나고 있습니다.</li>
+<li>그래프 상으로 가계대출 중 주택담보대출이 차지하는 비율은 일정해보입니다.</li>
+<li>좀 더 자세하게 알아보기 위해 주택담보대출이 차지하는 비율을 나타내는 변수를 만들어 그래프에 추가해봅니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;가계대출&nbsp;중&nbsp;주택담보대출&nbsp;비중</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">df7[<span style="color:#EC7600">'주택담보대출비중(%)'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;round(df7[<span style="color:#EC7600">'주택담보대출(십억원)'</span>]<span style="color:#A082BD"></span><span style="color:#93C763">/</span>df7[<span style="color:#EC7600">'가계대출(십억원)'</span>]<span style="color:#A082BD"></span><span style="color:#93C763">*</span><span style="color:#FFCD22">100</span>,&nbsp;<span style="color:#FFCD22">1</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">df7.head()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f36.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>소수점 1자리 까지 나타내주고 그래프에 추가합니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div><div style="line-height:130%">24</div><div style="line-height:130%">25</div><div style="line-height:130%">26</div><div style="line-height:130%">27</div><div style="line-height:130%">28</div><div style="line-height:130%">29</div><div style="line-height:130%">30</div><div style="line-height:130%">31</div><div style="line-height:130%">32</div><div style="line-height:130%">33</div><div style="line-height:130%">34</div><div style="line-height:130%">35</div><div style="line-height:130%">36</div><div style="line-height:130%">37</div><div style="line-height:130%">38</div><div style="line-height:130%">39</div><div style="line-height:130%">40</div><div style="line-height:130%">41</div><div style="line-height:130%">42</div><div style="line-height:130%">43</div><div style="line-height:130%">44</div><div style="line-height:130%">45</div><div style="line-height:130%">46</div><div style="line-height:130%">47</div><div style="line-height:130%">48</div><div style="line-height:130%">49</div><div style="line-height:130%">50</div><div style="line-height:130%">51</div><div style="line-height:130%">52</div><div style="line-height:130%">53</div><div style="line-height:130%">54</div><div style="line-height:130%">55</div><div style="line-height:130%">56</div><div style="line-height:130%">57</div><div style="line-height:130%">58</div><div style="line-height:130%">59</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">17</span>,<span style="color:#FFCD22">10</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;축&nbsp;제거</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'left'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'right'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'top'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df7[[<span style="color:#EC7600">'시점'</span>,&nbsp;<span style="color:#EC7600">'가계대출(십억원)'</span>]].plot.bar(x&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#EC7600">'시점'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'가계대출(십억원)'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'lightgray'</span>,&nbsp;label<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'가계대출'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">df7[[<span style="color:#EC7600">'시점'</span>,&nbsp;<span style="color:#EC7600">'주택담보대출(십억원)'</span>]].plot.bar(x&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#EC7600">'시점'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'주택담보대출(십억원)'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'sandybrown'</span>,&nbsp;label<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'주택담보대출'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;오른쪽에&nbsp;축&nbsp;추가&nbsp;후&nbsp;주택담보대출&nbsp;비중&nbsp;변수&nbsp;추가</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;ax.twinx()</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.plot(df7[<span style="color:#EC7600">'시점'</span>],&nbsp;df7[<span style="color:#EC7600">'주택담보대출비중(%)'</span>],<span style="color:#EC7600">'o-'</span>,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'brown'</span>,&nbsp;label<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'주택담보대출&nbsp;비중'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.spines[<span style="color:#EC7600">'left'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.spines[<span style="color:#EC7600">'right'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.spines[<span style="color:#EC7600">'top'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.set_ylim(<span style="color:#FFCD22">20</span>,<span style="color:#FFCD22">100</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.axis(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;주택담보대출&nbsp;비중&nbsp;값&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;j&nbsp;<span style="color:#93C763">in</span>&nbsp;<span style="color:#93C763">range</span>(<span style="color:#FFCD22">0</span>,&nbsp;df7.shape[<span style="color:#FFCD22">0</span>],&nbsp;<span style="color:#FFCD22">6</span>):</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;ax_add.annotate(f<span style="color:#EC7600">'{df7["주택담보대출비중(%)"].iloc[j]}%'</span>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xy<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(j,&nbsp;df7[<span style="color:#EC7600">'주택담보대출비중(%)'</span>].iloc[j]<span style="color:#A082BD"></span><span style="color:#93C763">+</span><span style="color:#FFCD22">0.</span><span style="color:#FFCD22">1</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xytext<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(j,&nbsp;df7[<span style="color:#EC7600">'주택담보대출비중(%)'</span>].iloc[j]<span style="color:#A082BD"></span><span style="color:#93C763">+</span><span style="color:#FFCD22">2</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrowprops<span style="color:#A082BD"></span><span style="color:#93C763">=</span>{<span style="color:#EC7600">'facecolor'</span>:<span style="color:#EC7600">'gray'</span>,&nbsp;<span style="color:#EC7600">'arrowstyle'</span>:<span style="color:#EC7600">'-'</span>},</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horizontalalignment<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'center'</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">15</span>,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'brown'</span>,&nbsp;alpha<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">0.</span><span style="color:#FFCD22">8</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.annotate(f<span style="color:#EC7600">'{df7["주택담보대출비중(%)"][df7.index[-1]]}%'</span>,</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xy<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(df7.index[<span style="color:#A082BD"></span><span style="color:#93C763">-</span><span style="color:#FFCD22">1</span>],&nbsp;df7[<span style="color:#EC7600">'주택담보대출비중(%)'</span>][df7.index[-1]]<span style="color:#A082BD"></span><span style="color:#93C763">+</span><span style="color:#FFCD22">0.</span><span style="color:#FFCD22">1</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xytext<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(df7.index[<span style="color:#A082BD"></span><span style="color:#93C763">-</span><span style="color:#FFCD22">1</span>],&nbsp;df7[<span style="color:#EC7600">'주택담보대출비중(%)'</span>][df7.index[-1]]<span style="color:#A082BD"></span><span style="color:#93C763">+</span><span style="color:#FFCD22">2</span>),</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrowprops<span style="color:#A082BD"></span><span style="color:#93C763">=</span>{<span style="color:#EC7600">'facecolor'</span>:<span style="color:#EC7600">'gray'</span>,&nbsp;<span style="color:#EC7600">'arrowstyle'</span>:<span style="color:#EC7600">'-'</span>},</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horizontalalignment<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'center'</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">15</span>,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'brown'</span>,&nbsp;alpha<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">0.</span><span style="color:#FFCD22">8</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;y축&nbsp;ticklabel&nbsp;표시&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">yticks&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;ax.get_yticks()</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_yticks(yticks)</div><div style="padding:0 6px; white-space:pre; line-height:130%">yticklabels&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[f<span style="color:#EC7600">'{x//1000:.0f}조&nbsp;원'</span>&nbsp;<span style="color:#93C763">for</span>&nbsp;x&nbsp;<span style="color:#93C763">in</span>&nbsp;yticks]</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_yticklabels(yticklabels)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_ylim(<span style="color:#FFCD22">0</span>,<span style="color:#FFCD22">1800000</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x축&nbsp;ticklabel&nbsp;표시&nbsp;변경</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">xticks&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;ax.get_xticks()</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xticks(xticks)</div><div style="padding:0 6px; white-space:pre; line-height:130%">xticklabels&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;[(f<span style="color:#EC7600">'{i[2:4]}'</span><span style="color:#A082BD"></span><span style="color:#93C763">+</span><span style="color:#EC7600">'\n'</span><span style="color:#A082BD"></span><span style="color:#93C763">+</span>&nbsp;f<span style="color:#EC7600">'{i[5:6]}Q'</span>)&nbsp;<span style="color:#93C763">for</span>&nbsp;i&nbsp;<span style="color:#93C763">in</span>&nbsp;df7[<span style="color:#EC7600">'시점'</span>]]</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xticklabels(xticklabels,&nbsp;rotation<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">0</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;grid&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.grid(axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'y'</span>,&nbsp;linestyle<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">':'</span>,&nbsp;which<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'major'</span>)&nbsp;<span style="color:#919191">#&nbsp;y축&nbsp;grid&nbsp;추가</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x축&nbsp;label&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xlabel(<span style="color:#EC7600">'시점(단위&nbsp;:&nbsp;년)'</span>,loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;범례&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(ncol<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">2</span>,&nbsp;loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'upper&nbsp;center'</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">13</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.legend(loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'center&nbsp;left'</span>,&nbsp;bbox_to_anchor<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">0.</span><span style="color:#FFCD22">04</span>,&nbsp;<span style="color:#FFCD22">0.</span><span style="color:#FFCD22">55</span>),&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">13</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f37.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>가계대출이 늘어나는만큼 주택담보대출도 늘어나고있습니다.</li>
+<li>이와같이 일정한 증가율을 보이는 이유는  금융당국에서 가계부채 증가율을 관리하고 있기 때문입니다.</li>
+<li>최근에는 빠르게 증가하는 가계부채로 인해 대출을 중단하는 등 규제를 시행하고 있습니다. <a href="https://www.hankyung.com/economy/article/2021082073436">관련기사</a></li>
+</ul>
+<br>
+<hr>
+<h3 id="23-혼인율-및-출산율과-부동산-가격의-관계">2.3. 혼인율 및 출산율과 부동산 가격의 관계</h3>
+<ul>
+<li>인구동향 데이터와 부동산 데이터를 함께 그리고 비교해보도록 합니다.</li>
+<li>인구동향 데이터에서 <code>조혼인율</code>과 <code>합계출산율</code> 을 사용하고 부동산 데이터에서는 <code>주택매매가격 총지수</code>와 <code>주택전세가격 총지수</code> 를 사용합니다.</li>
+<li>부동산 데이터는 1986년~ 2020년 까지의 데이터만 존재하므로 시점을 맞춰줍니다.</li>
+</ul>
+
+
+<div class="colorscripter-code" style="color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#22282A;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div><div style="line-height:130%">24</div><div style="line-height:130%">25</div><div style="line-height:130%">26</div><div style="line-height:130%">27</div><div style="line-height:130%">28</div><div style="line-height:130%">29</div><div style="line-height:130%">30</div><div style="line-height:130%">31</div><div style="line-height:130%">32</div><div style="line-height:130%">33</div><div style="line-height:130%">34</div><div style="line-height:130%">35</div><div style="line-height:130%">36</div><div style="line-height:130%">37</div><div style="line-height:130%">38</div><div style="line-height:130%">39</div><div style="line-height:130%">40</div><div style="line-height:130%">41</div><div style="line-height:130%">42</div><div style="line-height:130%">43</div><div style="line-height:130%">44</div><div style="line-height:130%">45</div><div style="line-height:130%">46</div><div style="line-height:130%">47</div><div style="line-height:130%">48</div><div style="line-height:130%">49</div><div style="line-height:130%">50</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#F1F2F3;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">fig,&nbsp;ax&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;plt.subplots(figsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">17</span>,<span style="color:#FFCD22">10</span>))</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df4.plot(x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'시점'</span>,y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'총지수'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'tab:green'</span>,&nbsp;label<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'주택매매가격지수'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">df5.plot(x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'시점'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'총지수'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'tab:brown'</span>,&nbsp;label<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'주택전세가격지수'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;ax.twinx()</div><div style="padding:0 6px; white-space:pre; line-height:130%">df1.plot(x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'시점'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'합계출산율(명)'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax_add,&nbsp;marker<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'.'</span>,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'tab:blue'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add2&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;ax.twinx()</div><div style="padding:0 6px; white-space:pre; line-height:130%">df1.plot(x<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'시점'</span>,&nbsp;y<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'조혼인율(천명당)'</span>,&nbsp;ax<span style="color:#A082BD"></span><span style="color:#93C763">=</span>ax_add2,&nbsp;marker<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'.'</span>,&nbsp;color<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'tab:orange'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;축&nbsp;제거</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'left'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'right'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.spines[<span style="color:#EC7600">'top'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.spines[<span style="color:#EC7600">'left'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.spines[<span style="color:#EC7600">'right'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.spines[<span style="color:#EC7600">'top'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.axis(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add2.spines[<span style="color:#EC7600">'left'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add2.spines[<span style="color:#EC7600">'right'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add2.spines[<span style="color:#EC7600">'top'</span>].set_visible(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add2.axis(<span style="color:#93C763">False</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;합계출산율과&nbsp;조혼인율의&nbsp;값&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;i&nbsp;<span style="color:#93C763">in</span>&nbsp;<span style="color:#93C763">range</span>(df1[df1[<span style="color:#EC7600">'시점'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#EC7600">'1986-01-01'</span>].index[<span style="color:#FFCD22">0</span>],&nbsp;df1[df1[<span style="color:#EC7600">'시점'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#EC7600">'2020-01-01'</span>].index[<span style="color:#FFCD22">0</span>],<span style="color:#FFCD22">3</span>):</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;ax_add.text(df1[<span style="color:#EC7600">'시점'</span>][i],&nbsp;df1[<span style="color:#EC7600">'합계출산율(명)'</span>][i]<span style="color:#A082BD"></span><span style="color:#93C763">+</span><span style="color:#FFCD22">0.</span><span style="color:#FFCD22">1</span>,&nbsp;f<span style="color:#EC7600">"{df1['합계출산율(명)'][i]:.2f}명"</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">13</span>,&nbsp;ha<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'center'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#93C763">for</span>&nbsp;i&nbsp;<span style="color:#93C763">in</span>&nbsp;<span style="color:#93C763">range</span>(df1[df1[<span style="color:#EC7600">'시점'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#EC7600">'1986-01-01'</span>].index[<span style="color:#FFCD22">0</span>],&nbsp;df1[df1[<span style="color:#EC7600">'시점'</span>]&nbsp;<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#A082BD"></span><span style="color:#93C763">=</span>&nbsp;<span style="color:#EC7600">'2020-01-01'</span>].index[<span style="color:#FFCD22">0</span>],<span style="color:#FFCD22">3</span>):</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;ax_add2.text(df1[<span style="color:#EC7600">'시점'</span>][i],&nbsp;df1[<span style="color:#EC7600">'조혼인율(천명당)'</span>][i]<span style="color:#A082BD"></span><span style="color:#93C763">+</span><span style="color:#FFCD22">0.</span><span style="color:#FFCD22">2</span>,&nbsp;f<span style="color:#EC7600">"{df1['조혼인율(천명당)'][i]:.1f}건"</span>,&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">13</span>,&nbsp;ha<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'center'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x,&nbsp;y&nbsp;축&nbsp;범위&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_ylim(<span style="color:#FFCD22">0</span>,<span style="color:#FFCD22">120</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.set_xlim(<span style="color:#EC7600">'1986-01-01'</span>,&nbsp;<span style="color:#EC7600">'2020-01-01'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.set_ylim(<span style="color:#FFCD22">0</span>,<span style="color:#FFCD22">5</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add2.set_xlim(<span style="color:#EC7600">'1986-01-01'</span>,&nbsp;<span style="color:#EC7600">'2020-01-01'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add2.set_ylim(<span style="color:#FFCD22">0</span>,<span style="color:#FFCD22">12</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;x,&nbsp;y&nbsp;축&nbsp;label&nbsp;표시</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_xlabel(<span style="color:#EC7600">'시점(단위&nbsp;:&nbsp;년)'</span>,loc<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'right'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.set_ylabel(<span style="color:#EC7600">'가격&nbsp;지수&nbsp;(2019.01=100)'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;grid&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.grid(axis<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">'y'</span>,ls<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#EC7600">':'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#919191">#&nbsp;범례&nbsp;설정</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">ax.legend(bbox_to_anchor<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">0.</span><span style="color:#FFCD22">9</span>,<span style="color:#FFCD22">0.</span><span style="color:#FFCD22">8</span>),&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">12</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add.legend(bbox_to_anchor<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">0.</span><span style="color:#FFCD22">4</span>,<span style="color:#FFCD22">0.</span><span style="color:#FFCD22">25</span>),&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">12</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">ax_add2.legend(bbox_to_anchor<span style="color:#A082BD"></span><span style="color:#93C763">=</span>(<span style="color:#FFCD22">0.</span><span style="color:#FFCD22">32</span>,<span style="color:#FFCD22">0.</span><span style="color:#FFCD22">8</span>),&nbsp;fontsize<span style="color:#A082BD"></span><span style="color:#93C763">=</span><span style="color:#FFCD22">12</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">plt.show()</div></div></tr></table></div>
+
+
+<figure>
+    <img src="https://mintaewon.github.io/images/fertility/f38.JPG"/> 
+</figure>
+
+<br>
+<br>
+<ul>
+<li>일반적으로 합계출산율은 혼인율이 감소하면서 함께 줄어든다고 생각할 수 있습니다.</li>
+<li>혼인율과 부동산 가격 지수들을 비교하면 두 변수가 <strong>반비례</strong> 관계로 보이긴 합니다.</li>
+</ul>
+<br>
+<hr>
+<h1 id="3-결론">3. 결론</h1>
+<br>
+<ul>
+<li>
+<p>큰 흐름으로 혼인율은 우하향 하고 있고 부동산 가격은 우상향 하고 있습니다.</p>
+</li>
+<li>
+<p>하지만 부동산 가격이 내려간다고해서 혼인율과 출산율이 올라간다는 근거가 부족하다고 생각합니다.</p>
+</li>
+<li>
+<p>그렇기 때문에 <strong>&ldquo;집 값이 비싸서 결혼을 하기 부담스럽다.&quot;</strong> 라는 말은 조금 애매한 부분이 있습니다.</p>
+</li>
+<li>
+<p>실제로 전세자금대출이나 주택구입자금대출은 신혼부부가 유리한 면도 있기 때문입니다.</p>
+</li>
+<li>
+<p>하지만 수 많은 사람들이 느끼고 있기 때문에 원인 중 하나라고 볼 수 있을 것 같습니다.</p>
+</li>
+<li>
+<p>더 나아가 생각해야 할 점은 <strong>&ldquo;과연 부동산 가격이 안정화 되서 혼인율이 올라가면 저출산 문제가 해결될까?&quot;</strong> 입니다.</p>
+</li>
+</ul>
+<br>
+<hr>
+<h1 id="4-느낀점">4. 느낀점</h1>
+<br>
+<p>저출산이라는 문제를 알아보기 위해 시작했지만 사회 문제는 여러가지 문제들이 복합적으로 얽혀있어 단순히 부동산만의 문제라고 보기에는 애매하다는 결론이 나왔습니다. 인구와 부동산 또한 각 분야의 지식을 갖추고 있어야 더 많은 관련된 자료를 확인 할 수 있는 것 같습니다.</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%A0%80%EC%B6%9C%EC%82%B0/">저출산</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%B6%9C%EC%82%B0%EB%A5%A0/">출산률</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EA%B2%BD%EC%A0%9C/">경제</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%B6%80%EB%8F%99%EC%82%B0/">부동산</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/07/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EC%9D%B8%EA%B5%AC%ED%8E%B8/" data-tooltip="[시각화]치솟는 부동산과 하락하는 출산율(인구편)">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/08/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EB%B6%80%EB%8F%99%EC%82%B0%ED%8E%B8-%EB%A7%88%EB%AC%B4%EB%A6%AC/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/08/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EB%B6%80%EB%8F%99%EC%82%B0%ED%8E%B8-%EB%A7%88%EB%AC%B4%EB%A6%AC/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/08/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EB%B6%80%EB%8F%99%EC%82%B0%ED%8E%B8-%EB%A7%88%EB%AC%B4%EB%A6%AC/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread"></div>
+<script>
+    
+
+    
+
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://min-velog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/07/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EC%9D%B8%EA%B5%AC%ED%8E%B8/" data-tooltip="[시각화]치솟는 부동산과 하락하는 출산율(인구편)">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/08/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EB%B6%80%EB%8F%99%EC%82%B0%ED%8E%B8-%EB%A7%88%EB%AC%B4%EB%A6%AC/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/08/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EB%B6%80%EB%8F%99%EC%82%B0%ED%8E%B8-%EB%A7%88%EB%AC%B4%EB%A6%AC/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/08/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EB%B6%80%EB%8F%99%EC%82%B0%ED%8E%B8-%EB%A7%88%EB%AC%B4%EB%A6%AC/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F08%2F%25EC%258B%259C%25EA%25B0%2581%25ED%2599%2594%25EC%25B9%2598%25EC%2586%259F%25EB%258A%2594-%25EB%25B6%2580%25EB%258F%2599%25EC%2582%25B0%25EA%25B3%25BC-%25ED%2595%2598%25EB%259D%25BD%25ED%2595%2598%25EB%258A%2594-%25EC%25B6%259C%25EC%2582%25B0%25EC%259C%25A8%25EB%25B6%2580%25EB%258F%2599%25EC%2582%25B0%25ED%258E%25B8-%25EB%25A7%2588%25EB%25AC%25B4%25EB%25A6%25AC%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F08%2F%25EC%258B%259C%25EA%25B0%2581%25ED%2599%2594%25EC%25B9%2598%25EC%2586%259F%25EB%258A%2594-%25EB%25B6%2580%25EB%258F%2599%25EC%2582%25B0%25EA%25B3%25BC-%25ED%2595%2598%25EB%259D%25BD%25ED%2595%2598%25EB%258A%2594-%25EC%25B6%259C%25EC%2582%25B0%25EC%259C%25A8%25EB%25B6%2580%25EB%258F%2599%25EC%2582%25B0%25ED%258E%25B8-%25EB%25A7%2588%25EB%25AC%25B4%25EB%25A6%25AC%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F08%2F%25EC%258B%259C%25EA%25B0%2581%25ED%2599%2594%25EC%25B9%2598%25EC%2586%259F%25EB%258A%2594-%25EB%25B6%2580%25EB%258F%2599%25EC%2582%25B0%25EA%25B3%25BC-%25ED%2595%2598%25EB%259D%25BD%25ED%2595%2598%25EB%258A%2594-%25EC%25B6%259C%25EC%2582%25B0%25EC%259C%25A8%25EB%25B6%2580%25EB%258F%2599%25EC%2582%25B0%25ED%258E%25B8-%25EB%25A7%2588%25EB%25AC%25B4%25EB%25A6%25AC%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Taewon Min</h4>
+    
+      <div id="about-card-bio">데이터 공부노트</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        None
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        South, Korea
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://mintaewon.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mintaewon.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/mintaewon.github.io\/2021\/08\/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EB%B6%80%EB%8F%99%EC%82%B0%ED%8E%B8-%EB%A7%88%EB%AC%B4%EB%A6%AC\/';
+          
+            this.page.identifier = '\/2021\/08\/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EB%B6%80%EB%8F%99%EC%82%B0%ED%8E%B8-%EB%A7%88%EB%AC%B4%EB%A6%AC\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'min-velog';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+  });
+  MathJax.Hub.Queue(function() {
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' &&
+          code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+    });
+</script>
+    
+  </body>
+</html>
+<footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Taewon Min. All Rights Reserved
+  </span>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</footer>
