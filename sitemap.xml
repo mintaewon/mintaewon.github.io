@@ -3,32 +3,97 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mintaewon.github.io/2021/12/python-itertools%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%88%9C%EC%97%B4%EA%B3%BC-%EC%A1%B0%ED%95%A9-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/combinations/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/combinations_with_replacement/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/itertools/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/library/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/permutations/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/post/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/product/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/python/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/python/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EC%88%9C%EC%97%B4/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EC%A1%B0%ED%95%A9/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mintaewon.github.io/2021/08/%EC%8B%9C%EA%B0%81%ED%99%94%EC%B9%98%EC%86%9F%EB%8A%94-%EB%B6%80%EB%8F%99%EC%82%B0%EA%B3%BC-%ED%95%98%EB%9D%BD%ED%95%98%EB%8A%94-%EC%B6%9C%EC%82%B0%EC%9C%A8%EB%B6%80%EB%8F%99%EC%82%B0%ED%8E%B8-%EB%A7%88%EB%AC%B4%EB%A6%AC/</loc>
     <lastmod>2021-08-22T17:23:33+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/categories/</loc>
-    <lastmod>2021-08-22T17:23:33+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/</loc>
-    <lastmod>2021-08-22T17:23:33+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/post/</loc>
-    <lastmod>2021-08-22T17:23:33+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/categories/python/</loc>
-    <lastmod>2021-08-22T17:23:33+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/</loc>
+    <loc>https://mintaewon.github.io/categories/visualization/</loc>
     <lastmod>2021-08-22T17:23:33+09:00</lastmod>
   </url>
   
@@ -368,22 +433,12 @@
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/tags/python/</loc>
-    <lastmod>2021-01-17T14:56:04+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/tags/%EB%B2%94%EC%A3%BC%ED%98%95%EB%B3%80%EC%88%98/</loc>
     <lastmod>2021-01-17T14:56:04+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/%EC%9B%90%ED%95%AB%EC%9D%B8%EC%BD%94%EB%94%A9/</loc>
-    <lastmod>2021-01-17T14:56:04+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</loc>
     <lastmod>2021-01-17T14:56:04+09:00</lastmod>
   </url>
   

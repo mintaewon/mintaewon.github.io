@@ -6,7 +6,97 @@
     <description>Recent content in Tags on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 22 Aug 2021 17:23:33 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>combinations</title>
+      <link>https://mintaewon.github.io/tags/combinations/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/combinations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>combinations_with_replacement</title>
+      <link>https://mintaewon.github.io/tags/combinations_with_replacement/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/combinations_with_replacement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>itertools</title>
+      <link>https://mintaewon.github.io/tags/itertools/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/itertools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>permutations</title>
+      <link>https://mintaewon.github.io/tags/permutations/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/permutations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>product</title>
+      <link>https://mintaewon.github.io/tags/product/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/product/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://mintaewon.github.io/tags/python/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>라이브러리</title>
+      <link>https://mintaewon.github.io/tags/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>순열</title>
+      <link>https://mintaewon.github.io/tags/%EC%88%9C%EC%97%B4/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%EC%88%9C%EC%97%B4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>조합</title>
+      <link>https://mintaewon.github.io/tags/%EC%A1%B0%ED%95%A9/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%EC%A1%B0%ED%95%A9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>파이썬</title>
+      <link>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>경제</title>
       <link>https://mintaewon.github.io/tags/%EA%B2%BD%EC%A0%9C/</link>
@@ -467,15 +557,6 @@
     </item>
     
     <item>
-      <title>Python</title>
-      <link>https://mintaewon.github.io/tags/python/</link>
-      <pubDate>Sun, 17 Jan 2021 14:56:04 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>범주형변수</title>
       <link>https://mintaewon.github.io/tags/%EB%B2%94%EC%A3%BC%ED%98%95%EB%B3%80%EC%88%98/</link>
       <pubDate>Sun, 17 Jan 2021 14:56:04 +0900</pubDate>
@@ -490,15 +571,6 @@
       <pubDate>Sun, 17 Jan 2021 14:56:04 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EC%9B%90%ED%95%AB%EC%9D%B8%EC%BD%94%EB%94%A9/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>파이썬</title>
-      <link>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</link>
-      <pubDate>Sun, 17 Jan 2021 14:56:04 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</guid>
       <description></description>
     </item>
     
