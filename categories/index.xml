@@ -6,22 +6,22 @@
     <description>Recent content in Categories on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 02 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mintaewon.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Dec 2021 20:51:20 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Library</title>
-      <link>https://mintaewon.github.io/categories/library/</link>
-      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      <title>Python</title>
+      <link>https://mintaewon.github.io/categories/python/</link>
+      <pubDate>Fri, 03 Dec 2021 20:51:20 +0900</pubDate>
       
-      <guid>https://mintaewon.github.io/categories/library/</guid>
+      <guid>https://mintaewon.github.io/categories/python/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Python</title>
-      <link>https://mintaewon.github.io/categories/python/</link>
-      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      <title>문법</title>
+      <link>https://mintaewon.github.io/categories/%EB%AC%B8%EB%B2%95/</link>
+      <pubDate>Fri, 03 Dec 2021 20:51:20 +0900</pubDate>
       
-      <guid>https://mintaewon.github.io/categories/python/</guid>
+      <guid>https://mintaewon.github.io/categories/%EB%AC%B8%EB%B2%95/</guid>
       <description></description>
     </item>
     
