@@ -6,7 +6,16 @@
     <description>Recent content in Study on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 02 Mar 2021 13:26:53 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/categories/study/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Jan 2022 13:40:53 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/categories/study/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>경사 하강법(Gradient Descent) 이해하기</title>
+      <link>https://mintaewon.github.io/2022/01/%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95gradient-descent-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/</link>
+      <pubDate>Fri, 21 Jan 2022 13:40:53 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2022/01/%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95gradient-descent-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>[Coursera][Muchine Learning] Backpropagation in Practice</title>
       <link>https://mintaewon.github.io/2021/03/courseramuchine-learning-backpropagation-in-practice/</link>
