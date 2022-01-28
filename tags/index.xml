@@ -6,7 +6,61 @@
     <description>Recent content in Tags on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 21 Jan 2022 13:40:53 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 Jan 2022 13:01:55 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>for문</title>
+      <link>https://mintaewon.github.io/tags/for%EB%AC%B8/</link>
+      <pubDate>Fri, 28 Jan 2022 13:01:55 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/for%EB%AC%B8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://mintaewon.github.io/tags/python/</link>
+      <pubDate>Fri, 28 Jan 2022 13:01:55 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tqdm</title>
+      <link>https://mintaewon.github.io/tags/tqdm/</link>
+      <pubDate>Fri, 28 Jan 2022 13:01:55 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/tqdm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>반복문</title>
+      <link>https://mintaewon.github.io/tags/%EB%B0%98%EB%B3%B5%EB%AC%B8/</link>
+      <pubDate>Fri, 28 Jan 2022 13:01:55 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%EB%B0%98%EB%B3%B5%EB%AC%B8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>작업진행도</title>
+      <link>https://mintaewon.github.io/tags/%EC%9E%91%EC%97%85%EC%A7%84%ED%96%89%EB%8F%84/</link>
+      <pubDate>Fri, 28 Jan 2022 13:01:55 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%EC%9E%91%EC%97%85%EC%A7%84%ED%96%89%EB%8F%84/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>파이썬</title>
+      <link>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</link>
+      <pubDate>Fri, 28 Jan 2022 13:01:55 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Differentiation</title>
       <link>https://mintaewon.github.io/tags/differentiation/</link>
@@ -80,15 +134,6 @@
     </item>
     
     <item>
-      <title>Python</title>
-      <link>https://mintaewon.github.io/tags/python/</link>
-      <pubDate>Fri, 03 Dec 2021 20:51:20 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>rjust</title>
       <link>https://mintaewon.github.io/tags/rjust/</link>
       <pubDate>Fri, 03 Dec 2021 20:51:20 +0900</pubDate>
@@ -121,15 +166,6 @@
       <pubDate>Fri, 03 Dec 2021 20:51:20 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>파이썬</title>
-      <link>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</link>
-      <pubDate>Fri, 03 Dec 2021 20:51:20 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</guid>
       <description></description>
     </item>
     
