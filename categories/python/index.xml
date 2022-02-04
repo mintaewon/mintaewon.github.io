@@ -6,7 +6,16 @@
     <description>Recent content in Python on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 28 Jan 2022 13:01:55 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Feb 2022 19:27:40 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Python] plot에 text 넣기 (matplotlib, text, annotate)</title>
+      <link>https://mintaewon.github.io/2022/02/python-plot%EC%97%90-text-%EB%84%A3%EA%B8%B0-matplotlib-text-annotate/</link>
+      <pubDate>Fri, 04 Feb 2022 19:27:40 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2022/02/python-plot%EC%97%90-text-%EB%84%A3%EA%B8%B0-matplotlib-text-annotate/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>[Python] 작업의 진행도를 확인할 수 있는 tqdm 모듈</title>
       <link>https://mintaewon.github.io/2022/01/python-%EC%9E%91%EC%97%85%EC%9D%98-%EC%A7%84%ED%96%89%EB%8F%84%EB%A5%BC-%ED%99%95%EC%9D%B8%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-tqdm-%EB%AA%A8%EB%93%88/</link>

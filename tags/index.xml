@@ -6,22 +6,85 @@
     <description>Recent content in Tags on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 28 Jan 2022 13:01:55 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Feb 2022 19:27:40 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>for문</title>
-      <link>https://mintaewon.github.io/tags/for%EB%AC%B8/</link>
-      <pubDate>Fri, 28 Jan 2022 13:01:55 +0900</pubDate>
+      <title>annotate</title>
+      <link>https://mintaewon.github.io/tags/annotate/</link>
+      <pubDate>Fri, 04 Feb 2022 19:27:40 +0900</pubDate>
       
-      <guid>https://mintaewon.github.io/tags/for%EB%AC%B8/</guid>
+      <guid>https://mintaewon.github.io/tags/annotate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>matplotlib</title>
+      <link>https://mintaewon.github.io/tags/matplotlib/</link>
+      <pubDate>Fri, 04 Feb 2022 19:27:40 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/matplotlib/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>plot</title>
+      <link>https://mintaewon.github.io/tags/plot/</link>
+      <pubDate>Fri, 04 Feb 2022 19:27:40 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/plot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
       <link>https://mintaewon.github.io/tags/python/</link>
-      <pubDate>Fri, 28 Jan 2022 13:01:55 +0900</pubDate>
+      <pubDate>Fri, 04 Feb 2022 19:27:40 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>text</title>
+      <link>https://mintaewon.github.io/tags/text/</link>
+      <pubDate>Fri, 04 Feb 2022 19:27:40 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/text/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>visualization</title>
+      <link>https://mintaewon.github.io/tags/visualization/</link>
+      <pubDate>Fri, 04 Feb 2022 19:27:40 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/visualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>시각화</title>
+      <link>https://mintaewon.github.io/tags/%EC%8B%9C%EA%B0%81%ED%99%94/</link>
+      <pubDate>Fri, 04 Feb 2022 19:27:40 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%EC%8B%9C%EA%B0%81%ED%99%94/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>파이썬</title>
+      <link>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</link>
+      <pubDate>Fri, 04 Feb 2022 19:27:40 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>for문</title>
+      <link>https://mintaewon.github.io/tags/for%EB%AC%B8/</link>
+      <pubDate>Fri, 28 Jan 2022 13:01:55 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/for%EB%AC%B8/</guid>
       <description></description>
     </item>
     
@@ -49,15 +112,6 @@
       <pubDate>Fri, 28 Jan 2022 13:01:55 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EC%9E%91%EC%97%85%EC%A7%84%ED%96%89%EB%8F%84/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>파이썬</title>
-      <link>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</link>
-      <pubDate>Fri, 28 Jan 2022 13:01:55 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</guid>
       <description></description>
     </item>
     

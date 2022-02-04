@@ -3,42 +3,82 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mintaewon.github.io/2022/02/python-plot%EC%97%90-text-%EB%84%A3%EA%B8%B0-matplotlib-text-annotate/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/annotate/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/matplotlib/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/plot/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/post/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/python/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/python/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/text/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/visualization/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EC%8B%9C%EA%B0%81%ED%99%94/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</loc>
+    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mintaewon.github.io/2022/01/python-%EC%9E%91%EC%97%85%EC%9D%98-%EC%A7%84%ED%96%89%EB%8F%84%EB%A5%BC-%ED%99%95%EC%9D%B8%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-tqdm-%EB%AA%A8%EB%93%88/</loc>
     <lastmod>2022-01-28T13:01:55+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/categories/</loc>
-    <lastmod>2022-01-28T13:01:55+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/tags/for%EB%AC%B8/</loc>
-    <lastmod>2022-01-28T13:01:55+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/</loc>
-    <lastmod>2022-01-28T13:01:55+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/post/</loc>
-    <lastmod>2022-01-28T13:01:55+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/python/</loc>
-    <lastmod>2022-01-28T13:01:55+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/categories/python/</loc>
-    <lastmod>2022-01-28T13:01:55+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/</loc>
     <lastmod>2022-01-28T13:01:55+09:00</lastmod>
   </url>
   
@@ -54,11 +94,6 @@
   
   <url>
     <loc>https://mintaewon.github.io/tags/%EC%9E%91%EC%97%85%EC%A7%84%ED%96%89%EB%8F%84/</loc>
-    <lastmod>2022-01-28T13:01:55+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</loc>
     <lastmod>2022-01-28T13:01:55+09:00</lastmod>
   </url>
   
