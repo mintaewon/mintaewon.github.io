@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>추천 알고리즘 on MIN Velog</title>
+    <link>https://mintaewon.github.io/tags/%EC%B6%94%EC%B2%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</link>
+    <description>Recent content in 추천 알고리즘 on MIN Velog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 14 Apr 2022 13:14:19 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/%EC%B6%94%EC%B2%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>추천시스템(Recommender System) 데이터와 추천 알고리즘</title>
+      <link>https://mintaewon.github.io/2022/04/%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-%EC%B6%94%EC%B2%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</link>
+      <pubDate>Thu, 14 Apr 2022 13:14:19 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2022/04/%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-%EC%B6%94%EC%B2%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

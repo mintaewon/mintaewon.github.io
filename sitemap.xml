@@ -3,6 +3,91 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mintaewon.github.io/categories/</loc>
+    <lastmod>2022-04-14T13:14:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/collaborativefiltering/</loc>
+    <lastmod>2022-04-14T13:14:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/</loc>
+    <lastmod>2022-04-14T13:14:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/post/</loc>
+    <lastmod>2022-04-14T13:14:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/recommender-system/</loc>
+    <lastmod>2022-04-14T13:14:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/recsys/</loc>
+    <lastmod>2022-04-14T13:14:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/recsys/</loc>
+    <lastmod>2022-04-14T13:14:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/</loc>
+    <lastmod>2022-04-14T13:14:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EC%B6%94%EC%B2%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
+    <lastmod>2022-04-14T13:14:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C/</loc>
+    <lastmod>2022-04-14T13:14:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/2022/04/%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-%EC%B6%94%EC%B2%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
+    <lastmod>2022-04-14T13:14:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/%ED%98%91%EC%97%85%ED%95%84%ED%84%B0%EB%A7%81/</loc>
+    <lastmod>2022-04-14T13:14:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/category/</loc>
+    <lastmod>2022-02-11T11:34:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/subcategory/</loc>
+    <lastmod>2022-02-11T11:34:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/tag1/</loc>
+    <lastmod>2022-02-11T11:34:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/tags/tag2/</loc>
+    <lastmod>2022-02-11T11:34:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/2022/02/%EB%8B%A4%EC%96%91%ED%95%9C-%EC%9C%A0%EC%82%AC%EB%8F%84-%EA%B8%B0%EB%B2%95/</loc>
+    <lastmod>2022-02-11T11:34:58+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mintaewon.github.io/2022/02/python-plot%EC%97%90-text-%EB%84%A3%EA%B8%B0-matplotlib-text-annotate/</loc>
     <lastmod>2022-02-04T19:27:40+09:00</lastmod>
   </url>
@@ -13,27 +98,12 @@
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/categories/</loc>
-    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/tags/matplotlib/</loc>
     <lastmod>2022-02-04T19:27:40+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mintaewon.github.io/</loc>
-    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mintaewon.github.io/tags/plot/</loc>
-    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/post/</loc>
     <lastmod>2022-02-04T19:27:40+09:00</lastmod>
   </url>
   
@@ -44,11 +114,6 @@
   
   <url>
     <loc>https://mintaewon.github.io/categories/python/</loc>
-    <lastmod>2022-02-04T19:27:40+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/tags/</loc>
     <lastmod>2022-02-04T19:27:40+09:00</lastmod>
   </url>
   
@@ -259,66 +324,71 @@
   
   <url>
     <loc>https://mintaewon.github.io/2021/03/courseramuchine-learning-backpropagation-in-practice/</loc>
-    <lastmod>2021-03-02T13:26:53+09:00</lastmod>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/andrewng/</loc>
-    <lastmod>2021-03-02T13:26:53+09:00</lastmod>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/backpropagation/</loc>
-    <lastmod>2021-03-02T13:26:53+09:00</lastmod>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/categories/coursera/</loc>
-    <lastmod>2021-03-02T13:26:53+09:00</lastmod>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/coursera/</loc>
-    <lastmod>2021-03-02T13:26:53+09:00</lastmod>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/forwardpropagation/</loc>
-    <lastmod>2021-03-02T13:26:53+09:00</lastmod>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/machinelearning/</loc>
-    <lastmod>2021-03-02T13:26:53+09:00</lastmod>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/neuralnetworks/</loc>
-    <lastmod>2021-03-02T13:26:53+09:00</lastmod>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</loc>
-    <lastmod>2021-03-02T13:26:53+09:00</lastmod>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/%EC%88%9C%EC%A0%84%ED%8C%8C/</loc>
-    <lastmod>2021-03-02T13:26:53+09:00</lastmod>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/%EC%97%AD%EC%A0%84%ED%8C%8C/</loc>
-    <lastmod>2021-03-02T13:26:53+09:00</lastmod>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D/</loc>
-    <lastmod>2021-03-02T13:26:53+09:00</lastmod>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mintaewon.github.io/tags/%EC%BD%94%EC%84%B8%EB%9D%BC/</loc>
+    <lastmod>2021-03-03T15:39:22+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/2021/03/courseramuchine-learning-backpropagation-in-practice/</loc>
     <lastmod>2021-03-02T13:26:53+09:00</lastmod>
   </url>
   
@@ -663,6 +733,16 @@
   </url>
   
   <url>
+    <loc>https://mintaewon.github.io/2021/01/rstudio-r-%EC%9E%85%EB%AC%B8/</loc>
+    <lastmod>2021-01-09T12:10:55+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mintaewon.github.io/categories/rstudio/</loc>
+    <lastmod>2021-01-09T12:10:55+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/</loc>
     <lastmod>2021-01-01T21:08:05+09:00</lastmod>
   </url>
@@ -675,11 +755,6 @@
   <url>
     <loc>https://mintaewon.github.io/tags/%EB%AA%A8%EB%8D%B8%EB%A7%81/</loc>
     <lastmod>2021-01-01T21:08:05+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mintaewon.github.io/categories/rstudio/</loc>
-    <lastmod>2020-12-30T19:33:40+09:00</lastmod>
   </url>
   
   <url>
