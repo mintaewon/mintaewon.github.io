@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>MachineLearning on MIN Velog</title>
+    <title>machinelearning on MIN Velog</title>
     <link>https://mintaewon.github.io/tags/machinelearning/</link>
-    <description>Recent content in MachineLearning on MIN Velog</description>
+    <description>Recent content in machinelearning on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
     <lastBuildDate>Tue, 02 Mar 2021 13:26:53 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/machinelearning/index.xml" rel="self" type="application/rss+xml" />

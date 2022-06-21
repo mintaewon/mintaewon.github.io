@@ -6,7 +6,16 @@
     <description>Recent content in Posts on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 04 Feb 2022 19:27:40 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Jun 2022 19:48:26 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Boostcamp AI Tech 3기 후기</title>
+      <link>https://mintaewon.github.io/2022/06/boostcamp-ai-tech-3%EA%B8%B0-%ED%9B%84%EA%B8%B0/</link>
+      <pubDate>Mon, 20 Jun 2022 19:48:26 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2022/06/boostcamp-ai-tech-3%EA%B8%B0-%ED%9B%84%EA%B8%B0/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>[Python] plot에 text 넣기 (matplotlib, text, annotate)</title>
       <link>https://mintaewon.github.io/2022/02/python-plot%EC%97%90-text-%EB%84%A3%EA%B8%B0-matplotlib-text-annotate/</link>
@@ -256,15 +265,6 @@
       <pubDate>Fri, 01 Jan 2021 21:08:05 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Rtest</title>
-      <link>https://mintaewon.github.io/2020/12/rtest/</link>
-      <pubDate>Wed, 30 Dec 2020 19:33:40 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/2020/12/rtest/</guid>
       <description></description>
     </item>
     
