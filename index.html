@@ -373,9 +373,7 @@ if (!doNotTrack) {
     </div>
     <div class="postShorten-excerpt">
       
-        NDCG (Normalized Discounted Cumulative Gain) 추천 시스템에서 많이 사용되는 평가지표 중 하나 추천의 순서에 가중치를 두어 평가 1에 가까울수록 높은 성능 수치나 이진값(binary value)에 사용 가능 CG (Cumulative Gain) 상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것 $$ CG_{K} = \sum_{i=1}^{K} rel_{i} $$
-DCG (Discounted Cumulative Gain) 아이템의 관련도를 순서에 따라 Discount 하위 순서로 갈수록 작은 DCG 값을 가지게 됨 $$ DCG_{K} = \sum_{i=1}^{K} \frac {rel_{i}}{log_{2}(i+1)} $$
-IDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG 값 중 가장 큼 $$ IDCG_{K} = \sum_{i=1}^{K} \frac{rel_{i}^{opt}}{log_{2}(i+1)} $$
+        
       
       <p>
         
@@ -786,6 +784,10 @@ $(document).ready(function() {
 
 
 
+<script src="//yihui.org/js/math-code.js"></script>
+<script async
+src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
     
   </body>
 </html>
