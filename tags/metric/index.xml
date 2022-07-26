@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Metric on MIN Velog</title>
+    <link>https://mintaewon.github.io/tags/metric/</link>
+    <description>Recent content in Metric on MIN Velog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 24 Jul 2022 17:21:54 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/metric/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain</title>
+      <link>https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/</link>
+      <pubDate>Sun, 24 Jul 2022 17:21:54 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/</guid>
+      <description>NDCG (Normalized Discounted Cumulative Gain) 추천 시스템에서 많이 사용되는 평가지표 중 하나 추천의 순서에 가중치를 두어 평가 1에 가까울수록 높은 성능 수치나 이진값(binary value)에 사용 가능 CG (Cumulative Gain) 상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것 $$ CG_{K} = \sum_{i=1}^{K} rel_{i} $$
+DCG (Discounted Cumulative Gain) 아이템의 관련도를 순서에 따라 Discount 하위 순서로 갈수록 작은 DCG 값을 가지게 됨 $$ DCG_{K} = \sum_{i=1}^{K} \frac {rel_{i}}{log_{2}(i+1)} $$
+IDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG 값 중 가장 큼 $$ IDCG_{K} = \sum_{i=1}^{K} \frac{rel_{i}^{opt}}{log_{2}(i+1)} $$</description>
+    </item>
+    
+  </channel>
+</rss>

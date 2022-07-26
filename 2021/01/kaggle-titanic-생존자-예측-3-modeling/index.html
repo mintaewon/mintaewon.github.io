@@ -2,10 +2,30 @@
 <html lang="ko-kr">
   <head>
     
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/mintaewon.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "Taewon Min",
+    
+    "image": "https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg"
+    
+  },
+  "name":"MIN Velog",
+  "description":"",
+  "url":"https:\/\/mintaewon.github.io\/2021\/01\/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling\/",
+  "keywords":"[]"
+}
+
+</script>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Taewon Min">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -67,15 +87,15 @@
 
 
 
-  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298283/blog/thumb76_76_pw7win.jpg">
-  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298283/blog/thumb76_76_pw7win.jpg">
-
-
-
-
-
   <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
   <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298283/blog/thumb76_76_pw7win.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298283/blog/thumb76_76_pw7win.jpg">
 
 
     <title>[Kaggle] Titanic 생존자 예측 (3) Modeling</title>
@@ -88,12 +108,12 @@
     <link rel="canonical" href="https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
 
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     
-    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
     
     
 
@@ -111,7 +131,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
     
   </head>
@@ -121,12 +140,12 @@ if (!doNotTrack) {
       <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
-    <a class="header-title-link" href="https://mintaewon.github.io/">MIN Velog</a>
+    <a class="header-title-link" href="https://mintaewon.github.io/" aria-label="Go to homepage">MIN Velog</a>
   </div>
   
     
       <a class="header-right-picture "
-         href="https://mintaewon.github.io/#about">
+         href="https://mintaewon.github.io/#about" aria-label="Open the link: /#about">
     
     
     
@@ -142,7 +161,7 @@ if (!doNotTrack) {
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
-        <a href="https://mintaewon.github.io/#about">
+        <a href="https://mintaewon.github.io/#about" aria-label="Read more about the author">
           <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Taewon Min</h4>
@@ -155,7 +174,7 @@ if (!doNotTrack) {
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://mintaewon.github.io/">
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/" title="Home">
     
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
       
@@ -165,7 +184,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories">
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories" title="Categories">
     
       <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
@@ -175,7 +194,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags">
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags" title="Tags">
     
       <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
       
@@ -185,7 +204,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives">
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives" title="Archives">
     
       <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
       
@@ -199,7 +218,7 @@ if (!doNotTrack) {
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python">
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python" title="Python">
     
       <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
@@ -209,7 +228,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/recsys">
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/recsys" title="RecSys">
     
       <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
@@ -219,7 +238,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/study">
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/study" title="Study">
     
       <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
@@ -229,7 +248,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/diary">
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/diary" title="Diary">
     
       <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
@@ -243,9 +262,9 @@ if (!doNotTrack) {
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://snapdragon-heather-fac.notion.site/1171a1a79c28456fae4e92c64bdbdb32" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="https://snapdragon-heather-fac.notion.site/1171a1a79c28456fae4e92c64bdbdb32" target="_blank" rel="noopener" title="Resume">
     
-      <i class="sidebar-button-icon fa fa-fas fa-rss"></i>
+      <i class="sidebar-button-icon fas fa-user"></i>
       
       <span class="sidebar-button-desc">Resume</span>
     </a>
@@ -253,9 +272,9 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener" title="GitHub">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      <i class="sidebar-button-icon fab fa-github"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
@@ -263,7 +282,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener" title="E-mail">
     
       <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
       
@@ -282,19 +301,19 @@ if (!doNotTrack) {
         class="
                hasCoverMetaIn
                ">
-        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        <article class="post" id="top">
           
           
             <div class="post-header main-content-wrap text-left">
   
-    <h1 class="post-title" itemprop="headline">
+    <h1 class="post-title">
       [Kaggle] Titanic 생존자 예측 (3) Modeling
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2021-01-01T21:08:05&#43;09:00">
+      <time datetime="2021-01-01T21:08:05&#43;09:00">
         
   January 1, 2021
 
@@ -315,7 +334,7 @@ if (!doNotTrack) {
 
 </div>
           
-          <div class="post-content markdown" itemprop="articleBody">
+          <div class="post-content markdown">
             <div class="main-content-wrap">
               <p>이전 포스팅에서 기계학습을 위한 Feature Engineering을 진행해 학습에 사용할 Train 데이터와 테스트에 사용할 Test 데이터를 만들고 One-Hot Encoding을 진행했습니다. 이번 포스팅에서는 Model에 학습시키고 예측하는 과정을 진행하겠습니다.</p>
 <p></p>
@@ -357,8 +376,7 @@ if (!doNotTrack) {
 <p></p>
 <hr>
 <h3 id="31-train-validation-test">3.1. Train-Validation-Test</h3>
-<figure>
-    <img src="https://mintaewon.github.io/images/Titanic/titanic58.PNG"/> 
+<figure><img src="https://mintaewon.github.io/images/Titanic/titanic58.PNG"/>
 </figure>
 
 <ul>
@@ -425,8 +443,7 @@ if (!doNotTrack) {
 
 
 <p></p>
-<figure>
-    <img src="https://mintaewon.github.io/images/Titanic/titanic59.PNG"/> 
+<figure><img src="https://mintaewon.github.io/images/Titanic/titanic59.PNG"/>
 </figure>
 
 <p></p>
@@ -440,8 +457,7 @@ if (!doNotTrack) {
 
 
 <p></p>
-<figure>
-    <img src="https://mintaewon.github.io/images/Titanic/titanic60.PNG"/> 
+<figure><img src="https://mintaewon.github.io/images/Titanic/titanic60.PNG"/>
 </figure>
 
 <p></p>
@@ -462,8 +478,7 @@ if (!doNotTrack) {
 
 
 <p></p>
-<figure>
-    <img src="https://mintaewon.github.io/images/Titanic/titanic61.PNG"/> 
+<figure><img src="https://mintaewon.github.io/images/Titanic/titanic61.PNG"/>
 </figure>
 
 <p></p>
@@ -478,8 +493,7 @@ if (!doNotTrack) {
 
 
 <p></p>
-<figure>
-    <img src="https://mintaewon.github.io/images/Titanic/titanic62.PNG"/> 
+<figure><img src="https://mintaewon.github.io/images/Titanic/titanic62.PNG"/>
 </figure>
 
 <p></p>
@@ -494,8 +508,7 @@ if (!doNotTrack) {
 
 
 <p></p>
-<figure>
-    <img src="https://mintaewon.github.io/images/Titanic/titanic63.PNG"/> 
+<figure><img src="https://mintaewon.github.io/images/Titanic/titanic63.PNG"/>
 </figure>
 
 <p></p>
@@ -510,8 +523,7 @@ if (!doNotTrack) {
 
 
 <p></p>
-<figure>
-    <img src="https://mintaewon.github.io/images/Titanic/titanic64.PNG"/> 
+<figure><img src="https://mintaewon.github.io/images/Titanic/titanic64.PNG"/>
 </figure>
 
 <p></p>
@@ -526,8 +538,7 @@ if (!doNotTrack) {
 
 
 <p></p>
-<figure>
-    <img src="https://mintaewon.github.io/images/Titanic/titanic65.PNG"/> 
+<figure><img src="https://mintaewon.github.io/images/Titanic/titanic65.PNG"/>
 </figure>
 
 <p></p>
@@ -558,8 +569,7 @@ if (!doNotTrack) {
 <p></p>
 <hr>
 <h4 id="331-k-fold-cross-validation">3.3.1. K-fold Cross Validation</h4>
-<figure>
-    <img src="https://mintaewon.github.io/images/Titanic/titanic66.PNG"/> 
+<figure><img src="https://mintaewon.github.io/images/Titanic/titanic66.PNG"/>
 </figure>
 
 <p></p>
@@ -598,8 +608,7 @@ if (!doNotTrack) {
 
 
 <p></p>
-<figure>
-    <img src="https://mintaewon.github.io/images/Titanic/titanic67.PNG"/> 
+<figure><img src="https://mintaewon.github.io/images/Titanic/titanic67.PNG"/>
 </figure>
 
 <p></p>
@@ -630,8 +639,7 @@ if (!doNotTrack) {
 <li>생성한 submission 파일을 Kaggle에 제출해봅니다.</li>
 </ul>
 <p></p>
-<figure>
-    <img src="https://mintaewon.github.io/images/Titanic/titanic68.PNG"/> 
+<figure><img src="https://mintaewon.github.io/images/Titanic/titanic68.PNG"/>
 </figure>
 
 <p></p>
@@ -664,6 +672,8 @@ if (!doNotTrack) {
 <li>이유한님 Youtube</li>
 </ul>
               
+
+
             </div>
           </div>
           <div id="post-footer" class="post-footer main-content-wrap">
@@ -696,93 +706,73 @@ if (!doNotTrack) {
                 
               
             
-            <div class="post-actions-wrap">
-  
-      <nav >
-        <ul class="post-actions post-action-nav">
-          
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/" data-tooltip="[Coursera][Machine Learning] 머신러닝이란?">
-              
-                  <i class="fa fa-angle-left"></i>
-                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
-                </a>
-            </li>
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/" data-tooltip="[Kaggle] Titanic 생존자 예측 (2) Feature Engineering">
-              
-                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
-                  <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-          
-        </ul>
-      </nav>
-    <ul class="post-actions post-action-share" >
-      
-        <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
-          </a>
-        </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
-      
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
       
         <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/" data-tooltip="[Coursera][Machine Learning] 머신러닝이란?" aria-label="NEXT: [Coursera][Machine Learning] 머신러닝이란?">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/" data-tooltip="[Kaggle] Titanic 생존자 예측 (2) Feature Engineering" aria-label="PREVIOUS: [Kaggle] Titanic 생존자 예측 (2) Feature Engineering">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
         </li>
       
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default" href="#">
-        
-          <i class="fa fa-list"></i>
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
-    </ul>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
   
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
 </div>
 
-            
-              
-                <div id="disqus_thread"></div>
-<script>
-    
 
-    
-
-    (function() { 
-    var d = document, s = d.createElement('script');
-    s.src = 'https://min-velog.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-              
             
+  
+
+
           </div>
         </article>
         <footer id="footer" class="main-content-wrap">
@@ -793,107 +783,104 @@ if (!doNotTrack) {
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
-        <div class="post-actions-wrap">
-  
-      <nav >
-        <ul class="post-actions post-action-nav">
-          
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/" data-tooltip="[Coursera][Machine Learning] 머신러닝이란?">
-              
-                  <i class="fa fa-angle-left"></i>
-                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
-                </a>
-            </li>
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/" data-tooltip="[Kaggle] Titanic 생존자 예측 (2) Feature Engineering">
-              
-                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
-                  <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-          
-        </ul>
-      </nav>
-    <ul class="post-actions post-action-share" >
-      
-        <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
-          </a>
-        </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
-      
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
       
         <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2021/01/courseramachine-learning-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%B4%EB%9E%80/" data-tooltip="[Coursera][Machine Learning] 머신러닝이란?" aria-label="NEXT: [Coursera][Machine Learning] 머신러닝이란?">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2020/12/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-2-feature-engineering/" data-tooltip="[Kaggle] Titanic 생존자 예측 (2) Feature Engineering" aria-label="PREVIOUS: [Kaggle] Titanic 생존자 예측 (2) Feature Engineering">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
         </li>
       
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default" href="#">
-        
-          <i class="fa fa-list"></i>
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
-    </ul>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2021/01/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
   
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
 </div>
 
+
       </div>
-      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
-  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-3-modeling%2F">
-          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-3-modeling%2F" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-3-modeling%2F">
-          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-3-modeling%2F" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-3-modeling%2F">
-          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2021%2F01%2Fkaggle-titanic-%25EC%2583%259D%25EC%25A1%25B4%25EC%259E%2590-%25EC%2598%2588%25EC%25B8%25A1-3-modeling%2F" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>
     
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
+
+
     </div>
     
     <div id="about">
   <div id="about-card">
     <div id="about-btn-close">
-      <i class="fa fa-remove"></i>
+      <i class="fa fa-times"></i>
     </div>
     
       <img id="about-card-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
@@ -911,7 +898,7 @@ if (!doNotTrack) {
     
     
       <div id="about-card-location">
-        <i class="fa fa-map-marker"></i>
+        <i class="fa fa-map-marker-alt"></i>
         <br/>
         South, Korea
       </div>
@@ -930,30 +917,16 @@ if (!doNotTrack) {
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
-
-
-<script src="https://mintaewon.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<script lang="javascript">
-window.onload = updateMinWidth;
-window.onresize = updateMinWidth;
-document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
-function updateMinWidth() {
-  var sidebar = document.getElementById("sidebar");
-  var main = document.getElementById("main");
-  main.style.minWidth = "";
-  var w1 = getComputedStyle(main).getPropertyValue("min-width");
-  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
-  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
-  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
-}
-</script>
+<script src="https://mintaewon.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
 
 <script>
 $(document).ready(function() {
@@ -968,67 +941,9 @@ $(document).ready(function() {
 </script>
 
 
-  
-    
-      <script>
-        var disqus_config = function () {
-          this.page.url = 'https:\/\/mintaewon.github.io\/2021\/01\/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling\/';
-          
-            this.page.identifier = '\/2021\/01\/kaggle-titanic-%EC%83%9D%EC%A1%B4%EC%9E%90-%EC%98%88%EC%B8%A1-3-modeling\/'
-          
-        };
-        (function() {
-          
-          
-          if (window.location.hostname == "localhost") {
-            return;
-          }
-          var d = document, s = d.createElement('script');
-          var disqus_shortname = 'min-velog';
-          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-    
-  
 
 
-
-
-<script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']],
-        processEscapes: true
-      }
-  });
-  MathJax.Hub.Queue(function() {
-    var i, text, code, codes = document.getElementsByTagName('code');
-    for (i = 0; i < codes.length;) {
-      code = codes[i];
-      if (code.parentNode.tagName !== 'PRE' &&
-          code.childElementCount === 0) {
-        text = code.textContent;
-        if (/^\\\((.|\s)+\\\)$/.test(text) ||
-            /^\$(.|\s)+\$$/.test(text) ||
-            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
-          code.outerHTML = code.innerHTML;  
-          continue;
-        }
-      }
-      i++;
-    }
-    });
-</script>
     
   </body>
 </html>
-<footer id="footer" class="main-content-wrap">
-  <span class="copyrights">
-    &copy; 2022 Taewon Min. All Rights Reserved
-  </span>
-  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-</footer>
+

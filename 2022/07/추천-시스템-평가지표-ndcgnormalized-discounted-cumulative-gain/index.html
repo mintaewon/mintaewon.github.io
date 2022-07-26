@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/mintaewon.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "Taewon Min",
+    
+    "image": "https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg"
+    
+  },
+  "name":"MIN Velog",
+  "description":"NDCG (Normalized Discounted Cumulative Gain) 추천 시스템에서 많이 사용되는 평가지표 중 하나 추천의 순서에 가중치를 두어 평가 1에 가까울수록 높은 성능 수치나 이진값(binary value)에 사용 가능 CG (Cumulative Gain) 상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것 $$ CG_{K} = \\sum_{i=1}^{K} rel_{i} $$\nDCG (Discounted Cumulative Gain) 아이템의 관련도를 순서에 따라 Discount 하위 순서로 갈수록 작은 DCG 값을 가지게 됨 $$ DCG_{K} = \\sum_{i=1}^{K} \\frac {rel_{i}}{log_{2}(i\u002b1)} $$\nIDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG 값 중 가장 큼 $$ IDCG_{K} = \\sum_{i=1}^{K} \\frac{rel_{i}^{opt}}{log_{2}(i\u002b1)} $$",
+  "url":"https:\/\/mintaewon.github.io\/2022\/07\/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Taewon Min">
+<meta name="keywords" content="">
+<meta name="description" content="NDCG (Normalized Discounted Cumulative Gain) 추천 시스템에서 많이 사용되는 평가지표 중 하나 추천의 순서에 가중치를 두어 평가 1에 가까울수록 높은 성능 수치나 이진값(binary value)에 사용 가능 CG (Cumulative Gain) 상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것 $$ CG_{K} = \sum_{i=1}^{K} rel_{i} $$
+DCG (Discounted Cumulative Gain) 아이템의 관련도를 순서에 따라 Discount 하위 순서로 갈수록 작은 DCG 값을 가지게 됨 $$ DCG_{K} = \sum_{i=1}^{K} \frac {rel_{i}}{log_{2}(i&#43;1)} $$
+IDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG 값 중 가장 큼 $$ IDCG_{K} = \sum_{i=1}^{K} \frac{rel_{i}^{opt}}{log_{2}(i&#43;1)} $$">
+
+
+<meta property="og:description" content="NDCG (Normalized Discounted Cumulative Gain) 추천 시스템에서 많이 사용되는 평가지표 중 하나 추천의 순서에 가중치를 두어 평가 1에 가까울수록 높은 성능 수치나 이진값(binary value)에 사용 가능 CG (Cumulative Gain) 상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것 $$ CG_{K} = \sum_{i=1}^{K} rel_{i} $$
+DCG (Discounted Cumulative Gain) 아이템의 관련도를 순서에 따라 Discount 하위 순서로 갈수록 작은 DCG 값을 가지게 됨 $$ DCG_{K} = \sum_{i=1}^{K} \frac {rel_{i}}{log_{2}(i&#43;1)} $$
+IDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG 값 중 가장 큼 $$ IDCG_{K} = \sum_{i=1}^{K} \frac{rel_{i}^{opt}}{log_{2}(i&#43;1)} $$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain">
+<meta name="twitter:title" content="추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain">
+<meta property="og:url" content="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/">
+<meta property="og:site_name" content="MIN Velog">
+<meta property="og:description" content="NDCG (Normalized Discounted Cumulative Gain) 추천 시스템에서 많이 사용되는 평가지표 중 하나 추천의 순서에 가중치를 두어 평가 1에 가까울수록 높은 성능 수치나 이진값(binary value)에 사용 가능 CG (Cumulative Gain) 상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것 $$ CG_{K} = \sum_{i=1}^{K} rel_{i} $$
+DCG (Discounted Cumulative Gain) 아이템의 관련도를 순서에 따라 Discount 하위 순서로 갈수록 작은 DCG 값을 가지게 됨 $$ DCG_{K} = \sum_{i=1}^{K} \frac {rel_{i}}{log_{2}(i&#43;1)} $$
+IDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG 값 중 가장 큼 $$ IDCG_{K} = \sum_{i=1}^{K} \frac{rel_{i}^{opt}}{log_{2}(i&#43;1)} $$">
+<meta name="twitter:description" content="NDCG (Normalized Discounted Cumulative Gain) 추천 시스템에서 많이 사용되는 평가지표 중 하나 추천의 순서에 가중치를 두어 평가 1에 가까울수록 높은 성능 수치나 이진값(binary value)에 사용 가능 CG (Cumulative Gain) 상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것 $$ CG_{K} = \sum_{i=1}^{K} rel_{i} $$
+DCG (Discounted Cumulative Gain) 아이템의 관련도를 순서에 따라 Discount 하위 순서로 갈수록 작은 DCG 값을 가지게 됨 $$ DCG_{K} = \sum_{i=1}^{K} \frac {rel_{i}}{log_{2}(i&#43;1)} $$
+IDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG 값 중 가장 큼 $$ IDCG_{K} = \sum_{i=1}^{K} \frac{rel_{i}^{opt}}{log_{2}(i&#43;1)} $$">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-07-24T17:21:54">
+  
+  
+    <meta property="article:modified_time" content="2022-07-24T17:21:54">
+  
+  
+  
+    
+      <meta property="article:section" content="RecSys">
+    
+  
+  
+    
+      <meta property="article:tag" content="추천시스템">
+    
+      <meta property="article:tag" content="Recommender System">
+    
+      <meta property="article:tag" content="RecSys">
+    
+      <meta property="article:tag" content="Metric">
+    
+      <meta property="article:tag" content="NDCG">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+
+
+
+
+
+
+    <title>추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain</title>
+
+    <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-186281032-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mintaewon.github.io/" aria-label="Go to homepage">MIN Velog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mintaewon.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mintaewon.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Taewon Min</h4>
+        
+          <h5 class="sidebar-profile-bio">데이터 공부노트</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python" title="Python">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Python</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/recsys" title="RecSys">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">RecSys</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/study" title="Study">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Study</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/diary" title="Diary">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Diary</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://snapdragon-heather-fac.notion.site/1171a1a79c28456fae4e92c64bdbdb32" target="_blank" rel="noopener" title="Resume">
+    
+      <i class="sidebar-button-icon fas fa-user"></i>
+      
+      <span class="sidebar-button-desc">Resume</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener" title="E-mail">
+    
+      <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Mail</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-07-24T17:21:54&#43;09:00">
+        
+  July 24, 2022
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/recsys">RecSys</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <h1 id="ndcg-normalized-discounted-cumulative-gain">NDCG (Normalized Discounted Cumulative Gain)</h1>
+<ul>
+<li>추천 시스템에서 많이 사용되는 평가지표 중 하나</li>
+<li>추천의 순서에 가중치를 두어 평가</li>
+<li>1에 가까울수록 높은 성능</li>
+<li>수치나 이진값(binary value)에 사용 가능</li>
+</ul>
+<br>
+<br>
+<hr>
+<h2 id="cg-cumulative-gain">CG (Cumulative Gain)</h2>
+<ul>
+<li>상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것</li>
+</ul>
+<p>$$ CG_{K} = \sum_{i=1}^{K} rel_{i} $$</p>
+<br>
+<h2 id="dcg-discounted-cumulative-gain">DCG (Discounted Cumulative Gain)</h2>
+<ul>
+<li>아이템의 관련도를 순서에 따라 Discount</li>
+<li>하위 순서로 갈수록 작은 DCG 값을 가지게 됨</li>
+</ul>
+<p>$$ DCG_{K} = \sum_{i=1}^{K} \frac {rel_{i}}{log_{2}(i+1)} $$</p>
+<br>
+<h2 id="idcg-ideal-dcg">IDCG (Ideal DCG)</h2>
+<ul>
+<li>이상적인 추천이 일어났을 때의 DCG값</li>
+<li>가능한 DCG 값 중 가장 큼</li>
+</ul>
+<p>$$ IDCG_{K} = \sum_{i=1}^{K} \frac{rel_{i}^{opt}}{log_{2}(i+1)} $$</p>
+<br>
+<h2 id="normalized-dcg">Normalized DCG</h2>
+<ul>
+<li>추천 결과에 따라 구해진 DCG 를 IDCG 로 나눈 값</li>
+</ul>
+<p>$$ NDCG = \frac{DCG}{IDCG} $$</p>
+<br>
+<br>
+<hr>
+<br>
+<h2 id="ndcg5-예시">NDCG@5 예시</h2>
+<p>Item [A, B, C, D, E] 에 대힌 이상적인 결과는</p>
+<p>Ideal Order : [B(5), E(4), A(3), C(2), D(1)]</p>
+<p>이고 추천 결과가 다음과 같을 때</p>
+<p>Recommend Order : [B, C, D, E, A]</p>
+<p>DCG 와 IDCG 를 구하면</p>
+<br>
+<p>$$ DCG@5 = \frac{5}{log_{2}(1+1)} + \frac{2}{log_{2}(2+1)} + \frac{1}{log_{2}(3+1)} + \frac{4}{log_{2}(4+1)} + \frac{3}{log_{2}(5+1)} = 9.65$$</p>
+<p>$$ IDCG@5 = \frac{5}{log_{2}(1+1)} + \frac{4}{log_{2}(2+1)} + \frac{3}{log_{2}(3+1)} + \frac{2}{log_{2}(4+1)} + \frac{1}{log_{2}(5+1)} = 10.27$$</p>
+<p>$$ NDCG@5 = \frac{DCG@5}{IDCG@5} = \frac{9.65}{10.27}=0.94$$</p>
+
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C/">추천시스템</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/recommender-system/">Recommender System</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/recsys/">RecSys</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/metric/">Metric</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/ndcg/">NDCG</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/06/boostcamp-ai-tech-3%EA%B8%B0-%ED%9B%84%EA%B8%B0/" data-tooltip="Boostcamp AI Tech 3기 후기" aria-label="PREVIOUS: Boostcamp AI Tech 3기 후기">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 Taewon Min. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/06/boostcamp-ai-tech-3%EA%B8%B0-%ED%9B%84%EA%B8%B0/" data-tooltip="Boostcamp AI Tech 3기 후기" aria-label="PREVIOUS: Boostcamp AI Tech 3기 후기">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2022%2F07%2F%25EC%25B6%2594%25EC%25B2%259C-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C-%25ED%258F%2589%25EA%25B0%2580%25EC%25A7%2580%25ED%2591%259C-ndcgnormalized-discounted-cumulative-gain%2F" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2022%2F07%2F%25EC%25B6%2594%25EC%25B2%259C-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C-%25ED%258F%2589%25EA%25B0%2580%25EC%25A7%2580%25ED%2591%259C-ndcgnormalized-discounted-cumulative-gain%2F" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2022%2F07%2F%25EC%25B6%2594%25EC%25B2%259C-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C-%25ED%258F%2589%25EA%25B0%2580%25EC%25A7%2580%25ED%2591%259C-ndcgnormalized-discounted-cumulative-gain%2F" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Taewon Min</h4>
+    
+      <div id="about-card-bio">데이터 공부노트</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        None
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        South, Korea
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://mintaewon.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://mintaewon.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
