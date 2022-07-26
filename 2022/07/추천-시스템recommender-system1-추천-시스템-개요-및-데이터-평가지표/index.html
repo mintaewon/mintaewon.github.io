@@ -16,8 +16,8 @@
     
   },
   "name":"MIN Velog",
-  "description":"NDCG (Normalized Discounted Cumulative Gain) 추천 시스템에서 많이 사용되는 평가지표 중 하나 추천의 순서에 가중치를 두어 평가 1에 가까울수록 높은 성능 수치나 이진값(binary value)에 사용 가능 CG (Cumulative Gain) 상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것 $$ CG_{K} = \\sum_{i=1}^{K} rel_{i} $$\nDCG (Discounted Cumulative Gain) 아이템의 관련도를 순서에 따라 Discount 하위 순서로 갈수록 작은 DCG 값을 가지게 됨 $$ DCG_{K} = \\sum_{i=1}^{K} \\frac {rel_{i}}{log_{2}(i\u002b1)} $$\nIDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG 값 중 가장 큼 $$ IDCG_{K} = \\sum_{i=1}^{K} \\frac{rel_{i}^{opt}}{log_{2}(i\u002b1)} $$",
-  "url":"https:\/\/mintaewon.github.io\/2022\/07\/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain\/",
+  "description":"",
+  "url":"https:\/\/mintaewon.github.io\/2022\/07\/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system1-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C\/",
   "keywords":"[]"
 }
 
@@ -28,33 +28,25 @@
 <meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Taewon Min">
 <meta name="keywords" content="">
-<meta name="description" content="NDCG (Normalized Discounted Cumulative Gain) 추천 시스템에서 많이 사용되는 평가지표 중 하나 추천의 순서에 가중치를 두어 평가 1에 가까울수록 높은 성능 수치나 이진값(binary value)에 사용 가능 CG (Cumulative Gain) 상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것 $$ CG_{K} = \sum_{i=1}^{K} rel_{i} $$
-DCG (Discounted Cumulative Gain) 아이템의 관련도를 순서에 따라 Discount 하위 순서로 갈수록 작은 DCG 값을 가지게 됨 $$ DCG_{K} = \sum_{i=1}^{K} \frac {rel_{i}}{log_{2}(i&#43;1)} $$
-IDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG 값 중 가장 큼 $$ IDCG_{K} = \sum_{i=1}^{K} \frac{rel_{i}^{opt}}{log_{2}(i&#43;1)} $$">
+<meta name="description" content="">
 
 
-<meta property="og:description" content="NDCG (Normalized Discounted Cumulative Gain) 추천 시스템에서 많이 사용되는 평가지표 중 하나 추천의 순서에 가중치를 두어 평가 1에 가까울수록 높은 성능 수치나 이진값(binary value)에 사용 가능 CG (Cumulative Gain) 상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것 $$ CG_{K} = \sum_{i=1}^{K} rel_{i} $$
-DCG (Discounted Cumulative Gain) 아이템의 관련도를 순서에 따라 Discount 하위 순서로 갈수록 작은 DCG 값을 가지게 됨 $$ DCG_{K} = \sum_{i=1}^{K} \frac {rel_{i}}{log_{2}(i&#43;1)} $$
-IDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG 값 중 가장 큼 $$ IDCG_{K} = \sum_{i=1}^{K} \frac{rel_{i}^{opt}}{log_{2}(i&#43;1)} $$">
+<meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain">
-<meta name="twitter:title" content="추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain">
-<meta property="og:url" content="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/">
+<meta property="og:title" content="추천 시스템(Recommender System)(1) 추천 시스템 개요 및 데이터, 평가지표">
+<meta name="twitter:title" content="추천 시스템(Recommender System)(1) 추천 시스템 개요 및 데이터, 평가지표">
+<meta property="og:url" content="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system1-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system1-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/">
 <meta property="og:site_name" content="MIN Velog">
-<meta property="og:description" content="NDCG (Normalized Discounted Cumulative Gain) 추천 시스템에서 많이 사용되는 평가지표 중 하나 추천의 순서에 가중치를 두어 평가 1에 가까울수록 높은 성능 수치나 이진값(binary value)에 사용 가능 CG (Cumulative Gain) 상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것 $$ CG_{K} = \sum_{i=1}^{K} rel_{i} $$
-DCG (Discounted Cumulative Gain) 아이템의 관련도를 순서에 따라 Discount 하위 순서로 갈수록 작은 DCG 값을 가지게 됨 $$ DCG_{K} = \sum_{i=1}^{K} \frac {rel_{i}}{log_{2}(i&#43;1)} $$
-IDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG 값 중 가장 큼 $$ IDCG_{K} = \sum_{i=1}^{K} \frac{rel_{i}^{opt}}{log_{2}(i&#43;1)} $$">
-<meta name="twitter:description" content="NDCG (Normalized Discounted Cumulative Gain) 추천 시스템에서 많이 사용되는 평가지표 중 하나 추천의 순서에 가중치를 두어 평가 1에 가까울수록 높은 성능 수치나 이진값(binary value)에 사용 가능 CG (Cumulative Gain) 상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것 $$ CG_{K} = \sum_{i=1}^{K} rel_{i} $$
-DCG (Discounted Cumulative Gain) 아이템의 관련도를 순서에 따라 Discount 하위 순서로 갈수록 작은 DCG 값을 가지게 됨 $$ DCG_{K} = \sum_{i=1}^{K} \frac {rel_{i}}{log_{2}(i&#43;1)} $$
-IDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG 값 중 가장 큼 $$ IDCG_{K} = \sum_{i=1}^{K} \frac{rel_{i}^{opt}}{log_{2}(i&#43;1)} $$">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2022-07-24T17:21:54">
+    <meta property="article:published_time" content="2022-07-24T13:14:19">
   
   
-    <meta property="article:modified_time" content="2022-07-24T17:21:54">
+    <meta property="article:modified_time" content="2022-07-24T13:14:19">
   
   
   
@@ -72,7 +64,11 @@ IDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG
     
       <meta property="article:tag" content="Metric">
     
+      <meta property="article:tag" content="MAP">
+    
       <meta property="article:tag" content="NDCG">
+    
+      <meta property="article:tag" content="Recall">
     
   
 
@@ -93,14 +89,14 @@ IDCG (Ideal DCG) 이상적인 추천이 일어났을 때의 DCG값 가능한 DCG
 
 
 
-    <title>추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain</title>
+    <title>추천 시스템(Recommender System)(1) 추천 시스템 개요 및 데이터, 평가지표</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/">
+    <link rel="canonical" href="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system1-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -302,13 +298,13 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain
+      추천 시스템(Recommender System)(1) 추천 시스템 개요 및 데이터, 평가지표
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2022-07-24T17:21:54&#43;09:00">
+      <time datetime="2022-07-24T13:14:19&#43;09:00">
         
   July 24, 2022
 
@@ -329,56 +325,80 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <h1 id="ndcg-normalized-discounted-cumulative-gain">NDCG (Normalized Discounted Cumulative Gain)</h1>
+              <h1 id="추천-시스템-개요">추천 시스템 개요</h1>
 <ul>
-<li>추천 시스템에서 많이 사용되는 평가지표 중 하나</li>
-<li>추천의 순서에 가중치를 두어 평가</li>
-<li>1에 가까울수록 높은 성능</li>
-<li>수치나 이진값(binary value)에 사용 가능</li>
+<li>
+<p>과거와는 다르게 정보가 넘쳐나고 이 많은 정보 중에서 유저가 더 편하고 쉽게 정보를 찾을 수 있게 도와주기 위해 추천 서비스가 사용되고있습니다.</p>
+</li>
+<li>
+<p>추천에 사용되는 추천 시스템은 사용자의 선호도나 행동을 예측해서 상품을 추천해주는 시스템입니다. 이러한 추천 시스템은 YouTube, 쇼핑몰, SNS 등 다양한 분야에 적용되어 우리에게 제공되고 있습니다.</p>
+</li>
+<li>
+<p>추천에는 다양한 방법이 존재합니다. 가령 조회수가 잘나오거나, 판매량이 많거나, 리뷰 점수가 높거나 등 인기있는 상품을 추천해주는 것도 한 방법이라고 볼 수 있습니다.</p>
+</li>
+<li>
+<p>정보가 많아지고 다양한 상품이 등장하면서 정보를 찾는데 시간이 오래 걸리고 유저마다 원하는 상품이 다양해 지고 있습니다. 그렇기 때문에 추천 시스템의 필요성이 커지고 있습니다.</p>
+</li>
 </ul>
-<br>
 <br>
 <hr>
-<h2 id="cg-cumulative-gain">CG (Cumulative Gain)</h2>
+<h1 id="추천-시스템-데이터">추천 시스템 데이터</h1>
 <ul>
-<li>상위 K개 아이템에 대해 관련도(rel, relevance)를 합한 것</li>
+<li>
+<p>추천 시스템에 사용되는 데이터는 <strong>user 관련 정보</strong>, <strong>item 관련 정보</strong>, <strong>user-item 상호작용 정보</strong>로 입니다.</p>
+</li>
+<li>
+<p>user 관련 정보는 연령, 성별, 관심사, 지역 등의 정보입니다.</p>
+</li>
+<li>
+<p>item 관련 정보는 상품의 카테고리 및 브랜드, 영화의 장르 및 출연배우, 음악의 장르 및 아티스트 등의 정보입니다.</p>
+</li>
+<li>
+<p>user-item 상호작용 정보는 유저가 상품에 평점을 남기는 행위와 같은 <code>Explicit Feedback</code>과 유저가 아이템을 클릭해보는 행위와 같은 <code>Implicit Feedback</code> 이 있습니다.</p>
+</li>
 </ul>
-<p>$$ CG_{K} = \sum_{i=1}^{K} rel_{i} $$</p>
 <br>
-<h2 id="dcg-discounted-cumulative-gain">DCG (Discounted Cumulative Gain)</h2>
+<h1 id="추천-시스템-문제-정의">추천 시스템 문제 정의</h1>
 <ul>
-<li>아이템의 관련도를 순서에 따라 Discount</li>
-<li>하위 순서로 갈수록 작은 DCG 값을 가지게 됨</li>
+<li>
+<p>랭킹(Ranking) : 유저에게 적합한 아이템 Top K 개를 추천</p>
+</li>
+<li>
+<p>예측(Prediction) : 유저가 아이템을 가질 선호도를 예측 (클릭 or 구매할 확률 등)</p>
+</li>
 </ul>
-<p>$$ DCG_{K} = \sum_{i=1}^{K} \frac {rel_{i}}{log_{2}(i+1)} $$</p>
 <br>
-<h2 id="idcg-ideal-dcg">IDCG (Ideal DCG)</h2>
+<h1 id="추천-시스템-평가-지표">추천 시스템 평가 지표</h1>
+<h2 id="offline-test">Offline Test</h2>
+<blockquote>
+<p>데이터를 train, validation, test 로 나누어 일반적으로 모델의 성능을 측정하는 방법</p>
+</blockquote>
+<h3 id="성능-지표">성능 지표</h3>
 <ul>
-<li>이상적인 추천이 일어났을 때의 DCG값</li>
-<li>가능한 DCG 값 중 가장 큼</li>
+<li>
+<p><strong>Precision@K</strong> : 추천한 K개 아이템 중 유저가 실제로 관심있는 아이템의 비율</p>
+</li>
+<li>
+<p><strong>Recall@K</strong> : 유저가 관심있는 전체 아이템 중 추천한 아이템의 비율</p>
+</li>
+<li>
+<p><strong>Mean Average Precision(MAP)@K</strong> : 모든 유저에 대한 Average Precision(AP) 값의 평균, 성능 평가에 순서 개념 도입</p>
+</li>
 </ul>
-<p>$$ IDCG_{K} = \sum_{i=1}^{K} \frac{rel_{i}^{opt}}{log_{2}(i+1)} $$</p>
-<br>
-<h2 id="normalized-dcg">Normalized DCG</h2>
+<p>$$ MAP@K = \frac{1}{|U|} \sum_{u=1}^{|U|} (AP@K)_{u}$$</p>
+<blockquote>
+<p><em>( <strong>Average Precision(AP)@K</strong> : Precision@1 부터 Precision@K 까지의 평균값 )</em></p>
+</blockquote>
+<p>$$ AP@K = \frac{1}{m}\sum_{i=1}^K Precision@i $$</p>
 <ul>
-<li>추천 결과에 따라 구해진 DCG 를 IDCG 로 나눈 값</li>
+<li><strong>Normalized Discounted Cumulative Gain(NDCG)@K</strong> : 검색(Information REtrieval)에서 등장한 지표. Top K 리스트를 만들고 유저가 선호하는 아이템을 비교, MAP와 달리 연관성을 binary 값이 아닌 수치로도 사용 가능</li>
 </ul>
-<p>$$ NDCG = \frac{DCG}{IDCG} $$</p>
+<p><a href="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/">상세 설명 링크</a></p>
 <br>
-<br>
-<hr>
-<br>
-<h2 id="ndcg5-예시">NDCG@5 예시</h2>
-<p>Item [A, B, C, D, E] 에 대힌 이상적인 결과는</p>
-<p>Ideal Order : [B(5), E(4), A(3), C(2), D(1)]</p>
-<p>이고 추천 결과가 다음과 같을 때</p>
-<p>Recommend Order : [B, C, D, E, A]</p>
-<p>DCG 와 IDCG 를 구하면</p>
-<br>
-<p>$$ DCG@5 = \frac{5}{log_{2}(1+1)} + \frac{2}{log_{2}(2+1)} + \frac{1}{log_{2}(3+1)} + \frac{4}{log_{2}(4+1)} + \frac{3}{log_{2}(5+1)} = 9.65$$</p>
-<p>$$ IDCG@5 = \frac{5}{log_{2}(1+1)} + \frac{4}{log_{2}(2+1)} + \frac{3}{log_{2}(3+1)} + \frac{2}{log_{2}(4+1)} + \frac{1}{log_{2}(5+1)} = 10.27$$</p>
-<p>$$ NDCG@5 = \frac{DCG@5}{IDCG@5} = \frac{9.65}{10.27}=0.94$$</p>
-
+<h2 id="online-test">Online Test</h2>
+<ul>
+<li><strong>Online A/B Test</strong> : Offline Test 를 통해 검증된 가설이나 모델을 이용해 실제 추천된 결과를 서빙. traffic 을 나누어 대조군(A)과 실험군(B)의 성능을 평가. (대부분 현업에서는 모델 성능보다는 <strong>매출</strong>, <strong>CTR</strong> 등의 지표를 사용)</li>
+</ul>
               
 
 
@@ -400,7 +420,11 @@ if (!doNotTrack) {
 
   <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/metric/">Metric</a>
 
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/map/">MAP</a>
+
   <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/ndcg/">NDCG</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/recall/">Recall</a>
 
                   </div>
                 
@@ -413,7 +437,7 @@ if (!doNotTrack) {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" data-tooltip="추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain" aria-label="NEXT: 추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -421,7 +445,7 @@ if (!doNotTrack) {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system1-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" data-tooltip="추천 시스템(Recommender System)(1) 추천 시스템 개요 및 데이터, 평가지표" aria-label="PREVIOUS: 추천 시스템(Recommender System)(1) 추천 시스템 개요 및 데이터, 평가지표">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/06/boostcamp-ai-tech-3%EA%B8%B0-%ED%9B%84%EA%B8%B0/" data-tooltip="Boostcamp AI Tech 3기 후기" aria-label="PREVIOUS: Boostcamp AI Tech 3기 후기">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -439,19 +463,19 @@ if (!doNotTrack) {
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system1-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system1-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system1-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -490,7 +514,7 @@ if (!doNotTrack) {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" data-tooltip="추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain" aria-label="NEXT: 추천 시스템 평가지표 - NDCG(Normalized Discounted Cumulative Gain">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -498,7 +522,7 @@ if (!doNotTrack) {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system1-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" data-tooltip="추천 시스템(Recommender System)(1) 추천 시스템 개요 및 데이터, 평가지표" aria-label="PREVIOUS: 추천 시스템(Recommender System)(1) 추천 시스템 개요 및 데이터, 평가지표">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/06/boostcamp-ai-tech-3%EA%B8%B0-%ED%9B%84%EA%B8%B0/" data-tooltip="Boostcamp AI Tech 3기 후기" aria-label="PREVIOUS: Boostcamp AI Tech 3기 후기">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -516,19 +540,19 @@ if (!doNotTrack) {
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system1-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system1-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C-ndcgnormalized-discounted-cumulative-gain/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/07/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system1-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -553,19 +577,19 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2022%2F07%2F%25EC%25B6%2594%25EC%25B2%259C-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C-%25ED%258F%2589%25EA%25B0%2580%25EC%25A7%2580%25ED%2591%259C-ndcgnormalized-discounted-cumulative-gain%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2022%2F07%2F%25EC%25B6%2594%25EC%25B2%259C-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259Crecommender-system1-%25EC%25B6%2594%25EC%25B2%259C-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C-%25EA%25B0%259C%25EC%259A%2594-%25EB%25B0%258F-%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25ED%258F%2589%25EA%25B0%2580%25EC%25A7%2580%25ED%2591%259C%2F" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2022%2F07%2F%25EC%25B6%2594%25EC%25B2%259C-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C-%25ED%258F%2589%25EA%25B0%2580%25EC%25A7%2580%25ED%2591%259C-ndcgnormalized-discounted-cumulative-gain%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2022%2F07%2F%25EC%25B6%2594%25EC%25B2%259C-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259Crecommender-system1-%25EC%25B6%2594%25EC%25B2%259C-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C-%25EA%25B0%259C%25EC%259A%2594-%25EB%25B0%258F-%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25ED%258F%2589%25EA%25B0%2580%25EC%25A7%2580%25ED%2591%259C%2F" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2022%2F07%2F%25EC%25B6%2594%25EC%25B2%259C-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C-%25ED%258F%2589%25EA%25B0%2580%25EC%25A7%2580%25ED%2591%259C-ndcgnormalized-discounted-cumulative-gain%2F" aria-label="Share on Google&#43;">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2022%2F07%2F%25EC%25B6%2594%25EC%25B2%259C-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259Crecommender-system1-%25EC%25B6%2594%25EC%25B2%259C-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C-%25EA%25B0%259C%25EC%259A%2594-%25EB%25B0%258F-%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25ED%258F%2589%25EA%25B0%2580%25EC%25A7%2580%25ED%2591%259C%2F" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>
