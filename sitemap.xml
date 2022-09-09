@@ -3,7 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://mintaewon.github.io/categories/</loc>
-    <lastmod>2022-08-05T19:32:06+09:00</lastmod>
+    <lastmod>2022-09-06T18:10:46+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/tags/hadoop/</loc>
+    <lastmod>2022-09-06T18:10:46+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/tags/hdfs/</loc>
+    <lastmod>2022-09-06T18:10:46+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/</loc>
+    <lastmod>2022-09-06T18:10:46+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/</loc>
+    <lastmod>2022-09-06T18:10:46+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/post/</loc>
+    <lastmod>2022-09-06T18:10:46+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/categories/study/</loc>
+    <lastmod>2022-09-06T18:10:46+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/tags/</loc>
+    <lastmod>2022-09-06T18:10:46+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/tags/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/</loc>
+    <lastmod>2022-09-06T18:10:46+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/tags/%ED%95%98%EB%91%A1/</loc>
+    <lastmod>2022-09-06T18:10:46+09:00</lastmod>
   </url><url>
     <loc>https://mintaewon.github.io/tags/collaborativefiltering/</loc>
     <lastmod>2022-08-05T19:32:06+09:00</lastmod>
@@ -17,13 +44,7 @@
     <loc>https://mintaewon.github.io/tags/memory-based/</loc>
     <lastmod>2022-08-05T19:32:06+09:00</lastmod>
   </url><url>
-    <loc>https://mintaewon.github.io/</loc>
-    <lastmod>2022-08-05T19:32:06+09:00</lastmod>
-  </url><url>
     <loc>https://mintaewon.github.io/tags/model-based/</loc>
-    <lastmod>2022-08-05T19:32:06+09:00</lastmod>
-  </url><url>
-    <loc>https://mintaewon.github.io/post/</loc>
     <lastmod>2022-08-05T19:32:06+09:00</lastmod>
   </url><url>
     <loc>https://mintaewon.github.io/tags/recommender-system/</loc>
@@ -33,9 +54,6 @@
     <lastmod>2022-08-05T19:32:06+09:00</lastmod>
   </url><url>
     <loc>https://mintaewon.github.io/categories/recsys/</loc>
-    <lastmod>2022-08-05T19:32:06+09:00</lastmod>
-  </url><url>
-    <loc>https://mintaewon.github.io/tags/</loc>
     <lastmod>2022-08-05T19:32:06+09:00</lastmod>
   </url><url>
     <loc>https://mintaewon.github.io/tags/user-based/</loc>
@@ -144,9 +162,6 @@
     <lastmod>2022-01-21T13:40:53+09:00</lastmod>
   </url><url>
     <loc>https://mintaewon.github.io/tags/gradientdescent/</loc>
-    <lastmod>2022-01-21T13:40:53+09:00</lastmod>
-  </url><url>
-    <loc>https://mintaewon.github.io/categories/study/</loc>
     <lastmod>2022-01-21T13:40:53+09:00</lastmod>
   </url><url>
     <loc>https://mintaewon.github.io/2022/01/%EA%B2%BD%EC%82%AC-%ED%95%98%EA%B0%95%EB%B2%95gradient-descent-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/</loc>
