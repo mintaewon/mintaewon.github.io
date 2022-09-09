@@ -6,7 +6,43 @@
     <description>Recent content in Tags on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 05 Aug 2022 19:32:06 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Sep 2022 18:10:46 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hadoop</title>
+      <link>https://mintaewon.github.io/tags/hadoop/</link>
+      <pubDate>Tue, 06 Sep 2022 18:10:46 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/hadoop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HDFS</title>
+      <link>https://mintaewon.github.io/tags/hdfs/</link>
+      <pubDate>Tue, 06 Sep 2022 18:10:46 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/hdfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>분산처리</title>
+      <link>https://mintaewon.github.io/tags/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/</link>
+      <pubDate>Tue, 06 Sep 2022 18:10:46 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>하둡</title>
+      <link>https://mintaewon.github.io/tags/%ED%95%98%EB%91%A1/</link>
+      <pubDate>Tue, 06 Sep 2022 18:10:46 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%ED%95%98%EB%91%A1/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>CollaborativeFiltering</title>
       <link>https://mintaewon.github.io/tags/collaborativefiltering/</link>

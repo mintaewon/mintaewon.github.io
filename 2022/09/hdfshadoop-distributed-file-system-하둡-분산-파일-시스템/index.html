@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/mintaewon.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "Taewon Min",
+    
+    "image": "https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg"
+    
+  },
+  "name":"MIN Velog",
+  "description":"",
+  "url":"https:\/\/mintaewon.github.io\/2022\/09\/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Taewon Min">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HDFS(Hadoop Distributed File System) 하둡 분산 파일 시스템">
+<meta name="twitter:title" content="HDFS(Hadoop Distributed File System) 하둡 분산 파일 시스템">
+<meta property="og:url" content="https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/">
+<meta property="og:site_name" content="MIN Velog">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-09-06T18:10:46">
+  
+  
+    <meta property="article:modified_time" content="2022-09-06T18:10:46">
+  
+  
+  
+    
+      <meta property="article:section" content="Study">
+    
+  
+  
+    
+      <meta property="article:tag" content="Hadoop">
+    
+      <meta property="article:tag" content="하둡">
+    
+      <meta property="article:tag" content="HDFS">
+    
+      <meta property="article:tag" content="분산처리">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+
+
+
+
+
+
+    <title>HDFS(Hadoop Distributed File System) 하둡 분산 파일 시스템</title>
+
+    <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-186281032-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mintaewon.github.io/" aria-label="Go to homepage">MIN Velog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mintaewon.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mintaewon.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Taewon Min</h4>
+        
+          <h5 class="sidebar-profile-bio">데이터 공부노트</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python" title="Python">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Python</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/recsys" title="RecSys">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">RecSys</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/study" title="Study">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Study</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/diary" title="Diary">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Diary</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://snapdragon-heather-fac.notion.site/1171a1a79c28456fae4e92c64bdbdb32" target="_blank" rel="noopener" title="Resume">
+    
+      <i class="sidebar-button-icon fas fa-user"></i>
+      
+      <span class="sidebar-button-desc">Resume</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener" title="E-mail">
+    
+      <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Mail</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      HDFS(Hadoop Distributed File System) 하둡 분산 파일 시스템
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-09-06T18:10:46&#43;09:00">
+        
+  September 6, 2022
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/study">Study</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <h1 id="hdfs-hadoop-distributed-file-system">HDFS (Hadoop Distributed File System)</h1>
+<ul>
+<li>대용량 파일을 다루기 위해 사용되며 대용량 파일을 작은 조각으로 나누어 클러스터 전체에 분산시키데에 최적화 되어 있음</li>
+<li>대용량 데이터를 데이터 블록(기본값 128MB)들로 쪼갬</li>
+<li>쪼갠 블록들을 여러 범용 컴퓨터에 저장</li>
+<li>블록을 처리하는 컴퓨터가 해당 블록이 저장된 곳이랑 물리적으로 가까운 거리에 있도록 조정</li>
+<li>모든 블록의 복사본이 노드에 퍼져있기 때문에 데이터 손실 방지</li>
+<li>크게 <code>Name Node</code> 와 <code>Data Node</code> 로 이루어져 있음</li>
+<li><code>MapReduce</code> 를 이용해 데이터 처리</li>
+</ul>
+<br>
+<h2 id="name-node">Name Node</h2>
+<ul>
+<li>메타 데이터 관리(파일 이름, 가상 디렉토리 구조, 블록 및 블록 사본의 위치 등)</li>
+<li>Data Node 와 상황 공유를 하며 변경 사항이 생기면 Name Node 에 저장됨</li>
+<li><code>Edit log</code> 에 수정, 생성, 저장 등의 정보가 기록됨</li>
+<li>한번에 하나의 Name Node만 사용됨</li>
+<li>빠른 검색을 위해 메모리에서 관리</li>
+</ul>
+<br>
+<h2 id="data-node">Data Node</h2>
+<ul>
+<li>실제 파일의 블록을 저장하고 있는 Node</li>
+</ul>
+<br>
+<hr>
+<h2 id="hdfs-architecture">HDFS Architecture</h2>
+<blockquote>
+<p>동작원리 예시</p>
+</blockquote>
+<figure><img src="https://mintaewon.github.io/images/HDFS/hdfs1.PNG"/>
+</figure>
+
+<ul>
+<li>파일을 읽을 때, Client는 Name Node로 부터 어떤 블록을 어디에서 찾아야할지 정보를 얻은 후 데이터를 찾아감</li>
+</ul>
+<br>
+<figure><img src="https://mintaewon.github.io/images/HDFS/hdfs2.PNG"/>
+</figure>
+
+<ul>
+<li>파일을 쓸 때, Client는 Name Node 로 부터 어디에 파일을 저장할지 정보를 받음</li>
+<li>Client 는 정해진 Data Node 에 파일을 전달함</li>
+<li>Data Node는 주변의 Data Node 에게 복사본을 전달함</li>
+<li>파일의 위치와 복사본의 위치를 다시 전달해 Client를 통해 Name Node 에게 알려줌</li>
+</ul>
+<br>
+<h2 id="name-node-resilience">Name Node Resilience</h2>
+<blockquote>
+<p>Name Node가 손상되어 데이터의 손실이 나는 것을 방지하는 방법</p>
+</blockquote>
+<ol>
+<li>지속적인 메타데이터 백업</li>
+</ol>
+<ul>
+<li>Name Node 가 백업 저장소와 디스크에 동시에 작업할 수 있도록 구성</li>
+<li>하지만 어느저도의 정보 손실이 있을 수도 있음</li>
+</ul>
+<ol start="2">
+<li>Secondary Name Node</li>
+</ol>
+<ul>
+<li>Name Node 의 Edit log를 복사해 가지고 있음</li>
+<li>Name Node 의 기능을 수행하지는 않음</li>
+</ul>
+<ol start="3">
+<li>HDFS Federation</li>
+</ol>
+<ul>
+<li>HDFS는 대용량 파일을 다루는데 최적화 되어 있지만 많은 수의 작은 파일이 있다면 메모리 사용량이 증가해 문제가 될 수 있음</li>
+<li>디렉토리 단위로 Name Node를 등록해 사용</li>
+<li>각 Name Node가 독립적으로 관리</li>
+</ul>
+<ol start="4">
+<li>HDFS High Availability</li>
+</ol>
+<ul>
+<li>공유 저장소에 Edit log를 공유</li>
+<li>Name Node에 문제가 생기면 &lsquo;동적 예비 Name Node&rsquo;가 업무를 이어받음</li>
+<li>Zookeeper를 사용해 어떤 Name Node와 소통해야 하는지 알아내고 하나의 Name Node만 사용하도록 통제</li>
+</ul>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/hadoop/">Hadoop</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%ED%95%98%EB%91%A1/">하둡</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/hdfs/">HDFS</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/">분산처리</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/08/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system2-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" data-tooltip="추천 시스템(Recommender System)(2) 추천 시스템 알고리즘" aria-label="PREVIOUS: 추천 시스템(Recommender System)(2) 추천 시스템 알고리즘">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 Taewon Min. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/08/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system2-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" data-tooltip="추천 시스템(Recommender System)(2) 추천 시스템 알고리즘" aria-label="PREVIOUS: 추천 시스템(Recommender System)(2) 추천 시스템 알고리즘">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2022%2F09%2Fhdfshadoop-distributed-file-system-%25ED%2595%2598%25EB%2591%25A1-%25EB%25B6%2584%25EC%2582%25B0-%25ED%258C%258C%25EC%259D%25BC-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%2F" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2022%2F09%2Fhdfshadoop-distributed-file-system-%25ED%2595%2598%25EB%2591%25A1-%25EB%25B6%2584%25EC%2582%25B0-%25ED%258C%258C%25EC%259D%25BC-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%2F" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2022%2F09%2Fhdfshadoop-distributed-file-system-%25ED%2595%2598%25EB%2591%25A1-%25EB%25B6%2584%25EC%2582%25B0-%25ED%258C%258C%25EC%259D%25BC-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%2F" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Taewon Min</h4>
+    
+      <div id="about-card-bio">데이터 공부노트</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        None
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        South, Korea
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://mintaewon.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://mintaewon.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
