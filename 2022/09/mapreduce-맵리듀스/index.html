@@ -17,7 +17,7 @@
   },
   "name":"MIN Velog",
   "description":"",
-  "url":"https:\/\/mintaewon.github.io\/2022\/09\/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C\/",
+  "url":"https:\/\/mintaewon.github.io\/2022\/09\/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4\/",
   "keywords":"[]"
 }
 
@@ -33,20 +33,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HDFS(Hadoop Distributed File System) 하둡 분산 파일 시스템">
-<meta name="twitter:title" content="HDFS(Hadoop Distributed File System) 하둡 분산 파일 시스템">
-<meta property="og:url" content="https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/">
+<meta property="og:title" content="MapReduce 맵리듀스">
+<meta name="twitter:title" content="MapReduce 맵리듀스">
+<meta property="og:url" content="https://mintaewon.github.io/2022/09/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2022/09/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/">
 <meta property="og:site_name" content="MIN Velog">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2022-09-06T18:10:46">
+    <meta property="article:published_time" content="2022-09-08T14:36:57">
   
   
-    <meta property="article:modified_time" content="2022-09-06T18:10:46">
+    <meta property="article:modified_time" content="2022-09-08T14:36:57">
   
   
   
@@ -56,13 +56,19 @@
   
   
     
-      <meta property="article:tag" content="Hadoop">
+      <meta property="article:tag" content="맵리듀스">
+    
+      <meta property="article:tag" content="MapReduce">
+    
+      <meta property="article:tag" content="Map">
+    
+      <meta property="article:tag" content="Reduce">
+    
+      <meta property="article:tag" content="분산처리">
     
       <meta property="article:tag" content="하둡">
     
-      <meta property="article:tag" content="HDFS">
-    
-      <meta property="article:tag" content="분산처리">
+      <meta property="article:tag" content="Hadoop">
     
   
 
@@ -83,14 +89,14 @@
 
 
 
-    <title>HDFS(Hadoop Distributed File System) 하둡 분산 파일 시스템</title>
+    <title>MapReduce 맵리듀스</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/">
+    <link rel="canonical" href="https://mintaewon.github.io/2022/09/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -292,15 +298,15 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      HDFS(Hadoop Distributed File System) 하둡 분산 파일 시스템
+      MapReduce 맵리듀스
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2022-09-06T18:10:46&#43;09:00">
+      <time datetime="2022-09-08T14:36:57&#43;09:00">
         
-  September 6, 2022
+  September 8, 2022
 
       </time>
     
@@ -319,87 +325,34 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <h1 id="hdfs-hadoop-distributed-file-system">HDFS (Hadoop Distributed File System)</h1>
+              <h1 id="mapreduce">MapReduce</h1>
 <ul>
-<li>대용량 파일을 다루기 위해 사용되며 대용량 파일을 작은 조각으로 나누어 클러스터 전체에 분산시키데에 최적화 되어 있음</li>
-<li>대용량 데이터를 데이터 블록(기본값 128MB)들로 쪼갬</li>
-<li>쪼갠 블록들을 여러 범용 컴퓨터에 저장</li>
-<li>블록을 처리하는 컴퓨터가 해당 블록이 저장된 곳이랑 물리적으로 가까운 거리에 있도록 조정</li>
-<li>모든 블록의 복사본이 노드에 퍼져있기 때문에 데이터 손실 방지</li>
-<li>크게 <code>Name Node</code> 와 <code>Data Node</code> 로 이루어져 있음</li>
-<li><code>MapReduce</code> 를 이용해 데이터 처리</li>
+<li>Hadoop에 내장되어 여러 노드에 태스크를 분배해 병렬 처리를 하는 방법</li>
+<li>데이터를 추출해 분산처리하는 <code>Map</code> 과 데이터를 집계하는 <code>Reduce</code> 로 구성</li>
 </ul>
 <br>
-<h2 id="name-node">Name Node</h2>
+<figure><img src="https://mintaewon.github.io/images/MapReduce/mapreduce2.PNG"/>
+</figure>
+
+<br>
+<h2 id="mapper">Mapper</h2>
 <ul>
-<li>메타 데이터 관리(파일 이름, 가상 디렉토리 구조, 블록 및 블록 사본의 위치 등)</li>
-<li>Data Node 와 상황 공유를 하며 변경 사항이 생기면 Name Node 에 저장됨</li>
-<li><code>Edit log</code> 에 수정, 생성, 저장 등의 정보가 기록됨</li>
-<li>한번에 하나의 Name Node만 사용됨</li>
-<li>빠른 검색을 위해 메모리에서 관리</li>
+<li>데이터를 변형하는 작업</li>
+<li>중요한 데이터를 추출하고 Key-Value 쌍으로 전환</li>
 </ul>
 <br>
-<h2 id="data-node">Data Node</h2>
+<h2 id="reducer">Reducer</h2>
 <ul>
-<li>실제 파일의 블록을 저장하고 있는 Node</li>
+<li>Map 과정에서 처리된 Key-Value 로 이루어진 데이터의 개수를 세거나 더하는 등의 집계하는 작업</li>
 </ul>
 <br>
 <hr>
-<h2 id="hdfs-architecture">HDFS Architecture</h2>
-<blockquote>
-<p>동작원리 예시</p>
-</blockquote>
-<figure><img src="https://mintaewon.github.io/images/HDFS/hdfs1.PNG"/>
+<h2 id="동작-예시">동작 예시</h2>
+<figure><img src="https://mintaewon.github.io/images/MapReduce/mapreduce1.PNG"/>
 </figure>
 
 <ul>
-<li>파일을 읽을 때, Client는 Name Node로 부터 어떤 블록을 어디에서 찾아야할지 정보를 얻은 후 데이터를 찾아감</li>
-</ul>
-<br>
-<figure><img src="https://mintaewon.github.io/images/HDFS/hdfs2.PNG"/>
-</figure>
-
-<ul>
-<li>파일을 쓸 때, Client는 Name Node 로 부터 어디에 파일을 저장할지 정보를 받음</li>
-<li>Client 는 정해진 Data Node 에 파일을 전달함</li>
-<li>Data Node는 주변의 Data Node 에게 복사본을 전달함</li>
-<li>파일의 위치와 복사본의 위치를 다시 전달해 Client를 통해 Name Node 에게 알려줌</li>
-</ul>
-<br>
-<h2 id="name-node-resilience">Name Node Resilience</h2>
-<blockquote>
-<p>Name Node가 손상되어 데이터의 손실이 나는 것을 방지하는 방법</p>
-</blockquote>
-<br>
-<ol>
-<li>지속적인 메타데이터 백업</li>
-</ol>
-<ul>
-<li>Name Node 가 백업 저장소와 디스크에 동시에 작업할 수 있도록 구성</li>
-<li>하지만 어느저도의 정보 손실이 있을 수도 있음</li>
-</ul>
-<ol start="2">
-<li>Secondary Name Node</li>
-</ol>
-<ul>
-<li>Name Node 의 Edit log를 복사해 가지고 있음</li>
-<li>Name Node 의 기능을 수행하지는 않음</li>
-</ul>
-<ol start="3">
-<li>HDFS Federation</li>
-</ol>
-<ul>
-<li>HDFS는 대용량 파일을 다루는데 최적화 되어 있지만 많은 수의 작은 파일이 있다면 메모리 사용량이 증가해 문제가 될 수 있음</li>
-<li>디렉토리 단위로 Name Node를 등록해 사용</li>
-<li>각 Name Node가 독립적으로 관리</li>
-</ul>
-<ol start="4">
-<li>HDFS High Availability</li>
-</ol>
-<ul>
-<li>공유 저장소에 Edit log를 공유</li>
-<li>Name Node에 문제가 생기면 &lsquo;동적 예비 Name Node&rsquo;가 업무를 이어받음</li>
-<li>Zookeeper를 사용해 어떤 Name Node와 소통해야 하는지 알아내고 하나의 Name Node만 사용하도록 통제</li>
+<li>Reducer 가 Count 작업을 한다면 위의 그림 처럼 작업이 진행됨</li>
 </ul>
               
 
@@ -414,13 +367,19 @@ if (!doNotTrack) {
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/hadoop/">Hadoop</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/">맵리듀스</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/mapreduce/">MapReduce</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/map/">Map</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/reduce/">Reduce</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/">분산처리</a>
 
   <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%ED%95%98%EB%91%A1/">하둡</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/hdfs/">HDFS</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/">분산처리</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/hadoop/">Hadoop</a>
 
                   </div>
                 
@@ -433,7 +392,7 @@ if (!doNotTrack) {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/09/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/" data-tooltip="MapReduce 맵리듀스" aria-label="NEXT: MapReduce 맵리듀스">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -441,7 +400,7 @@ if (!doNotTrack) {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/08/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system2-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" data-tooltip="추천 시스템(Recommender System)(2) 추천 시스템 알고리즘" aria-label="PREVIOUS: 추천 시스템(Recommender System)(2) 추천 시스템 알고리즘">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" data-tooltip="HDFS(Hadoop Distributed File System) 하둡 분산 파일 시스템" aria-label="PREVIOUS: HDFS(Hadoop Distributed File System) 하둡 분산 파일 시스템">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -459,19 +418,19 @@ if (!doNotTrack) {
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/09/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/09/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/09/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -510,7 +469,7 @@ if (!doNotTrack) {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/09/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/" data-tooltip="MapReduce 맵리듀스" aria-label="NEXT: MapReduce 맵리듀스">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -518,7 +477,7 @@ if (!doNotTrack) {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/08/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9Crecommender-system2-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" data-tooltip="추천 시스템(Recommender System)(2) 추천 시스템 알고리즘" aria-label="PREVIOUS: 추천 시스템(Recommender System)(2) 추천 시스템 알고리즘">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" data-tooltip="HDFS(Hadoop Distributed File System) 하둡 분산 파일 시스템" aria-label="PREVIOUS: HDFS(Hadoop Distributed File System) 하둡 분산 파일 시스템">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -536,19 +495,19 @@ if (!doNotTrack) {
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/09/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/09/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/09/hdfshadoop-distributed-file-system-%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/09/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -573,19 +532,19 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2022%2F09%2Fhdfshadoop-distributed-file-system-%25ED%2595%2598%25EB%2591%25A1-%25EB%25B6%2584%25EC%2582%25B0-%25ED%258C%258C%25EC%259D%25BC-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2022%2F09%2Fmapreduce-%25EB%25A7%25B5%25EB%25A6%25AC%25EB%2593%2580%25EC%258A%25A4%2F" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2022%2F09%2Fhdfshadoop-distributed-file-system-%25ED%2595%2598%25EB%2591%25A1-%25EB%25B6%2584%25EC%2582%25B0-%25ED%258C%258C%25EC%259D%25BC-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2022%2F09%2Fmapreduce-%25EB%25A7%25B5%25EB%25A6%25AC%25EB%2593%2580%25EC%258A%25A4%2F" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2022%2F09%2Fhdfshadoop-distributed-file-system-%25ED%2595%2598%25EB%2591%25A1-%25EB%25B6%2584%25EC%2582%25B0-%25ED%258C%258C%25EC%259D%25BC-%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%2F" aria-label="Share on Google&#43;">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2022%2F09%2Fmapreduce-%25EB%25A7%25B5%25EB%25A6%25AC%25EB%2593%2580%25EC%258A%25A4%2F" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>
