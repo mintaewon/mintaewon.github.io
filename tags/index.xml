@@ -6,13 +6,67 @@
     <description>Recent content in Tags on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 08 Sep 2022 14:36:57 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Sep 2022 14:13:27 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apach pig</title>
+      <link>https://mintaewon.github.io/tags/apach-pig/</link>
+      <pubDate>Tue, 13 Sep 2022 14:13:27 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/apach-pig/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Apache</title>
+      <link>https://mintaewon.github.io/tags/apache/</link>
+      <pubDate>Tue, 13 Sep 2022 14:13:27 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/apache/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Hadoop</title>
       <link>https://mintaewon.github.io/tags/hadoop/</link>
-      <pubDate>Thu, 08 Sep 2022 14:36:57 +0900</pubDate>
+      <pubDate>Tue, 13 Sep 2022 14:13:27 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/hadoop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pig</title>
+      <link>https://mintaewon.github.io/tags/pig/</link>
+      <pubDate>Tue, 13 Sep 2022 14:13:27 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/pig/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pig Latin</title>
+      <link>https://mintaewon.github.io/tags/pig-latin/</link>
+      <pubDate>Tue, 13 Sep 2022 14:13:27 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/pig-latin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>아파치</title>
+      <link>https://mintaewon.github.io/tags/%EC%95%84%ED%8C%8C%EC%B9%98/</link>
+      <pubDate>Tue, 13 Sep 2022 14:13:27 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%EC%95%84%ED%8C%8C%EC%B9%98/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>하둡</title>
+      <link>https://mintaewon.github.io/tags/%ED%95%98%EB%91%A1/</link>
+      <pubDate>Tue, 13 Sep 2022 14:13:27 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/tags/%ED%95%98%EB%91%A1/</guid>
       <description></description>
     </item>
     
@@ -58,15 +112,6 @@
       <pubDate>Thu, 08 Sep 2022 14:36:57 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/tags/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>하둡</title>
-      <link>https://mintaewon.github.io/tags/%ED%95%98%EB%91%A1/</link>
-      <pubDate>Thu, 08 Sep 2022 14:36:57 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/tags/%ED%95%98%EB%91%A1/</guid>
       <description></description>
     </item>
     

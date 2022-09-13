@@ -2,11 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/</loc>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/tags/apach-pig/</loc>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/tags/apache/</loc>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
+  </url><url>
     <loc>https://mintaewon.github.io/categories/</loc>
-    <lastmod>2022-09-08T14:36:57+09:00</lastmod>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
   </url><url>
     <loc>https://mintaewon.github.io/tags/hadoop/</loc>
-    <lastmod>2022-09-08T14:36:57+09:00</lastmod>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/</loc>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/tags/pig/</loc>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/tags/pig-latin/</loc>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/post/</loc>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/categories/study/</loc>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/tags/</loc>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/tags/%EC%95%84%ED%8C%8C%EC%B9%98/</loc>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
+  </url><url>
+    <loc>https://mintaewon.github.io/tags/%ED%95%98%EB%91%A1/</loc>
+    <lastmod>2022-09-13T14:13:27+09:00</lastmod>
   </url><url>
     <loc>https://mintaewon.github.io/tags/map/</loc>
     <lastmod>2022-09-08T14:36:57+09:00</lastmod>
@@ -17,28 +50,13 @@
     <loc>https://mintaewon.github.io/2022/09/mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/</loc>
     <lastmod>2022-09-08T14:36:57+09:00</lastmod>
   </url><url>
-    <loc>https://mintaewon.github.io/</loc>
-    <lastmod>2022-09-08T14:36:57+09:00</lastmod>
-  </url><url>
-    <loc>https://mintaewon.github.io/post/</loc>
-    <lastmod>2022-09-08T14:36:57+09:00</lastmod>
-  </url><url>
     <loc>https://mintaewon.github.io/tags/reduce/</loc>
-    <lastmod>2022-09-08T14:36:57+09:00</lastmod>
-  </url><url>
-    <loc>https://mintaewon.github.io/categories/study/</loc>
-    <lastmod>2022-09-08T14:36:57+09:00</lastmod>
-  </url><url>
-    <loc>https://mintaewon.github.io/tags/</loc>
     <lastmod>2022-09-08T14:36:57+09:00</lastmod>
   </url><url>
     <loc>https://mintaewon.github.io/tags/%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4/</loc>
     <lastmod>2022-09-08T14:36:57+09:00</lastmod>
   </url><url>
     <loc>https://mintaewon.github.io/tags/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/</loc>
-    <lastmod>2022-09-08T14:36:57+09:00</lastmod>
-  </url><url>
-    <loc>https://mintaewon.github.io/tags/%ED%95%98%EB%91%A1/</loc>
     <lastmod>2022-09-08T14:36:57+09:00</lastmod>
   </url><url>
     <loc>https://mintaewon.github.io/tags/hdfs/</loc>
