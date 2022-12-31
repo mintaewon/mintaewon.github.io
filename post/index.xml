@@ -6,7 +6,16 @@
     <description>Recent content in Posts on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 13 Sep 2022 14:13:27 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Dec 2022 18:35:35 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GCP VM 인스턴스 생성과 초기 설정</title>
+      <link>https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/</link>
+      <pubDate>Sat, 31 Dec 2022 18:35:35 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>[Hadoop] Apache Pig, Pig Latin이란? </title>
       <link>https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/</link>

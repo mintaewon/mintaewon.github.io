@@ -17,7 +17,7 @@
   },
   "name":"MIN Velog",
   "description":"",
-  "url":"https:\/\/mintaewon.github.io\/2022\/09\/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80\/",
+  "url":"https:\/\/mintaewon.github.io\/2022\/12\/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95\/",
   "keywords":"[]"
 }
 
@@ -33,42 +33,34 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Hadoop] Apache Pig, Pig Latin이란? ">
-<meta name="twitter:title" content="[Hadoop] Apache Pig, Pig Latin이란? ">
-<meta property="og:url" content="https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/">
+<meta property="og:title" content="GCP VM 인스턴스 생성과 초기 설정">
+<meta name="twitter:title" content="GCP VM 인스턴스 생성과 초기 설정">
+<meta property="og:url" content="https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/">
 <meta property="og:site_name" content="MIN Velog">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2022-09-13T14:13:27">
+    <meta property="article:published_time" content="2022-12-31T18:35:35">
   
   
-    <meta property="article:modified_time" content="2022-09-13T14:13:27">
+    <meta property="article:modified_time" content="2022-12-31T18:35:35">
   
-  
-  
-    
-      <meta property="article:section" content="Study">
-    
   
   
     
-      <meta property="article:tag" content="Hadoop">
+      <meta property="article:section" content="Development">
     
-      <meta property="article:tag" content="하둡">
+  
+  
     
-      <meta property="article:tag" content="아파치">
+      <meta property="article:tag" content="GCP">
     
-      <meta property="article:tag" content="Apache">
+      <meta property="article:tag" content="구글클라우드">
     
-      <meta property="article:tag" content="Pig">
-    
-      <meta property="article:tag" content="Apach pig">
-    
-      <meta property="article:tag" content="Pig Latin">
+      <meta property="article:tag" content="GoogleCloud">
     
   
 
@@ -89,14 +81,14 @@
 
 
 
-    <title>[Hadoop] Apache Pig, Pig Latin이란? </title>
+    <title>GCP VM 인스턴스 생성과 초기 설정</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/">
+    <link rel="canonical" href="https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -308,15 +300,15 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      [Hadoop] Apache Pig, Pig Latin이란? 
+      GCP VM 인스턴스 생성과 초기 설정
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2022-09-13T14:13:27&#43;09:00">
+      <time datetime="2022-12-31T18:35:35&#43;09:00">
         
-  September 13, 2022
+  December 31, 2022
 
       </time>
     
@@ -325,7 +317,7 @@ if (!doNotTrack) {
   
     <span>in</span>
     
-      <a class="category-link" href="https://mintaewon.github.io/categories/study">Study</a>
+      <a class="category-link" href="https://mintaewon.github.io/categories/development">Development</a>
     
   
 
@@ -335,67 +327,118 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <h1 id="pig">Pig</h1>
+              <h1 id="gcp-vm-인스턴스-만들기">GCP VM 인스턴스 만들기</h1>
 <ul>
-<li>대용량 데이터를 분석하기 위해 야후에서 개발된 플랫폼</li>
-<li>Hadoop 과 MapReduce 위에 구축되어 있어 Mapper와 Reducer를 작성하지 않고 MapReduce 작업을 수행할 수 있음</li>
-<li>SQL과 비슷한 <code>Pig Latin</code> 이라는 스트립트 언어를 사용</li>
-<li>MapReduce 보다 빠른 TEZ 위에서도 작동</li>
+<li><a href="https://console.cloud.google.com/">GCP(Google Cloud Platform)</a> 에 접속해 가입을 진행한다.</li>
+<li>결제 카드 등록까지 해야한다.</li>
 </ul>
-<br>
-<figure><img src="https://mintaewon.github.io/images/PIG/pig.PNG"/>
+<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP1.GIF"/>
+</figure>
+
+<br></p>
+<ul>
+<li>Compute Engine에서 VM 인스턴스로 이동</li>
+<li>인스턴스 만들기</li>
+</ul>
+<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP2.GIF"/>
+</figure>
+
+<br></p>
+<ul>
+<li>&ldquo;GCP free tier&rdquo; 로 검색하면 무료 서비스를 볼 수 있다.</li>
+<li><a href="https://cloud.google.com/free?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=japac-KR-all-en-dr-bkws-all-all-trial-e-dr-1009882&amp;utm_content=text-ad-none-none-DEV_c-CRE_631312776179-ADGP_Hybrid%20%7C%20BKWS%20-%20EXA%20%7C%20Txt%20~%20GCP_General_gcp_free-KWID_43700073963733905-kwd-310728589823-userloc_1009871&amp;utm_term=KW_gcp%20free%20tier-ST_gcp%20free%20tier&amp;gclid=EAIaIQobChMIj8G8_tWj_AIV0tKWCh3irAq0EAAYASAAEgKIhvD_BwE&amp;gclsrc=aw.ds">GCP Free Tier</a> 에서 확인 ( 2022-12-31일 기준)</li>
+</ul>
+<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP3.GIF"/>
+</figure>
+
+<br></p>
+<ul>
+<li>Compute Engine 에서 무료에 맞는 사양으로 인스턴스 생성</li>
+</ul>
+<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP4.GIF"/>
 </figure>
 
 <br>
-<h2 id="pig-latin">Pig Latin</h2>
+<figure><img src="https://mintaewon.github.io/images/GCP/GCP5.GIF"/>
+</figure>
+
+<br></p>
 <ul>
-<li>MapReduce 작성을 대신하게 해주는 스크립트 언어</li>
-<li>HDFS에 업로드한 파일을 사용한다</li>
+<li>무료 사양 확인하고 생성</li>
+<li>그런데 무료라고 표시가 되지는 않는다. 진짜 무료인지 아닌지는 확인이 필요함.</li>
 </ul>
+<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP6.GIF"/>
+</figure>
+
+<br></p>
+<ul>
+<li>브라우저 창에서 열기를 눌러 터미널 진입</li>
+</ul>
+<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP7.GIF"/>
+</figure>
+
 <br>
-<h3 id="명령어">명령어</h3>
-<ul>
-<li>LOAD : 데이터 불러오기</li>
-</ul>
-<pre tabindex="0"><code>metadata = LOAD &#39;DATA PATH&#39;
-# &#39;|&#39;로 구분된 데이터
-metadata = LOAD &#39;DATA PATH&#39; USING PigStorage(&#39;|&#39;)
-# 컬럼별 타입 지정
-metadata = LOAD &#39;DATA PATH&#39; USING PigStorage(&#39;|&#39;) AS (column1:int, column2;chararray, column3:chararray);
+<figure><img src="https://mintaewon.github.io/images/GCP/GCP8.GIF"/>
+</figure>
 
-# 데이터 보기
-DUMP metadata
-</code></pre><br>
+<br></p>
+<h1 id="ssh-설정">SSH 설정</h1>
 <ul>
-<li>FOREACH / GENERATE , FILTER : 컬럼, 값 필터링</li>
+<li>외부에서 접속을 위해 SSH 설정</li>
+<li>윈도우 기준 CMD에 다음 명령어 입력</li>
 </ul>
-<pre tabindex="0"><code># 데이터 불러오기
-metadata = LOAD &#39;DATA PATH&#39; USING PigStorage(&#39;|&#39;) AS (column1:int, column2;chararray, column3:chararray);
+<pre tabindex="0"><code>cd Users/%사용자명/.ssh #없으면 .ssh폴더 생성
+ssh-keygen -t rsa -b 4096 -C &#34;클라우드 계정명&#34;
+</code></pre><ul>
+<li>중간에 뜨는 것들은 엔터 눌러서 넘기기</li>
+</ul>
+<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP9.GIF"/>
+</figure>
 
-# 컬럼 필터링
-colFilter = FOREACH metadata GENERATE column1, column3;
+<br></p>
+<ul>
+<li>키가 생성된 것을 확인할 수 있다.</li>
+</ul>
+<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP10.GIF"/>
+</figure>
 
-# 값 필터링 - column2의 값이 apple 인 것만 추출
-valueFilter = FILTER meatadata BY column2 == &#39;apple&#39;;
-</code></pre><br>
+<br></p>
 <ul>
-<li>GROUP BY : 집계함수</li>
+<li>&lsquo;id_rsa.pub&rsquo; 을 열어서 내용 복사</li>
+<li>윈도우의 경우 &rsquo;notepad id_rsa.pub&rsquo; 을 하면 열린다.</li>
 </ul>
-<pre tabindex="0"><code># column2 로 column3 집계
-GROUP column2 BY column3;
-</code></pre><br>
+<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP11.GIF"/>
+</figure>
+
+<br></p>
 <ul>
-<li>JOIN : 결합</li>
+<li>GCP Compute Emgine 에서 메타데이터 &gt; SSH키 이동</li>
 </ul>
-<pre tabindex="0"><code># data1의 column1 와 data2의 column1 을 기준으로 합침
-JOIN data1 BY column1, data2 BY column1;
-</code></pre><br>
+<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP12.GIF"/>
+</figure>
+
+<br></p>
 <ul>
-<li>ORDER BY : 정렬</li>
+<li>그대로 모든 값을 복사해서 붙여넣기</li>
+<li>이때 띄어쓰기 이슈가 없는지 확인해야 한다.</li>
+<li>메모장에 한번 붙여넣기 해보고 진행하는 것을 추천!</li>
 </ul>
-<pre tabindex="0"><code>ORDER metadata BY column1 (ASC|DESC);
-</code></pre><br>
-<p>이외의 명령어는 <a href="https://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html#Relational+Operators">공식 페이지</a>에서 확인할 수 있습니다.</p>
+<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP13.GIF"/>
+</figure>
+
+<br></p>
+<h2 id="접속-방법">접속 방법</h2>
+<ul>
+<li>터미널에서</li>
+</ul>
+<pre tabindex="0"><code>ssh {계정명}@{외부IP주소}
+</code></pre><ul>
+<li>접속이 잘되는 것을 확인할 수 있다.
+<figure><img src="https://mintaewon.github.io/images/GCP/GCP14.GIF"/>
+</figure>
+
+<br></li>
+</ul>
               
 
 
@@ -409,19 +452,11 @@ JOIN data1 BY column1, data2 BY column1;
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/hadoop/">Hadoop</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/gcp/">GCP</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%ED%95%98%EB%91%A1/">하둡</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EA%B5%AC%EA%B8%80%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/">구글클라우드</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%95%84%ED%8C%8C%EC%B9%98/">아파치</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/apache/">Apache</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/pig/">Pig</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/apach-pig/">Apach pig</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/pig-latin/">Pig Latin</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/googlecloud/">GoogleCloud</a>
 
                   </div>
                 
@@ -434,7 +469,7 @@ JOIN data1 BY column1, data2 BY column1;
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" data-tooltip="GCP VM 인스턴스 생성과 초기 설정" aria-label="NEXT: GCP VM 인스턴스 생성과 초기 설정">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -442,7 +477,7 @@ JOIN data1 BY column1, data2 BY column1;
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/09/hadoop-mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4%EB%9E%80/" data-tooltip="[Hadoop] MapReduce 맵리듀스란?" aria-label="PREVIOUS: [Hadoop] MapReduce 맵리듀스란?">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/" data-tooltip="[Hadoop] Apache Pig, Pig Latin이란? " aria-label="PREVIOUS: [Hadoop] Apache Pig, Pig Latin이란? ">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -460,19 +495,19 @@ JOIN data1 BY column1, data2 BY column1;
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -511,7 +546,7 @@ JOIN data1 BY column1, data2 BY column1;
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" data-tooltip="GCP VM 인스턴스 생성과 초기 설정" aria-label="NEXT: GCP VM 인스턴스 생성과 초기 설정">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -519,7 +554,7 @@ JOIN data1 BY column1, data2 BY column1;
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/09/hadoop-mapreduce-%EB%A7%B5%EB%A6%AC%EB%93%80%EC%8A%A4%EB%9E%80/" data-tooltip="[Hadoop] MapReduce 맵리듀스란?" aria-label="PREVIOUS: [Hadoop] MapReduce 맵리듀스란?">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/" data-tooltip="[Hadoop] Apache Pig, Pig Latin이란? " aria-label="PREVIOUS: [Hadoop] Apache Pig, Pig Latin이란? ">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -537,19 +572,19 @@ JOIN data1 BY column1, data2 BY column1;
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -574,19 +609,19 @@ JOIN data1 BY column1, data2 BY column1;
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2022%2F09%2Fhadoop-apache-pig-pig-latin%25EC%259D%25B4%25EB%259E%2580%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2022%2F12%2Fgcp-vm-%25EC%259D%25B8%25EC%258A%25A4%25ED%2584%25B4%25EC%258A%25A4-%25EC%2583%259D%25EC%2584%25B1%25EA%25B3%25BC-%25EC%25B4%2588%25EA%25B8%25B0-%25EC%2584%25A4%25EC%25A0%2595%2F" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2022%2F09%2Fhadoop-apache-pig-pig-latin%25EC%259D%25B4%25EB%259E%2580%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2022%2F12%2Fgcp-vm-%25EC%259D%25B8%25EC%258A%25A4%25ED%2584%25B4%25EC%258A%25A4-%25EC%2583%259D%25EC%2584%25B1%25EA%25B3%25BC-%25EC%25B4%2588%25EA%25B8%25B0-%25EC%2584%25A4%25EC%25A0%2595%2F" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2022%2F09%2Fhadoop-apache-pig-pig-latin%25EC%259D%25B4%25EB%259E%2580%2F" aria-label="Share on Google&#43;">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2022%2F12%2Fgcp-vm-%25EC%259D%25B8%25EC%258A%25A4%25ED%2584%25B4%25EC%258A%25A4-%25EC%2583%259D%25EC%2584%25B1%25EA%25B3%25BC-%25EC%25B4%2588%25EA%25B8%25B0-%25EC%2584%25A4%25EC%25A0%2595%2F" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>
