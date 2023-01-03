@@ -6,7 +6,16 @@
     <description>Recent content in Study on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 13 Sep 2022 14:13:27 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/categories/study/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Jan 2023 13:28:47 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/categories/study/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>React 기본 사용법 정리</title>
+      <link>https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/</link>
+      <pubDate>Tue, 03 Jan 2023 13:28:47 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>[Hadoop] Apache Pig, Pig Latin이란? </title>
       <link>https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/</link>

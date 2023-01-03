@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on MIN Velog</title>
+    <link>https://mintaewon.github.io/tags/javascript/</link>
+    <description>Recent content in javascript on MIN Velog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 03 Jan 2023 13:28:47 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>React 기본 사용법 정리</title>
+      <link>https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/</link>
+      <pubDate>Tue, 03 Jan 2023 13:28:47 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

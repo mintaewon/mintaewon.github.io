@@ -17,7 +17,7 @@
   },
   "name":"MIN Velog",
   "description":"",
-  "url":"https:\/\/mintaewon.github.io\/2022\/12\/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95\/",
+  "url":"https:\/\/mintaewon.github.io\/2023\/01\/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC\/",
   "keywords":"[]"
 }
 
@@ -33,34 +33,36 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GCP VM 인스턴스 생성과 초기 설정">
-<meta name="twitter:title" content="GCP VM 인스턴스 생성과 초기 설정">
-<meta property="og:url" content="https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/">
+<meta property="og:title" content="React 기본 사용법 정리">
+<meta name="twitter:title" content="React 기본 사용법 정리">
+<meta property="og:url" content="https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/">
 <meta property="og:site_name" content="MIN Velog">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2022-12-31T18:35:35">
+    <meta property="article:published_time" content="2023-01-03T13:28:47">
   
   
-    <meta property="article:modified_time" content="2022-12-31T18:35:35">
+    <meta property="article:modified_time" content="2023-01-03T13:28:47">
   
-  
-  
-    
-      <meta property="article:section" content="Development">
-    
   
   
     
-      <meta property="article:tag" content="GCP">
+      <meta property="article:section" content="Study">
     
-      <meta property="article:tag" content="구글클라우드">
+  
+  
     
-      <meta property="article:tag" content="GoogleCloud">
+      <meta property="article:tag" content="react">
+    
+      <meta property="article:tag" content="리액트">
+    
+      <meta property="article:tag" content="javascript">
+    
+      <meta property="article:tag" content="자바스크립트">
     
   
 
@@ -81,14 +83,14 @@
 
 
 
-    <title>GCP VM 인스턴스 생성과 초기 설정</title>
+    <title>React 기본 사용법 정리</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/">
+    <link rel="canonical" href="https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -300,15 +302,15 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      GCP VM 인스턴스 생성과 초기 설정
+      React 기본 사용법 정리
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2022-12-31T18:35:35&#43;09:00">
+      <time datetime="2023-01-03T13:28:47&#43;09:00">
         
-  December 31, 2022
+  January 3, 2023
 
       </time>
     
@@ -317,7 +319,7 @@ if (!doNotTrack) {
   
     <span>in</span>
     
-      <a class="category-link" href="https://mintaewon.github.io/categories/development">Development</a>
+      <a class="category-link" href="https://mintaewon.github.io/categories/study">Study</a>
     
   
 
@@ -327,126 +329,111 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <h1 id="gcp-vm-인스턴스-만들기">GCP VM 인스턴스 만들기</h1>
+              <h1 id="react-리액트-정리">React 리액트 정리</h1>
+<h2 id="기본-셋팅">기본 셋팅</h2>
+<h3 id="nodejs-설치">Node.js 설치</h3>
 <ul>
-<li><a href="https://console.cloud.google.com/">GCP(Google Cloud Platform)</a> 에 접속해 가입을 진행한다.</li>
-<li>결제 카드 등록까지 해야한다.</li>
+<li>윈도우나 Mac의 경우 <a href="https://nodejs.org/">공식 홈페이지</a>에서 다운로드</li>
+<li>Ubuntu의 경우 <a href="https://github.com/nodesource/distributions/blob/master/README.md">깃페이지</a>에서 원하는 버전 다운로드</li>
 </ul>
-<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP1.GIF"/>
-</figure>
-
-<br></p>
+<blockquote>
+<p>Other Downloads &gt; Installing Node.js via package manager &gt; Debian and Ubuntu based Linux distributions &gt; Node.js binary distributions 로 이동</p>
+</blockquote>
+<h3 id="프로젝트-시작">프로젝트 시작</h3>
 <ul>
-<li>Compute Engine에서 VM 인스턴스로 이동</li>
-<li>인스턴스 만들기</li>
+<li>터미널에 명령어 실행</li>
 </ul>
-<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP2.GIF"/>
-</figure>
-
-<br></p>
+<pre tabindex="0"><code>npx create-reatc-app &#34;프로젝트명&#34;
+</code></pre><h2 id="기초-사용법">기초 사용법</h2>
+<blockquote>
+<p>HTML과 비슷하게 생긴 JSX 문법 사용</p>
+</blockquote>
+<h3 id="터미널-warning-제거">터미널 warning 제거</h3>
 <ul>
-<li>&ldquo;GCP free tier&rdquo; 로 검색하면 무료 서비스를 볼 수 있다.</li>
-<li><a href="https://cloud.google.com/free?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=japac-KR-all-en-dr-bkws-all-all-trial-e-dr-1009882&amp;utm_content=text-ad-none-none-DEV_c-CRE_631312776179-ADGP_Hybrid%20%7C%20BKWS%20-%20EXA%20%7C%20Txt%20~%20GCP_General_gcp_free-KWID_43700073963733905-kwd-310728589823-userloc_1009871&amp;utm_term=KW_gcp%20free%20tier-ST_gcp%20free%20tier&amp;gclid=EAIaIQobChMIj8G8_tWj_AIV0tKWCh3irAq0EAAYASAAEgKIhvD_BwE&amp;gclsrc=aw.ds">GCP Free Tier</a> 에서 확인 ( 2022-12-31일 기준)</li>
+<li>App.js 제일 상단에 코드 추가</li>
 </ul>
-<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP3.GIF"/>
-</figure>
-
-<br></p>
-<ul>
-<li>Compute Engine 에서 무료에 맞는 사양으로 인스턴스 생성</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP4.GIF"/>
-</figure>
-
-<br>
-<figure><img src="https://mintaewon.github.io/images/GCP/GCP5.GIF"/>
-</figure>
-
-<br></p>
-<ul>
-<li>무료 사양 확인하고 생성</li>
-<li>그런데 무료라고 표시가 되지는 않는다.</li>
-<li>하루정도 냅둬본 결과 결제내역에는 free tier discount가 들어가있는 것을 확인할 수 있었다.</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP6.GIF"/>
-</figure>
-
-<br></p>
-<ul>
-<li>브라우저 창에서 열기를 눌러 터미널 진입</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP7.GIF"/>
-</figure>
-
-<br>
-<figure><img src="https://mintaewon.github.io/images/GCP/GCP8.GIF"/>
-</figure>
-
-<br></p>
-<h2 id="주의해야할-점">주의해야할 점</h2>
-<ul>
-<li>특히 무료 크레딧을 사용해 이거저거 해보고있다면 요금에 대해서 자세히 찾아봐야한다.</li>
-<li>중지를 해놓아도 단순히 생성한 것 만으로 유지비용(?) 같은게 나가는 경우가 있다.</li>
-<li>필자는 Cloud SQL 로 MYSQL을 사용했다가 중지를 눌러놨었는데 이게 계속 요금이 누적되고 있었다.</li>
-<li><del>몇만원 쌩으로 날렸다</del></li>
-</ul>
-<h1 id="ssh-설정">SSH 설정</h1>
-<ul>
-<li>외부에서 접속을 위해 SSH 설정</li>
-<li>윈도우 기준 CMD에 다음 명령어 입력</li>
-</ul>
-<pre tabindex="0"><code>cd Users/%사용자명/.ssh #없으면 .ssh폴더 생성
-ssh-keygen -t rsa -b 4096 -C &#34;클라우드 계정명&#34;
+<pre tabindex="0"><code>/* exlint-disable */
 </code></pre><ul>
-<li>중간에 뜨는 것들은 엔터 눌러서 넘기기</li>
+<li>태그에 class 지정하는 방법</li>
 </ul>
-<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP9.GIF"/>
-</figure>
+<pre tabindex="0"><code>&lt;div className=&#34;클래스 명&#34;&gt;&lt;/div&gt;
+</code></pre><h3 id="바인딩">바인딩</h3>
+<pre tabindex="0"><code>#1. 변수지정
+let 클래스변수 = &#34;주제&#34;
+&lt;div className={클래스변수}&gt;&lt;/div&gt;
 
-<br></p>
+#2. 함수
+function 함수명(){
+    return &#34;주제&#34;
+}
+&lt;div className={함수명()}&gt;&lt;/div&gt;
+</code></pre><h3 id="style-변경">style 변경</h3>
+<pre tabindex="0"><code>중괄호{} 안에 object 형으로
+&lt;div style={{color:&#39;white&#39;, fontSize:&#39;20px&#39;}}&gt;내용&lt;/div&gt;
+</code></pre><h3 id="usestate">useState</h3>
 <ul>
-<li>키가 생성된 것을 확인할 수 있다.</li>
+<li>변수 지정하는 방식</li>
+<li>사용 이유 : 페이지 내에서 내용 변경시 HTML이 자동으로 재렌더링 됨, 새로고침 없이 변경됨</li>
+<li>문자, 숫자, array, object 모두 가능</li>
+<li>자주 바뀌는 데이터에 사용</li>
 </ul>
-<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP10.GIF"/>
-</figure>
+<pre tabindex="0"><code>import React, {useState} from &#39;react&#39;;
 
-<br></p>
-<ul>
-<li>&lsquo;id_rsa.pub&rsquo; 을 열어서 내용 복사</li>
-<li>윈도우의 경우 &rsquo;notepad id_rsa.pub&rsquo; 을 하면 열린다.</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP11.GIF"/>
-</figure>
+let [a,b] = useState(&#39;변수&#39;);
 
-<br></p>
-<ul>
-<li>GCP Compute Emgine 에서 메타데이터 &gt; SSH키 이동</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP12.GIF"/>
-</figure>
+# a는 변수가, b는 변수를 정정할 수 있는 함수
 
-<br></p>
+b(변경내용);
+# 변경 내용의 값으로 a를 교체
+</code></pre><p>값 변경 방법</p>
 <ul>
-<li>그대로 모든 값을 복사해서 붙여넣기</li>
-<li>이때 띄어쓰기 이슈가 없는지 확인해야 한다.</li>
-<li>메모장에 한번 붙여넣기 해보고 진행하는 것을 추천!</li>
+<li>useState 의 값 직접 변경 X</li>
 </ul>
-<p><figure><img src="https://mintaewon.github.io/images/GCP/GCP13.GIF"/>
-</figure>
-
-<br></p>
-<h2 id="접속-방법">접속 방법</h2>
-<ul>
-<li>터미널에서</li>
-</ul>
-<pre tabindex="0"><code>ssh {계정명}@{외부IP주소}
+<pre tabindex="0"><code># 이런거 안됨
+let [a,b] = useState(&#39;변수&#39;);
+a = &#39;변수2&#39;
 </code></pre><ul>
-<li>접속이 잘되는 것을 확인할 수 있다.
-<figure><img src="https://mintaewon.github.io/images/GCP/GCP14.GIF"/>
-</figure>
-
-<br></li>
+<li>변경 함수 생성 후 deep copy 한다음 수정 후 변경 함수에 넣기</li>
 </ul>
+<pre tabindex="0"><code>let [변수,변경함수] = useState([&#39;값1&#39;, &#39;값2&#39;,&#39;값3&#39;]);
+
+function 바꾸기(){
+    var newArray = [...변수]; # deep copy
+    newArray[0] = &#39;값4&#39;;
+    변경함수(newArray);
+}
+</code></pre><h3 id="클릭-이벤트">클릭 이벤트</h3>
+<ul>
+<li>span, button</li>
+<li>onClick 이용</li>
+<li>중괄호 안에는 함수만</li>
+</ul>
+<pre tabindex="0"><code>&lt;span onClick={ 함수 }&gt;내용&lt;/span&gt;
+</code></pre><h3 id="component">component</h3>
+<ul>
+<li>일종의 함수화라고 생각하면 될듯</li>
+</ul>
+<pre tabindex="0"><code>function App(){
+
+    변수선언 등
+
+    return(
+        HTML, JSX 코드
+
+        &lt;Component&gt;&lt;/Component&gt;
+        or
+        &lt;Component /&gt;
+    )
+}
+
+function Component(){
+    return (
+        &lt;div&gt;
+            내용
+        &lt;/div&gt;
+    )   
+}
+</code></pre>
               
 
 
@@ -460,11 +447,13 @@ ssh-keygen -t rsa -b 4096 -C &#34;클라우드 계정명&#34;
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/gcp/">GCP</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/react/">react</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EA%B5%AC%EA%B8%80%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/">구글클라우드</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%A6%AC%EC%95%A1%ED%8A%B8/">리액트</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/googlecloud/">GoogleCloud</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/javascript/">javascript</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/">자바스크립트</a>
 
                   </div>
                 
@@ -477,7 +466,7 @@ ssh-keygen -t rsa -b 4096 -C &#34;클라우드 계정명&#34;
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" data-tooltip="React 기본 사용법 정리" aria-label="NEXT: React 기본 사용법 정리">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -485,7 +474,7 @@ ssh-keygen -t rsa -b 4096 -C &#34;클라우드 계정명&#34;
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/" data-tooltip="[Hadoop] Apache Pig, Pig Latin이란? " aria-label="PREVIOUS: [Hadoop] Apache Pig, Pig Latin이란? ">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" data-tooltip="GCP VM 인스턴스 생성과 초기 설정" aria-label="PREVIOUS: GCP VM 인스턴스 생성과 초기 설정">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -503,19 +492,19 @@ ssh-keygen -t rsa -b 4096 -C &#34;클라우드 계정명&#34;
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -554,7 +543,7 @@ ssh-keygen -t rsa -b 4096 -C &#34;클라우드 계정명&#34;
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" data-tooltip="React 기본 사용법 정리" aria-label="NEXT: React 기본 사용법 정리">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -562,7 +551,7 @@ ssh-keygen -t rsa -b 4096 -C &#34;클라우드 계정명&#34;
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/09/hadoop-apache-pig-pig-latin%EC%9D%B4%EB%9E%80/" data-tooltip="[Hadoop] Apache Pig, Pig Latin이란? " aria-label="PREVIOUS: [Hadoop] Apache Pig, Pig Latin이란? ">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" data-tooltip="GCP VM 인스턴스 생성과 초기 설정" aria-label="PREVIOUS: GCP VM 인스턴스 생성과 초기 설정">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -580,19 +569,19 @@ ssh-keygen -t rsa -b 4096 -C &#34;클라우드 계정명&#34;
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -617,19 +606,19 @@ ssh-keygen -t rsa -b 4096 -C &#34;클라우드 계정명&#34;
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2022%2F12%2Fgcp-vm-%25EC%259D%25B8%25EC%258A%25A4%25ED%2584%25B4%25EC%258A%25A4-%25EC%2583%259D%25EC%2584%25B1%25EA%25B3%25BC-%25EC%25B4%2588%25EA%25B8%25B0-%25EC%2584%25A4%25EC%25A0%2595%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Freact-%25EA%25B8%25B0%25EB%25B3%25B8-%25EC%2582%25AC%25EC%259A%25A9%25EB%25B2%2595-%25EC%25A0%2595%25EB%25A6%25AC%2F" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2022%2F12%2Fgcp-vm-%25EC%259D%25B8%25EC%258A%25A4%25ED%2584%25B4%25EC%258A%25A4-%25EC%2583%259D%25EC%2584%25B1%25EA%25B3%25BC-%25EC%25B4%2588%25EA%25B8%25B0-%25EC%2584%25A4%25EC%25A0%2595%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Freact-%25EA%25B8%25B0%25EB%25B3%25B8-%25EC%2582%25AC%25EC%259A%25A9%25EB%25B2%2595-%25EC%25A0%2595%25EB%25A6%25AC%2F" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2022%2F12%2Fgcp-vm-%25EC%259D%25B8%25EC%258A%25A4%25ED%2584%25B4%25EC%258A%25A4-%25EC%2583%259D%25EC%2584%25B1%25EA%25B3%25BC-%25EC%25B4%2588%25EA%25B8%25B0-%25EC%2584%25A4%25EC%25A0%2595%2F" aria-label="Share on Google&#43;">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Freact-%25EA%25B8%25B0%25EB%25B3%25B8-%25EC%2582%25AC%25EC%259A%25A9%25EB%25B2%2595-%25EC%25A0%2595%25EB%25A6%25AC%2F" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>
