@@ -17,7 +17,7 @@
   },
   "name":"MIN Velog",
   "description":"",
-  "url":"https:\/\/mintaewon.github.io\/2023\/01\/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC\/",
+  "url":"https:\/\/mintaewon.github.io\/2023\/01\/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98\/",
   "keywords":"[]"
 }
 
@@ -33,36 +33,40 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React 기본 사용법 정리">
-<meta name="twitter:title" content="React 기본 사용법 정리">
-<meta property="og:url" content="https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/">
+<meta property="og:title" content="Ubuntu에 docker, docker compose 설치">
+<meta name="twitter:title" content="Ubuntu에 docker, docker compose 설치">
+<meta property="og:url" content="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/">
 <meta property="og:site_name" content="MIN Velog">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2023-01-03T13:28:47">
+    <meta property="article:published_time" content="2023-01-03T19:37:22">
   
   
-    <meta property="article:modified_time" content="2023-01-03T13:28:47">
+    <meta property="article:modified_time" content="2023-01-03T19:37:22">
   
-  
-  
-    
-      <meta property="article:section" content="Study">
-    
   
   
     
-      <meta property="article:tag" content="react">
+      <meta property="article:section" content="Development">
     
-      <meta property="article:tag" content="리액트">
+  
+  
     
-      <meta property="article:tag" content="javascript">
+      <meta property="article:tag" content="GCP">
     
-      <meta property="article:tag" content="자바스크립트">
+      <meta property="article:tag" content="구글클라우드">
+    
+      <meta property="article:tag" content="GoogleCloud">
+    
+      <meta property="article:tag" content="docker">
+    
+      <meta property="article:tag" content="도커">
+    
+      <meta property="article:tag" content="docker-compose">
     
   
 
@@ -83,14 +87,14 @@
 
 
 
-    <title>React 기본 사용법 정리</title>
+    <title>Ubuntu에 docker, docker compose 설치</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/">
+    <link rel="canonical" href="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -302,13 +306,13 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      React 기본 사용법 정리
+      Ubuntu에 docker, docker compose 설치
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-01-03T13:28:47&#43;09:00">
+      <time datetime="2023-01-03T19:37:22&#43;09:00">
         
   January 3, 2023
 
@@ -319,7 +323,7 @@ if (!doNotTrack) {
   
     <span>in</span>
     
-      <a class="category-link" href="https://mintaewon.github.io/categories/study">Study</a>
+      <a class="category-link" href="https://mintaewon.github.io/categories/development">Development</a>
     
   
 
@@ -329,110 +333,63 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <h1 id="react-리액트-정리">React 리액트 정리</h1>
-<h2 id="기본-셋팅">기본 셋팅</h2>
-<h3 id="nodejs-설치">Node.js 설치</h3>
+              <p>클라우드에 도커 설치하는 법 찾으면서 하기 귀찮아서 정리</p>
+<p>2023-01-03 수정</p>
+<h1 id="docker">Docker</h1>
 <ul>
-<li>윈도우나 Mac의 경우 <a href="https://nodejs.org/">공식 홈페이지</a>에서 다운로드</li>
-<li>Ubuntu의 경우 <a href="https://github.com/nodesource/distributions/blob/master/README.md">깃페이지</a>에서 원하는 버전 다운로드</li>
+<li><a href="">docker 공식 페이지</a> 설치법을 따라간다</li>
+<li>apt 업데이트를 먼저 해준다</li>
 </ul>
-<blockquote>
-<p>Other Downloads &gt; Installing Node.js via package manager &gt; Debian and Ubuntu based Linux distributions &gt; Node.js binary distributions 로 이동</p>
-</blockquote>
-<h3 id="프로젝트-시작">프로젝트 시작</h3>
-<ul>
-<li>터미널에 명령어 실행</li>
-</ul>
-<pre tabindex="0"><code>npx create-reatc-app &#34;프로젝트명&#34;
-</code></pre><h2 id="기초-사용법">기초 사용법</h2>
-<blockquote>
-<p>HTML과 비슷하게 생긴 JSX 문법 사용</p>
-</blockquote>
-<h3 id="터미널-warning-제거">터미널 warning 제거</h3>
-<ul>
-<li>App.js 제일 상단에 코드 추가</li>
-</ul>
-<pre tabindex="0"><code>/* exlint-disable */
+<pre tabindex="0"><code>sudo apt-get update
 </code></pre><ul>
-<li>태그에 class 지정하는 방법</li>
+<li>https로 사용할 수 있도록 패키지 설치</li>
 </ul>
-<pre tabindex="0"><code>&lt;div className=&#34;클래스 명&#34;&gt;&lt;/div&gt;
-</code></pre><h3 id="바인딩">바인딩</h3>
-<pre tabindex="0"><code>#1. 변수지정
-let 클래스변수 = &#34;주제&#34;
-&lt;div className={클래스변수}&gt;&lt;/div&gt;
-
-#2. 함수
-function 함수명(){
-    return &#34;주제&#34;
-}
-&lt;div className={함수명()}&gt;&lt;/div&gt;
-</code></pre><h3 id="style-변경">style 변경</h3>
-<pre tabindex="0"><code>중괄호{} 안에 object 형으로
-&lt;div style={{color:&#39;white&#39;, fontSize:&#39;20px&#39;}}&gt;내용&lt;/div&gt;
-</code></pre><h3 id="usestate">useState</h3>
-<ul>
-<li>변수 지정하는 방식</li>
-<li>사용 이유 : 페이지 내에서 내용 변경시 HTML이 자동으로 재렌더링 됨, 새로고침 없이 변경됨</li>
-<li>문자, 숫자, array, object 모두 가능</li>
-<li>자주 바뀌는 데이터에 사용</li>
-</ul>
-<pre tabindex="0"><code>import React, {useState} from &#39;react&#39;;
-
-let [a,b] = useState(&#39;변수&#39;);
-
-# a는 변수가, b는 변수를 정정할 수 있는 함수
-
-b(변경내용);
-# 변경 내용의 값으로 a를 교체
-</code></pre><p>값 변경 방법</p>
-<ul>
-<li>useState 의 값 직접 변경 X</li>
-</ul>
-<pre tabindex="0"><code># 이런거 안됨
-let [a,b] = useState(&#39;변수&#39;);
-a = &#39;변수2&#39;
+<pre tabindex="0"><code>sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
 </code></pre><ul>
-<li>변경 함수 생성 후 deep copy 한다음 수정 후 변경 함수에 넣기</li>
+<li>GPG key 추가</li>
 </ul>
-<pre tabindex="0"><code>let [변수,변경함수] = useState([&#39;값1&#39;, &#39;값2&#39;,&#39;값3&#39;]);
+<pre tabindex="0"><code>sudo mkdir -p /etc/apt/keyrings
 
-function 바꾸기(){
-    var newArray = [...변수]; # deep copy
-    newArray[0] = &#39;값4&#39;;
-    변경함수(newArray);
-}
-</code></pre><h3 id="클릭-이벤트">클릭 이벤트</h3>
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+</code></pre><ul>
+<li>repository set up</li>
+</ul>
+<pre tabindex="0"><code>echo \
+  &#34;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable&#34; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+</code></pre><ul>
+<li>docker engine 설치(docker compose 포함)</li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+</code></pre><ul>
+<li>권한 설정</li>
+</ul>
+<pre tabindex="0"><code>sudo usermod -a -G docker $USER
+</code></pre><ul>
+<li>명령어로 설치 됐는지 확인</li>
+</ul>
+<pre tabindex="0"><code>docker images 등
+</code></pre><h1 id="docker-compose">Docker Compose</h1>
 <ul>
-<li>span, button</li>
-<li>onClick 이용</li>
-<li>중괄호 안에는 함수만</li>
+<li>docker compose 의 버전은 <a href="https://github.com/docker/compose/releases">공식 github 페이지</a>에서 확인할 수 있다</li>
+<li>터미널에서 설치</li>
+<li>2023-01-03 기준으로 최신버전은 <code>2.14.2</code> 인데 설치는 되지 않는다</li>
+<li>1.27.2 는 설치 잘됨</li>
 </ul>
-<pre tabindex="0"><code>&lt;span onClick={ 함수 }&gt;내용&lt;/span&gt;
-</code></pre><h3 id="component">component</h3>
-<ul>
-<li>일종의 함수화라고 생각하면 될듯</li>
+<pre tabindex="0"><code># 원하는 버전 설치
+sudo curl -L &#34;https://github.com/docker/compose/releases/download/{버전 입력}/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose
+</code></pre><ul>
+<li>실행 권한을 추가해준다</li>
 </ul>
-<pre tabindex="0"><code>function App(){
-
-    변수선언 등
-
-    return(
-        HTML, JSX 코드
-
-        &lt;Component&gt;&lt;/Component&gt;
-        or
-        &lt;Component /&gt;
-    )
-}
-
-function Component(){
-    return (
-        &lt;div&gt;
-            내용
-        &lt;/div&gt;
-    )   
-}
+<pre tabindex="0"><code>sudo chmod +x /usr/local/bin/docker-compose
+</code></pre><ul>
+<li>버전 확인이 잘 되면 설치 완료</li>
+</ul>
+<pre tabindex="0"><code>docker-compose -v
 </code></pre>
               
 
@@ -447,13 +404,17 @@ function Component(){
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/react/">react</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/gcp/">GCP</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%A6%AC%EC%95%A1%ED%8A%B8/">리액트</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EA%B5%AC%EA%B8%80%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/">구글클라우드</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/javascript/">javascript</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/googlecloud/">GoogleCloud</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/">자바스크립트</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/docker/">docker</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%8F%84%EC%BB%A4/">도커</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/docker-compose/">docker-compose</a>
 
                   </div>
                 
@@ -466,7 +427,7 @@ function Component(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" data-tooltip="Ubuntu에 docker, docker compose 설치" aria-label="NEXT: Ubuntu에 docker, docker compose 설치">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -474,7 +435,7 @@ function Component(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" data-tooltip="GCP VM 인스턴스 생성과 초기 설정" aria-label="PREVIOUS: GCP VM 인스턴스 생성과 초기 설정">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" data-tooltip="React 기본 사용법 정리" aria-label="PREVIOUS: React 기본 사용법 정리">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -492,19 +453,19 @@ function Component(){
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -543,7 +504,7 @@ function Component(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" data-tooltip="Ubuntu에 docker, docker compose 설치" aria-label="NEXT: Ubuntu에 docker, docker compose 설치">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -551,7 +512,7 @@ function Component(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2022/12/gcp-vm-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95/" data-tooltip="GCP VM 인스턴스 생성과 초기 설정" aria-label="PREVIOUS: GCP VM 인스턴스 생성과 초기 설정">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" data-tooltip="React 기본 사용법 정리" aria-label="PREVIOUS: React 기본 사용법 정리">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -569,19 +530,19 @@ function Component(){
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -606,19 +567,19 @@ function Component(){
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Freact-%25EA%25B8%25B0%25EB%25B3%25B8-%25EC%2582%25AC%25EC%259A%25A9%25EB%25B2%2595-%25EC%25A0%2595%25EB%25A6%25AC%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fubuntu%25EC%2597%2590-docker-docker-compose-%25EC%2584%25A4%25EC%25B9%2598%2F" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Freact-%25EA%25B8%25B0%25EB%25B3%25B8-%25EC%2582%25AC%25EC%259A%25A9%25EB%25B2%2595-%25EC%25A0%2595%25EB%25A6%25AC%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fubuntu%25EC%2597%2590-docker-docker-compose-%25EC%2584%25A4%25EC%25B9%2598%2F" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Freact-%25EA%25B8%25B0%25EB%25B3%25B8-%25EC%2582%25AC%25EC%259A%25A9%25EB%25B2%2595-%25EC%25A0%2595%25EB%25A6%25AC%2F" aria-label="Share on Google&#43;">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fubuntu%25EC%2597%2590-docker-docker-compose-%25EC%2584%25A4%25EC%25B9%2598%2F" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>
