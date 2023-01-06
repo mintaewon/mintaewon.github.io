@@ -17,7 +17,7 @@
   },
   "name":"MIN Velog",
   "description":"",
-  "url":"https:\/\/mintaewon.github.io\/2023\/01\/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98\/",
+  "url":"https:\/\/mintaewon.github.io\/2023\/01\/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0\/",
   "keywords":"[]"
 }
 
@@ -33,20 +33,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu에 docker, docker compose 설치">
-<meta name="twitter:title" content="Ubuntu에 docker, docker compose 설치">
-<meta property="og:url" content="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/">
+<meta property="og:title" content="Docker로 Mysql 구축하기">
+<meta name="twitter:title" content="Docker로 Mysql 구축하기">
+<meta property="og:url" content="https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">
 <meta property="og:site_name" content="MIN Velog">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2023-01-03T19:37:22">
+    <meta property="article:published_time" content="2023-01-06T17:24:44">
   
   
-    <meta property="article:modified_time" content="2023-01-03T19:37:22">
+    <meta property="article:modified_time" content="2023-01-06T17:24:44">
   
   
   
@@ -56,17 +56,17 @@
   
   
     
-      <meta property="article:tag" content="GCP">
-    
-      <meta property="article:tag" content="구글클라우드">
-    
-      <meta property="article:tag" content="GoogleCloud">
-    
-      <meta property="article:tag" content="docker">
+      <meta property="article:tag" content="Docker">
     
       <meta property="article:tag" content="도커">
     
-      <meta property="article:tag" content="docker-compose">
+      <meta property="article:tag" content="MySQL">
+    
+      <meta property="article:tag" content="DB">
+    
+      <meta property="article:tag" content="데이터베이스">
+    
+      <meta property="article:tag" content="Database">
     
   
 
@@ -87,14 +87,14 @@
 
 
 
-    <title>Ubuntu에 docker, docker compose 설치</title>
+    <title>Docker로 Mysql 구축하기</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/">
+    <link rel="canonical" href="https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -306,15 +306,15 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      Ubuntu에 docker, docker compose 설치
+      Docker로 Mysql 구축하기
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-01-03T19:37:22&#43;09:00">
+      <time datetime="2023-01-06T17:24:44&#43;09:00">
         
-  January 3, 2023
+  January 6, 2023
 
       </time>
     
@@ -333,64 +333,84 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>클라우드에 도커 설치하는 법 찾으면서 하기 귀찮아서 정리</p>
-<p>2023-01-03 수정</p>
-<h1 id="docker">Docker</h1>
+              <p>Cloud 서비스의 DB가 요금이 많이나온다. 그래서 가벼운 프로젝트는 백엔드와 DB를 단일 서버로 사용하기 위해 DB 구축하는 과정을 기록해놓기로 했다. 아주 간단하게 사용할 수 있는 <code>SQLite3</code> 도 있지만 <code>MySQL</code> 로 구축!</p>
+<p>MySQL 을 구축하는 방법에는 MySQL을 직접 설치하는 방법과 Docker image로 하는 방법이 있다.</p>
+<p>컴퓨터에 이거저거 설치하는거 싫어해서 Docker로 진행.</p>
+<br>
+<h1 id="docker-로-mysql-구축">Docker 로 MySQL 구축</h1>
+<h2 id="개발-환경">개발 환경</h2>
 <ul>
-<li><a href="">docker 공식 페이지</a> 설치법을 따라간다</li>
-<li>apt 업데이트를 먼저 해준다</li>
+<li>wsl2 Ubuntu 22.04</li>
+<li>wsl은 <a href="https://learn.microsoft.com/ko-kr/windows/wsl/install">마이크로소프트 홈페이지</a>에 있는 설치방법으로 진행</li>
 </ul>
-<pre tabindex="0"><code>sudo apt-get update
-</code></pre><ul>
-<li>https로 사용할 수 있도록 패키지 설치</li>
+<h2 id="docker-설치">Docker 설치</h2>
+<ul>
+<li>이전 포스팅에서 확인 가능</li>
+<li><a href="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/">https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/</a></li>
 </ul>
-<pre tabindex="0"><code>sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-</code></pre><ul>
-<li>GPG key 추가</li>
+<h2 id="mysql-구축">MySQL 구축</h2>
+<ul>
+<li><a href="https://hub.docker.com/">Docker hub</a> 에가면 다양한 이미지를 찾을 수 있다.</li>
+<li>Docker hub 에서 MySQL 검색</li>
 </ul>
-<pre tabindex="0"><code>sudo mkdir -p /etc/apt/keyrings
+<p><figure><img src="https://mintaewon.github.io/images/docker-mysql/mysql1.GIF"/>
+</figure>
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-</code></pre><ul>
-<li>repository set up</li>
-</ul>
-<pre tabindex="0"><code>echo \
-  &#34;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable&#34; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
-</code></pre><ul>
-<li>docker engine 설치(docker compose 포함)</li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-</code></pre><ul>
-<li>권한 설정</li>
-</ul>
-<pre tabindex="0"><code>sudo usermod -a -G docker $USER
-</code></pre><ul>
-<li>명령어로 설치 됐는지 확인</li>
-</ul>
-<pre tabindex="0"><code>docker images 등
-</code></pre><h1 id="docker-compose">Docker Compose</h1>
+<br></p>
 <ul>
-<li>docker compose 의 버전은 <a href="https://github.com/docker/compose/releases">공식 github 페이지</a>에서 확인할 수 있다</li>
-<li>터미널에서 설치</li>
-<li>2023-01-03 기준으로 최신버전은 <code>2.14.2</code> 인데 설치는 되지 않는다</li>
-<li>1.27.2 는 설치 잘됨</li>
+<li>Tag에서 최신 버전, 원하는 버전 등을 찾을 수 있다.</li>
 </ul>
-<pre tabindex="0"><code># 원하는 버전 설치
-sudo curl -L &#34;https://github.com/docker/compose/releases/download/{버전 입력}/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose
-</code></pre><ul>
-<li>실행 권한을 추가해준다</li>
+<p><figure><img src="https://mintaewon.github.io/images/docker-mysql/mysql2.GIF"/>
+</figure>
+
+<br></p>
+<ul>
+<li>가장 최신 버전으로 설치!</li>
+<li>터미널에 복붙!</li>
+<li>docker images 로 이미지 확인</li>
 </ul>
-<pre tabindex="0"><code>sudo chmod +x /usr/local/bin/docker-compose
-</code></pre><ul>
-<li>버전 확인이 잘 되면 설치 완료</li>
+<p><figure><img src="https://mintaewon.github.io/images/docker-mysql/mysql3.GIF"/>
+</figure>
+
+<br></p>
+<ul>
+<li>MySQL 컨테이너 생성</li>
+<li>가장 혼란스러웠던 저장공간 설정..</li>
+<li>Volume과 Bind Mount 가 있는데 다음 유튜브에 설명이 아주 잘 나와있다.</li>
+<li><a href="https://youtu.be/-pzptvcJNh0">https://youtu.be/-pzptvcJNh0</a></li>
 </ul>
-<pre tabindex="0"><code>docker-compose -v
-</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>docker run 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 컨테이너 이름 지정</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>name test<span style="color:#f92672">-</span>mysql 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># MySQL root 계정 비밀번호 지정</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span>e MYSQL_ROOT_PASSWORD<span style="color:#f92672">=</span><span style="color:#ae81ff">1234</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 백그라운드로 실행</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span>d 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 포트포워딩, 호스트:컨테이너</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span>p <span style="color:#ae81ff">3306</span>:<span style="color:#ae81ff">3306</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 바인드 마운트, 호스트:컨테이너</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span>v <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>docker<span style="color:#f92672">/</span>gymdata<span style="color:#f92672">/</span>:<span style="color:#f92672">/</span>var<span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>mysql<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 도커 이미지 ID</span>
+</span></span><span style="display:flex;"><span>    mysql:latest
+</span></span></code></pre></div><p><figure><img src="https://mintaewon.github.io/images/docker-mysql/mysql4.GIF"/>
+</figure>
+
+<br></p>
+<ul>
+<li>/home/docker/gymdata 에 가면 공간이 생성된 것을 확인할 수 있다.</li>
+</ul>
+<p><figure><img src="https://mintaewon.github.io/images/docker-mysql/mysql6.GIF"/>
+</figure>
+
+<br></p>
+<ul>
+<li>컨테이너 접속 후 MySQL 사용 확인</li>
+</ul>
+<pre tabindex="0"><code>docker exec -it test-mysql bash
+</code></pre><p><figure><img src="https://mintaewon.github.io/images/docker-mysql/mysql5.GIF"/>
+</figure>
+
+<br></p>
               
 
 
@@ -404,17 +424,17 @@ sudo curl -L &#34;https://github.com/docker/compose/releases/download/{버전 �
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/gcp/">GCP</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EA%B5%AC%EA%B8%80%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/">구글클라우드</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/googlecloud/">GoogleCloud</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/docker/">docker</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/docker/">Docker</a>
 
   <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%8F%84%EC%BB%A4/">도커</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/docker-compose/">docker-compose</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/mysql/">MySQL</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/db/">DB</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4/">데이터베이스</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/database/">Database</a>
 
                   </div>
                 
@@ -427,7 +447,7 @@ sudo curl -L &#34;https://github.com/docker/compose/releases/download/{버전 �
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" data-tooltip="Docker로 Mysql 구축하기" aria-label="NEXT: Docker로 Mysql 구축하기">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -435,7 +455,7 @@ sudo curl -L &#34;https://github.com/docker/compose/releases/download/{버전 �
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" data-tooltip="React 기본 사용법 정리" aria-label="PREVIOUS: React 기본 사용법 정리">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" data-tooltip="Ubuntu에 docker, docker compose 설치" aria-label="PREVIOUS: Ubuntu에 docker, docker compose 설치">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -453,19 +473,19 @@ sudo curl -L &#34;https://github.com/docker/compose/releases/download/{버전 �
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -504,7 +524,7 @@ sudo curl -L &#34;https://github.com/docker/compose/releases/download/{버전 �
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" data-tooltip="Docker로 Mysql 구축하기" aria-label="NEXT: Docker로 Mysql 구축하기">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -512,7 +532,7 @@ sudo curl -L &#34;https://github.com/docker/compose/releases/download/{버전 �
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/react-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC/" data-tooltip="React 기본 사용법 정리" aria-label="PREVIOUS: React 기본 사용법 정리">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" data-tooltip="Ubuntu에 docker, docker compose 설치" aria-label="PREVIOUS: Ubuntu에 docker, docker compose 설치">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -530,19 +550,19 @@ sudo curl -L &#34;https://github.com/docker/compose/releases/download/{버전 �
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90-docker-docker-compose-%EC%84%A4%EC%B9%98/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -567,19 +587,19 @@ sudo curl -L &#34;https://github.com/docker/compose/releases/download/{버전 �
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fubuntu%25EC%2597%2590-docker-docker-compose-%25EC%2584%25A4%25EC%25B9%2598%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fdocker%25EB%25A1%259C-mysql-%25EA%25B5%25AC%25EC%25B6%2595%25ED%2595%2598%25EA%25B8%25B0%2F" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fubuntu%25EC%2597%2590-docker-docker-compose-%25EC%2584%25A4%25EC%25B9%2598%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fdocker%25EB%25A1%259C-mysql-%25EA%25B5%25AC%25EC%25B6%2595%25ED%2595%2598%25EA%25B8%25B0%2F" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fubuntu%25EC%2597%2590-docker-docker-compose-%25EC%2584%25A4%25EC%25B9%2598%2F" aria-label="Share on Google&#43;">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fdocker%25EB%25A1%259C-mysql-%25EA%25B5%25AC%25EC%25B6%2595%25ED%2595%2598%25EA%25B8%25B0%2F" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>
