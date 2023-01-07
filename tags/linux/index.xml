@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on MIN Velog</title>
+    <link>https://mintaewon.github.io/tags/linux/</link>
+    <description>Recent content in Linux on MIN Velog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 07 Jan 2023 18:12:42 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu에서 Matplotlib 한글 설정</title>
+      <link>https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/</link>
+      <pubDate>Sat, 07 Jan 2023 18:12:42 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

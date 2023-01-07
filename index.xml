@@ -6,7 +6,16 @@
     <description>Recent content on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 06 Jan 2023 17:24:44 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Jan 2023 18:12:42 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu에서 Matplotlib 한글 설정</title>
+      <link>https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/</link>
+      <pubDate>Sat, 07 Jan 2023 18:12:42 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Docker로 Mysql 구축하기</title>
       <link>https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/</link>
