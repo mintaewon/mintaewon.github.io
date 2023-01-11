@@ -411,6 +411,29 @@ if (!doNotTrack) {
 </figure>
 
 <br></p>
+<ul>
+<li>MySQL 접속</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>mysql <span style="color:#f92672">-</span>u root <span style="color:#f92672">-</span>p
+</span></span></code></pre></div><ul>
+<li>사용자 계정 생성</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">계정</span> <span style="color:#960050;background-color:#1e0010">생성</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;name&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;password&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">권한</span> <span style="color:#960050;background-color:#1e0010">부여</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">ALL</span> <span style="color:#66d9ef">PRIVILEGES</span> <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">TO</span> <span style="color:#e6db74">&#39;name&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">권한</span> <span style="color:#960050;background-color:#1e0010">적용</span>
+</span></span><span style="display:flex;"><span>FLUSH <span style="color:#66d9ef">PRIVILEGES</span>;
+</span></span></code></pre></div><ul>
+<li>
+<p>데이터베이스를 생성하고 사용하면 된다.</p>
+</li>
+<li>
+<p>외부에서 접속하는 방법은 포트를 열어주면 되는데 GCP의 경우 방화벽에서 설정한 3306 포트를 열어주면 접속이 된다.</p>
+</li>
+</ul>
               
 
 
