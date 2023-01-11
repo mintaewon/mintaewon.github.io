@@ -17,7 +17,7 @@
   },
   "name":"MIN Velog",
   "description":"",
-  "url":"https:\/\/mintaewon.github.io\/2023\/01\/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95\/",
+  "url":"https:\/\/mintaewon.github.io\/2023\/01\/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C\/",
   "keywords":"[]"
 }
 
@@ -33,44 +33,32 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu에서 Matplotlib 한글 설정">
-<meta name="twitter:title" content="Ubuntu에서 Matplotlib 한글 설정">
-<meta property="og:url" content="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/">
+<meta property="og:title" content="Docker 이미지 내부 가상환경에 대해서">
+<meta name="twitter:title" content="Docker 이미지 내부 가상환경에 대해서">
+<meta property="og:url" content="https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/">
 <meta property="og:site_name" content="MIN Velog">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2023-01-07T18:12:42">
+    <meta property="article:published_time" content="2023-01-11T16:19:17">
   
   
-    <meta property="article:modified_time" content="2023-01-07T18:12:42">
+    <meta property="article:modified_time" content="2023-01-11T16:19:17">
   
-  
-  
-    
-      <meta property="article:section" content="Python">
-    
   
   
     
-      <meta property="article:tag" content="Python">
+      <meta property="article:section" content="Study">
     
-      <meta property="article:tag" content="파이썬">
+  
+  
     
-      <meta property="article:tag" content="Matplotlib">
+      <meta property="article:tag" content="Docker">
     
-      <meta property="article:tag" content="한글">
-    
-      <meta property="article:tag" content="Linux">
-    
-      <meta property="article:tag" content="Ubuntu">
-    
-      <meta property="article:tag" content="우분투">
-    
-      <meta property="article:tag" content="리눅스">
+      <meta property="article:tag" content="도커">
     
   
 
@@ -91,14 +79,14 @@
 
 
 
-    <title>Ubuntu에서 Matplotlib 한글 설정</title>
+    <title>Docker 이미지 내부 가상환경에 대해서</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/">
+    <link rel="canonical" href="https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -310,15 +298,15 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      Ubuntu에서 Matplotlib 한글 설정
+      Docker 이미지 내부 가상환경에 대해서
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-01-07T18:12:42&#43;09:00">
+      <time datetime="2023-01-11T16:19:17&#43;09:00">
         
-  January 7, 2023
+  January 11, 2023
 
       </time>
     
@@ -327,7 +315,7 @@ if (!doNotTrack) {
   
     <span>in</span>
     
-      <a class="category-link" href="https://mintaewon.github.io/categories/python">Python</a>
+      <a class="category-link" href="https://mintaewon.github.io/categories/study">Study</a>
     
   
 
@@ -337,49 +325,67 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>Linux 환경을 구축하고 데이터 분석을 진행하다보면 한글 설정이 안되어 있어서 그래프에 한글 표시가 깨져서 나올 때가 있다.</p>
-<p><figure><img src="https://mintaewon.github.io/images/korean/ko1.GIF"/>
-</figure>
-
-<br></p>
+              <h1 id="docker-image-와-가상환경venv">Docker image 와 가상환경(venv)</h1>
+<p>프로젝트를 Docker image로 실행하기 위한 작업을 진행중이다.</p>
+<p>가상환경에 대해서 조금씩 이해해 가는 도중.. Docker file을 작성할때, 내부에 가상환경을 띄우고 패키지를 설치해야되는지가 궁금해졌다.</p>
+<p>찾아본 내용은 Python 기반입니다!</p>
 <hr>
-<h1 id="한글-설정-방법">한글 설정 방법</h1>
 <ul>
-<li>모든 나눔 폰트 설치</li>
-<li>터미널에 입력</li>
+<li>
+<p>가장 먼저 <a href="https://docs.docker.com/language/python/build-images/">Docker 공식 홈페이지</a>에서 Python 이미지를 빌드하는 것을 찾아봤다.</p>
+</li>
+<li>
+<p>공식 문서에서 이미지를 Build 하는 과정을 보면 프로젝트 진행에서는 가상환경에 패키지를 설치하는 것을 보여준다.</p>
+</li>
+<li>
+<p>그리고 그 가상환경에 설치된 패키지를 freeze 명령어를 사용해 파일로 저장한다.</p>
+</li>
 </ul>
-<pre tabindex="0"><code>sudo apt-get install fonts-nanum*
+<pre tabindex="0"><code>python3 -m pip freeze &gt; requirements.txt
 </code></pre><ul>
-<li>font 캐시 갱신</li>
+<li>
+<p>그리고 Docker file 작성시에 requirements.txt를 이미지 내부로 복사하고 그냥 pip 설치를 진행한다.</p>
+</li>
+<li>
+<p>처음에 생각했던 것도 Docker Container는 가상 머신과 유사하기 때문에 따로 가상 환경을 설치하지 않아도 된다고 생각했다.</p>
+</li>
+<li>
+<p>하지만 검색해보니 과거에 토론한 흔적들을 찾을 수 있었다.</p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/48561981/activate-python-virtualenv-in-dockerfile">https://stackoverflow.com/questions/48561981/activate-python-virtualenv-in-dockerfile</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/29146792/why-do-people-create-virtualenv-in-a-docker-container">https://stackoverflow.com/questions/29146792/why-do-people-create-virtualenv-in-a-docker-container</a></p>
+</li>
+<li>
+<p>내용은 이러했다.</p>
+</li>
 </ul>
-<pre tabindex="0"><code>sudo fc-cache -fv
+<pre tabindex="0"><code>컨테이너화 되기 때문에 가상 환경과 유사해서 필요없다!!
 </code></pre><ul>
-<li>만약 위의 명령어가 되지 않는다면</li>
+<li>생각했던 것과 어느정도 일치했다.</li>
+<li>하지만 필요성을 주장하는 사람들도 있다. 그 주장들을 살펴보면</li>
 </ul>
-<pre tabindex="0"><code>sudo apt install fontconfig
-</code></pre><ul>
-<li>나눔 font 설치 확인</li>
-<li>나눔이 들어간 font 가 확인되면 OK</li>
-</ul>
-<pre tabindex="0"><code>sudo fc-list
-</code></pre><p><figure><img src="https://mintaewon.github.io/images/korean/ko2.GIF"/>
-</figure>
+<pre tabindex="0"><code>1. 이미지 크기를 줄일 수 있다?
+&gt;&gt; 이 부분은 사실 이해가 잘 되지 않는다.. 전역적으로 설치하나 가상환경에 설치하나 패키지는 똑같이 설치되는 것이 아닌가??
 
-<br></p>
-<ul>
-<li>한글 사용 설정</li>
-<li>안되면 커널 재시작!</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;font.family&#39;</span>]<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;NanumGothic&#39;</span> <span style="color:#75715e"># 한글 폰트 사용</span>
-</span></span></code></pre></div><ul>
-<li>한글이 잘 나오는 것을 볼 수 있다!</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/korean/ko3.GIF"/>
-</figure>
+2. 컨테이너 내부에서도 의존성 문제가 발생할 수 있다.
+&gt;&gt; 이 부분은 의존성 문제를 이론으로만 배우고 겪어보지 않아서 정확하게 이해는 못했다. 만약 패키지를 추가해야될 상황에 그 패키지에 의존하는 다른 패키지 중에 겹치는 것이 있어서 버전이 달라지면 문제가 발생할 수 있을 것이라고 생각한다. 그리고 이러한 상황에서 변화가 유동적이지 않는게 pip 의 단점이라고 본 것 같다.
 
-<br></p>
+3. Docker file 하나에서 여러 앱을 실행할 때 필요하다?
+&gt;&gt; 이 말을 처음들었을 때, Docker compose 로 여러 이미지를 실행하면 되지 않나? 라고 생각했다. 하지만 이미지 크기에 대해서는 유의미한 것 같다. 이미지 여러개를 실행하는 것 보다 하나의 이미지에서 실행할 수 있다면 조금 더 용량적인 면에서 이익을 가지고 올 수 있지 않을까?
+</code></pre><ul>
+<li>필요한 이유는 크게 이정도 인것 같다.</li>
+<li>더 찾다보니 venv 보다 Python 의존성 관리 툴인 Poetry 사용을 권장하기도 했다.</li>
+<li>Poetry 가이드에서는 컨테이너 내부에서 가상환경을 만들지 않는 옵션을 추가해서 패키지를 관리하는 방법을 권하고 있기도 하다.</li>
+</ul>
+<hr>
+<p>여기까지 찾아본 내용이다. 하지만 궁금증이 명확하게 해결 된건 아니다. 결국에는 필요하면 쓰면되고 그게아니라면 해도되고 안해도 된다는 느낌이다.</p>
+<p>실제 Docker를 사용하는 회사에서 이런 것에 대한 명확한 솔루션이 있는지 궁금하다. 아니면 아직 지식이 부족해서 이해를 못하는 건가&hellip;</p>
+<p>가상화 관련된 지식은 운영체제 공부하면서 더 알아봐야겠다.</p>
+<hr>
+<p>추가로 알게된 내용은 계속해서 추가할 예정!</p>
               
 
 
@@ -393,21 +399,9 @@ if (!doNotTrack) {
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/python/">Python</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/docker/">Docker</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/matplotlib/">Matplotlib</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%ED%95%9C%EA%B8%80/">한글</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/linux/">Linux</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/ubuntu/">Ubuntu</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%9A%B0%EB%B6%84%ED%88%AC/">우분투</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%8F%84%EC%BB%A4/">도커</a>
 
                   </div>
                 
@@ -420,7 +414,7 @@ if (!doNotTrack) {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/" data-tooltip="Docker 이미지 내부 가상환경에 대해서" aria-label="NEXT: Docker 이미지 내부 가상환경에 대해서">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -428,7 +422,7 @@ if (!doNotTrack) {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" data-tooltip="Docker로 Mysql 구축하기" aria-label="PREVIOUS: Docker로 Mysql 구축하기">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/" data-tooltip="Ubuntu에서 Matplotlib 한글 설정" aria-label="PREVIOUS: Ubuntu에서 Matplotlib 한글 설정">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -446,19 +440,19 @@ if (!doNotTrack) {
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -497,7 +491,7 @@ if (!doNotTrack) {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/" data-tooltip="Docker 이미지 내부 가상환경에 대해서" aria-label="NEXT: Docker 이미지 내부 가상환경에 대해서">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -505,7 +499,7 @@ if (!doNotTrack) {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" data-tooltip="Docker로 Mysql 구축하기" aria-label="PREVIOUS: Docker로 Mysql 구축하기">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/" data-tooltip="Ubuntu에서 Matplotlib 한글 설정" aria-label="PREVIOUS: Ubuntu에서 Matplotlib 한글 설정">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -523,19 +517,19 @@ if (!doNotTrack) {
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -560,19 +554,19 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fubuntu%25EC%2597%2590%25EC%2584%259C-matplotlib-%25ED%2595%259C%25EA%25B8%2580-%25EC%2584%25A4%25EC%25A0%2595%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fdocker-%25EC%259D%25B4%25EB%25AF%25B8%25EC%25A7%2580-%25EB%2582%25B4%25EB%25B6%2580-%25EA%25B0%2580%25EC%2583%2581%25ED%2599%2598%25EA%25B2%25BD%25EC%2597%2590-%25EB%258C%2580%25ED%2595%25B4%25EC%2584%259C%2F" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fubuntu%25EC%2597%2590%25EC%2584%259C-matplotlib-%25ED%2595%259C%25EA%25B8%2580-%25EC%2584%25A4%25EC%25A0%2595%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fdocker-%25EC%259D%25B4%25EB%25AF%25B8%25EC%25A7%2580-%25EB%2582%25B4%25EB%25B6%2580-%25EA%25B0%2580%25EC%2583%2581%25ED%2599%2598%25EA%25B2%25BD%25EC%2597%2590-%25EB%258C%2580%25ED%2595%25B4%25EC%2584%259C%2F" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fubuntu%25EC%2597%2590%25EC%2584%259C-matplotlib-%25ED%2595%259C%25EA%25B8%2580-%25EC%2584%25A4%25EC%25A0%2595%2F" aria-label="Share on Google&#43;">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fdocker-%25EC%259D%25B4%25EB%25AF%25B8%25EC%25A7%2580-%25EB%2582%25B4%25EB%25B6%2580-%25EA%25B0%2580%25EC%2583%2581%25ED%2599%2598%25EA%25B2%25BD%25EC%2597%2590-%25EB%258C%2580%25ED%2595%25B4%25EC%2584%259C%2F" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>
