@@ -6,7 +6,16 @@
     <description>Recent content in 파이썬 on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 07 Jan 2023 18:12:42 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Jan 2023 17:29:44 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Compose로 MySQL&#43;FastAPI 연동 </title>
+      <link>https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/</link>
+      <pubDate>Thu, 12 Jan 2023 17:29:44 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Ubuntu에서 Matplotlib 한글 설정</title>
       <link>https://mintaewon.github.io/2023/01/ubuntu%EC%97%90%EC%84%9C-matplotlib-%ED%95%9C%EA%B8%80-%EC%84%A4%EC%A0%95/</link>

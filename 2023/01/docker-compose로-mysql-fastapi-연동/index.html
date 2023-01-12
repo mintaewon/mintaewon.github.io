@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/mintaewon.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "Taewon Min",
+    
+    "image": "https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg"
+    
+  },
+  "name":"MIN Velog",
+  "description":"",
+  "url":"https:\/\/mintaewon.github.io\/2023\/01\/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Taewon Min">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker Compose로 MySQL&#43;FastAPI 연동 ">
+<meta name="twitter:title" content="Docker Compose로 MySQL&#43;FastAPI 연동 ">
+<meta property="og:url" content="https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/">
+<meta property="og:site_name" content="MIN Velog">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2023-01-12T17:29:44">
+  
+  
+    <meta property="article:modified_time" content="2023-01-12T17:29:44">
+  
+  
+  
+    
+      <meta property="article:section" content="Study">
+    
+  
+  
+    
+      <meta property="article:tag" content="Docker">
+    
+      <meta property="article:tag" content="도커">
+    
+      <meta property="article:tag" content="Docker-Compose">
+    
+      <meta property="article:tag" content="도커컴포즈">
+    
+      <meta property="article:tag" content="pymysql">
+    
+      <meta property="article:tag" content="데이터베이스">
+    
+      <meta property="article:tag" content="Database">
+    
+      <meta property="article:tag" content="DB">
+    
+      <meta property="article:tag" content="FastAPI">
+    
+      <meta property="article:tag" content="MySQL">
+    
+      <meta property="article:tag" content="Python">
+    
+      <meta property="article:tag" content="파이썬">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+  <meta property="twitter:image" content="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg">
+
+
+
+
+
+
+    <title>Docker Compose로 MySQL&#43;FastAPI 연동 </title>
+
+    <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://mintaewon.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-186281032-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mintaewon.github.io/" aria-label="Go to homepage">MIN Velog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mintaewon.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mintaewon.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Taewon Min</h4>
+        
+          <h5 class="sidebar-profile-bio">데이터 공부노트</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/python" title="Python">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Python</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/recsys" title="RecSys">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">RecSys</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/study" title="Study">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Study</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/diary" title="Diary">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Diary</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mintaewon.github.io/categories/development" title="Development">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Development</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://snapdragon-heather-fac.notion.site/1171a1a79c28456fae4e92c64bdbdb32" target="_blank" rel="noopener" title="Resume">
+    
+      <i class="sidebar-button-icon fas fa-user"></i>
+      
+      <span class="sidebar-button-desc">Resume</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/mintaewon" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="mailto:taewon1230@naver.com" target="_blank" rel="noopener" title="E-mail">
+    
+      <i class="sidebar-button-icon fa fa-far fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Mail</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      Docker Compose로 MySQL&#43;FastAPI 연동 
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-01-12T17:29:44&#43;09:00">
+        
+  January 12, 2023
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://mintaewon.github.io/categories/study">Study</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <h1 id="docker-compose로-db와-백엔드-연동하기">Docker Compose로 DB와 백엔드 연동하기</h1>
+<h2 id="error-내용">ERROR 내용</h2>
+<pre tabindex="0"><code>pymysql.err.OperationalError: (2003, &#34;Can&#39;t connect to MySQL server on &#39;localhost&#39; ([Errno 99] Cannot assign requested address)&#34;)
+</code></pre><ul>
+<li>
+<p>Web(프론트+백)과 MySQL을 묶어서 한번에 실행하기 위해 Docker를 사용하면서 굉장히 많은 시행착오를 겪었다.</p>
+</li>
+<li>
+<p>MySQL은 Docker 이미지를 받아왔고 Web은 HTML+CSS+JavaScript 와 FastAPI 를 사용했다.</p>
+</li>
+<li>
+<p>ORM이라고 부를 수 있는지 모르겠지만 DB와의 연동으로는 pymysql을 사용했다.</p>
+</li>
+<li>
+<p>이제 다음과 같은 아주 단순한 구조를 로컬에서 구현하기 위한 시도를 했다.</p>
+</li>
+</ul>
+<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc1.PNG"/>
+</figure>
+
+<br></p>
+<ul>
+<li>
+<p>Docker로 MySQL 이미지를 받아서 띄우는 건 성공했다.</p>
+</li>
+<li>
+<p>터미널에서 Web을 직접 실행 후 DB와 연결 테스트는 성공!</p>
+</li>
+<li>
+<p>이제 Web도 Docker로 말아서 Docker Compose 로 실행 시도.</p>
+</li>
+<li>
+<p>여기서 문제의 에러를 만나게 된다.</p>
+</li>
+</ul>
+<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc2.PNG"/>
+</figure>
+
+<br></p>
+<ul>
+<li>JavaScript 모듈이 없다? 뭐 이런 내용인거 같아 검색을 해봤다.</li>
+</ul>
+<pre tabindex="0"><code>1. 인터넷 연결 문제
+2. 크롬 문제
+</code></pre><ul>
+<li>
+<p>라고 나와서 껐다 켜보고 인터넷이 잘 돌아가는지(?) 확인도 했다.</p>
+</li>
+<li>
+<p>여전히 안되지만 MySQL Container는 정상적으로 실행되는 것을 DBeaver에 연결해보고 알았다.</p>
+</li>
+<li>
+<p>Web Container만 종료하고 다시 터미널에서 Web 실행해보니 잘된다.</p>
+</li>
+<li>
+<p>여기에서 Web Docker 에 문제가 있다는 것을 인지했다.</p>
+</li>
+<li>
+<p>Docker Hub의 MySQL 페이지를 유심히 보면서 솔루션을 찾아 다녔다.</p>
+</li>
+<li>
+<p>이 과정에서 Docker Desktop에서 로그를 볼 수 있고 Container 별로 터미널이 있다는 것을 발견했다.</p>
+</li>
+<li>
+<p>로그에서 에러를 발견했다.</p>
+</li>
+</ul>
+<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc3.PNG"/>
+</figure>
+
+<br></p>
+<ul>
+<li>
+<p>뭔가 pymysql로 DB에 연결이 안된다는 내용인거 같다. 그래서 구글링 시작!</p>
+</li>
+<li>
+<p>여기서 부터 굉장한 삽질이 시작됐다.</p>
+</li>
+</ul>
+<h3 id="서버-문제라서-3306-포트를-확인해야-된다">서버 문제라서 3306 포트를 확인해야 된다?</h3>
+<ul>
+<li>사실 네트워크에 대해서는 잘 몰라서 이것저것 찾아보면서 포트 확인을 했는데 큰 소득이 없었다.</li>
+</ul>
+<h3 id="실행-순서가-꼬여서-그럴-수-있다">실행 순서가 꼬여서 그럴 수 있다?</h3>
+<ul>
+<li>
+<p>Docker Compose 옵션중에 <code>depends_on</code> 이라는 옵션이 있다.</p>
+</li>
+<li>
+<p>종속관계를 만들어줘서 container 의 실행 순서를 지정해줄 수 있다.</p>
+</li>
+<li>
+<p>하지만 정답은 아니었다.</p>
+</li>
+</ul>
+<h3 id="네트워크-연결을-해줘야-된다">네트워크 연결을 해줘야 된다?</h3>
+<ul>
+<li>
+<p>Container는 각각의 객체? 이고 Docker Compose를 사용하면 결국 두개의 Container를 실행하는 것이기 때문에 연결이 필요하다고 한다.</p>
+</li>
+<li>
+<p>Dcoker docs 에서 network를 다루는 부분이 있어서 열심히 읽어봤다.</p>
+</li>
+<li>
+<p><a href="https://docs.docker.com/compose/networking/">https://docs.docker.com/compose/networking/</a></p>
+</li>
+<li>
+<p>Docker Compose 파일에 link 와 network 를 지정하면서 하는 방법이었다. 물론 실패했다.</p>
+</li>
+<li>
+<p>다시 읽어보니 가장 윗줄에 dafault 로 하나의 네트워크로 설정된다고 써있었다.</p>
+</li>
+</ul>
+<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc4.PNG"/>
+</figure>
+
+<br></p>
+<ul>
+<li>사실 여기에 이미 정답이 나와있었는데 부족한 영어실력으로 인해 삽질을 끝내지 못했다.</li>
+</ul>
+<h3 id="포트-문제">포트 문제?</h3>
+<ul>
+<li>
+<p>포트에 대한 개념이 부족해서 여기서 조금 당황했다.</p>
+</li>
+<li>
+<p>&rsquo;local 포트:container 포트&rsquo; 로 구성되어 있는데, 여기저기 건드려보고 내용도 찾아보면서 포트가 어떤식으로 연결되는지 약간 이해할 수 있었다. 물론 문제는 해결하지 못했다.</p>
+</li>
+</ul>
+<h3 id="컨테이너에-연결할-때-그-컨테이너의-고유-ip로-연결해야-된다">컨테이너에 연결할 때, 그 컨테이너의 고유 IP로 연결해야 된다?</h3>
+<ul>
+<li>
+<p>Container 마다 IP주소가 따로 있는줄은 몰랐다.</p>
+</li>
+<li>
+<p>Container를 만들고 터미널에 다음과 같이 명령어를 입력하면 볼 수 있다.</p>
+</li>
+</ul>
+<pre tabindex="0"><code>docker inspect &#34;컨테이너 명&#34;
+</code></pre><p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc5.PNG"/>
+</figure>
+
+<br></p>
+<ul>
+<li>저 IP주소를 호스팅으로 해서 pymysql 접속을 시도&hellip; 실패!</li>
+</ul>
+<h3 id="컨테이너-이름을-입력하면-된다">컨테이너 이름을 입력하면 된다?</h3>
+<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc6.PNG"/>
+</figure>
+
+<br></p>
+<ul>
+<li>
+<p>화면에 있는 test-mysql, test-mysql:3306 이런 것을 시도해봤지만 되지않았다.</p>
+</li>
+<li>
+<p>다시보니 여기서 앞서 살펴본 Docker docs 에서도 container name 을 넣어주면 된다고 나와있었다.</p>
+</li>
+<li>
+<p>docker compose 파일을 살펴보자</p>
+</li>
+</ul>
+<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc7.PNG"/>
+</figure>
+
+<br></p>
+<ul>
+<li>
+<p>옵션도 아주 직관적이다.</p>
+</li>
+<li>
+<p>바로 연결 시도&hellip;. 실패!</p>
+</li>
+<li>
+<p>이때부터 도저히 안되겠어서 오픈카톡방에도 질문하고 다른 사람들의 코드를 찾아다녔고 내가 작성한 것과 비교를 해보기 시작했다.</p>
+</li>
+<li>
+<p>그리고 정답을 발견했다!!</p>
+</li>
+</ul>
+<hr>
+<h3 id="해결-방법">해결 방법</h3>
+<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc8.PNG"/>
+</figure>
+
+<br></p>
+<ul>
+<li>
+<p>service 명으로 들어가는 저것이 host name 이었다.</p>
+</li>
+<li>
+<p>약 10시간을 삽질하면서 네트워크에 엄청난 비밀이 있는줄 알았지만&hellip; 허무했다.</p>
+</li>
+<li>
+<p>그래도 이 문제를 고민하면서 Docker와 조금 더 친해진 것 같다.</p>
+</li>
+</ul>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/docker/">Docker</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%8F%84%EC%BB%A4/">도커</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/docker-compose/">Docker-Compose</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%8F%84%EC%BB%A4%EC%BB%B4%ED%8F%AC%EC%A6%88/">도커컴포즈</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/pymysql/">pymysql</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4/">데이터베이스</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/database/">Database</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/db/">DB</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/fastapi/">FastAPI</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/mysql/">MySQL</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/python/">Python</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/" data-tooltip="Docker 이미지 내부 가상환경에 대해서" aria-label="PREVIOUS: Docker 이미지 내부 가상환경에 대해서">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2023 Taewon Min. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/" data-tooltip="Docker 이미지 내부 가상환경에 대해서" aria-label="PREVIOUS: Docker 이미지 내부 가상환경에 대해서">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fdocker-compose%25EB%25A1%259C-mysql-fastapi-%25EC%2597%25B0%25EB%258F%2599%2F" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fdocker-compose%25EB%25A1%259C-mysql-fastapi-%25EC%2597%25B0%25EB%258F%2599%2F" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fdocker-compose%25EB%25A1%259C-mysql-fastapi-%25EC%2597%25B0%25EB%258F%2599%2F" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://res.cloudinary.com/dmynnfibf/image/upload/v1609298915/img/min_ialg9l.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Taewon Min</h4>
+    
+      <div id="about-card-bio">데이터 공부노트</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        None
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        South, Korea
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://mintaewon.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://mintaewon.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
