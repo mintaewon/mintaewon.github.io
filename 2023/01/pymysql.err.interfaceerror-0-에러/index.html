@@ -16,8 +16,8 @@
     
   },
   "name":"MIN Velog",
-  "description":"",
-  "url":"https:\/\/mintaewon.github.io\/2023\/01\/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99\/",
+  "description":"에러 : pymysql.err.InterfaceError: (0, \u0026lsquo;\u0026rsquo;) Python 서버로 만든 웹을 배포하고 이틀이지나자 갑자기 에러가 발생했다.\nDB에 접속은 잘되는걸 보니 DB 문제는 아니었다.\n서버의 로그를 보니\npython에서 mysql과 연결을 도와주는 라이브러리는 pymysql의 오류였다.\ncursors 와 connections 에 문제가 생긴 것 같다.\n문제는 DB와 통신하는 코드에 있었다.\n위 코드에서 conn은 DB 관련 파라미터를 지정해 연결을 하는 작업이고\ncurs는 SQl을 사용할 수 있게 DB에 접속을 한다는 것으로 이해했다.\n그 후에 SQL 쿼리를 이용해 명령어를 사용하고",
+  "url":"https:\/\/mintaewon.github.io\/2023\/01\/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC\/",
   "keywords":"[]"
 }
 
@@ -28,25 +28,57 @@
 <meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Taewon Min">
 <meta name="keywords" content="">
-<meta name="description" content="">
+<meta name="description" content="에러 : pymysql.err.InterfaceError: (0, &lsquo;&rsquo;) Python 서버로 만든 웹을 배포하고 이틀이지나자 갑자기 에러가 발생했다.
+DB에 접속은 잘되는걸 보니 DB 문제는 아니었다.
+서버의 로그를 보니
+python에서 mysql과 연결을 도와주는 라이브러리는 pymysql의 오류였다.
+cursors 와 connections 에 문제가 생긴 것 같다.
+문제는 DB와 통신하는 코드에 있었다.
+위 코드에서 conn은 DB 관련 파라미터를 지정해 연결을 하는 작업이고
+curs는 SQl을 사용할 수 있게 DB에 접속을 한다는 것으로 이해했다.
+그 후에 SQL 쿼리를 이용해 명령어를 사용하고">
 
 
-<meta property="og:description" content="">
+<meta property="og:description" content="에러 : pymysql.err.InterfaceError: (0, &lsquo;&rsquo;) Python 서버로 만든 웹을 배포하고 이틀이지나자 갑자기 에러가 발생했다.
+DB에 접속은 잘되는걸 보니 DB 문제는 아니었다.
+서버의 로그를 보니
+python에서 mysql과 연결을 도와주는 라이브러리는 pymysql의 오류였다.
+cursors 와 connections 에 문제가 생긴 것 같다.
+문제는 DB와 통신하는 코드에 있었다.
+위 코드에서 conn은 DB 관련 파라미터를 지정해 연결을 하는 작업이고
+curs는 SQl을 사용할 수 있게 DB에 접속을 한다는 것으로 이해했다.
+그 후에 SQL 쿼리를 이용해 명령어를 사용하고">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker Compose로 MySQL&#43;FastAPI 연동 ">
-<meta name="twitter:title" content="Docker Compose로 MySQL&#43;FastAPI 연동 ">
-<meta property="og:url" content="https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/">
+<meta property="og:title" content="pymysql.err.InterfaceError: (0, &#39;&#39;) 에러">
+<meta name="twitter:title" content="pymysql.err.InterfaceError: (0, &#39;&#39;) 에러">
+<meta property="og:url" content="https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/">
 <meta property="og:site_name" content="MIN Velog">
-<meta property="og:description" content="">
-<meta name="twitter:description" content="">
+<meta property="og:description" content="에러 : pymysql.err.InterfaceError: (0, &lsquo;&rsquo;) Python 서버로 만든 웹을 배포하고 이틀이지나자 갑자기 에러가 발생했다.
+DB에 접속은 잘되는걸 보니 DB 문제는 아니었다.
+서버의 로그를 보니
+python에서 mysql과 연결을 도와주는 라이브러리는 pymysql의 오류였다.
+cursors 와 connections 에 문제가 생긴 것 같다.
+문제는 DB와 통신하는 코드에 있었다.
+위 코드에서 conn은 DB 관련 파라미터를 지정해 연결을 하는 작업이고
+curs는 SQl을 사용할 수 있게 DB에 접속을 한다는 것으로 이해했다.
+그 후에 SQL 쿼리를 이용해 명령어를 사용하고">
+<meta name="twitter:description" content="에러 : pymysql.err.InterfaceError: (0, &lsquo;&rsquo;) Python 서버로 만든 웹을 배포하고 이틀이지나자 갑자기 에러가 발생했다.
+DB에 접속은 잘되는걸 보니 DB 문제는 아니었다.
+서버의 로그를 보니
+python에서 mysql과 연결을 도와주는 라이브러리는 pymysql의 오류였다.
+cursors 와 connections 에 문제가 생긴 것 같다.
+문제는 DB와 통신하는 코드에 있었다.
+위 코드에서 conn은 DB 관련 파라미터를 지정해 연결을 하는 작업이고
+curs는 SQl을 사용할 수 있게 DB에 접속을 한다는 것으로 이해했다.
+그 후에 SQL 쿼리를 이용해 명령어를 사용하고">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2023-01-12T17:29:44">
+    <meta property="article:published_time" content="2023-01-14T13:35:35">
   
   
-    <meta property="article:modified_time" content="2023-01-12T17:29:44">
+    <meta property="article:modified_time" content="2023-01-14T13:35:35">
   
   
   
@@ -56,29 +88,15 @@
   
   
     
-      <meta property="article:tag" content="Docker">
+      <meta property="article:tag" content="DB">
     
-      <meta property="article:tag" content="도커">
-    
-      <meta property="article:tag" content="Docker-Compose">
-    
-      <meta property="article:tag" content="도커컴포즈">
-    
-      <meta property="article:tag" content="pymysql">
+      <meta property="article:tag" content="database">
     
       <meta property="article:tag" content="데이터베이스">
     
-      <meta property="article:tag" content="Database">
+      <meta property="article:tag" content="커넥션누수">
     
-      <meta property="article:tag" content="DB">
-    
-      <meta property="article:tag" content="FastAPI">
-    
-      <meta property="article:tag" content="MySQL">
-    
-      <meta property="article:tag" content="Python">
-    
-      <meta property="article:tag" content="파이썬">
+      <meta property="article:tag" content="Connection Leak">
     
   
 
@@ -99,14 +117,14 @@
 
 
 
-    <title>Docker Compose로 MySQL&#43;FastAPI 연동 </title>
+    <title>pymysql.err.InterfaceError: (0, &#39;&#39;) 에러</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/">
+    <link rel="canonical" href="https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -318,15 +336,15 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      Docker Compose로 MySQL&#43;FastAPI 연동 
+      pymysql.err.InterfaceError: (0, &#39;&#39;) 에러
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-01-12T17:29:44&#43;09:00">
+      <time datetime="2023-01-14T13:35:35&#43;09:00">
         
-  January 12, 2023
+  January 14, 2023
 
       </time>
     
@@ -345,225 +363,57 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <h1 id="docker-compose로-db와-백엔드-연동하기">Docker Compose로 DB와 백엔드 연동하기</h1>
-<h2 id="error-내용">ERROR 내용</h2>
-<pre tabindex="0"><code>pymysql.err.OperationalError: (2003, &#34;Can&#39;t connect to MySQL server on &#39;localhost&#39; ([Errno 99] Cannot assign requested address)&#34;)
-</code></pre><ul>
-<li>
-<p>Web(프론트+백)과 MySQL을 묶어서 한번에 실행하기 위해 Docker를 사용하면서 굉장히 많은 시행착오를 겪었다.</p>
-</li>
-<li>
-<p>MySQL은 Docker 이미지를 받아왔고 Web은 HTML+CSS+JavaScript 와 FastAPI 를 사용했다.</p>
-</li>
-<li>
-<p>ORM이라고 부를 수 있는지 모르겠지만 DB와의 연동으로는 pymysql을 사용했다.</p>
-</li>
-<li>
-<p>이제 다음과 같은 아주 단순한 구조를 로컬에서 구현하기 위한 시도를 했다.</p>
-</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc1.PNG"/>
+              <h1 id="에러--pymysqlerrinterfaceerror-0-">에러 : pymysql.err.InterfaceError: (0, &lsquo;&rsquo;)</h1>
+<p>Python 서버로 만든 웹을 배포하고 이틀이지나자 갑자기 에러가 발생했다.</p>
+<p><figure><img src="https://mintaewon.github.io/images/pymysql/pymy1.PNG"/>
 </figure>
 
 <br></p>
-<ul>
-<li>
-<p>Docker로 MySQL 이미지를 받아서 띄우는 건 성공했다.</p>
-</li>
-<li>
-<p>터미널에서 Web을 직접 실행 후 DB와 연결 테스트는 성공!</p>
-</li>
-<li>
-<p>이제 Web도 Docker로 말아서 Docker Compose 로 실행 시도.</p>
-</li>
-<li>
-<p>여기서 문제의 에러를 만나게 된다.</p>
-</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc2.PNG"/>
+<p>DB에 접속은 잘되는걸 보니 DB 문제는 아니었다.</p>
+<p>서버의 로그를 보니</p>
+<p><figure><img src="https://mintaewon.github.io/images/pymysql/pymy2.PNG"/>
 </figure>
 
 <br></p>
-<ul>
-<li>JavaScript 모듈이 없다? 뭐 이런 내용인거 같아 검색을 해봤다.</li>
-</ul>
-<pre tabindex="0"><code>1. 인터넷 연결 문제
-2. 크롬 문제
-</code></pre><ul>
-<li>
-<p>라고 나와서 껐다 켜보고 인터넷이 잘 돌아가는지(?) 확인도 했다.</p>
-</li>
-<li>
-<p>여전히 안되지만 MySQL Container는 정상적으로 실행되는 것을 DBeaver에 연결해보고 알았다.</p>
-</li>
-<li>
-<p>Web Container만 종료하고 다시 터미널에서 Web 실행해보니 잘된다.</p>
-</li>
-<li>
-<p>여기에서 Web Docker 에 문제가 있다는 것을 인지했다.</p>
-</li>
-<li>
-<p>Docker Hub의 MySQL 페이지를 유심히 보면서 솔루션을 찾아 다녔다.</p>
-</li>
-<li>
-<p>이 과정에서 Docker Desktop에서 로그를 볼 수 있고 Container 별로 터미널이 있다는 것을 발견했다.</p>
-</li>
-<li>
-<p>로그에서 에러를 발견했다.</p>
-</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc3.PNG"/>
+<p>python에서 mysql과 연결을 도와주는 라이브러리는 pymysql의 오류였다.</p>
+<p>cursors 와 connections 에 문제가 생긴 것 같다.</p>
+<p>문제는 DB와 통신하는 코드에 있었다.</p>
+<p><figure><img src="https://mintaewon.github.io/images/pymysql/pymy3.PNG"/>
 </figure>
 
 <br></p>
+<p>위 코드에서 conn은 DB 관련 파라미터를 지정해 연결을 하는 작업이고</p>
+<p>curs는 SQl을 사용할 수 있게 DB에 접속을 한다는 것으로 이해했다.</p>
+<p>그 후에 SQL 쿼리를 이용해 명령어를 사용하고</p>
+<p>commit 명령어를 사용해 갱신을 한다.</p>
+<p>여기까지가 pymysql 공식 페이지에 나온 내용이다.</p>
+<p>하지만 DB에 접속을 하고나서는 close를 이용해 닫아줘야 한다는 것을 알게 됐다.</p>
+<p>SQL 쿼리가 끝날때 close를 넣어주기만 하면 끝!</p>
+<p>이런 내용은 Connection leak라고 부른다고 한다.</p>
 <ul>
-<li>
-<p>뭔가 pymysql로 DB에 연결이 안된다는 내용인거 같다. 그래서 구글링 시작!</p>
-</li>
-<li>
-<p>여기서 부터 굉장한 삽질이 시작됐다.</p>
-</li>
+<li>수정한 코드</li>
 </ul>
-<h3 id="서버-문제라서-3306-포트를-확인해야-된다">서버 문제라서 3306 포트를 확인해야 된다?</h3>
-<ul>
-<li>사실 네트워크에 대해서는 잘 몰라서 이것저것 찾아보면서 포트 확인을 했는데 큰 소득이 없었다.</li>
-</ul>
-<h3 id="실행-순서가-꼬여서-그럴-수-있다">실행 순서가 꼬여서 그럴 수 있다?</h3>
-<ul>
-<li>
-<p>Docker Compose 옵션중에 <code>depends_on</code> 이라는 옵션이 있다.</p>
-</li>
-<li>
-<p>종속관계를 만들어줘서 container 의 실행 순서를 지정해줄 수 있다.</p>
-</li>
-<li>
-<p>하지만 정답은 아니었다.</p>
-</li>
-</ul>
-<h3 id="네트워크-연결을-해줘야-된다">네트워크 연결을 해줘야 된다?</h3>
-<ul>
-<li>
-<p>Container는 각각의 객체? 이고 Docker Compose를 사용하면 결국 두개의 Container를 실행하는 것이기 때문에 연결이 필요하다고 한다.</p>
-</li>
-<li>
-<p>Dcoker docs 에서 network를 다루는 부분이 있어서 열심히 읽어봤다.</p>
-</li>
-<li>
-<p><a href="https://docs.docker.com/compose/networking/">https://docs.docker.com/compose/networking/</a></p>
-</li>
-<li>
-<p>Docker Compose 파일에 link 와 network 를 지정하면서 하는 방법이었다. 물론 실패했다.</p>
-</li>
-<li>
-<p>다시 읽어보니 가장 윗줄에 dafault 로 하나의 네트워크로 설정된다고 써있었다.</p>
-</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc4.PNG"/>
+<p><figure><img src="https://mintaewon.github.io/images/pymysql/pymy4.PNG"/>
 </figure>
 
 <br></p>
-<ul>
-<li>사실 여기에 이미 정답이 나와있었는데 부족한 영어실력으로 인해 삽질을 끝내지 못했다.</li>
-</ul>
-<h3 id="포트-문제">포트 문제?</h3>
-<ul>
-<li>
-<p>포트에 대한 개념이 부족해서 여기서 조금 당황했다.</p>
-</li>
-<li>
-<p>&rsquo;local 포트:container 포트&rsquo; 로 구성되어 있는데, 여기저기 건드려보고 내용도 찾아보면서 포트가 어떤식으로 연결되는지 약간 이해할 수 있었다. 물론 문제는 해결하지 못했다.</p>
-</li>
-</ul>
-<h3 id="컨테이너에-연결할-때-그-컨테이너의-고유-ip로-연결해야-된다">컨테이너에 연결할 때, 그 컨테이너의 고유 IP로 연결해야 된다?</h3>
-<ul>
-<li>
-<p>Container 마다 IP주소가 따로 있는줄은 몰랐다.</p>
-</li>
-<li>
-<p>Container를 만들고 터미널에 다음과 같이 명령어를 입력하면 볼 수 있다.</p>
-</li>
-</ul>
-<pre tabindex="0"><code>docker inspect &#34;컨테이너 명&#34;
-</code></pre><p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc5.PNG"/>
-</figure>
-
-<br></p>
-<ul>
-<li>저 IP주소를 호스팅으로 해서 pymysql 접속을 시도&hellip; 실패!</li>
-</ul>
-<h3 id="컨테이너-이름을-입력하면-된다">컨테이너 이름을 입력하면 된다?</h3>
-<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc6.PNG"/>
-</figure>
-
-<br></p>
-<ul>
-<li>
-<p>화면에 있는 test-mysql, test-mysql:3306 이런 것을 시도해봤지만 되지않았다.</p>
-</li>
-<li>
-<p>다시보니 여기서 앞서 살펴본 Docker docs 에서도 container name 을 넣어주면 된다고 나와있었다.</p>
-</li>
-<li>
-<p>docker compose 파일을 살펴보자</p>
-</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc7.PNG"/>
-</figure>
-
-<br></p>
-<ul>
-<li>
-<p>옵션도 아주 직관적이다.</p>
-</li>
-<li>
-<p>바로 연결 시도&hellip;. 실패!</p>
-</li>
-<li>
-<p>이때부터 도저히 안되겠어서 오픈카톡방에도 질문하고 다른 사람들의 코드를 찾아다녔고 내가 작성한 것과 비교를 해보기 시작했다.</p>
-</li>
-<li>
-<p>그리고 정답을 발견했다!!</p>
-</li>
-</ul>
 <hr>
-<h3 id="해결-방법">해결 방법</h3>
-<p><figure><img src="https://mintaewon.github.io/images/db-web-compose/dwc8.PNG"/>
-</figure>
-
+<h2 id="connection-pool-leak">Connection Pool Leak?</h2>
+<p>connection pool은 데이터베이스에 대한 활성 연결을 유지해서 성능을 향상 시킨다.</p>
+<p>DB가 사용되는 과정은 다음과 같다.</p>
+<pre tabindex="0"><code>API가 pool에서 connection을 빌리고 SQL 쿼리 등을 통해 실행하고 connection을 다시 pool로 반환
+</code></pre><p>만약 pool 로 다시 반환을 하지 않으면 pool connection이 계속 줄어들게 되고 이것을 connection pool leak (커넥션 풀 누수) 라고 한다.</p>
+<p>이 문제가 계속되면 connection을 더이상 열수 없어 연결이 끊어진다.</p>
+<p>그래서 DB 작업후에는 저장하고 닫아줘야 한다!</p>
+<p><br>
 <br></p>
+<h3 id="reference">Reference</h3>
 <ul>
-<li>
-<p>service 명으로 들어가는 저것이 host name 이었다.</p>
-</li>
-<li>
-<p>약 10시간을 삽질하면서 네트워크에 엄청난 비밀이 있는줄 알았지만&hellip; 허무했다.</p>
-</li>
-<li>
-<p>그래도 이 문제를 고민하면서 Docker와 조금 더 친해진 것 같다.</p>
-</li>
+<li><a href="https://hiwony.tistory.com/entry/Dev-log-python-pymysqlerrInterfaceError-0">https://hiwony.tistory.com/entry/Dev-log-python-pymysqlerrInterfaceError-0</a></li>
+<li><a href="https://cotak.tistory.com/105">https://cotak.tistory.com/105</a></li>
+<li><a href="https://soccerda.tistory.com/99">https://soccerda.tistory.com/99</a></li>
 </ul>
-<hr>
-<h2 id="하루-뒤-문제발생-2023-01-13">하루 뒤&hellip; 문제발생 (2023-01-13)</h2>
-<ul>
-<li>
-<p>local에서는 분명히 잘 동작한다.</p>
-</li>
-<li>
-<p>그런데 GCP VM 인스턴스로 옮기니까 똑같은 에러가 발생한다.</p>
-</li>
-<li>
-<p>당연히 외부에서 DBMS를 이용해서는 접속이 잘 된다.</p>
-</li>
-<li>
-<p>그러나.. 분명 잘 써줬는데&hellip; 왜 안되는지?</p>
-</li>
-<li>
-<p>local과 VM에서는 또 다른가??</p>
-</li>
-<li>
-<p>방법을 찾으면 다시 내용 추가할 예정</p>
-</li>
-</ul>
+
               
 
 
@@ -577,29 +427,15 @@ if (!doNotTrack) {
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/docker/">Docker</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/db/">DB</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%8F%84%EC%BB%A4/">도커</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/docker-compose/">Docker-Compose</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%8F%84%EC%BB%A4%EC%BB%B4%ED%8F%AC%EC%A6%88/">도커컴포즈</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/pymysql/">pymysql</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/database/">database</a>
 
   <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4/">데이터베이스</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/database/">Database</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%BB%A4%EB%84%A5%EC%85%98%EB%88%84%EC%88%98/">커넥션누수</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/db/">DB</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/fastapi/">FastAPI</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/mysql/">MySQL</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/python/">Python</a>
-
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/connection-leak/">Connection Leak</a>
 
                   </div>
                 
@@ -612,7 +448,7 @@ if (!doNotTrack) {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/" data-tooltip="pymysql.err.InterfaceError: (0, &#39;&#39;) 에러" aria-label="NEXT: pymysql.err.InterfaceError: (0, &#39;&#39;) 에러">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -620,7 +456,7 @@ if (!doNotTrack) {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/" data-tooltip="Docker 이미지 내부 가상환경에 대해서" aria-label="PREVIOUS: Docker 이미지 내부 가상환경에 대해서">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" data-tooltip="Docker Compose로 MySQL&#43;FastAPI 연동 " aria-label="PREVIOUS: Docker Compose로 MySQL&#43;FastAPI 연동 ">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -638,19 +474,19 @@ if (!doNotTrack) {
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -689,7 +525,7 @@ if (!doNotTrack) {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/" data-tooltip="pymysql.err.InterfaceError: (0, &#39;&#39;) 에러" aria-label="NEXT: pymysql.err.InterfaceError: (0, &#39;&#39;) 에러">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -697,7 +533,7 @@ if (!doNotTrack) {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/docker-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%82%B4%EB%B6%80-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/" data-tooltip="Docker 이미지 내부 가상환경에 대해서" aria-label="PREVIOUS: Docker 이미지 내부 가상환경에 대해서">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" data-tooltip="Docker Compose로 MySQL&#43;FastAPI 연동 " aria-label="PREVIOUS: Docker Compose로 MySQL&#43;FastAPI 연동 ">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -715,19 +551,19 @@ if (!doNotTrack) {
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -752,19 +588,19 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fdocker-compose%25EB%25A1%259C-mysql-fastapi-%25EC%2597%25B0%25EB%258F%2599%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fpymysql.err.interfaceerror-0-%25EC%2597%2590%25EB%259F%25AC%2F" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fdocker-compose%25EB%25A1%259C-mysql-fastapi-%25EC%2597%25B0%25EB%258F%2599%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fpymysql.err.interfaceerror-0-%25EC%2597%2590%25EB%259F%25AC%2F" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fdocker-compose%25EB%25A1%259C-mysql-fastapi-%25EC%2597%25B0%25EB%258F%2599%2F" aria-label="Share on Google&#43;">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2023%2F01%2Fpymysql.err.interfaceerror-0-%25EC%2597%2590%25EB%259F%25AC%2F" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>

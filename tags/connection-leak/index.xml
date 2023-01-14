@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DB on MIN Velog</title>
-    <link>https://mintaewon.github.io/tags/db/</link>
-    <description>Recent content in DB on MIN Velog</description>
+    <title>Connection Leak on MIN Velog</title>
+    <link>https://mintaewon.github.io/tags/connection-leak/</link>
+    <description>Recent content in Connection Leak on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 14 Jan 2023 13:35:35 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/db/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 Jan 2023 13:35:35 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/tags/connection-leak/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>pymysql.err.InterfaceError: (0, &#39;&#39;) 에러</title>
       <link>https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/</link>
@@ -22,24 +22,6 @@ cursors 와 connections 에 문제가 생긴 것 같다.
 위 코드에서 conn은 DB 관련 파라미터를 지정해 연결을 하는 작업이고
 curs는 SQl을 사용할 수 있게 DB에 접속을 한다는 것으로 이해했다.
 그 후에 SQL 쿼리를 이용해 명령어를 사용하고</description>
-    </item>
-    
-    <item>
-      <title>Docker Compose로 MySQL&#43;FastAPI 연동 </title>
-      <link>https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/</link>
-      <pubDate>Thu, 12 Jan 2023 17:29:44 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/2023/01/docker-compose%EB%A1%9C-mysql-fastapi-%EC%97%B0%EB%8F%99/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Docker로 Mysql 구축하기</title>
-      <link>https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/</link>
-      <pubDate>Fri, 06 Jan 2023 17:24:44 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/2023/01/docker%EB%A1%9C-mysql-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/</guid>
-      <description></description>
     </item>
     
   </channel>
