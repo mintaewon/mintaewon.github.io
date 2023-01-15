@@ -386,10 +386,12 @@ if (!doNotTrack) {
 <p>curs는 SQl을 사용할 수 있게 DB에 접속을 한다는 것으로 이해했다.</p>
 <p>그 후에 SQL 쿼리를 이용해 명령어를 사용하고</p>
 <p>commit 명령어를 사용해 갱신을 한다.</p>
-<p>여기까지가 pymysql 공식 페이지에 나온 내용이다.</p>
+<p>여기까지가 <a href="https://github.com/PyMySQL/PyMySQL">pymysql 공식 페이지</a>에 나온 내용이다.</p>
 <p>하지만 DB에 접속을 하고나서는 close를 이용해 닫아줘야 한다는 것을 알게 됐다.</p>
 <p>SQL 쿼리가 끝날때 close를 넣어주기만 하면 끝!</p>
-<p>이런 내용은 Connection leak라고 부른다고 한다.</p>
+<p>이 부분에서 놓친 것이 있다. 바로 Python의 <code>with</code> !!</p>
+<p>close 를 해주지 않아도 닫아주기 때문에 사용하는 것 같다.</p>
+<p>이런 문제는 Connection leak라고 부른다고 한다.</p>
 <ul>
 <li>수정한 코드</li>
 </ul>
@@ -407,6 +409,10 @@ if (!doNotTrack) {
 <p>그래서 DB 작업후에는 저장하고 닫아줘야 한다!</p>
 <p><br>
 <br></p>
+<h1 id="추가-에러-pymysqlerrerror-already-closed">추가 에러 pymysql.err.Error: Already closed</h1>
+<p>코드를 수정하면서 다음과 같은 에러를 만났었는데</p>
+<p>DB에 연결하는 것 또한 SQL 쿼리문을 날릴때 마다 연결해줘야 하고</p>
+<p>쿼리문이 여러개라면 각 쿼리문마다 열고 닫는 것에 주의해야한다!</p>
 <h3 id="reference">Reference</h3>
 <ul>
 <li><a href="https://hiwony.tistory.com/entry/Dev-log-python-pymysqlerrInterfaceError-0">https://hiwony.tistory.com/entry/Dev-log-python-pymysqlerrInterfaceError-0</a></li>
