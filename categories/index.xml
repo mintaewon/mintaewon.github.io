@@ -6,7 +6,16 @@
     <description>Recent content in Categories on MIN Velog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 14 Jan 2023 13:35:35 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Feb 2023 20:15:31 +0900</lastBuildDate><atom:link href="https://mintaewon.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Development</title>
+      <link>https://mintaewon.github.io/categories/development/</link>
+      <pubDate>Sun, 26 Feb 2023 20:15:31 +0900</pubDate>
+      
+      <guid>https://mintaewon.github.io/categories/development/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Study</title>
       <link>https://mintaewon.github.io/categories/study/</link>
@@ -22,15 +31,6 @@
       <pubDate>Sat, 07 Jan 2023 18:12:42 +0900</pubDate>
       
       <guid>https://mintaewon.github.io/categories/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Development</title>
-      <link>https://mintaewon.github.io/categories/development/</link>
-      <pubDate>Fri, 06 Jan 2023 17:24:44 +0900</pubDate>
-      
-      <guid>https://mintaewon.github.io/categories/development/</guid>
       <description></description>
     </item>
     
