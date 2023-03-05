@@ -17,7 +17,7 @@
   },
   "name":"MIN Velog",
   "description":"",
-  "url":"https:\/\/mintaewon.github.io\/2023\/03\/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC\/",
+  "url":"https:\/\/mintaewon.github.io\/2023\/02\/%EB%B0%B0%EC%B9%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-scheduler-%EC%A2%85%EB%A5%98-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0\/",
   "keywords":"[]"
 }
 
@@ -33,20 +33,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="윈도우 작업 스케줄러">
-<meta name="twitter:title" content="윈도우 작업 스케줄러">
-<meta property="og:url" content="https://mintaewon.github.io/2023/03/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/">
-<meta property="twitter:url" content="https://mintaewon.github.io/2023/03/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/">
+<meta property="og:title" content="배치 작업을 위한 Scheduler 종류 알아보기">
+<meta name="twitter:title" content="배치 작업을 위한 Scheduler 종류 알아보기">
+<meta property="og:url" content="https://mintaewon.github.io/2023/02/%EB%B0%B0%EC%B9%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-scheduler-%EC%A2%85%EB%A5%98-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0/">
+<meta property="twitter:url" content="https://mintaewon.github.io/2023/02/%EB%B0%B0%EC%B9%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-scheduler-%EC%A2%85%EB%A5%98-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0/">
 <meta property="og:site_name" content="MIN Velog">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2023-03-04T22:23:43">
+    <meta property="article:published_time" content="2023-02-26T20:15:31">
   
   
-    <meta property="article:modified_time" content="2023-03-04T22:23:43">
+    <meta property="article:modified_time" content="2023-02-26T20:15:31">
   
   
   
@@ -58,15 +58,17 @@
   
   
     
-      <meta property="article:tag" content="windows">
+      <meta property="article:tag" content="스케줄러">
     
-      <meta property="article:tag" content="윈도우">
+      <meta property="article:tag" content="배치작업">
     
-      <meta property="article:tag" content="task scheduler">
+      <meta property="article:tag" content="데이터">
     
-      <meta property="article:tag" content="작업 스케줄러">
+      <meta property="article:tag" content="데이터 엔지니어">
     
-      <meta property="article:tag" content="배치">
+      <meta property="article:tag" content="data">
+    
+      <meta property="article:tag" content="scheduler">
     
       <meta property="article:tag" content="batch">
     
@@ -89,14 +91,14 @@
 
 
 
-    <title>윈도우 작업 스케줄러</title>
+    <title>배치 작업을 위한 Scheduler 종류 알아보기</title>
 
     <link rel="icon" href="https://mintaewon.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://mintaewon.github.io/2023/03/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/">
+    <link rel="canonical" href="https://mintaewon.github.io/2023/02/%EB%B0%B0%EC%B9%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-scheduler-%EC%A2%85%EB%A5%98-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -308,15 +310,15 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      윈도우 작업 스케줄러
+      배치 작업을 위한 Scheduler 종류 알아보기
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-03-04T22:23:43&#43;09:00">
+      <time datetime="2023-02-26T20:15:31&#43;09:00">
         
-  March 4, 2023
+  February 26, 2023
 
       </time>
     
@@ -337,66 +339,65 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <h1 id="윈도우-작업-스케줄러">윈도우 작업 스케줄러</h1>
-<p>작업 스케줄러는 윈도우 자체에 내장되어 있는 배치 프로그램이다.</p>
-<p>업무 중에 꼭 윈도우 환경에서만 해야하는 작업이 있기 때문에 사용을 고려해보았다.</p>
-<h2 id="사용-방법">사용 방법</h2>
-<ul>
-<li>윈도우 검색에 작업 스케줄러를 검색하면 발견할 수 있다.</li>
-<li>Office 와 같은 프로그램들의 업데이트 같은 것들이 등록되어 있는 것을 볼 수 있다.</li>
-<li>배치 생성을 위해서는 우측의 <code>작업 만들기</code>를 누르면 된다.</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/scheduler/scheduler1.PNG"/>
-</figure>
-
-<br></p>
-<h3 id="트리거">트리거</h3>
-<ul>
+              <h2 id="개요">개요</h2>
+<p>회사에서 API, 크롤링 등을 통해 데이터를 수집, 수집한 데이터를 고객사가 원하는 조건에 맞게 처리, 데이터베이스에 적재를 하는 데이터 엔지니어와 유사한 업무를 맡았다.</p>
+<p>특히 여기서 가장 중요한 부분은 데이터 수집 부분이다.</p>
+<p>매일 하루에 한번 돌아가는 일일 배치 작업, 주, 월 등의 배치도 있다.</p>
+<p>우선 업무는 이렇다 ETL, ELT 와 비스무리한 업무이다.</p>
+<p>그런데 팀에 들어오고 배치 학습을 하는 기존 코드를 보고 충격을 받았다.</p>
+<p>실제 배치 코드 일부를 봐보자</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>executeFile <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;pipenv run py batch1.py&#39;</span>,      <span style="color:#75715e"># 0     ====== 01:00 ======</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;pipenv run py batch2.py&#39;</span>,      <span style="color:#75715e"># 1     ====== 01:00 ======</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;pipenv run py batch3.py&#39;</span>,      <span style="color:#75715e"># 2     ====== 01:00 ======</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;pipenv run py batch4.py&#39;</span>,      <span style="color:#75715e"># 3     ====== 01:00 ======</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;pipenv run py batch5.py&#39;</span>,      <span style="color:#75715e"># 4     ====== 01:00 ======</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;pipenv run py batch6.py&#39;</span>,      <span style="color:#75715e"># 5     ====== 01:00 ======</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;pipenv run py batch7.py&#39;</span>,      <span style="color:#75715e"># 6     ====== 04:00 ======</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;pipenv run py batch8.py&#39;</span>,      <span style="color:#75715e"># 7     ====== 05:00 Every Monday ======</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>    time_list <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;01:00&#39;</span>,<span style="color:#e6db74">&#39;04:00&#39;</span>,<span style="color:#e6db74">&#39;05:00&#39;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> keep_going:
+</span></span><span style="display:flex;"><span>        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">60</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> keyboard<span style="color:#f92672">.</span>is_pressed(<span style="color:#e6db74">&#34;q&#34;</span>):
+</span></span><span style="display:flex;"><span>            keyboard<span style="color:#f92672">.</span>release(<span style="color:#e6db74">&#34;q&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        now <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>localtime()
+</span></span><span style="display:flex;"><span>        cmp_cur <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%02d</span><span style="color:#e6db74">:</span><span style="color:#e6db74">%02d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> (now<span style="color:#f92672">.</span>tm_hour,now<span style="color:#f92672">.</span>tm_min)
+</span></span><span style="display:flex;"><span>        weekday <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>today()<span style="color:#f92672">.</span>isoweekday()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> cmp_cur <span style="color:#f92672">==</span> time_list[<span style="color:#ae81ff">0</span>]:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> cmp_cur <span style="color:#f92672">==</span> time_list[<span style="color:#ae81ff">1</span>]:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">...</span>
+</span></span></code></pre></div><ul>
 <li>
-<p>예약 시간 지정이나 반복 수 및 종료 날짜 지정 등을 할 수 있다.</p>
+<p>어떤 원리인지 알아보기 정말 쉬웠고 놀라웠다.</p>
 </li>
 <li>
-<p>컴퓨터가 켜질때, 특정 이벤트 발생 등 다양한 상황을 핸들링 할 수 있다.</p>
+<p>무한 루프를 돌다가 현재 시간이 리스트에 들어있는 시간과 맞으면 작동되는 원리이다.</p>
 </li>
 <li>
-<p>직관적으로 나와있어서 간단한 실행파일을 만들어서 테스트 해볼 수 있다.</p>
-</li>
-</ul>
-<p><figure><img src="https://mintaewon.github.io/images/scheduler/scheduler2.PNG"/>
-</figure>
-
-<br></p>
-<h3 id="동작">동작</h3>
-<ul>
-<li>
-<p>exe 파일이나 다른 실행파일을 실행할 수 있다.</p>
+<p>이 상태로 로컬환경에서 몇 달 동안 계속해서 작동하고 있었다.</p>
 </li>
 <li>
-<p>직접적으로 실행 파일을 등록하거나 스크립트를 등록 할 수 있다.</p>
+<p>문제없이 잘 해오고 있기 때문에 계속 이렇게 사용되고 있었던 것 같다.</p>
 </li>
 <li>
-<p>조금 더 구체적인 조건 설정을 하기 위해서는 <code>bat</code> 파일을 이용 할 수 있다.</p>
+<p>필자는 이 환경을 개선하기 위해 배치를 위한 툴의 종류를 정리하고 실제 적용하기로 했다.</p>
+</li>
+<li>
+<p>배치 툴은 찾아보며 계속 추가할 예정이다. 우선 정리할 배치툴은 다음과 같다.</p>
 </li>
 </ul>
-<p><figure><img src="https://mintaewon.github.io/images/scheduler/scheduler3.PNG"/>
-</figure>
-
-<br></p>
-<h4 id="배치-파일bat">배치 파일(.bat)</h4>
-<ul>
-<li><code>bat</code> 파일은 윈도우에서 사용하는 배치 파일이다.</li>
-<li><code>shell script</code> 와 유사하다</li>
-<li>조건문(IF) 을 사용 할 수 있기 때문에 좀 더 구체적인 실행을 도와준다.</li>
-</ul>
-<h2 id="장점">장점</h2>
-<ul>
-<li>Microsoft에서 제공하는 기본 프로그램이기 때문에 믿고 사용할 수 있다.</li>
-<li>GUI로 볼 수 있기 때문에 이것 저것 눌러보면서 테스트하거나 기능을 볼 수 있고 편하게 사용할 수 있다.</li>
-</ul>
-<h2 id="단점">단점</h2>
-<ul>
-<li>실행 로그를 표시해주는 기능이 있지만 보는 것이 좀 불편하고 로그 삭제와 같은 작업이 불편하다는 점이 있다.</li>
-</ul>
+<h2 id="스케줄러-종류">스케줄러 종류</h2>
+<ol>
+<li>windows 작업 스케줄러 <a href="https://mintaewon.github.io/2023/03/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/">Link</a></li>
+<li>linux crontab</li>
+<li>airflow</li>
+</ol>
+<p>다음 포스팅 부터 하나씩 알아보자!</p>
               
 
 
@@ -410,15 +411,17 @@ if (!doNotTrack) {
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/windows/">windows</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/">스케줄러</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%B0%B0%EC%B9%98%EC%9E%91%EC%97%85/">배치작업</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/task-scheduler/">task scheduler</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/">작업 스케줄러</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4/">데이터 엔지니어</a>
 
-  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/%EB%B0%B0%EC%B9%98/">배치</a>
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/data/">data</a>
+
+  <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/scheduler/">scheduler</a>
 
   <a class="tag tag--primary tag--small" href="https://mintaewon.github.io/tags/batch/">batch</a>
 
@@ -433,7 +436,7 @@ if (!doNotTrack) {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/03/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/" data-tooltip="윈도우 작업 스케줄러" aria-label="NEXT: 윈도우 작업 스케줄러">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -441,7 +444,7 @@ if (!doNotTrack) {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/02/%EB%B0%B0%EC%B9%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-scheduler-%EC%A2%85%EB%A5%98-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0/" data-tooltip="배치 작업을 위한 Scheduler 종류 알아보기" aria-label="PREVIOUS: 배치 작업을 위한 Scheduler 종류 알아보기">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/" data-tooltip="pymysql.err.InterfaceError: (0, &#39;&#39;) 에러" aria-label="PREVIOUS: pymysql.err.InterfaceError: (0, &#39;&#39;) 에러">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -459,19 +462,19 @@ if (!doNotTrack) {
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/03/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/02/%EB%B0%B0%EC%B9%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-scheduler-%EC%A2%85%EB%A5%98-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/03/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/02/%EB%B0%B0%EC%B9%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-scheduler-%EC%A2%85%EB%A5%98-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/03/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/02/%EB%B0%B0%EC%B9%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-scheduler-%EC%A2%85%EB%A5%98-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -510,7 +513,7 @@ if (!doNotTrack) {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/03/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/" data-tooltip="윈도우 작업 스케줄러" aria-label="NEXT: 윈도우 작업 스케줄러">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -518,7 +521,7 @@ if (!doNotTrack) {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/02/%EB%B0%B0%EC%B9%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-scheduler-%EC%A2%85%EB%A5%98-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0/" data-tooltip="배치 작업을 위한 Scheduler 종류 알아보기" aria-label="PREVIOUS: 배치 작업을 위한 Scheduler 종류 알아보기">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://mintaewon.github.io/2023/01/pymysql.err.interfaceerror-0-%EC%97%90%EB%9F%AC/" data-tooltip="pymysql.err.InterfaceError: (0, &#39;&#39;) 에러" aria-label="PREVIOUS: pymysql.err.InterfaceError: (0, &#39;&#39;) 에러">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -536,19 +539,19 @@ if (!doNotTrack) {
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/03/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mintaewon.github.io/2023/02/%EB%B0%B0%EC%B9%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-scheduler-%EC%A2%85%EB%A5%98-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/03/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mintaewon.github.io/2023/02/%EB%B0%B0%EC%B9%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-scheduler-%EC%A2%85%EB%A5%98-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/03/%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%9E%91%EC%97%85-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mintaewon.github.io/2023/02/%EB%B0%B0%EC%B9%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-scheduler-%EC%A2%85%EB%A5%98-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i>
         </a>
       </li>
@@ -573,19 +576,19 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2023%2F03%2F%25EC%259C%2588%25EB%258F%2584%25EC%259A%25B0-%25EC%259E%2591%25EC%2597%2585-%25EC%258A%25A4%25EC%25BC%2580%25EC%25A4%2584%25EB%259F%25AC%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmintaewon.github.io%2F2023%2F02%2F%25EB%25B0%25B0%25EC%25B9%2598-%25EC%259E%2591%25EC%2597%2585%25EC%259D%2584-%25EC%259C%2584%25ED%2595%259C-scheduler-%25EC%25A2%2585%25EB%25A5%2598-%25EC%2595%258C%25EC%2595%2584%25EB%25B3%25B4%25EA%25B8%25B0%2F" aria-label="Share on Facebook">
           <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2023%2F03%2F%25EC%259C%2588%25EB%258F%2584%25EC%259A%25B0-%25EC%259E%2591%25EC%2597%2585-%25EC%258A%25A4%25EC%25BC%2580%25EC%25A4%2584%25EB%259F%25AC%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmintaewon.github.io%2F2023%2F02%2F%25EB%25B0%25B0%25EC%25B9%2598-%25EC%259E%2591%25EC%2597%2585%25EC%259D%2584-%25EC%259C%2584%25ED%2595%259C-scheduler-%25EC%25A2%2585%25EB%25A5%2598-%25EC%2595%258C%25EC%2595%2584%25EB%25B3%25B4%25EA%25B8%25B0%2F" aria-label="Share on Twitter">
           <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2023%2F03%2F%25EC%259C%2588%25EB%258F%2584%25EC%259A%25B0-%25EC%259E%2591%25EC%2597%2585-%25EC%258A%25A4%25EC%25BC%2580%25EC%25A4%2584%25EB%259F%25AC%2F" aria-label="Share on Google&#43;">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmintaewon.github.io%2F2023%2F02%2F%25EB%25B0%25B0%25EC%25B9%2598-%25EC%259E%2591%25EC%2597%2585%25EC%259D%2584-%25EC%259C%2584%25ED%2595%259C-scheduler-%25EC%25A2%2585%25EB%25A5%2598-%25EC%2595%258C%25EC%2595%2584%25EB%25B3%25B4%25EA%25B8%25B0%2F" aria-label="Share on Google&#43;">
           <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>
